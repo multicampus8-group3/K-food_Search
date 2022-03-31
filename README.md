@@ -15,6 +15,11 @@ add a table of contents to make it easy for users to find what they need.
 Provide instructions and examples for use. Include screenshots as needed.
 
 
+## Credits
+
+List your collaborators, if any, with links to their GitHub profiles.
+
+
 ## Contributors
 
 <a href="https://github.com/multicampus8-group3/K-food_Search/graphs/contributors">
