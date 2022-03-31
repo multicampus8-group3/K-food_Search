@@ -1,10 +1,8 @@
 # K-food_Search
 
-change
-<<<<<<< HEAD
-커밋 테스트 백동현
-=======
 
+### Contributors
 
-추가 수정
->>>>>>> branch 'main' of https://github.com/qorehdgus/K-food_Search.git
+<a href="https://github.com/multicampus8-group3/K-food_Search/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=multicampus8-group3/K-food_Search" />
+</a>
