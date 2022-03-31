@@ -2,11 +2,17 @@
 
 ## Project Description
 
+Provide a short description explaining the what, why, and how of your project.
+
 
 ## Table of Contents
 
+add a table of contents to make it easy for users to find what they need.
 
-## How to Use the Project
+
+## Usage
+
+Provide instructions and examples for use. Include screenshots as needed.
 
 
 ## Contributors
