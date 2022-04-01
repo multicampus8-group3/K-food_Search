@@ -26,6 +26,7 @@
 
 
 ## Flowchart
+![플로우차트](https://user-images.githubusercontent.com/76678030/161226874-ff3008b7-f170-465c-b6fb-607e48758c6f.PNG)
 
 
 ## ERD
