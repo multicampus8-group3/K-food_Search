@@ -1,6 +1,7 @@
 # 한땀한땀
 
 ## Project Description
+![image](https://user-images.githubusercontent.com/76678030/161288958-a47f4027-1341-44a9-85c7-0274984dd429.png)
 ![image](https://user-images.githubusercontent.com/76678030/161213439-71177297-a917-4c0b-91bf-b2d06c5a85c2.png)
 - 한땀한땀 : 한식만 따로 담았다.
 - 해외 한식당 입점 증가 추세이지만 한식당 정보가 부정확하다. 사용자 소재 지역, 검색 지역의 한식당을 추천, 정보를 제공한다. 리뷰, 별점을 통하여 믿을만한 맛집을 소개하고 추천한다.
