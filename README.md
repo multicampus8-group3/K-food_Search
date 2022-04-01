@@ -22,11 +22,11 @@
 
 
 ## Use-case diagram
-![image](https://user-images.githubusercontent.com/76678030/161214682-34e7b7e8-b76d-45fa-bb75-580adfa5b989.png)
+![image](https://user-images.githubusercontent.com/76678030/161277315-b95df714-26c0-475e-a10d-d65e639f43ea.png)
 
 
 ## Flowchart
-![플로우차트](https://user-images.githubusercontent.com/76678030/161226874-ff3008b7-f170-465c-b6fb-607e48758c6f.PNG)
+![image](https://user-images.githubusercontent.com/76678030/161277440-3e2d3704-aa4c-4c90-a6f8-e6139b33c37b.png)
 
 
 ## ERD
