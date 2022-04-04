@@ -23,7 +23,7 @@
 
 
 ## Use-case diagram
-![image](https://user-images.githubusercontent.com/76678030/161277315-b95df714-26c0-475e-a10d-d65e639f43ea.png)
+![image](https://user-images.githubusercontent.com/76678030/161487244-3e7ac78f-fa16-4efd-92e3-f99dc90efaaa.png)
 
 
 ## Flowchart
