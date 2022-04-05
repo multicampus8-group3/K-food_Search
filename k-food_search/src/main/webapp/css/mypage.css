@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.container div{
+	float: left;
+}
+.mypage_menu{
+	margin: 0px; padding: 0px; width: 200px;
+	outline: 1px solid red;
+}
+
+.mypage_container{
+	margin: 0px; padding: 0px; width: 1000px;
+	outline: 1px solid blue;	
+}
