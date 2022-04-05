@@ -1,24 +1,135 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>테스트용</title>
-<link rel="stylesheet" href="/css/style.css" type="text/css"/>
+<title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(()=>{
+		//top 스크롤 이동시 움직임.
+		$(window).scroll(function(){
+			if(window.scrollY!=0){
+				$(".topMenu ul").css('padding-top','0px').css('transition-duration','0.5s');
+				//console.log('스크롤 이벤트 발생');
+				}else{
+				$(".topMenu ul").css('padding-top','20px').css('transition-duration','0.5s');
+			}
+		});
+		//menu 이미지 클릭시 메뉴 보이게 하는 이벤트.
+		var menuCheck=false;
+		$("#menu_img").click(function(){
+			console.log('클릭이벤트 발생');
+			if(menuCheck==false){
+				$(".menu").css('width','300px').css('transition-duration','0.3s');	
+				menuCheck=true;
+			}else{
+				$(".menu").css('width','0px').css('transition-duration','0.3s');	
+				menuCheck=false;
+			}
+		});
+	});
+</script>
+<style>
+	body,ul,li{
+		padding:0px;
+		margin:0px;
+		list-style-type:none;
+	}
+	.topMenu{
+		background-color:pink;
+		height:120px;
+	}
+	.topMenu ul{
+		width:1200px;
+		background-color:rgb(244,223,208);
+		height:100px;
+		padding-top:20px;
+		position:fixed;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+	}
+	.topMenu li{
+		float:left;
+	}
+	.topMenu li:nth-of-type(1){
+		width:40%;
+		height:100%;
+	}
+	.topMenu li:nth-of-type(2){
+		width:60%;
+		height:100%;
+	}
+	#logo_img{
+		height:90px;
+	}
+	#menu_img{
+		height:30px;
+		/* 위 오른 아래 왼 */
+		padding:30px 0px 0px 30px;
+		cursor:pointer;
+	}
+	.menu{
+		background-color:red;
+		width:0px;
+		height:500px;
+		overflow:hidden;
+		text-align:center; 
+	}
+	#userid,#userpwd{
+		border-radius:30px;
+		height:30px;
+		padding-left:20px;
+		margin-top:10px;
+	}
+	.menu_button{
+		width:70%;
+		border:1px solid black;
+		height:30px;
+		color:white;
+		margin-top:10px;
+		background-color:black; 
+	}
+	#login_div{
+		margin:0 auto;
+		margin-top:30px;
+		width:90%;
+		background-color:#ddd;
+		/* 위 오른 아래 왼 */
+		padding:20px 0px 20px 0px;
+		height:150px;
+	}
+</style>
 </head>
 <body>
-<ul class='topMenu'>
-	<li>홈</li>
-	<c:if test="${logStatus!='Y'}">
-	<li><a href="/member/login">로그인</a></li>
-	</c:if>
-	<c:if test="${logStatus=='Y'}">
-	<li>${logName}님<a href="/member/logout">로그아웃</a></li>
-	</c:if>
-	<li><a href="/member/mypage">마이페이지</a></li>
-</ul>
-</body>
-</html>
+<div class='topMenu'>
+	<ul>
+		<li><img id='menu_img' src="img/menu_icon.png"/></li>
+		<li><a href='/'><img id='logo_img' src="img/logo.png"/></a></li>
+		<li class='menu'>
+			<c:if test="${logId!=null }">
+				<div id='login_div'>
+					<span>Login</span>
+					<form method='post' action=''>
+						<input type='text' id='userid' name='userid' placeholder='enter your id'/><br/>
+						<input type='text' id='userpwd' name='userpwd' placeholder='enter your password'/><br/>
+						<input class='menu_button' type='submit' value='login'/>
+					</form>
+				</div>
+				<input class='menu_button' type='button' value='회원가입'/>
+				<input class='menu_button' type='button' value='아이디 찾기'/>
+				<input class='menu_button' type='button' value='비밀번호 찾기'/>
+			</c:if>
+			<c:if test="${logId==null }">
+				<div id='login_div'>
+					${logId }님<br/>
+					<input class='menu_button' type='button' value='로그아웃'/>
+				</div>
+				<input class='menu_button' type='button' value='마이페이지'/>
+			</c:if>
+			<hr style="width:90%"/>
+		</li>
+	</ul>
+</div>
