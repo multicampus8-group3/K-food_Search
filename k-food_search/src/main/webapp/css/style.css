@@ -1,0 +1,10 @@
+@charset "UTF-8";
+.container{
+	width: 1200px; margin: 0px auto;
+	overflow: auto;
+}
+
+.bottom{
+	height: 50px; text-align: center;
+	color: white; background-color: gray;
+}

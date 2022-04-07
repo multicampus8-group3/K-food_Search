@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
+<!-- 헤드가 있어야함 마이바티스가서 받아오자.
+	https://mybatis.org/mybatis-3/ko/getting-started.html
+	매핑된 SQL 구문 살펴보기에서 가져옴. -->
+	 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.campus.myapp.DAO.memberDAO">
-  	<insert id="memberInsert">
-  		insert into member_table(userid,userpwd,username,usernation,favornation,favorstate,tel,usertype)
-  		values(#{userid},#{userpwd},#{username},#{usernation},#{favornation},#{favorstate},#{tel},#{usertype})
-  	</insert>
-  	<select id="memberIdOk" resultType="int">
+  <!-- 원래 resultType입력해야함. 그러나 applicatio.yml에 mybatis설정에 적어놓음. -->
+<mapper namespace="com.campus.myapp.dao.memberDAO">
+	<select id="memberIdOk" resultType="int">
   		select count(userid) from member_table where userid=#{param1}
   	</select>
   	<select id="loginOk" resultType="memberVO">
   		select userid, userpwd, username, usertype from member_table where userid=#{userid} and userpwd=#{userpwd}
   	</select>
-  </mapper>
+	<select id='memberSelect' resultType="com.campus.myapp.vo.memberVO">
+  	  	select userid, userpwd, username, usernation, favornation, favorstate, tel, usertype from member_table 
+  	  	where userid=#{param1}
+  	 </select>
+  	 <insert id="memberInsert">
+  		insert into member_table(userid,userpwd,username,usernation,favornation,favorstate,tel,usertype)
+  		values(#{userid},#{userpwd},#{username},#{usernation},#{favornation},#{favorstate},#{tel},#{usertype})
+  	</insert>
+</mapper>

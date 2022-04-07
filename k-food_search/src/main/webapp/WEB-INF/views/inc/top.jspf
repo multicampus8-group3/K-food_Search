@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/style.css" type="text/css"/>
 <script>
 	$(()=>{
 		//top 스크롤 이동시 움직임.
@@ -135,12 +136,14 @@
 					${username }님<br/>
 					<input class='menu_button' type='button' value='로그아웃' onclick="location.href='/logout'"/>
 				</div>
-				<input class='menu_button' type='button' value='마이페이지'/>
+				<input class='menu_button' type='button' value='마이페이지' onclick="location.href='/member/mypage'"/>
+				<c:if test="${logType =='owner' }">
+					<input class='menu_button' type='button' value='식당관리' onclick="location.href='/member/myrestaurant'"/>
+				</c:if>
 			</c:if>
 			<hr style="width:90%"/>
 			<div id="favor_div" style="height:40px; line-height:20px; overflow:hidden; white-space:nowrap;">
 				즐겨찾기<br/>
-				즐겨찾기 입력 div
 			</div>
 		</li>
 	</ul>

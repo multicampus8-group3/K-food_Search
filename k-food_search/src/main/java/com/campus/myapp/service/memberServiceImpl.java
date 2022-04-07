@@ -1,11 +1,11 @@
-package com.campus.myapp.Service;
+package com.campus.myapp.service;
 
 import javax.inject.Inject;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import com.campus.myapp.DAO.memberDAO;
+import com.campus.myapp.dao.memberDAO;
 import com.campus.myapp.vo.memberVO;
 
 @Service
@@ -27,5 +27,10 @@ public class memberServiceImpl implements memberService {
 	public memberVO loginOk(memberVO vo) {
 		// TODO Auto-generated method stub
 		return dao.loginOk(vo);
+	}
+	@Override
+	public memberVO memberSelect(String userid) {
+		// TODO Auto-generated method stub
+		return dao.memberSelect(userid);
 	}
 }
