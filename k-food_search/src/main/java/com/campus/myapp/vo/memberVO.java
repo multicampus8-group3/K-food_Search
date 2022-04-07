@@ -1,16 +1,18 @@
 package com.campus.myapp.vo;
 
-public class MemberVO {
-	
+public class memberVO {
 	private String userid;
 	private String userpwd;
 	private String username;
+	private String usernation;
 	private String favornation;
 	private String favorstate;
 	private String tel;
 	private String usertype;
-	private String writedate;
+	private String wrtedate;
 	
+	private String [] telArray;
+
 	public String getUserid() {
 		return userid;
 	}
@@ -28,6 +30,12 @@ public class MemberVO {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getUsernation() {
+		return usernation;
+	}
+	public void setUsernation(String usernation) {
+		this.usernation = usernation;
 	}
 	public String getFavornation() {
 		return favornation;
@@ -53,14 +61,17 @@ public class MemberVO {
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
-	public String getWritedate() {
-		return writedate;
+	public String getWrtedate() {
+		return wrtedate;
 	}
-	public void setWritedate(String writedate) {
-		this.writedate = writedate;
+	public void setWrtedate(String wrtedate) {
+		this.wrtedate = wrtedate;
 	}
-	
-	
-	
-
+	public String[] getTelArray() {
+		return telArray;
+	}
+	public void setTelArray(String[] telArray) {
+		setTel(telArray[0]+telArray[1]);
+		this.telArray = telArray;
+	}
 }
