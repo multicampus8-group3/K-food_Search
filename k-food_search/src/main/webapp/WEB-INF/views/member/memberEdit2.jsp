@@ -71,12 +71,12 @@ $(()=>{
 			<li>연락처</li>
 			<li>
 			<select class="inputStyletel1" name='telArray' id='tel1'>
-				<option value="010" selected>010</option>
-				<option value="011">011</option>
-				<option value="016">016</option>
-				<option value="017">017</option>
-				<option value="018">018</option>
-				<option value="019">019</option>
+				<option value="010" <c:if test="${telArray[0]=='010'}">selected</c:if>>010</option>
+				<option value="011" <c:if test="${telArray[0]=='011'}">selected</c:if>>011</option>
+				<option value="016" <c:if test="${telArray[0]=='016'}">selected</c:if>>016</option>
+				<option value="017" <c:if test="${telArray[0]=='017'}">selected</c:if>>017</option>
+				<option value="018" <c:if test="${telArray[0]=='018'}">selected</c:if>>018</option>
+				<option value="019" <c:if test="${telArray[0]=='019'}">selected</c:if>>019</option>
 			</select>
 			 - <input class="inputStyletel2" type="text" name="telArray" id="tel2" placeholder='휴대전화번호를 -없이 입력해 주세요.'/>
 			 </li>
