@@ -19,13 +19,6 @@ public class MemberController {
 	@Inject
 	MemberService service;
 	
-	//로그인폼으로 이동.
-	@GetMapping("/member/login")
-	public ModelAndView login() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/loginForm");
-		return mav;
-	}
 	//로그인
 	@PostMapping("/member/loginOk")
 	public ResponseEntity<String> loginOk(MemberVO vo, HttpSession session){
@@ -37,10 +30,10 @@ public class MemberController {
 			if(rVo!=null) {//로그인성공
 				session.setAttribute("logId", rVo.getUserid());
 				session.setAttribute("logName", rVo.getUsername());
-				session.setAttribute("", headers);
+				session.setAttribute("logType", rVo.getUsertype());
 				session.setAttribute("logStatus", "Y");
 				
-				String msg = "<script>location.href='/';</script>";
+				String msg = "<script>alert('로그인 성공!!!!');location.href='/';</script>";
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 			}else {
 				throw new Exception();
@@ -63,11 +56,56 @@ public class MemberController {
 		return mav;
 	}
 	
-	//회원정보 수정폼으로 이동.
-		@GetMapping("/member/mypage")
-		public ModelAndView mypage() {
+	//마이페이지로 이동.
+	@GetMapping(value = {"/member/mypage", "member/memberEdit"})
+	public ModelAndView mypage(HttpSession session) {
+		String userid = (String)session.getAttribute("logId");
+		MemberVO vo =service.memberSelect(userid);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo",vo);
+		mav.setViewName("member/memberEdit");
+		return mav;
+	}
+	
+	//회원정보수정(2)으로 이동.
+		@PostMapping("/member/memberEdit2")
+		public ModelAndView memberEdit2(HttpSession session) {
+			String userid = (String)session.getAttribute("logId");
+			MemberVO vo =service.memberSelect(userid);
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("member/mypage");
+			mav.addObject("vo",vo);
+			mav.setViewName("member/memberEdit2");
 			return mav;
 		}
+
+	//회원예약목록으로 이동.
+	@GetMapping("/member/memberBook")
+	public ModelAndView memberBook() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("member/memberBook");
+		return mav;
+	}
+	//회원리뷰목록으로 이동.
+	@GetMapping("/member/memberReview")
+	public ModelAndView memberReview() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("member/memberReview");
+		return mav;
+	}
+	//회원즐겨찾기목록으로 이동.
+	@GetMapping("/member/memberFavor")
+	public ModelAndView memberFavor() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("member/memberFavor");
+		return mav;
+	}
+
+	
+	//업체정보로 이동.
+	@GetMapping("/member/myrestaurant")
+	public ModelAndView myrestaurant() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("member/myrestaurant");
+		return mav;
+	}
 }

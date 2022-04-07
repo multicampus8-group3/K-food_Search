@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/style.css" type="text/css"/>
 <script>
 	$(()=>{
 		//top 스크롤 이동시 움직임.
@@ -106,13 +107,13 @@
 <body>
 <div class='topMenu'>
 	<ul>
-		<li><img id='menu_img' src="img/menu_icon.png"/></li>
-		<li><a href='/'><img id='logo_img' src="img/logo.png"/></a></li>
+		<li><img id='menu_img' src="/img/menu_icon.png"/></li>
+		<li><a href='/'><img id='logo_img' src="/img/logo.png"/></a></li>
 		<li class='menu'>
-			<c:if test="${logId!=null }">
+			<c:if test="${logId==null }">
 				<div id='login_div'>
 					<span>Login</span>
-					<form method='post' action=''>
+					<form method='post' action='/member/loginOk'>
 						<input type='text' id='userid' name='userid' placeholder='enter your id'/><br/>
 						<input type='text' id='userpwd' name='userpwd' placeholder='enter your password'/><br/>
 						<input class='menu_button' type='submit' value='login'/>
@@ -122,12 +123,15 @@
 				<input class='menu_button' type='button' value='아이디 찾기'/>
 				<input class='menu_button' type='button' value='비밀번호 찾기'/>
 			</c:if>
-			<c:if test="${logId==null }">
+			<c:if test="${logId!=null}">
 				<div id='login_div'>
-					${logId }님<br/>
-					<input class='menu_button' type='button' value='로그아웃'/>
+					${logName}님<br/>
+					<input class='menu_button' type='button' value='로그아웃' onclick="location.href='/member/logout'"/>
 				</div>
-				<input class='menu_button' type='button' value='마이페이지'/>
+				<input class='menu_button' type='button' value='마이페이지' onclick="location.href='/member/mypage'"/>
+				<c:if test="${logType =='owner' }">
+					<input class='menu_button' type='button' value='식당관리' onclick="location.href='/member/myrestaurant'"/>
+				</c:if>
 			</c:if>
 			<hr style="width:90%"/>
 		</li>
