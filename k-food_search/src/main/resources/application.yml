@@ -13,7 +13,7 @@ spring:
       
   datasource: #마이베티스 dataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1/campusdb?characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1/kfood?characterEncoding=utf-8
     username: root
     password: 1234
     

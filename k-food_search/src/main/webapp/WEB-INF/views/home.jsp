@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
+<div style="height:1000px;">
 홈 테스트
 </div> 
 </body>

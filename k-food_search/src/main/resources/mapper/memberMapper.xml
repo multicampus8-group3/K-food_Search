@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.campus.myapp.DAO.memberDAO">
+  	<insert id="memberInsert">
+  		insert into member_table(userid,userpwd,username,usernation,favornation,favorstate,tel,usertype)
+  		values(#{userid},#{userpwd},#{username},#{usernation},#{favornation},#{favorstate},#{tel},#{usertype})
+  	</insert>
+  	<select id="memberIdOk" resultType="int">
+  		select count(userid) from member_table where userid=#{param1}
+  	</select>
+  	<select id="loginOk" resultType="memberVO">
+  		select userid, userpwd, username, usertype from member_table where userid=#{userid} and userpwd=#{userpwd}
+  	</select>
+  </mapper>
