@@ -1,5 +1,7 @@
 package com.campus.myapp.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -28,6 +30,19 @@ public class memberController {
       return mav;
    }
 	   	
+   // 관리자페이지에서 회원목록 보기
+	@GetMapping("/listtoadmin")
+	@ResponseBody
+	public List<memberVO> list(memberVO vo) {
+		return service.memberList(vo);
+	}
+	
+	// 업주신청처리(수정)
+	@PostMapping("/ownershipChangeOk")
+	@ResponseBody
+	public int ownershipChangeOk(memberVO vo) {
+		return service.ownershipChange(vo);
+	}
 	
 	@PostMapping("/loginOk")
 	public ResponseEntity<String> loginOk(memberVO vo, HttpSession session){

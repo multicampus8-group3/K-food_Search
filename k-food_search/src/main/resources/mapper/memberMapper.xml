@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 헤드가 있어야함 마이바티스가서 받아오자.
-	https://mybatis.org/mybatis-3/ko/getting-started.html
-	매핑된 SQL 구문 살펴보기에서 가져옴. -->
-	 <!DOCTYPE mapper
+<!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <!-- 원래 resultType입력해야함. 그러나 applicatio.yml에 mybatis설정에 적어놓음. -->
 <mapper namespace="com.campus.myapp.dao.memberDAO">
+
+	<select id="memberList" resultType="com.campus.myapp.vo.memberVO">
+		select userid, username, usertype, tel, usernation, favornation, favorstate, writedate
+		from member_table
+		order by usertype
+	</select>
+	
+	<update id="ownershipChange">
+		update member_table set usertype=#{usertype}
+		where userid=#{userid}
+	</update>
+
 	<select id="memberIdOk" resultType="int">
   		select count(userid) from member_table where userid=#{param1}
   	</select>

@@ -13,17 +13,16 @@ $(document).ready(function(){
 	});
 });
 
-
 $(function(){
 	// 회원목록
 	function memberListAll() {
-		var url = "/listtoadmin";
+		var url = "/member/listtoadmin";
 		$.ajax({
 			url: url,
 			type:"get",
 			success: function(result) {
 				var $result = $(result);
-				console.log("ok");
+				
 				var tag = "<ul>";
 				tag += "<li>아이디</li><li>이름</li><li>등급</li><li>전화번호</li><li>국적</li><li>선호지역</li><li>가입일</li>";
 				
@@ -47,10 +46,7 @@ $(function(){
 		});
 	}
 	memberListAll();
-});
-
-
-$(function(){
+	
 	// 가게목록
 	function restaurantListAll() {
 		var url = "/restaurant/listtoadmin";
@@ -83,10 +79,7 @@ $(function(){
 		});
 	}
 	restaurantListAll();
-});
-
-
-$(function(){
+	
 	// 리뷰목록
 	function reviewListAll() {
 		var url = "/review/listtoadmin";
@@ -119,71 +112,6 @@ $(function(){
 	}
 	reviewListAll();
 });
-
-
-$(function(){
-	//업주신청목록
-	function ownershipListAll() {
-		var url = "/listtoadmin";
-		$.ajax({
-			url: url,
-			type: "get",
-			success: function(result) {
-				var $result = $(result);
-				console.log(result);
-				var tag = "<ul>";
-				tag += "<li>아이디</li><li>이름</li><li>전화번호</li><li>상태</li>";
-				
-				$result.each(function(idx, vo){
-					if(vo.usertype == "owner(jin)") {
-						tag += "<li>" + vo.userid + "</li>";
-						tag += "<li>" + vo.username + "</li>";
-						tag += "<li>" + vo.tel + "</li>";				
-						tag += "<li><form method='post'>";
-						tag += "<input type='hidden' name='userid' value='" + vo.userid + "'/>";
-						tag += "<select name='usertype'>";
-						tag += "<option value='owner(jin)'>보류</option>";
-						tag += "<option value='owner'>승인</option>";
-						tag += "<option value='normal'>거절</option>";
-						tag += "</select><input type='submit' value='확인'/></form></li>"
-					}
-				});
-				
-				tag += "</ul>";
-				
-				$("#ownershipList").html(tag);
-			},
-			error: function(e) {
-				console.log(e.responseText);
-			}
-		});
-	}
-	// 업주신청처리(수정)
-	$(document).on('submit', '#ownershipList form', function(){
-		event.preventDefault();
-		
-		var params = $(this).serialize();
-		var url = "/ownershipChangeOk";
-		$.ajax({
-			url: url,
-			data: params,
-			type: "post",
-			success: function(result){
-				location.reload();
-				ownershipListAll();
-				memberListAll();
-				
-			},
-			error: function(e){
-				console.log(e.responseText);
-			}
-		});
-	});
-	ownershipListAll();
-});
-
-
-
 </script>
 <style>
 .container{
@@ -287,6 +215,7 @@ $(function(){
 
 
 
+
 #reviewList>ul>li {
 	float: left;
 	height: 80px;
@@ -318,25 +247,6 @@ $(function(){
 	height: 40px;
 	line-height: 40px;
 }
-
-
-
-#ownershipList>ul>li {
-	float: left;
-	height: 40px;
-	line-height: 40px;
-	width: 25%;
-	border-bottom:1px solid #ddd;
-}
-
-#ownershipList>ul>li:nth-child(n+1):nth-child(-n+4) {
-	color: black;
-	border-bottom: 3px solid #ddd;
-	height: 40px;
-	line-height: 40px;
-}
-
-
 
 
 </style>
@@ -373,7 +283,7 @@ $(function(){
 		
 		<div>
 			<h3>업주승인</h3>
-			<div id="ownershipList">
+			<div id="">
 			</div>
 		</div>
 		
