@@ -17,13 +17,13 @@ $(document).ready(function(){
 $(function(){
 	// 회원목록
 	function memberListAll() {
-		var url = "/member/listtoadmin";
+		var url = "/listtoadmin";
 		$.ajax({
 			url: url,
 			type:"get",
 			success: function(result) {
 				var $result = $(result);
-				
+				console.log("ok");
 				var tag = "<ul>";
 				tag += "<li>아이디</li><li>이름</li><li>등급</li><li>전화번호</li><li>국적</li><li>선호지역</li><li>가입일</li>";
 				
@@ -124,7 +124,7 @@ $(function(){
 $(function(){
 	//업주신청목록
 	function ownershipListAll() {
-		var url = "/member/listtoadmin";
+		var url = "/listtoadmin";
 		$.ajax({
 			url: url,
 			type: "get",
@@ -163,13 +163,16 @@ $(function(){
 		event.preventDefault();
 		
 		var params = $(this).serialize();
-		var url = "/member/ownershipChangeOk";
+		var url = "/ownershipChangeOk";
 		$.ajax({
 			url: url,
 			data: params,
 			type: "post",
 			success: function(result){
+				location.reload();
 				ownershipListAll();
+				memberListAll();
+				
 			},
 			error: function(e){
 				console.log(e.responseText);

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.campus.myapp.dao.MemberDAO">
+<mapper namespace="com.campus.myapp.dao.memberDAO">
 
-	<select id="memberList" resultType="com.campus.myapp.vo.MemberVO">
+	<select id="memberList" resultType="com.campus.myapp.vo.memberVO">
 		select userid, username, usertype, tel, usernation, favornation, favorstate, writedate
 		from member_table
 		order by usertype
@@ -15,4 +15,18 @@
 		where userid=#{userid}
 	</update>
 
+	<select id="memberIdOk" resultType="int">
+  		select count(userid) from member_table where userid=#{param1}
+  	</select>
+  	<select id="loginOk" resultType="memberVO">
+  		select userid, userpwd, username, usertype from member_table where userid=#{userid} and userpwd=#{userpwd}
+  	</select>
+	<select id='memberSelect' resultType="com.campus.myapp.vo.memberVO">
+  	  	select userid, userpwd, username, usernation, favornation, favorstate, tel, usertype from member_table 
+  	  	where userid=#{param1}
+  	 </select>
+  	 <insert id="memberInsert">
+  		insert into member_table(userid,userpwd,username,usernation,favornation,favorstate,tel,usertype)
+  		values(#{userid},#{userpwd},#{username},#{usernation},#{favornation},#{favorstate},#{tel},#{usertype})
+  	</insert>
 </mapper>

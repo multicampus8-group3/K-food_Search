@@ -1,6 +1,6 @@
 package com.campus.myapp.vo;
 
-public class MemberVO {
+public class memberVO {
 	private String userid;
 	private String userpwd;
 	private String username;
@@ -11,6 +11,8 @@ public class MemberVO {
 	private String usertype;
 	private String writedate;
 	
+	private String [] telArray;
+
 	public String getUserid() {
 		return userid;
 	}
@@ -65,5 +67,11 @@ public class MemberVO {
 	public void setWritedate(String writedate) {
 		this.writedate = writedate;
 	}
-	
+	public String[] getTelArray() {
+		return telArray;
+	}
+	public void setTelArray(String[] telArray) {
+		setTel(telArray[0]+telArray[1]);
+		this.telArray = telArray;
+	}
 }
