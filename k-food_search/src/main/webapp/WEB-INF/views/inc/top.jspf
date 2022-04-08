@@ -134,6 +134,18 @@
 			<c:if test="${logId!=null }">
 				<div id='login_div'>
 					${username }님<br/>
+					<c:if test="${logType =='normal' }">
+						일반회원<br/>
+					</c:if>
+					<c:if test="${logType =='owner' }">
+						사장님<br/>
+					</c:if>
+					<c:if test="${logType =='admin' }">
+						관리자<br/>
+					</c:if>
+					<c:if test="${logType =='owner(jin)' }">
+						예비 사장님<br/>
+					</c:if>
 					<input class='menu_button' type='button' value='로그아웃' onclick="location.href='/logout'"/>
 				</div>
 				<input class='menu_button' type='button' value='마이페이지' onclick="location.href='/member/mypage'"/>
