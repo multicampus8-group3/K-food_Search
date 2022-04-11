@@ -54,6 +54,7 @@
 		height:50px;
 	}
 	.topMenu ul{
+		background-color: #fff;
 		width:100%;
 		height:50px;
 		padding-top:0px;
@@ -148,7 +149,7 @@
 </head>
 <body>
 <div class='topMenu'>
-	<ul>
+	<ul style="z-index:2;">
 		<li><img class='menu_img' src="/img/menu_icon.png"/><a href='/'><img class='logo_img' src="/img/logojustname.png"/></a></li>
 		<li><img id='logo_ment' src="/img/logoment.png"/></li>
 		<li class='menu'>
