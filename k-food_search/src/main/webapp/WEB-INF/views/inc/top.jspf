@@ -94,7 +94,7 @@
 		width:300px;
 		height: 100vw;
 		overflow:hidden;
-		text-align:center; 
+		text-align:center;
 	}
 	.menu_img{
 		float: left;
@@ -178,7 +178,7 @@
 					</c:if>
 					<c:if test="${logType =='owner' }">
 						(사장님)<br/><br/>
-						<a href="/member/myrestaurant">식당관리</a>&nbsp;|&nbsp;
+						<a href="/myrestaurant">식당관리</a>&nbsp;|&nbsp;
 					</c:if>
 					<c:if test="${logType =='admin' }">
 						(관리자)<br/><br/>
