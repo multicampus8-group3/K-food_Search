@@ -23,7 +23,6 @@ $(function(){
 			type:"get",
 			success: function(result) {
 				var $result = $(result);
-				console.log("ok");
 				var tag = "<ul>";
 				tag += "<li>아이디</li><li>이름</li><li>등급</li><li>전화번호</li><li>국적</li><li>선호지역</li><li>가입일</li>";
 				
@@ -130,7 +129,6 @@ $(function(){
 			type: "get",
 			success: function(result) {
 				var $result = $(result);
-				console.log(result);
 				var tag = "<ul>";
 				tag += "<li>아이디</li><li>이름</li><li>전화번호</li><li>상태</li>";
 				
