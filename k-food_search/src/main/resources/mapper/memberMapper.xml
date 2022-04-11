@@ -7,6 +7,9 @@
 	<select id="memberList" resultType="com.campus.myapp.vo.memberVO">
 		select userid, username, usertype, tel, usernation, favornation, favorstate, writedate
 		from member_table
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
 		order by usertype
 	</select>
 	
