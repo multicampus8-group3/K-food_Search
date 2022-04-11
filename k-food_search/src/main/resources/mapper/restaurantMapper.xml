@@ -10,5 +10,9 @@
 		from restaurant_table
 		order by resno desc
 	</select>
-
+	
+	<insert id="restaurantInsert">
+		insert into restaurant_table(resname,resadress,rescontent,userid,resnation,resstate,restype,resimg,reshour,website) 
+		value(#{resname},#{resadress},#{rescontent},#{userid},#{resnation},#{resstate},#{restype},#{resimg},#{reshour},#{website})
+	</insert>
 </mapper>
