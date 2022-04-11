@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>한땀한땀 : 한식만 따로 담았다</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="/css/style.css" type="text/css"/>
 <script>
 	$(()=>{
 		//top 스크롤 이동시 움직임.
+		/*
 		$(window).scroll(function(){
 			if(window.scrollY!=0){
 				$(".topMenu ul").css('padding-top','0px').css('transition-duration','0.5s');
@@ -18,9 +19,10 @@
 				$(".topMenu ul").css('padding-top','20px').css('transition-duration','0.5s');
 			}
 		});
+		*/
 		//menu 이미지 클릭시 메뉴 보이게 하는 이벤트.
 		var menuCheck=true;
-		$("#menu_img").click(function(){
+		$(".menu_img").click(function(){
 			//console.log('클릭이벤트 발생');
 			if(menuCheck==false){
 				$(".menu").css('width','300px').css('transition-duration','0.3s');	
@@ -43,123 +45,156 @@
 		margin:0px;
 		list-style-type:none;
 	}
+	a{
+		text-decoration:none;
+		color: black;
+		font-size: 14px;
+	}
 	.topMenu{
-		height:120px;
+		height:50px;
 	}
 	.topMenu ul{
 		width:100%;
-		height:100px;
-		padding-top:20px;
+		height:50px;
+		padding-top:0px;
 		position:fixed;
 		margin: 0 auto;
 		left: 0;
 		right: 0;
-		background: rgb(234,185,45); /* Old browsers */
-		background: -moz-linear-gradient(top, rgba(205,187,167,1) 44%, rgba(218,208,194,1) 83%); /* FF3.6-15 */
-		background: -webkit-linear-gradient(top, rgba(205,187,167,1) 44%,rgba(218,208,194,1) 83%); /* Chrome10-25,Safari5.1-6 */
-		background: linear-gradient(to bottom, rgba(205,187,167,1) 44%,rgba(218,208,194,1) 83%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		/*background: rgb(234,185,45);  Old browsers */
+		/*background: -moz-linear-gradient(top, rgba(205,187,167,1) 44%, rgba(218,208,194,1) 83%);  FF3.6-15 */
+		/*background: -webkit-linear-gradient(top, rgba(205,187,167,1) 44%,rgba(218,208,194,1) 83%);  Chrome10-25,Safari5.1-6 */
+		/*background: linear-gradient(to bottom, rgba(205,187,167,1) 44%,rgba(218,208,194,1) 83%);  W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eab92d', endColorstr='#c79810',GradientType=0 );
 	}
 	.topMenu li{
 		float:left;
 	}
 	.topMenu li:nth-of-type(1){
-		width:40%;
-		height:100%;
+		width:300px;
+		height:50px;
+		text-align:center; 
 	}
 	.topMenu li:nth-of-type(2){
-		width:60%;
-		height:100%;
+		width:100%-300px;
+		height:50px;
+		line-height: 50px;
 	}
-	#logo_img{
-		height:90px;
+	.logo_img{
+		height:50px;
 	}
-	#menu_img{
-		height:30px;
-		/* 위 오른 아래 왼 */
-		padding:30px 0px 0px 30px;
-		cursor:pointer;
+	#logo_ment{
+		margin-left: 20px;
+		margin-top: 10px;
 	}
 	.menu{
-		background-color:orange;
+		position: absolute;
+		background-color:#A5A68F;
 		width:300px;
-		height:800px;
+		height: 100vw;
 		overflow:hidden;
 		text-align:center; 
 	}
-	#userid,#userpwd{
-		border-radius:30px;
+	.menu_img{
+		float: left;
+		height:30px;
+		padding: 10px 0px 10px 10px;
+		cursor:pointer;
+	}
+	#userid{
 		height:30px;
 		padding-left:20px;
-		margin-top:10px;
+		width: 220px;
 	}
-	.menu_button{
-		width:220px;
-		border:1px solid black;
+	#userpwd{
+		height:30px;
+		padding-left:20px;
+		margin-top:15px;
+		width: 220px;
+	}
+	.login_button{
+		width: 246px;
 		height:30px;
 		color:white;
-		margin-top:10px;
-		background-color:black; 
+		margin-top:20px;
+		margin-bottom:20px;
+		background-color:#3E6167; 
 	}
+	
+	.menu_button{
+		float:left;
+		width: 100%;
+		height:50px;
+		line-height: 50px;
+		color:white;
+		background-color:#A5A68F;
+		font-size: 25px;
+		border: none;
+		text-align: left;
+		padding-left: 30px;
+		cursor:pointer;
+	}
+	
 	#login_div{
-		margin:0 auto;
-		margin-top:30px;
-		width:90%;
-		background-color:#ddd;
-		/* 위 오른 아래 왼 */
-		padding:20px 0px 20px 0px;
-		height:150px;
+		margin-top: 10px;
+		height: 150px;
 	}
+	#menu_div{
+		margin-top: 10px;
+		height: 150px;
+	}
+	
 </style>
 </head>
 <body>
 <div class='topMenu'>
 	<ul>
-		<li><img id='menu_img' src="/img/menu_icon.png"/></li>
-		<li><a href='/'><img id='logo_img' src="/img/logo.png"/></a></li>
+		<li><img class='menu_img' src="/img/menu_icon.png"/><a href='/'><img class='logo_img' src="/img/logojustname.png"/></a></li>
+		<li><img id='logo_ment' src="/img/logoment.png"/></li>
 		<li class='menu'>
+			<img class='menu_img' src="/img/menu_icon2.png"/><a href='/'><img class='logo_img' src="/img/logojustname2.png"/></a><br/>
+			<div id='menu_div'>
+				<a class='menu_button' href='/'><img style="height:25px;" src="/img/homebtn.png"/>&nbsp;HOME</a><br/>
+				<a class='menu_button' href=''><img style="height:25px;" src="/img/searchbtn.png"/>&nbsp;SEARCH</a>
+			</div>
 			<c:if test="${logId==null }">
 				<div id='login_div'>
-					<span>Login</span>
 					<form method='post' action='/loginOk'>
-						<input type='text' id='userid' name='userid' placeholder='enter your id'/><br/>
-						<input type='password' id='userpwd' name='userpwd' placeholder='enter your password'/><br/>
-						<input class='menu_button' type='submit' value='login'/>
+						<input type='text' id='userid' name='userid' placeholder='아이디'/><br/>
+						<input type='password' id='userpwd' name='userpwd' placeholder='비밀번호'/><br/>
+						<input class='login_button' type='submit' value='로그인'/>
 					</form>
+					<a href="">아이디 찾기</a>&nbsp;|&nbsp;
+					<a href="">비밀번호 찾기</a>&nbsp;|&nbsp;
+					<a href="/signUp">회원가입</a>
 				</div>
-				<input class='menu_button' type='button' value='회원가입' onclick="movePage('/signUp')"/>
-				<input class='menu_button' type='button' value='아이디 찾기'/>
-				<input class='menu_button' type='button' value='비밀번호 찾기'/>
 			</c:if>
 			<c:if test="${logId!=null }">
 				<div id='login_div'>
-					${username }님<br/>
+					<b style="font-size:18px;">${username }</b>님
 					<c:if test="${logType =='normal' }">
-						일반회원<br/>
+						(일반회원)<br/><br/>
 					</c:if>
 					<c:if test="${logType =='owner' }">
-						사장님<br/>
+						(사장님)<br/><br/>
+						<a href="/member/myrestaurant">식당관리</a>&nbsp;|&nbsp;
 					</c:if>
 					<c:if test="${logType =='admin' }">
-						관리자<br/>
+						(관리자)<br/><br/>
+						<a href="/admin/adminPage">관리자페이지</a>&nbsp;|&nbsp;
 					</c:if>
 					<c:if test="${logType =='owner(jin)' }">
-						예비 사장님<br/>
+						(예비사장님)<br/><br/>
 					</c:if>
-					<input class='menu_button' type='button' value='로그아웃' onclick="location.href='/logout'"/>
+					<a href="/member/mypage">마이페이지</a>&nbsp;|&nbsp;
+					<a href="/logout">로그아웃</a>
 				</div>
-				<input class='menu_button' type='button' value='마이페이지' onclick="location.href='/member/mypage'"/>
-				<c:if test="${logType =='owner' }">
-					<input class='menu_button' type='button' value='식당관리' onclick="location.href='/member/myrestaurant'"/>
-				</c:if>
-				<c:if test="${logType =='admin' }">
-					<input class='menu_button' type='button' value='관리자페이지' onclick="location.href='/admin/adminPage'"/>
-				</c:if>
+				<hr style="width:90%; margin-top:-50px;"/>
+				<div id="favor_div" style="height:40px; line-height:20px; overflow:hidden; white-space:nowrap;">
+					<span style="margin-left:-170px; color:white;">즐겨찾기</span><br/>
+				</div>
 			</c:if>
-			<hr style="width:90%"/>
-			<div id="favor_div" style="height:40px; line-height:20px; overflow:hidden; white-space:nowrap;">
-				즐겨찾기<br/>
-			</div>
+			
 		</li>
 	</ul>
 </div>
