@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.myapp.dao.FaqDAO">
+	<insert id="faqMake">
+		insert into faq_table(content) values(#{content})
+	</insert>
+	
+	<select id="faqList" resultType="com.campus.myapp.vo.FaqVO">
+		select no, content from faq_table
+	</select>
+	
+	<delete id="faqDel">
+		delete from faq_table where no=#{param1}
+	</delete>
+</mapper>

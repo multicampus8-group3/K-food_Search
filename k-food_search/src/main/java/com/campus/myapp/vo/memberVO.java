@@ -11,6 +11,9 @@ public class memberVO {
 	private String usertype;
 	private String writedate;
 	
+	private String searchKey;
+	private String searchWord;
+	
 	private String [] telArray;
 
 	public String getUserid() {
@@ -67,6 +70,7 @@ public class memberVO {
 	public void setWritedate(String writedate) {
 		this.writedate = writedate;
 	}
+	
 	public String[] getTelArray() {
 		return telArray;
 	}
@@ -74,4 +78,19 @@ public class memberVO {
 		setTel(telArray[0]+telArray[1]);
 		this.telArray = telArray;
 	}
+	
+	public String getSearchKey() {
+		return searchKey;
+	}
+	public void setSearchKey(String searchKey) {
+		this.searchKey = searchKey;
+	}
+	public String getSearchWord() {
+		return searchWord;
+	}
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
+	
+	
 }
