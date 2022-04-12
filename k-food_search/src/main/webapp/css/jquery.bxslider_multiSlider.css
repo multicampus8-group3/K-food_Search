@@ -34,6 +34,7 @@ ul.bxslider {
   -webkit-transform: translateZ(0);
   position: relative;
   left:50px;
+  top:20px;
 }
 /** THEME
 ===================================*/
@@ -132,7 +133,7 @@ ul.bxslider {
 }
 #menu .bx-wrapper .bx-controls-direction a {
   position: absolute;
-  top: 40%;
+  top: 50%;
   margin-top: -16px;
   outline: 0;
   width: 32px;
