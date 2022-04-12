@@ -102,15 +102,11 @@
 </style>
 </head>
 <body>
-<<<<<<< HEAD
+
 
 <div class="container1"> <!-- 컨테이너 -->
 	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
-=======
-	
-	<div class="container1"> <!-- 컨테이너 -->
-		<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
->>>>>>> branch 'main' of https://github.com/didwltjr93/K-food_Search.git
+
 		<div id="jido_world">
 			<%@ include file="home_world.jsp" %>
 		</div>
@@ -149,11 +145,8 @@
 			    <li><img src="../img/8.jpg" title="목록8..."></li>
 			</ul>
 		</div> <!-- 광고 -->
-<<<<<<< HEAD
 	</div>
 </div>
-=======
-		</div>
-	</div>
->>>>>>> branch 'main' of https://github.com/didwltjr93/K-food_Search.git
+
+
 		
