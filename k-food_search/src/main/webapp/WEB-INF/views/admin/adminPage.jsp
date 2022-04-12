@@ -273,6 +273,10 @@ $(function(){
 	font-size: 48px;
 	color: #2F4858;
 }
+.tab_title li:hover{
+	transform: scale(1.2);
+	outline: none;
+}
 .tab_content>div{
 	display: none;
 }
@@ -280,7 +284,7 @@ $(function(){
 	display: block;
 }
 .tab_title{
-	width: 100%;
+	width: 90%;
 	height: 230px;
 	margin: 0 auto;
 	cursor:pointer;
@@ -301,11 +305,17 @@ $(function(){
 	line-height: 230px;
 	background-color: rgba(205, 188, 171, 0.7);
 }
+.tab_title li:nth-child(1):hover{
+	background-color: rgba(205, 188, 171, 1);
+}
 .tab_title li:nth-child(2){
 	width: 30%;
 	height: 130px;
 	line-height: 130px;
 	background-color: rgba(165, 166, 143, 0.7);
+}
+.tab_title li:nth-child(2):hover{
+	background-color: rgba(165, 166, 143, 1);
 }
 .tab_title li:nth-child(3){
 	width: 20%;
@@ -313,11 +323,17 @@ $(function(){
 	line-height: 130px;
 	background-color: rgba(205, 188, 171, 0.7);
 }
+.tab_title li:nth-child(3):hover{
+	background-color: rgba(205, 188, 171, 1);
+}
 .tab_title li:nth-child(4){
 	width: 25%;
 	height: 130px;
 	line-height: 130px;
 	background-color: rgba(165, 166, 143, 0.7);
+}
+.tab_title li:nth-child(4):hover{
+	background-color: rgba(165, 166, 143, 1);
 }
 .tab_title li:nth-child(5){
 	width: 25%;
@@ -325,11 +341,17 @@ $(function(){
 	line-height: 100px;
 	background-color: rgba(89, 121, 115, 0.7);
 }
+.tab_title li:nth-child(5):hover{
+	background-color: rgba(89, 121, 115, 1);
+}
 .tab_title li:nth-child(6){
 	width: 50%;
 	height: 100px;
 	line-height: 100px;
-	background-color: #7D909F;
+	background-color: rgba(125, 144, 159, 0.7);
+}
+.tab_title li:nth-child(6):hover{
+	background-color: rgba(125, 144, 159, 1);
 }
 .tab_content{
 	width: 90%;
@@ -362,6 +384,8 @@ $(function(){
 }
 #memberList>ul>li:nth-child(n+1):nth-child(-n+7) {
 	border-bottom: 3px solid #ddd;
+	background-color: rgba(205, 188, 171, 0.5);
+	font-weight: bold;
 }
 
 #restaurantList {
@@ -396,6 +420,8 @@ $(function(){
 	border-bottom: 3px solid #ddd;
 	height: 40px;
 	line-height: 40px;
+	background-color: rgba(165, 166, 143, 0.5);
+	font-weight: bold;
 }
 
 #reviewList>ul>li {
@@ -428,6 +454,8 @@ $(function(){
 	border-bottom: 3px solid #ddd;
 	height: 40px;
 	line-height: 40px;
+	background-color: rgba(205, 188, 171, 0.5);
+	font-weight: bold;
 }
 
 #ownershipList>ul>li{
@@ -436,18 +464,55 @@ $(function(){
 	line-height: 40px;
 	width: 25%;
 	border-bottom:1px solid #ddd;
+	padding: 0;
 }
 #ownershipList>ul>li:nth-child(n+1):nth-child(-n+4){
 	color: black;
 	border-bottom: 3px solid #ddd;
 	height: 40px;
 	line-height: 40px;
+	background-color: rgba(165, 166, 143, 0.5);
+	font-weight: bold;
 }
+#ownershipList select {
+	width: 100px;
+	height: 30px;
+	background-color: rgba(205, 188, 171, 0.2);
+	border: 1px solid #597973;
+	border-right: none;
+	vertical-align: top;
+	margin-top: 5px;
+}
+#ownershipList select option{
+	background-color: rgba(205, 188, 171, 0.7);
+}
+#ownershipList input[type="submit"] {
+	color: #fff;
+	background-color: rgba(89, 121, 115, 0.7);
+	border: 1px solid #597973;
+	border-left: none;
+	height: 30px;
+	width: 40px;
+	margin-top: 4px;
+}
+
 
 #faqFrm textarea{
 	width: 50%;
 	resize: none;
-	height: 40px;
+	height: 44px;
+	border: 1px solid #597973;
+	border-right: none;
+}
+#faqFrm input[type="submit"]{
+	height: 50px;
+	vertical-align: top;
+	margin-left: -7px;
+	background-color: rgba(89, 121, 115, 0.7);
+	border: 1px solid #597973;
+	border-left: none;
+	color: #fff;
+	font-size: 16px;
 }
 #faqList>div{
  	float: left;
@@ -456,16 +521,24 @@ $(function(){
 	border: 1px solid black;
 	border-radius: 5px;
 	margin: 10px 5px 5px 5px;
-	padding: 10px;
+	padding: 10px;	
 }
 #faqList>div:nth-child(2n){
  	float: right;
  	width: 45%;
  	height: 80px;
-	border: 1px solid black;
+ 	border: 1px solid black;
 	border-radius: 5px;
 	margin: 10px 5px 5px 5px;
 	padding: 10px;
+}
+#faqList>div:nth-child(4n+1),
+#faqList>div:nth-child(4n){
+	background-color: rgba(165, 166, 143, 0.3);
+}
+#faqList>div:nth-child(4n+2),
+#faqList>div:nth-child(4n+3){
+	background-color: rgba(89, 121, 115, 0.3);
 }
 #faqList>div>b{
 	font-size: 20px;
@@ -475,8 +548,14 @@ $(function(){
 }
 #faqList>div>input{
 	float: right;
-	margin-top: 10px;
+	margin-top: 5px;
+	background-color: rgba(89, 121, 115, 0.7);
+	border: 1px solid #597973;
+	color: #fff;
+	height: 30px;
+	width: 40px;
 }
+
 
 
 
