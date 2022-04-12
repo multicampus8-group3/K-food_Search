@@ -85,6 +85,9 @@
 </style>
 </head>
 <body>
+	
+	<div class="container1"> <!-- 컨테이너 -->
+		<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
 		<div id="jido_world">
 			<%@ include file="home_world.jsp" %>
 		</div>
@@ -123,5 +126,6 @@
 			    <li><img src="../img/8.jpg" title="목록8..."></li>
 			</ul>
 		</div> <!-- 광고 -->
-		
+		</div>
+	</div>
 		
