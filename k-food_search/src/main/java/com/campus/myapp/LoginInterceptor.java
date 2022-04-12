@@ -8,23 +8,23 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 
 public class LoginInterceptor implements HandlerInterceptor {
-	//ÄÁÆ®·Ñ·¯°¡ È£ÃâµÇ±â Àü¿¡ ½ÇÇàµÉ ¸Ş¼Òµå
+	//ì»¨íŠ¸ë¡¤ëŸ¬ê°€ í˜¸ì¶œë˜ê¸° ì „ì— ì‹¤í–‰ë  ë©”ì†Œë“œ
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
-		//false°¡ ¸®ÅÏµÇ¸é - ·Î±×ÀÎÀ¸·Î º¸³»±â
-		//true°¡ ¸®ÅÏµÇ¸é - ÇØ´çÄÁÆ®·Ñ·¯·Î ÀÌµ¿
+		//falseê°€ ë¦¬í„´ë˜ë©´ - ë¡œê·¸ì¸ìœ¼ë¡œ ë³´ë‚´ê¸°
+		//trueê°€ ë¦¬í„´ë˜ë©´ - í•´ë‹¹ì»¨íŠ¸ë¡¤ëŸ¬ë¡œ ì´ë™
 		
-		//request°´Ã¼¿¡¼­ session°´Ã¼ ¾ò¾î¿À±â
+		//requestê°ì²´ì—ì„œ sessionê°ì²´ ì–»ì–´ì˜¤ê¸°
 		HttpSession session = request.getSession();
 		
-		// ·Î±×ÀÎ »óÅÂ±¸ÇÏ±â
+		// ë¡œê·¸ì¸ ìƒíƒœêµ¬í•˜ê¸°
 		String logStatus = (String)session.getAttribute("logStatus");
 		System.out.println(logStatus);
 		
-		if(logStatus!=null && logStatus.equals("Y")) { // ·Î±×ÀÎµÇ¾úÀ»¶§
+		if(logStatus!=null && logStatus.equals("Y")) { // ë¡œê·¸ì¸ë˜ì—ˆì„ë•Œ
 			return true;
-		} else { // ·Î±×ÀÎ ¾ÈµÈ°æ¿ì
+		} else { // ë¡œê·¸ì¸ ì•ˆëœê²½ìš°
 			response.sendRedirect("/member/login");
 			return false;
 		}

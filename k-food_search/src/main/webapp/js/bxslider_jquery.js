@@ -3,7 +3,8 @@ $(function () {
         	mode : 'horizontal'// 기본 -> 'horizontal', 'vertical', 'fade'
             ,slideWidth:980
             ,slideHeight:450
-            ,speed:3000
+            ,speed:500
+            ,pause:4000
             ,auto: true//자동시작
             ,randomStart:false//시작 슬라이드 랜덤
             ,captions: false//title속성에 있는 설명을 표시한다.=
@@ -14,7 +15,7 @@ $(function () {
             
             //easing
             ,useCSS:false//easing을 true(사용못함), false(사용함)
-            ,easing:'easeOutExpo'
+            ,easing:'easeOutExpo'//linear
             ,onSliderLoad:function(){//슬라이드 로딩완료되면 호출됨
             	//alert("이미지 로딩 완료..");
             }
