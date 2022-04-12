@@ -175,7 +175,7 @@
 			<img class='menu_img' src="/img/menu_icon2.png"/><a href='/'><img class='logo_img' src="/img/logojustname2.png"/></a><br/>
 			<div id='menu_div'>
 				<a class='menu_button' href='/'><img style="height:25px;" src="/img/homebtn.png"/>&nbsp;HOME</a><br/>
-				<a class='menu_button' href=''><img style="height:25px;" src="/img/searchbtn.png"/>&nbsp;SEARCH</a>
+				<a class='menu_button' href='/restaurant'><img style="height:25px;" src="/img/searchbtn.png"/>&nbsp;SEARCH</a>
 			</div>
 			<c:if test="${logId==null }">
 				<div id='login_div'>
