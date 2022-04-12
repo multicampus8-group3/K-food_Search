@@ -9,17 +9,21 @@
 	<link rel="stylesheet" href="/css/jquery.bxslider_multiSlider.css" type="text/css">
 	
 	<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7y1CkSuj5WLkvPCBAuAIypeZHov83Gbg&callback=initMap&region=KR&libraries=places"></script>
+	
 	
 	<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de3fd42ca3e0fb9',m:'0GgGI7zDnSr1gpNO2aZt8xuf09.XqNFNAl26Nz09FSY-1644985288-0-ASIOJg74TZmDRx8PzqS0GkltyDGVyqiSSZLtikz9s36I2aTVOteA5aILjGLx/TvgGfZOC34QXGdgGJEI7UTyYI2swg2rVlcLG+zN8s1omkQCLVVc7WXj34iS7QfsW1JQL3W3rSS9+7lm604st4BH9AV/jLfEPihAMuP3FjzGHBqZzvoQQUge0wcXl4Kh1PCIYD2ajQu35bDszAae0YT0SjQ=',s:[0x2900a90da7,0xbc627ac0ef],}})();</script>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	
-	<script type="text/javascript" src="/js/home_main_jido.js" ></script>
-	<script type="text/javascript" src="/js/menuslide.js"></script>
-	<script type="text/javascript" src="/js/jquery.bxslider.js"></script>
-	<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
-	<script type="text/javascript" src="/js/bxslider_jquery.js"></script>
+	<script type="text/javascript" src="../js/menuslide.js"></script>
+	<script type="text/javascript" src="../js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="../js/bxslider_jquery.js"></script>
+	
+	<script type="text/javascript" src="../js/jquery.maphilight.min.js"></script>
+	<script type="text/javascript">$(function() {
+		$('.map').maphilight({fade: false});
+	});</script>
 	<script type="text/javascript" src="/js/bm_jy.js"></script>
 	
 	<script>
@@ -64,19 +68,14 @@
 <div class="container"> <!-- 컨테이너 -->
 
 	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
-	
-		<div id="top1"></div> <!-- 탑 예시 -->
 		
-		<div id="jido"></div> <!-- 상단지도 -->
-		 
-		<div id="mapSearch">
-			<input type="text" id="address"/>
-			<input type="button" value="Search" id="geoSearch" onclick="geocodeAddress()"/>
-		</div>
+		<div id="jido_world">
+			<%@ include file="home_world.jsp" %>
+		</div> <!-- 상단지도 -->
 		
 		<div id="menu">
 			<div class="menuslide controls">
-				<!-- <ul class="multiple_slider">
+				<ul class="multiple_slider">
 					<li><img src="../img/1.jpg" alt=""><h2>비빔밥</h2></li>
 					<li><img src="../img/2.jpg" alt=""><h2>볶음밥</h2></li>
 					<li><img src="../img/3.jpg" alt=""><h2>죽</h2></li>
@@ -85,7 +84,7 @@
 					<li><img src="../img/6.jpg" alt=""><h2>철판볶음밥</h2></li>
 					<li><img src="../img/7.jpg" alt=""><h2>김밥</h2></li>
 					<li><img src="../img/8.jpg" alt=""><h2>떡볶이</h2></li>
-				</ul> -->
+				</ul>
 			</div>
 		</div> <!-- 메뉴 -->
 		
@@ -126,5 +125,32 @@
 		
 	</div>
 </div>
+<script>
+$(function(){
+	$('map[name="world"]>area').click(function(){
+		var nation=$(this).attr('data-nation');
+		var state=$(this).attr('data-state');
+		//alert(nation);
+		//alert(state);
+		getInfo(nation, state);
+	})
+})
+
+function getInfo(nation, state){
+	var nast = "nation="+nation+"&state="+state;
+	$.ajax({
+		type:'get',
+		url:'/country_rest?'+nast,
+		dataType:'json',
+		success:function(data){
+			alert(JSON.stringify(data));
+			//일단 나오는 값은 아이디명, 국가명, 수도명, 음식점이름 (RestaurantVO2의 순서대로)이 나온다. 
+		},
+		error:function(e){
+			alert("데이터 출력 에러발생");
+		}
+	})
+}
+</script>
 </body>
 </html>

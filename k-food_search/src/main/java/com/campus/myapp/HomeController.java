@@ -17,6 +17,9 @@ public class HomeController {
 	BestMenuService bmservice;
 	
 	@RequestMapping("/")
+	//public String Home() {
+		//return "home_main";
+		//return "mango_test/mango_test";
 	public String home() {
 		
 		//���� ������ ���� �޴� 10�� �����ͼ� �����ϰ� 4�� ����

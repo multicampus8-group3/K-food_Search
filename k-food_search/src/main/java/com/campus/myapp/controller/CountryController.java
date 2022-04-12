@@ -3,13 +3,15 @@ package com.campus.myapp.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.campus.myapp.vo.RestaurantVO2;
 
-@RestController
+@Controller
+//@RestController
 public class CountryController {
 
 	/*
@@ -29,5 +31,11 @@ public class CountryController {
 		List<RestaurantVO2> arr=new ArrayList<>();
 		arr.add(new RestaurantVO2("goguma",nation,state));
 		return arr;
+	}
+	
+	@GetMapping("/country_test")
+	public String country_test() {
+		
+		return "/test";
 	}
 }

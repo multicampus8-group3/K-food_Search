@@ -5,6 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="../css/home.css" type="text/css" />
+	<link rel="stylesheet" href="../css/jquery.bxslider_multiSlider.css" type="text/css">
+	<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
+	
+	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7y1CkSuj5WLkvPCBAuAIypeZHov83Gbg&callback=initMap&region=KR&libraries=places"></script> -->
+	
+	<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de3fd42ca3e0fb9',m:'0GgGI7zDnSr1gpNO2aZt8xuf09.XqNFNAl26Nz09FSY-1644985288-0-ASIOJg74TZmDRx8PzqS0GkltyDGVyqiSSZLtikz9s36I2aTVOteA5aILjGLx/TvgGfZOC34QXGdgGJEI7UTyYI2swg2rVlcLG+zN8s1omkQCLVVc7WXj34iS7QfsW1JQL3W3rSS9+7lm604st4BH9AV/jLfEPihAMuP3FjzGHBqZzvoQQUge0wcXl4Kh1PCIYD2ajQu35bDszAae0YT0SjQ=',s:[0x2900a90da7,0xbc627ac0ef],}})();</script>
+	
+	<script type="text/javascript" src="../js/menuslide.js"></script>
+	<script type="text/javascript" src="../js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="../js/bxslider_jquery.js"></script>
+	
+	<script type="text/javascript" src="../js/jquery.maphilight.min.js"></script>
+	<script type="text/javascript">$(function() {
+		$('.map').maphilight({fade: false});
+	});</script>
 <script>
 		/*
 		
@@ -85,9 +102,15 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
+
+<div class="container1"> <!-- 컨테이너 -->
+	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
+=======
 	
 	<div class="container1"> <!-- 컨테이너 -->
 		<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
+>>>>>>> branch 'main' of https://github.com/didwltjr93/K-food_Search.git
 		<div id="jido_world">
 			<%@ include file="home_world.jsp" %>
 		</div>
@@ -126,6 +149,11 @@
 			    <li><img src="../img/8.jpg" title="목록8..."></li>
 			</ul>
 		</div> <!-- 광고 -->
+<<<<<<< HEAD
+	</div>
+</div>
+=======
 		</div>
 	</div>
+>>>>>>> branch 'main' of https://github.com/didwltjr93/K-food_Search.git
 		
