@@ -18,7 +18,7 @@ public class ReviewController {
 	ReviewService service;
 	
 	// 관리자페이지에서 리뷰목록 보기
-	@GetMapping("listtoadmin")
+	@GetMapping("revListToAdmin")
 	public List<ReviewVO> list(ReviewVO vo)	{
 		return service.reviewList(vo);
 	}

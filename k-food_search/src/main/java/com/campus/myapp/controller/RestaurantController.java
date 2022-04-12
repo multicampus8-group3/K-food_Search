@@ -30,7 +30,7 @@ public class RestaurantController {
 	FaqService fservice;
 	
 	// 관리자페이지에서 가게목록 보기
-	@GetMapping("/restaurant/listtoadmin")
+	@GetMapping("/restaurant/resListToAdmin")
 	@ResponseBody
 	public List<RestaurantVO> list(RestaurantVO vo) {
 		return service.restaurantList(vo);
