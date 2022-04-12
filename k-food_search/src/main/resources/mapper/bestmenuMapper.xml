@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.myapp.dao.BestMenuDAO">
+	<select id="bmSelect" resultType="BestMenuVO">
+		select grade from review_table order by rand() limit 4;
+		<!-- select *, rank() over(order by grade desc) as ranking from review -->
+		
+		<!-- select a.* from (select resno, rank() over(order by grade desc) as ranking
+		from review_table limit 10) a order by rand() limit 4; -->
+	</select>
+</mapper>
