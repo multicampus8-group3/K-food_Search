@@ -112,10 +112,16 @@
 					$("#tel2").focus();
 					return false;
 				}
-				regular=/^[0-9]{6,16}$/;
+				regular=/^[0-9]{3,5}$/;
 				if(!regular.test($("#tel2").val())){
-					alert("전화번호 입력 양식이 잘못되었습니다.\n*6~15자리 숫자만 입력가능.");
+					alert("전화번호 입력 양식이 잘못되었습니다.\n*3~5자리 숫자만 입력가능.");
 					$("#tel2").focus();
+					return false;
+				}
+				regular=/^[0-9]{3,5}$/;
+				if(!regular.test($("#tel3").val())){
+					alert("전화번호 입력 양식이 잘못되었습니다.\n*3~5자리 숫자만 입력가능.");
+					$("#tel3").focus();
 					return false;
 				}
 				var data = $("#signUpFrm").serialize();
@@ -159,7 +165,7 @@
 			width:15%;
 		}
 		.inputStyletel2{
-			width:58%;
+			width:28.3%;
 		}
 		.gropInforName{
 			display:inline-block;
@@ -223,7 +229,8 @@
 				<option value="010">018</option>
 				<option value="010">019</option>
 			</select>
-			 - <input class="inputStyletel2" type="text" name="telArray" id="tel2" placeholder='휴대전화번호를 -없이 입력해 주세요.'/><br/>
+			 - <input class="inputStyletel2" type="text" name="telArray" id="tel2"/>
+			 - <input class="inputStyletel2" type="text" name="telArray" id="tel3"/><br/>
 			<input type="hidden" name='usertype' value="normal"/>
 			<button class='submitBtn'>등록</button>
 		</form>
