@@ -15,9 +15,8 @@
 			stateSet()
 		});
 		
-		var qna = "<span><select><c:forEach var='item' items='${faqList }'><option value='${item.no }'>${item.content }</option></c:forEach></select>";
+		var qna = "<span><select name='faqno'><c:forEach var='item' items='${faqList }'><option value='${item.no }'>${item.content }</option></c:forEach></select>";
 		qna += "<input type='text' name='content'/><input type='button' value='x' onclick='faqDel()'/><br/></span>"
-		
 		$("#qna").click(function(){
 			$("#qnaDiv").append(qna);
 		});
@@ -27,6 +26,7 @@
 				document.querySelectorAll('#restype option')[i].setAttribute("selected", "true");
 			}	
 		}
+
 	});
 	
 	function DrDw2(F,b){
@@ -39,9 +39,11 @@
     		i=i+2;
 		}
 	}
+	
 	function faqDel(){
 		$(event.target).parent().remove();
 	}
+	
 	function stateSet(){
 		//console.log($("#favornation option:selected").val())
 		//console.log($("#favornation option:selected").text())
@@ -63,6 +65,12 @@
 			}
 			target.appendChild(opt);
 		}
+	}
+	
+	function changeView(){
+		$(event.target).parent().css('display','none');
+		$('#resfile').css('display','block');
+		$('#resimg').css('display','none');
 	}
 </script>
 <style>
@@ -86,7 +94,8 @@
 	}
 </style>
 	<div class='resSignUpDiv'>
-		<form method='post' action='' enctype="multipart/form-data">
+		<form method='post' action='/restaurantUpdateOk' enctype="multipart/form-data">
+			<input type='hidden' name='resno' value='${vo.resno}'/>
 			<span>업체등록</span><br/>
 			resname : 
 			<input type='text' name='resname' id='resmane' value="${vo.resname }"/><br/>
@@ -111,14 +120,27 @@
 				<option>타입2</option>
 				<option>타입3</option>
 			</select><br/>
+			<span id='resimg'><img src='/resImg/${vo.resimg}'/><br/></span>
 			resimg : 
-			<input type='file' name='resimg1'/><br/>
+			<span>${vo.resimg } <input type='button' value='x' onclick='changeView()'/></span>
+			<input type='file' name='resimg1' id='resfile' style='display:none;'/><br/>
+			<input type='hidden' name='resimgOrg' value='${vo.resimg}'/>
 			reshour : 
 			<input type="time" name='reshour' value='${vo.reshour }'/><br/>
 			website : 
 			<input type="text" name='website' value='${vo.website }'/><br/>
 			<img src='/img/qna.png' width='50px' id='qna'/><br/>
-			<div id='qnaDiv'></div>
+			<div id='qnaDiv'>
+				<c:forEach var="item" items="${faqAnsList }">
+					<span>
+						${item.faqcontent2 }
+						${item.content2 }
+						<input type='hidden' name='faqno' value='${item.faqno2 }'/>
+						<input type='hidden' name='content' value='${item.faqcontent2 }'/>
+						<input type='button' value='x' onclick='faqDel()'/><br/>
+					</span>
+				</c:forEach>
+			</div>
 			<button>등록</button>
 		</form>
 	</div>

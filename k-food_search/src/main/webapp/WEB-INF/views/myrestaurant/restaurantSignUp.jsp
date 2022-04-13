@@ -28,7 +28,7 @@
 				target.appendChild(opt);
 			}
 		});
-		var qna = "<span><select><c:forEach var='item' items='${faqList }'><option value='${item.no }'>${item.content }</option></c:forEach></select>";
+		var qna = "<span><select name='faqno'><c:forEach var='item' items='${faqList }'><option value='${item.no }'>${item.content }</option></c:forEach></select>";
 		qna += "<input type='text' name='content'/><input type='button' value='x' onclick='faqDel()'/><br/></span>"
 		$("#qna").click(function(){
 			$("#qnaDiv").append(qna);
