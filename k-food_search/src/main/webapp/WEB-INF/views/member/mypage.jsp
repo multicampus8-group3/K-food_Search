@@ -72,6 +72,14 @@
 			alert("사업주등록을 신청하였습니다.\n수정하기버튼을 눌러주세요.");
 			return true;
 		});
+		
+		$("#signDelBtn").click(function(){
+			if(confirm("정말 탈퇴하시겠습니까?") == true){
+				$("#signDel").submit();
+			}else{
+				return false;
+			}
+		});
 
 		$("#mFrm").submit(function(){
 			var regular = /^[a-zA-Z0-9]{6,16}$/;
@@ -184,13 +192,19 @@
 					var $result = $(result);
 					
 					var tag ="";
+					
 					$result.each(function(idx, vo){
-						tag += '<div id="memberReservList">'; <!-- 반복될부분 -->
-						tag += '<div id="memberReserv">'; <!-- 예약정보 -->
+						
+						tag += '<div class="memberReservList">'; <!-- 반복될부분 -->
+						tag += '<div class="memberReservInfo">'; <!-- 예약정보 -->
 						tag += '<ul>';
 						if(vo.status == "apply"){
 						tag += '<li>예약 가능여부를 확인중 입니다.</li>';
 						tag += '<li>['+vo.resname+']에서 확인하는대로 빠른 시간내 결과를 안내해 드리겠습니다.</li>';
+						tag += '<form method="post">';
+						tag += '<input type="input" name="no" value="'+vo.no+'" readonly>';
+						tag += '<input type="input" name="status" value="cancel" readonly>';
+
 						};
 						if(vo.status == "reject"){
 						tag += '<li>예약이 거부되었습니다.</li>';
@@ -210,16 +224,15 @@
 						tag += '<li>인원: <span>'+vo.reservp+'명</span></li>';
 						tag += '<li>문의: <span>'+vo.website+'</span></li>';
 						if(vo.status == "apply"){
-						tag += '<li id="btn"><input type="button" value="예약취소"></li>';
-						};
-						if(vo.status == "cancel" || vo.status == "reject"){
-						tag += '<li id="btn"><input type="button" value="삭제"></li>';
+						tag += '<li><input type="submit" value="예약취소" onclick=""></li>';
+						tag += '</form>';
 						};
 						tag += '</ul>';
 						tag += '</div>';
-						tag += '<div id="writedate">'+vo.writedate+'</div>';
+						tag += '<div class="writedate">'+vo.writedate+'</div>';
 						tag += '</div>';
 					});
+					
 					$("#memberReserv").html(tag);
 				},
 				error: function(e) {
@@ -227,6 +240,24 @@
 				}
 			});
 		}
+		
+		//예약취소처리
+		$(document).on('submit', '#memberReserv form', function(){
+		event.preventDefault();
+		var params = $(this).serialize();
+		var url = "/memReserv/memReservCancel";
+		$.ajax({
+			url: url,
+			data: params,
+			type: "post",
+			success: function(result){
+				memberReserv();				
+			},
+			error: function(e){
+				console.log(e.responseText);
+			}
+		});
+	});
 		memberReserv();
 	});
 </script>
@@ -305,8 +336,11 @@
 								  &nbsp; - &nbsp;<input class="inputStyletel2" type="text" name="telArray" id="tel2" value='${vo.tel2}'/>
 								  &nbsp; - &nbsp;<input class="inputStyletel2" type="text" name="telArray" id="tel3" value='${vo.tel3}'/>
 							 </li>
-							 <li><input type="submit" value="수정하기"></li>
+							 <li><input type="submit" value="수정하기">&nbsp;<input type="button" value="탈퇴하기" id="signDelBtn"/></li>
 							</ul>
+					</form>
+					<form method="get" action="/member/memberDelete" id='signDel'>
+						<input type="text" name="userid" value="${vo.userid}" readonly style="display: none">
 					</form>
 				</div>
 			</div>
