@@ -38,6 +38,9 @@
 .mypage_menu span:hover{
 	font-size: 48px;
 }
+.mypage_menu b{
+	margin-left: 65%;
+}
 .mypage_container{
 	margin-top: 30px;
 	padding: 20px; 

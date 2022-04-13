@@ -17,6 +17,7 @@ public interface memberService {
 	// 업주신청처리(수정)
 	public int ownershipChange(memberVO vo);
 	public int memberUpdate(memberVO vo);
-	
+	public int memberDelete(memberVO vo);
+
 
 }

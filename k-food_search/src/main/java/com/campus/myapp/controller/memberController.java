@@ -124,4 +124,13 @@ public class memberController {
 		mav.setViewName("redirect:/member/mypage");
 		return mav;
 	}
+	
+	//마이페이지-회원정보수정-회원탈퇴
+	@GetMapping("/member/memberDelete")
+	public ModelAndView memberDelete(memberVO vo) {
+		ModelAndView mav = new ModelAndView();
+		service.memberDelete(vo);
+		mav.setViewName("redirect:/logout");
+		return mav;
+	}
 }

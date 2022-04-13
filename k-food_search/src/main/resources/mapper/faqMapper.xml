@@ -14,4 +14,16 @@
 	<delete id="faqDel">
 		delete from faq_table where no=#{param1}
 	</delete>
+	
+	<insert id="faqAnswerInsert">
+		insert into faq_answer(resno,faqno,content) values(#{param1},#{param2},#{param3})
+	</insert>
+	
+	<select id="faqAnswerUpdateList" resultType="FaqAnswerVO">
+		select a.faqno faqno2, a.content content2, q.content faqcontent2 from faq_answer a join faq_table q on a.faqno=q.no where resno=#{param1};		
+	</select>
+	
+	<delete id="faqAnswerDel">
+		delete from faq_answer where resno=#{param1}
+	</delete>
 </mapper>

@@ -43,5 +43,8 @@
   	  	favornation=#{favornation}, favorstate=#{favorstate}, tel=#{tel}, usertype=#{usertype}  
   	  	where userid=#{userid}
   	</update>
+  	<delete id="memberDelete">
+  		delete from member_table where userid=#{userid}
+  	</delete>
   	
 </mapper>

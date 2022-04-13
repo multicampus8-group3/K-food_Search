@@ -6,8 +6,10 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.memReservService;
 import com.campus.myapp.vo.memReservVO;
@@ -25,9 +27,13 @@ public class memReservController {
 	public List<memReservVO> memReservList(memReservVO vo, HttpSession session )	{
 		vo.setUserid((String)session.getAttribute("logId"));
 		List<memReservVO> list = service.memReservList(vo);
-		// System.out.println(vo.getUserid());
-		// System.out.println(list.get(0).getStatus());
+		
 		return service.memReservList(vo);
+	}
+	@PostMapping("memReservCancel")
+	public int memReservCancel(memReservVO vo)	{
+		System.out.println(vo.getNo());
+		return service.memReservCancel(vo);
 	}
 	
 }

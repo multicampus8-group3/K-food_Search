@@ -1,33 +1,64 @@
 @charset "UTF-8";
 #memberReviewList {
-	width: 800px;
-	height: 200px;
-	border: 1px solid gray;
-	margin-left: 100px;
-	margin-bottom: 20px;
-	background-color: pink;
+	width: 360px;
+	height: 180px;
+	margin-top: 20px;
+	margin-left: 5px;
+	background-color: rgba(89, 121, 115, 0.2);
+	position: relative;
+	padding-left: 15px;
+	padding-right: 15px;
+	border: 1px solid rgba(89, 121, 115, 0.7);
+	border-right: none;
 }
 #memberReviewList img {
-	float: right;
-	padding-right: 10px;
-	padding-top: 10px;
-	
+	position: absolute;
+	height: 100%;
+	width: 150px;
+	right: -150px;
+	top:-1px;
+	border: 1px solid rgba(89, 121, 115, 0.7);
+	border-left: none;
 }
 #a{
-	width: 600px;
+	width: 100%;
 	display: block;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	font-size: 20px;
+	margin-top:5px;
 	margin-bottom: 5px;
+	border-bottom: 1px solid black;
+	line-height: 30px;
 }
-
+#a a{
+	font-size: 28px;
+	margin-left: 10px;
+	font-weight: 600;
+	color: #2F4858;
+}
+#b{
+	width: 150px;
+	float: right;
+}
 #c{
-	width: 500px;
-	height: 125px;
+	width: 100%;
+	height: 90px;
+	line-height: 30px;
 	text-overflow: ellipsis;
-	white-space: nowrap;
+	white-space: break-word;
+	display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 	overflow: hidden;
 	margin-top: 5px;
+}
+#c b{
+	color: red;
+}
+#memberReview{
+	border-top: 1px solid black;
+	width: 555px;
+	height: 550px;
+	overflow: auto;
 }
