@@ -22,4 +22,9 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewVO> memberReviewList(ReviewVO vo) {
 		return dao.memberReviewList(vo);
 	}
+	@Override
+	public List<ReviewVO> getSearchList(ReviewVO vo) {
+		return dao.getSearchList(vo);
+	}
+
 }

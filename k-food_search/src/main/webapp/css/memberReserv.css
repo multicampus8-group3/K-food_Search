@@ -1,24 +1,85 @@
 @charset "UTF-8";
 .memberReservList{
-	width: 850px;
-	background-color: pink;
+	width: 515px;
 	float: left;
-	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-left: 20px;
+	position: relative;
 }
 .memberReservInfo{
-	margin-left: 50px;
-	width: 400px;
-	background-color: #ddd;
+	width: 250px;
+	padding: 10px;
+	background-color: rgba(125, 144, 159, 0.2);
+	border: 1px solid rgba(125, 144, 159, 0.7);
+	border-radius: 8px;
+}
+.memberReservInfo li:first-child{
+	margin-top: 10px;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+.memberReservInfo li:first-child b{
+	color: red;
 }
 .memberReservInfo span{
 	float: right;
 }
 .writedate{
-	width: 300px;
-	background-color:blue;
-	margin-top: 100px;
-	padding-left: 20px;
+	position: absolute;
+	width: 150px;
+	left: 280px;
+	top: 85%;
 }
 #btn{
 	float: right;
+}
+#memberReserv{
+	border-top: 1px solid black;
+	width: 555px;
+	height: 550px;
+	overflow: auto;
+}
+.resname{
+	margin-top: 10px;
+}
+.resevDel{
+	float: right;
+	height: 30px;
+	color: #fff;
+	background-color: rgba(89, 121, 115, 0.7);
+	border: 1px solid #2F4858;
+	margin-top: 5px;
+}
+
+.memberReservListOk{
+	width: 515px;
+	float: left;
+	margin-top: 20px;
+	margin-left: 20px;
+	position: relative;
+}
+.memberReservInfoOk{
+	width: 250px;
+	margin-left: 235px;
+	padding: 10px;
+	background-color: rgba(125, 144, 159, 0.2);
+	border: 1px solid #2F4858;
+	border-radius: 8px;
+}
+.memberReservInfoOk li:first-child{
+	margin-top: 10px;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+.memberReservInfoOk li:first-child b{
+	color: red;
+}
+.memberReservInfoOk span{
+	float: right;
+}
+.writedateOk{
+	position: absolute;
+	width: 150px;
+	right: 285px;
+	top: 85%;
 }

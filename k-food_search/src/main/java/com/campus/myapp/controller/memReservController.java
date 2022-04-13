@@ -27,7 +27,7 @@ public class memReservController {
 	public List<memReservVO> memReservList(memReservVO vo, HttpSession session )	{
 		vo.setUserid((String)session.getAttribute("logId"));
 		List<memReservVO> list = service.memReservList(vo);
-
+		
 		return service.memReservList(vo);
 	}
 	@PostMapping("memReservCancel")

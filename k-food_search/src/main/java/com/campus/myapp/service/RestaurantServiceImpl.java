@@ -44,6 +44,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
+	public List<RestaurantVO> getSearchList(RestaurantVO vo) {
+		return dao.getSearchList(vo);
+	}
+
+	@Override
 	public int maxResno() {
 		// TODO Auto-generated method stub
 		return dao.maxResno();
