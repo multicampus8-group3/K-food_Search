@@ -19,4 +19,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return dao.reviewList(vo);
 	}
 
+	@Override
+	public List<ReviewVO> getSearchList(ReviewVO vo) {
+		return dao.getSearchList(vo);
+	}
+
 }

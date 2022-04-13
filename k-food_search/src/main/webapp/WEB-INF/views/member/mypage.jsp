@@ -9,4 +9,3 @@
 		<li><a href='/member/memberFavor'>즐겨찾기</a></li>
 	</ul>
 </div>
-

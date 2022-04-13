@@ -41,4 +41,8 @@ public class memberServiceImpl implements memberService {
 	public int ownershipChange(memberVO vo) {
 		return dao.ownershipChange(vo);
 	}
+	@Override
+	public List<memberVO> getSearchList(memberVO vo) {
+		return dao.getSearchList(vo);
+	}
 }

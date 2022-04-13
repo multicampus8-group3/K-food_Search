@@ -42,4 +42,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 		// TODO Auto-generated method stub
 		return dao.restaurantUpdateList(resno);
 	}
+
+	@Override
+	public List<RestaurantVO> getSearchList(RestaurantVO vo) {
+		return dao.getSearchList(vo);
+	}
 }

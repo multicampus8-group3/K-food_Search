@@ -9,6 +9,9 @@ public class ReviewVO {
 	private int resno;
 	
 	private String resname;
+	
+	private String searchKey;
+	private String searchWord;
 
 	public int getNo() {
 		return no;
@@ -72,6 +75,22 @@ public class ReviewVO {
 
 	public void setResname(String resname) {
 		this.resname = resname;
+	}
+
+	public String getSearchKey() {
+		return searchKey;
+	}
+
+	public void setSearchKey(String searchKey) {
+		this.searchKey = searchKey;
+	}
+
+	public String getSearchWord() {
+		return searchWord;
+	}
+
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
 	}
 	
 	

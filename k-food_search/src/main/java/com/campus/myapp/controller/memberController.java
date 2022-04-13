@@ -9,7 +9,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +36,16 @@ public class memberController {
 	@ResponseBody
 	public List<memberVO> list(memberVO vo) {
 		return service.memberList(vo);
+	}
+	
+	// 관리자페이지에서 회원검색
+	@GetMapping("/memberSearchToAdmin")
+	@ResponseBody
+	public List<memberVO> getSearchList(@RequestParam("searchKey") String searchKey, 
+				@RequestParam("searchWord") String searchWord, memberVO vo) {
+		vo.setSearchKey(searchKey);
+		vo.setSearchWord(searchWord);
+		return service.getSearchList(vo);
 	}
 	
 	// 업주신청처리(수정)

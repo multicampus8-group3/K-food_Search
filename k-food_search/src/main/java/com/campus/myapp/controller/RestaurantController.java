@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,6 +36,16 @@ public class RestaurantController {
 	public List<RestaurantVO> list(RestaurantVO vo) {
 		return service.restaurantList(vo);
 	}
+	// 관리자페이지에서 가게검색
+	@GetMapping("/restaurant/resSearchToAdmin")
+	@ResponseBody
+	public List<RestaurantVO> getSearchList(@RequestParam("searchKey") String searchKey, 
+				@RequestParam("searchWord") String searchWord, RestaurantVO vo) {
+		vo.setSearchKey(searchKey);
+		vo.setSearchWord(searchWord);
+		return service.getSearchList(vo);
+	}	
+		
 	@GetMapping("/myrestaurant")
 	public ModelAndView myrestaurant() {
 		ModelAndView mav = new ModelAndView();

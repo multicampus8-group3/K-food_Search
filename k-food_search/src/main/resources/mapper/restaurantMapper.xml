@@ -11,6 +11,16 @@
 		order by resno desc
 	</select>
 	
+	<select id="getSearchList" resultType="com.campus.myapp.vo.RestaurantVO">
+		select resno, resname, resadress, format(resgrade,1) resgrade, 
+		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
+		from restaurant_table
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by resno desc
+	</select>
+	
 	<insert id="restaurantInsert">
 		insert into restaurant_table(resname,resadress,rescontent,userid,resnation,resstate,restype,resimg,reshour,website) 
 		value(#{resname},#{resadress},#{rescontent},#{userid},#{resnation},#{resstate},#{restype},#{resimg},#{reshour},#{website})

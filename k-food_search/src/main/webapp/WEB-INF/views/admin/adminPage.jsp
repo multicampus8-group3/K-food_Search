@@ -21,10 +21,10 @@ $(function(){
 		$.ajax({
 			url: url,
 			type:"get",
-			success: function(result) {
+			success: function(result) {				
 				var $result = $(result);
 				var tag = "<ul>";
-				tag += "<li>아이디</li><li>이름</li><li>등급</li><li>전화번호</li><li>국적</li><li>선호지역</li><li>가입일</li>";
+				tag += "<li>아이디</li><li>이름</li><li>등급</li><li>연락처</li><li>국적</li><li>선호지역</li><li>가입일</li>";
 				
 				$result.each(function(idx, vo){
 					tag += "<li>" + vo.userid + "</li>";
@@ -47,7 +47,42 @@ $(function(){
 	}
 	memberListAll();
 });
-
+// 회원검색
+$(document).ready(function(){
+	$("#memberSearchFrm").click(function(){
+		var url = "/memberSearchToAdmin";
+		$.ajax({
+			url: url,
+			type: "get",
+			data: $("#memberSearchFrm").serialize(),
+			success: function(result) {
+				console.log(result);
+				$("#memberList").empty();
+				
+				var $result = $(result);
+				var tag = "<ul>";
+				tag += "<li>아이디</li><li>이름</li><li>등급</li><li>연락처</li><li>국적</li><li>선호지역</li><li>가입일</li>";
+				
+				$result.each(function(idx, vo){
+					tag += "<li>" + vo.userid + "</li>";
+					tag += "<li>" + vo.username + "</li>";
+					tag += "<li>" + vo.usertype + "</li>";
+					tag += "<li>" + vo.tel + "</li>";
+					tag += "<li>" + vo.usernation + "</li>";
+					tag += "<li>" + vo.favorstate + ", " + vo.favornation + "</li>";
+					tag += "<li>" + vo.writedate + "</li>";
+				});	
+				
+				tag += "</ul>";
+				
+				$("#memberList").html(tag);
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	})
+});
 
 $(function(){
 	// 가게목록
@@ -83,7 +118,42 @@ $(function(){
 	}
 	restaurantListAll();
 });
-
+//가게검색
+$(document).ready(function(){
+	$("#resSearchFrm").click(function(){
+		var url = "/restaurant/resSearchToAdmin";
+		$.ajax({
+			url: url,
+			type: "get",
+			data: $("#resSearchFrm").serialize(),
+			success: function(result) {
+				console.log(result);
+				$("#restaurantList").empty();
+				
+				var $result = $(result);
+				var tag = "<ul>";
+				tag += "<li>번호</li><li>상호명</li><li>주소</li><li>평점</li><li>오너</li><li>위치</li><li>등록일</li>";
+				
+				$result.each(function(idx, vo){
+					tag += "<li>" + vo.resno + "</li>";
+					tag += "<li>" + vo.resname + "</li>";
+					tag += "<li>" + vo.resadress + "</li>";
+					tag += "<li>" + parseFloat(vo.resgrade).toFixed(1) + "</li>";
+					tag += "<li>" + vo.userid + "</li>";
+					tag += "<li>" + vo.resstate + ", " + vo.resnation + "</li>";
+					tag += "<li>" + vo.writedate + "</li>";
+				});
+				
+				tag += "</ul>";
+				
+				$("#restaurantList").html(tag);
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	})
+});
 
 $(function(){
 	// 리뷰목록
@@ -118,7 +188,41 @@ $(function(){
 	}
 	reviewListAll();
 });
-
+//리뷰검색
+$(document).ready(function(){
+	$("#revSearchFrm").click(function(){
+		var url = "/review/revSearchToAdmin";
+		$.ajax({
+			url: url,
+			type: "get",
+			data: $("#revSearchFrm").serialize(),
+			success: function(result) {
+				console.log(result);
+				$("#reviewList").empty();
+				
+				var $result = $(result);
+				var tag = "<ul>";
+				tag += "<li>번호</li><li>작성자</li><li>식당</li><li>평점</li><li>내용</li><li>작성일</li>";
+				
+				$result.each(function(idx, vo){
+					tag += "<li>" + vo.no + "</li>";
+					tag += "<li>" + vo.userid + "</li>";
+					tag += "<li>" + vo.resname + "</li>";
+					tag += "<li>" + parseFloat(vo.grade).toFixed(1) + "</li>";
+					tag += "<li>" + vo.content + "</li>";
+					tag += "<li>" + vo.writedate + "</li>";
+				});
+				
+				tag += "</ul>";
+				
+				$("#reviewList").html(tag);
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	})
+});
 
 $(function(){
 	//업주신청목록
@@ -130,7 +234,7 @@ $(function(){
 			success: function(result) {
 				var $result = $(result);
 				var tag = "<ul>";
-				tag += "<li>아이디</li><li>이름</li><li>전화번호</li><li>상태</li>";
+				tag += "<li>아이디</li><li>이름</li><li>연락처</li><li>상태</li>";
 				
 				$result.each(function(idx, vo){
 					if(vo.usertype == "owner(jin)") {
@@ -167,9 +271,7 @@ $(function(){
 			data: params,
 			type: "post",
 			success: function(result){
-				location.reload();
 				ownershipListAll();
-				memberListAll();
 				
 			},
 			error: function(e){
@@ -257,6 +359,65 @@ $(function(){
 	 faqListAll();
  });
 
+ $(function(){
+	//광고신청목록
+	function adListAll() {
+		var url = "/ad/adListToAdmin";
+		$.ajax({
+			url: url,
+			type: "get",
+			success: function(result) {
+				var $result = $(result);
+				var tag = "<ul>";
+				tag += "<li>번호</li><li>상호명</li><li>오너</li><li>연락처</li>";
+				tag += "<li>파일</li><li>시작</li><li>종료</li><li>작성일</li><li>상태</li>";
+				$result.each(function(idx, vo){
+					tag += "<li>" + vo.no + "</li>";
+					tag += "<li>" + vo.resname + "</li>";
+					tag += "<li>" + vo.userid + "</li>";	
+					tag += "<li>" + vo.tel + "</li>";
+					tag += "<li>" + vo.bannerimg + "</li>";
+					tag += "<li>" + vo.startdate + "</li>";
+					tag += "<li>" + vo.enddate + "</li>";
+					tag += "<li>" + vo.writedate + "</li>";
+					tag += "<li>"+ vo.status + "<br/><form method='post'>";
+					tag += "<input type='hidden' name='no' value='" + vo.no + "'/>";
+					tag += "<select name='status'>";
+					tag += "<option value='대기'>대기</option>";
+					tag += "<option value='진행'>진행</option>";
+					tag += "<option value='만료'>만료</option>";
+					tag += "</select><input type='submit' value='확인'/></form></li>"
+				});
+				
+				tag += "</ul>";
+				
+				$("#adList").html(tag);
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	}
+	// 광고신청처리(수정)
+	$(document).on('submit', '#adList form', function(){
+		event.preventDefault();
+		
+		var params = $(this).serialize();
+		var url = "/adStatusChangeOk";
+		$.ajax({
+			url: url,
+			data: params,
+			type: "post",
+			success: function(result){
+				adListAll();
+			},
+			error: function(e){
+				console.log(e.responseText);
+			}
+		});
+	});
+	adListAll();
+});
 </script>
 <style>
 .container{
@@ -464,7 +625,6 @@ $(function(){
 	line-height: 40px;
 	width: 25%;
 	border-bottom:1px solid #ddd;
-	padding: 0;
 }
 #ownershipList>ul>li:nth-child(n+1):nth-child(-n+4){
 	color: black;
@@ -556,10 +716,89 @@ $(function(){
 	width: 40px;
 }
 
+#adList>ul>li {
+	float: left;
+	height: 80px;
+	line-height: 40px;
+	width: 5%;
+	border-bottom:1px solid #ddd;
+	overflow: auto;
+	white-space:pre-wrap;	
+}
 
+#adList>ul>li:nth-child(9n+3){
+	width: 8%;
+}
+#adList>ul>li:nth-child(9n),
+#adList>ul>li:nth-child(9n+5),
+#adList>ul>li:nth-child(9n+6),
+#adList>ul>li:nth-child(9n+7){
+	width: 10%;
+}
+#adList>ul>li:nth-child(9n+4),
+#adList>ul>li:nth-child(9n+8){
+	width: 15%;
+}
+#adList>ul>li:nth-child(9n+2){
+	width: 17%;
+}
+#adList>ul>li:nth-child(n+1):nth-child(-n+9){
+	color: black;
+	border-bottom: 3px solid #ddd;
+	height: 40px;
+	line-height: 40px;
+	background-color: rgba(125, 144, 159, 0.5);
+	font-weight: bold;
+}
+#adList select {
+	width: 50px;
+	height: 30px;
+	background-color: rgba(205, 188, 171, 0.2);
+	border: 1px solid #597973;
+	border-right: none;
+	vertical-align: top;	
+}
+#adList select option{
+	background-color: rgba(205, 188, 171, 0.7);
+}
+#adList input[type="submit"] {
+	color: #fff;
+	background-color: rgba(89, 121, 115, 0.7);
+	border: 1px solid #597973;
+	border-left: none;
+	height: 30px;
+	width: 40px;
+	vertical-align: top;
+}
 
-
+.searchFrm{
+	height: 40px;
+	line-height: 40px;
+}
+.searchFrm select{
+	width: 80px;
+	height: 30px;
+	border: 1px solid #2F4858;
+	vertical-align: top;
+	padding: 5px;
+}
+.searchFrm input[type="text"]{
+	width: 200px;
+	height: 26px;
+	border: 1px solid #2F4858;
+	vertical-align: top;
+}
+.searchFrm input[type="button"]{
+	width:45px;
+	height: 30px;
+	border: 1px solid #2F4858;
+	background-color: rgba(89, 121, 115, 0.7);;
+	vertical-align: top;
+	color: #fff;
+	font-weight: 500;
+}
 </style>
+
 <div class="container">
 	<div class="hi_admin">
 	Hello, <b>${username }</b>🍚<br/>
@@ -577,15 +816,15 @@ $(function(){
 		<div>
 			<!-- <h3>회원목록</h3> -->
 			<div>
-				<form method="get" action="/memberListToAdmin" id="searchFrm">
+				<form method="get" class="searchFrm" id="memberSearchFrm">
 					<select name="searchKey">
 						<option value="userid">아이디</option>
 						<option value="username">이름</option>
 						<option value="usertype">등급</option>
 						<option value="usernation">국적</option>
 					</select>
-					<input type="text" name="searchWord" id="searchWord"/>
-					<input type="submit" value="검색"/>
+					<input type="text" name="searchWord"/>
+					<input type="button" value="검색"/>
 				</form>
 			</div>
 			<div id="memberList">
@@ -594,12 +833,35 @@ $(function(){
 		
 		<div>
 			<!-- <h3>가게목록</h3> -->
+			<div>
+				<form method="get" class="searchFrm" id="resSearchFrm">
+					<select name="searchKey">
+						<option value="resname">상호명</option>
+						<option value="resadress">주소</option>
+						<option value="userid">오너</option>
+						<option value="resstate">위치</option>
+					</select>
+					<input type="text" name="searchWord"/>
+					<input type="button" value="검색"/>
+				</form>
+			</div>
 			<div id="restaurantList">
 			</div>
 		</div>
 		
 		<div>
 			<!-- <h3>리뷰목록</h3> -->
+			<div>
+				<form method="get" class="searchFrm" id="revSearchFrm">
+					<select name="searchKey">
+						<option value="rev.userid">작성자</option>
+						<option value="res.resname">식당</option>
+						<option value="rev.grade">평점</option>
+					</select>
+					<input type="text" name="searchWord"/>
+					<input type="button" value="검색"/>
+				</form>
+			</div>
 			<div id="reviewList">
 			</div>
 		</div>
@@ -621,9 +883,8 @@ $(function(){
 			</div>
 		</div>
 		
-		<div>
+		<div class="on">
 			<!-- <h3>광고신청목록</h3> -->
-			추후 업데이트 예정입니다.
 			<div id="adList">
 			</div>
 		</div>

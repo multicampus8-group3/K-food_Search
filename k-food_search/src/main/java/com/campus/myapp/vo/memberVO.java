@@ -75,7 +75,7 @@ public class memberVO {
 		return telArray;
 	}
 	public void setTelArray(String[] telArray) {
-		setTel(telArray[0]+")"+telArray[1]+"-"+telArray[2]);
+		setTel(telArray[0]+"-"+telArray[1]+"-"+telArray[2]);
 		this.telArray = telArray;
 	}
 	
