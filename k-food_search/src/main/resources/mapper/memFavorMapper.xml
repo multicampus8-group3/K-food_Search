@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.myapp.dao.memFavorDAO">
+
+	<select id="memFavorList" resultType="com.campus.myapp.vo.memFavorVO">
+		select res.resimg resimg, res.resname resname, res.resnation resnation,
+		res.resstate resstate, res.resgrade resgrade 
+		from member_favorite as memf
+		join restaurant_table as res
+		on res.resno = memf.resno
+		where memf.userid = #{userid}
+		order by memf.no desc
+	</select>
+
+</mapper>

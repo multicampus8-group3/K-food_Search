@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.memberService;
+import com.campus.myapp.vo.ReviewVO;
 import com.campus.myapp.vo.memberVO;
 
 @Controller
@@ -94,43 +95,24 @@ public class memberController {
 		return service.memberIdOk(id);
 	}
 	
+	//마이페이지로 이동
+	@GetMapping("/member/mypage")
+	public ModelAndView mypage(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		String userid = (String)session.getAttribute("logId"); 
+		memberVO vo =service.memberSelect(userid); 
+		mav.addObject("vo",vo);
+		mav.setViewName("member/mypage");
+		return mav;
+	}
 	
-	@GetMapping(value = {"/member/mypage", "member/memberEdit"}) 
-	public ModelAndView mypage(HttpSession session) { 
-		String userid = (String)session.getAttribute("logId"); 
-		memberVO vo =service.memberSelect(userid); 
+	//마이페이지-회원정보수정
+	@PostMapping("/member/memberEditOk")
+	public ModelAndView memberEditOk(memberVO vo, HttpSession session){
+		vo.setUserid((String)session.getAttribute("logId"));
+		service.memberUpdate(vo);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("vo",vo);
-		mav.setViewName("member/memberEdit"); 
-		return mav; }
-	 
-	@PostMapping("/member/memberEdit2")
-	public ModelAndView memberEdit2(HttpSession session) {
-		String userid = (String)session.getAttribute("logId"); 
-		memberVO vo =service.memberSelect(userid); 
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("vo",vo);
-		mav.setViewName("member/memberEdit2");
-		return mav;
-	}
-	@GetMapping("/member/memberBook")
-	public ModelAndView memberBook() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/memberBook");
-		return mav;
-	}
-
-	@GetMapping("/member/memberReview")
-	public ModelAndView memberReview() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/memberReview");
-		return mav;
-	}
-
-	@GetMapping("/member/memberFavor")
-	public ModelAndView memberFavor() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/memberFavor");
+		mav.setViewName("redirect:/member/mypage");
 		return mav;
 	}
 }

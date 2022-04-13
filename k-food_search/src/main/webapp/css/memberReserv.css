@@ -1,0 +1,24 @@
+@charset "UTF-8";
+#memberReservList{
+	width: 850px;
+	background-color: pink;
+	float: left;
+	margin-bottom: 20px;
+}
+#memberReserv{
+	margin-left: 50px;
+	width: 400px;
+	background-color: #ddd;
+}
+#memberReserv span{
+	float: right;
+}
+#writedate{
+	width: 300px;
+	background-color:blue;
+	margin-top: 100px;
+	padding-left: 20px;
+}
+#btn{
+	float: right;
+}

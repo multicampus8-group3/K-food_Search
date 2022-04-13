@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.memFavorList{
+	margin-left: 50px;
+}
+.memFavorList li{
+	float: left;
+	border: 1px solid black;
+	margin-right: 50px;
+	margin-bottom: 50px;
+	width: 120px;	
+}
+
+.memFavorList li span{
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 120px;
+	white-space: nowrap;
+}
