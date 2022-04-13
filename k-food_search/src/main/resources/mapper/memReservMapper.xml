@@ -6,7 +6,7 @@
 
 	<select id="memReservList" resultType="com.campus.myapp.vo.memReservVO">
 		select resv.status status, resv.writedate writedate, resv.reservdate reservdate, resv.reservtime reservtime,
-		resv.reservp reservp, res.resname resname, res.website website 
+		resv.reservp reservp, res.resname resname, res.website website, resv.no no  
 		from member_reserv as resv
 		join restaurant_table as res
 		on res.resno = resv.resno
@@ -22,6 +22,11 @@
 	<delete id="memberIdOk">
   		select count(userid) from member_table where userid=#{param1}
   	</delete>
+  	
+  	<update id="memReservCancel">
+  	  	update member_reserv set status=#{status}
+  	  	where no=#{no}
+  	</update>
   	
   	
 </mapper>

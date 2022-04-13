@@ -282,11 +282,11 @@
 				<span class="inforName">연락처</span><br/>
 				<select class="inputStyletel1" name='telArray' id='tel1'>
 					<option value="010" selected>010</option>
-					<option value="010">011</option>
-					<option value="010">016</option>
-					<option value="010">017</option>
-					<option value="010">018</option>
-					<option value="010">019</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="017">017</option>
+					<option value="018">018</option>
+					<option value="019">019</option>
 				</select>
 				 &nbsp; - &nbsp;<input class="inputStyletel2" type="text" name="telArray" id="tel2"/>
 				&nbsp; - &nbsp;<input class="inputStyletel2" type="text" name="telArray" id="tel3"/><br/>

@@ -1,19 +1,19 @@
 @charset "UTF-8";
-#memberReservList{
+.memberReservList{
 	width: 850px;
 	background-color: pink;
 	float: left;
 	margin-bottom: 20px;
 }
-#memberReserv{
+.memberReservInfo{
 	margin-left: 50px;
 	width: 400px;
 	background-color: #ddd;
 }
-#memberReserv span{
+.memberReservInfo span{
 	float: right;
 }
-#writedate{
+.writedate{
 	width: 300px;
 	background-color:blue;
 	margin-top: 100px;
