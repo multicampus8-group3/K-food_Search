@@ -44,7 +44,7 @@
 			<li><a href='/restaurantUpdateList'>업체 수정</a></li>
 			<li>13.</li>
 			<li>- 업체에 등록된 정보를 수정하세요.</li>
-			<li><a href=''>예약 현황</a></li>
+			<li><a href='/restaurantReserveCheck'>예약 현황</a></li>
 			<li>13.</li>
 			<li>- 고객의 예약 현황을 확인하세요.</li>
 			<li><a href=''>광고 신청</a></li>

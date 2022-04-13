@@ -9,12 +9,15 @@ public class memberVO {
 	private String favorstate;
 	private String tel;
 	private String usertype;
-	private String writedate;
+	private String wrtedate;
 	
 	private String searchKey;
 	private String searchWord;
 	
 	private String [] telArray;
+	private String tel1;
+	private String tel2;
+	private String tel3;
 
 	public String getUserid() {
 		return userid;
@@ -56,6 +59,10 @@ public class memberVO {
 		return tel;
 	}
 	public void setTel(String tel) {
+		String telSp[] = tel.split("-");
+		tel1 = telSp[0];
+		tel2 = telSp[1];
+		tel3 = telSp[2];
 		this.tel = tel;
 	}
 	public String getUsertype() {
@@ -64,21 +71,38 @@ public class memberVO {
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
-	public String getWritedate() {
-		return writedate;
+	public String getWrtedate() {
+		return wrtedate;
 	}
-	public void setWritedate(String writedate) {
-		this.writedate = writedate;
+	public void setWrtedate(String wrtedate) {
+		this.wrtedate = wrtedate;
 	}
 	
 	public String[] getTelArray() {
 		return telArray;
 	}
 	public void setTelArray(String[] telArray) {
-		setTel(telArray[0]+")"+telArray[1]+"-"+telArray[2]);
+		setTel(telArray[0]+"-"+telArray[1]+"-"+telArray[2]);
 		this.telArray = telArray;
 	}
-	
+	public String getTel1() {
+		return tel1;
+	}
+	public void setTel1(String tel1) {
+		this.tel1 = tel1;
+	}
+	public String getTel2() {
+		return tel2;
+	}
+	public void setTel2(String tel2) {
+		this.tel2 = tel2;
+	}
+	public String getTel3() {
+		return tel3;
+	}
+	public void setTel3(String tel3) {
+		this.tel3 = tel3;
+	}
 	public String getSearchKey() {
 		return searchKey;
 	}

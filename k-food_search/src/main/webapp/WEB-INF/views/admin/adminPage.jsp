@@ -17,7 +17,7 @@ $(document).ready(function(){
 $(function(){
 	// 회원목록
 	function memberListAll() {
-		var url = "/listtoadmin";
+		var url = "/memberListToAdmin";
 		$.ajax({
 			url: url,
 			type:"get",
@@ -52,7 +52,7 @@ $(function(){
 $(function(){
 	// 가게목록
 	function restaurantListAll() {
-		var url = "/restaurant/listtoadmin";
+		var url = "/restaurant/resListToAdmin";
 		
 		$.ajax({
 			url: url,
@@ -88,7 +88,7 @@ $(function(){
 $(function(){
 	// 리뷰목록
 	function reviewListAll() {
-		var url = "/review/listtoadmin";
+		var url = "/review/revListToAdmin";
 		
 		$.ajax({
 			url: url,
@@ -123,7 +123,7 @@ $(function(){
 $(function(){
 	//업주신청목록
 	function ownershipListAll() {
-		var url = "/listtoadmin";
+		var url = "/memberListToAdmin";
 		$.ajax({
 			url: url,
 			type: "get",
@@ -183,7 +183,7 @@ $(function(){
  $(function(){
 	 // FAQ목록
 	 function faqListAll() {
-		 var url = "/faq/listtoadmin";
+		 var url = "/faq/faqListToAdmin";
 		 
 		 $.ajax({
 			url: url,
@@ -576,6 +576,18 @@ $(function(){
 	<div class="tab_content">
 		<div>
 			<!-- <h3>회원목록</h3> -->
+			<div>
+				<form method="get" action="/memberListToAdmin" id="searchFrm">
+					<select name="searchKey">
+						<option value="userid">아이디</option>
+						<option value="username">이름</option>
+						<option value="usertype">등급</option>
+						<option value="usernation">국적</option>
+					</select>
+					<input type="text" name="searchWord" id="searchWord"/>
+					<input type="submit" value="검색"/>
+				</form>
+			</div>
 			<div id="memberList">
 			</div>
 		</div>

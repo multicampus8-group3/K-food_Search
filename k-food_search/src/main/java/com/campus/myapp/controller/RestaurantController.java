@@ -32,7 +32,7 @@ public class RestaurantController {
 	FaqService fservice;
 	
 	// 관리자페이지에서 가게목록 보기
-	@GetMapping("/restaurant/listtoadmin")
+	@GetMapping("/restaurant/resListToAdmin")
 	@ResponseBody
 	public List<RestaurantVO> list(RestaurantVO vo) {
 		return service.restaurantList(vo);
@@ -200,6 +200,13 @@ public class RestaurantController {
 		mav.setViewName("redirect:/myrestaurant");
 		return mav;
 	}
+	@GetMapping("/restaurantReserveCheck")
+	public ModelAndView restaurantReserveCheck() {
+		ModelAndView mav = new ModelAndView ();
+		mav.setViewName("/myrestaurant/restaurantReserveCheck");
+		return mav;
+	}
+	
 	//파일지우기
 	public void fileDelete(String path, String fileName) {
 		if(fileName!=null) {

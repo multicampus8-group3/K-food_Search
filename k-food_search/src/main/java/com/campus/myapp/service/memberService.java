@@ -2,6 +2,7 @@ package com.campus.myapp.service;
 
 import java.util.List;
 
+import com.campus.myapp.vo.ReviewVO;
 import com.campus.myapp.vo.memberVO;
 
 public interface memberService {
@@ -13,4 +14,7 @@ public interface memberService {
 	public List<memberVO> memberList(memberVO vo);
 	// 업주신청처리(수정)
 	public int ownershipChange(memberVO vo);
+	public int memberUpdate(memberVO vo);
+	
+
 }

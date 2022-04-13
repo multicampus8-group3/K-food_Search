@@ -1,0 +1,33 @@
+@charset "UTF-8";
+#memberReviewList {
+	width: 800px;
+	height: 200px;
+	border: 1px solid gray;
+	margin-left: 100px;
+	margin-bottom: 20px;
+	background-color: pink;
+}
+#memberReviewList img {
+	float: right;
+	padding-right: 10px;
+	padding-top: 10px;
+	
+}
+#a{
+	width: 600px;
+	display: block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+#c{
+	width: 500px;
+	height: 125px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	margin-top: 5px;
+}

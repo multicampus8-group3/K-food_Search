@@ -24,7 +24,7 @@ public class FaqController {
 		return service.faqMake(vo);
 	}
 	// 관리자페이지에서 FAQ목록 보기
-	@GetMapping("listtoadmin")
+	@GetMapping("faqListToAdmin")
 	public List<FaqVO> list(FaqVO vo) {
 		return service.faqList(vo);
 	}

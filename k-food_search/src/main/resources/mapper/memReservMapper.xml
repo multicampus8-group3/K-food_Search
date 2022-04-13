@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.myapp.dao.memReservDAO">
+
+	<select id="memReservList" resultType="com.campus.myapp.vo.memReservVO">
+		select resv.status status, resv.writedate writedate, resv.reservdate reservdate, resv.reservtime reservtime,
+		resv.reservp reservp, res.resname resname, res.website website 
+		from member_reserv as resv
+		join restaurant_table as res
+		on res.resno = resv.resno
+		where resv.userid = #{userid}
+		order by resv.no desc
+	</select>
+	
+	<update id="ownershipChange">
+		update member_table set usertype=#{usertype}
+		where userid=#{userid}
+	</update>
+
+	<delete id="memberIdOk">
+  		select count(userid) from member_table where userid=#{param1}
+  	</delete>
+  	
+  	
+</mapper>

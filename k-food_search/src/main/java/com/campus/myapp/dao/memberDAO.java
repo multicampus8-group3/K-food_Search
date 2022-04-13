@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.campus.myapp.vo.ReviewVO;
 import com.campus.myapp.vo.memberVO;
 
 @Mapper
@@ -18,4 +19,6 @@ public interface memberDAO {
 	public List<memberVO> memberList(memberVO vo);
 	// 업주신청처리(수정)
 	public int ownershipChange(memberVO vo);
+	public int memberUpdate(memberVO vo);
+	
 }
