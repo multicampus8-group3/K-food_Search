@@ -29,4 +29,10 @@
   		insert into member_table(userid,userpwd,username,usernation,favornation,favorstate,tel,usertype)
   		values(#{userid},#{userpwd},#{username},#{usernation},#{favornation},#{favorstate},#{tel},#{usertype})
   	</insert>
+  	<update id="memberUpdate">
+  	  	update member_table set username=#{username}, usernation=#{usernation}, 
+  	  	favornation=#{favornation}, favorstate=#{favorstate}, tel=#{tel}, usertype=#{usertype}  
+  	  	where userid=#{userid}
+  	</update>
+  	
 </mapper>
