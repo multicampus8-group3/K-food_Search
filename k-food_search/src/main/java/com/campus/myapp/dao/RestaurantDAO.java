@@ -16,4 +16,7 @@ public interface RestaurantDAO {
 	public List<RestaurantVO> restaurantMyList(String userid);
 	public int restaurantDel (int resno);
 	public RestaurantVO restaurantUpdateList(int resno);
+	public int maxResno ();
+	public String restarantImgDel(int resno);
+	public int restaurantUpdateOk(RestaurantVO vo);
 }

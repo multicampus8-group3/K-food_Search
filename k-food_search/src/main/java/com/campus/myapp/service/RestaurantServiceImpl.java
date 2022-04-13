@@ -42,4 +42,22 @@ public class RestaurantServiceImpl implements RestaurantService {
 		// TODO Auto-generated method stub
 		return dao.restaurantUpdateList(resno);
 	}
+
+	@Override
+	public int maxResno() {
+		// TODO Auto-generated method stub
+		return dao.maxResno();
+	}
+
+	@Override
+	public String restarantImgDel(int resno) {
+		// TODO Auto-generated method stub
+		return dao.restarantImgDel(resno);
+	}
+
+	@Override
+	public int restaurantUpdateOk(RestaurantVO vo) {
+		// TODO Auto-generated method stub
+		return dao.restaurantUpdateOk(vo);
+	}
 }

@@ -2,6 +2,7 @@ package com.campus.myapp.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.FaqService;
 import com.campus.myapp.service.RestaurantService;
+import com.campus.myapp.vo.FaqAnswerVO;
 import com.campus.myapp.vo.FaqVO;
 import com.campus.myapp.vo.RestaurantVO;
 
@@ -63,18 +65,89 @@ public class RestaurantController {
 	}
 	@GetMapping("/restaurantDel")
 	@ResponseBody
-	public int restaurantDel(int resno) {
+	public int restaurantDel(int resno, HttpServletRequest request) {
+		String resimg = service.restarantImgDel(resno);
+		String path = request.getSession().getServletContext().getRealPath("resImg");
+		fileDelete(path, resimg);
 		return service.restaurantDel(resno);
 	}
 	@GetMapping("/restaurantUpdateWrite")
 	public ModelAndView restaurantUpdateWrite(int resno) {
 		ModelAndView mav = new ModelAndView ();
+		List<FaqVO> lst = fservice.faqList(null);
+		List<FaqAnswerVO> alst = fservice.faqAnswerUpdateList(resno);
+		mav.addObject("faqAnsList",alst);
+		mav.addObject("faqList",lst);
 		mav.addObject("vo",service.restaurantUpdateList(resno));
 		mav.setViewName("/myrestaurant/restaurantUpdateWrite");
 		return mav;
 	}
+	@PostMapping("/restaurantUpdateOk")
+	public ModelAndView restaurantUpdateOk(RestaurantVO vo, FaqAnswerVO Fvo, HttpServletRequest request, String resimgOrg) {
+		ModelAndView mav = new ModelAndView();
+		vo.setUserid((String)request.getSession().getAttribute("logId"));
+		String path = request.getSession().getServletContext().getRealPath("resImg");
+		System.out.println(resimgOrg);
+		try {
+			MultipartHttpServletRequest mr = (MultipartHttpServletRequest) request;
+			if(mr!=null) {
+				
+				List<MultipartFile> files= mr.getFiles("resimg1");
+				MultipartFile mf =  files.get(0);
+
+				String orgFileName = mf.getOriginalFilename();
+				System.out.println("파일이름=" + orgFileName);
+				if(orgFileName!=null &&!orgFileName.equals("")) {
+					if(!resimgOrg.equals("noimg.gif")) {
+						fileDelete(path, resimgOrg);
+						System.out.println("삭제 실행");
+					}
+					File f = new File(path,orgFileName);
+					if(f.exists()) {
+						for(int renameNum=0;;renameNum++) {
+							//확장자와 파일을 분리한다.
+							int point = orgFileName.lastIndexOf(".");
+							String fileName = orgFileName.substring(0,point);
+							//확장지
+							String ext = orgFileName.substring(point+1);
+							f = new File(path,fileName+"("+renameNum+")."+ext);
+							if(!f.exists()) {//새로 생성된 파일객체가 없으면
+								orgFileName = f.getName();
+								break;
+							}
+						}
+					}try {
+						mf.transferTo(f);
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+					vo.setResimg(orgFileName);
+				}else {
+					vo.setResimg(resimgOrg);
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			fileDelete(path,vo.getResimg());
+		}
+		//레스토랑 업데이트 작성.
+		//System.out.println(vo.getRescontent());
+		//System.out.println(vo.getUserid());
+		service.restaurantUpdateOk(vo);
+		fservice.faqAnswerDel(vo.getResno());
+		int max = vo.getResno();
+		if(Fvo.getFaqno()!=null) {
+			//System.out.println("실행");
+			Fvo.setMax(max);
+			for(int i=0; i<Fvo.getFaqno().length; i++) {
+				fservice.faqAnswerInsert(max,Fvo.getFaqno()[i],Fvo.getContent()[i]);
+			}
+		}
+		mav.setViewName("redirect:/restaurantInfo");
+		return mav;
+	}
 	@PostMapping("/resSignUp")
-	public ModelAndView resSignUp (RestaurantVO vo, HttpServletRequest request) {
+	public ModelAndView resSignUp (RestaurantVO vo, FaqAnswerVO Fvo, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView ();
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
 		String path = request.getSession().getServletContext().getRealPath("resImg");
@@ -82,13 +155,11 @@ public class RestaurantController {
 		try {
 			MultipartHttpServletRequest mr = (MultipartHttpServletRequest) request;
 			if(mr!=null) {
-				System.out.println("실행");
 				List<MultipartFile> files= mr.getFiles("resimg1");
 				MultipartFile mf =  files.get(0);
-				System.out.println("실행2");
 
 				String orgFileName = mf.getOriginalFilename();
-				System.out.println(orgFileName);
+				System.out.println("파일이름=" + orgFileName);
 				if(orgFileName!=null &&!orgFileName.equals("")) {
 					File f = new File(path,orgFileName);
 					if(f.exists()) {
@@ -109,15 +180,38 @@ public class RestaurantController {
 					}catch(Exception e) {
 						e.printStackTrace();
 					}
-					System.out.println(orgFileName);
 					vo.setResimg(orgFileName);
+				}else {
+					vo.setResimg("noimg.gif");
 				}
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
+			fileDelete(path,vo.getResimg());
 		}
 		service.restaurantInsert(vo);
+		int max = service.maxResno();
+		if(Fvo.getFaqno()!=null) {
+			Fvo.setMax(max);
+			for(int i=0; i<Fvo.getFaqno().length; i++) {
+				fservice.faqAnswerInsert(max,Fvo.getFaqno()[i],Fvo.getContent()[i]);
+			}
+		}
 		mav.setViewName("redirect:/myrestaurant");
 		return mav;
+	}
+	@GetMapping("/restaurantReserveCheck")
+	public ModelAndView restaurantReserveCheck() {
+		ModelAndView mav = new ModelAndView ();
+		mav.setViewName("/myrestaurant/restaurantReserveCheck");
+		return mav;
+	}
+	
+	//파일지우기
+	public void fileDelete(String path, String fileName) {
+		if(fileName!=null) {
+			File file = new File(path,fileName);
+			file.delete();
+		}
 	}
 }
