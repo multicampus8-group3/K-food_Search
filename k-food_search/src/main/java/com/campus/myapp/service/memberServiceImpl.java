@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.memberDAO;
+import com.campus.myapp.vo.ReviewVO;
 import com.campus.myapp.vo.memberVO;
 
 @Service
@@ -45,4 +46,11 @@ public class memberServiceImpl implements memberService {
 	public List<memberVO> getSearchList(memberVO vo) {
 		return dao.getSearchList(vo);
 	}
+	@Override
+	public int memberUpdate(memberVO vo) {
+		// TODO Auto-generated method stub
+		return dao.memberUpdate(vo);
+	}
+	
+	
 }

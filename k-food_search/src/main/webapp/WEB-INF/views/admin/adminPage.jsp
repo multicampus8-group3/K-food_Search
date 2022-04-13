@@ -883,7 +883,7 @@ $(function(){
 			</div>
 		</div>
 		
-		<div class="on">
+		<div>
 			<!-- <h3>광고신청목록</h3> -->
 			<div id="adList">
 			</div>

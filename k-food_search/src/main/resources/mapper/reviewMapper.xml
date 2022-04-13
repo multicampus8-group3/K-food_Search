@@ -24,5 +24,15 @@
 		</if>
 		order by rev.no desc
 	</select>
+	
+	<select id="memberReviewList" resultType="com.campus.myapp.vo.ReviewVO">
+		select rev.no no, rev.userid userid, res.resname resname, rev.grade grade, 
+		rev.content content, rev.writedate writedate, res.resgrade resgrade, res.resimg resimg  
+		from review_table as rev
+		join restaurant_table as res
+		on rev.resno = res.resno
+		where rev.userid = #{userid} 
+		order by rev.no desc
+	</select>
 
 </mapper>

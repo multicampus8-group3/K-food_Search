@@ -7,6 +7,7 @@ public class ReviewVO {
 	private String userid;
 	private String writedate;
 	private int resno;
+	private double resgrade;
 	
 	private String resname;
 	
@@ -92,6 +93,15 @@ public class ReviewVO {
 	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
 	}
+
+	public double getResgrade() {
+		return resgrade;
+	}
+
+	public void setResgrade(double resgrade) {
+		this.resgrade = resgrade;
+	}
+	
 	
 	
 }
