@@ -115,5 +115,4 @@ public class memberVO {
 	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
 	}
-	
 }

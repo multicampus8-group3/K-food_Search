@@ -28,8 +28,20 @@
 	</delete>
 	
 	<select id="restaurantUpdateList" resultType="RestaurantVO">
-		select resno, resname, rescontent, reshour, website, restype, resadress, format(resgrade,1) resgrade, 
+		select resno, resimg, resname, rescontent, reshour, website, restype, resadress, format(resgrade,1) resgrade, 
 		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
 		from restaurant_table where resno = #{param1}
 	</select>
+	
+	<select id="maxResno" resultType="int">
+		select resno from restaurant_table where resno=(select max(resno) from restaurant_table);
+	</select>
+	
+	<select id="restarantImgDel" resultType="String">
+		select resimg from restaurant_table where resno=#{param1}
+	</select>
+	
+	<update id="restaurantUpdateOk">
+		update restaurant_table set resname=#{resname}, resadress=#{resadress}, rescontent=#{rescontent}, userid=#{userid}, resnation=#{resnation}, resstate=#{resstate}, restype=#{restype}, resimg=#{resimg}, reshour=#{reshour}, website=#{website} where resno=#{resno}
+	</update>
 </mapper>
