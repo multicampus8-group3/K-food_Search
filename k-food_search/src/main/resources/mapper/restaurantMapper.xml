@@ -10,5 +10,26 @@
 		from restaurant_table
 		order by resno desc
 	</select>
-
+	
+	<insert id="restaurantInsert">
+		insert into restaurant_table(resname,resadress,rescontent,userid,resnation,resstate,restype,resimg,reshour,website) 
+		value(#{resname},#{resadress},#{rescontent},#{userid},#{resnation},#{resstate},#{restype},#{resimg},#{reshour},#{website})
+	</insert>
+	
+	<select id="restaurantMyList" resultType="RestaurantVO">
+		select resno, resname, resadress, reshour, format(resgrade,1) resgrade, 
+		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
+		from restaurant_table where userid = #{param1} 
+		order by resno asc
+	</select>
+	
+	<delete id="restaurantDel">
+		delete from restaurant_table where resno=#{param1};
+	</delete>
+	
+	<select id="restaurantUpdateList" resultType="RestaurantVO">
+		select resno, resname, rescontent, reshour, website, restype, resadress, format(resgrade,1) resgrade, 
+		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
+		from restaurant_table where resno = #{param1}
+	</select>
 </mapper>

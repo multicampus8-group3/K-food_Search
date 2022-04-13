@@ -5,6 +5,14 @@
 }
 
 .bottom{
-	height: 50px; text-align: center;
-	color: white; background-color: gray;
+		position: relative;
+		top: 60px;
+		left: 10px;
+		width: 980px;
+		height: 170px;
+		text-align: center;
+		line-height: 170px;
+		color: white;
+		background-color: gray;
+		border: 1px solid blue;
 }

@@ -19,4 +19,27 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return dao.restaurantList(vo);
 	}
 
+	@Override
+	public int restaurantInsert(RestaurantVO vo) {
+		// TODO Auto-generated method stub
+		return dao.restaurantInsert(vo);
+	}
+
+	@Override
+	public List<RestaurantVO> restaurantMyList(String userid) {
+		// TODO Auto-generated method stub
+		return dao.restaurantMyList(userid);
+	}
+
+	@Override
+	public int restaurantDel(int resno) {
+		// TODO Auto-generated method stub
+		return dao.restaurantDel(resno);
+	}
+
+	@Override
+	public RestaurantVO restaurantUpdateList(int resno) {
+		// TODO Auto-generated method stub
+		return dao.restaurantUpdateList(resno);
+	}
 }

@@ -9,4 +9,12 @@ public class HomeController {
 	public String Home() {
 		return "home_main";
 	}
+	@RequestMapping("/restaurant")
+	public String restaurant() {
+		return "restaurant/restaurant"; 
+	}
+	@RequestMapping("/restaurantInfo")
+	public String restaurantInfo() {
+		return "restaurant/restaurantInfo"; 
+	}
 }
