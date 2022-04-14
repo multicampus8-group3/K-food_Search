@@ -383,9 +383,11 @@ $(function(){
 					tag += "<li>"+ vo.status + "<br/><form method='post'>";
 					tag += "<input type='hidden' name='no' value='" + vo.no + "'/>";
 					tag += "<select name='status'>";
-					tag += "<option value='대기'>대기</option>";
-					tag += "<option value='진행'>진행</option>";
-					tag += "<option value='만료'>만료</option>";
+					tag += "<option value='apply'>신청</option>";
+					tag += "<option value='reject'>거절</option>";
+					tag += "<option value='ok'>승인</option>";
+					tag += "<option value='start'>게재중</option>";
+					tag += "<option value='end'>만료</option>";
 					tag += "</select><input type='submit' value='확인'/></form></li>"
 				});
 				
