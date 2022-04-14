@@ -349,7 +349,7 @@
 								<c:if test="${vo.usertype=='normal'}"><input id="chgbtn"type="button" value="사업주등록신청"></c:if>
 							</li>
 							<li><input class="inputStyle" type="text" name="userid" value="${vo.userid}" readonly style="all:none"></li>
-							<li class="inforName">국적</li>
+							<li class="inforName">*&nbsp;국적</li>
 							<li>
      							 <select class="inputStylenation"  id="usernation" name="usernation" >
         							 <script>
@@ -357,7 +357,7 @@
 									</script>
      							 </select>
       						</li>
-							<li class="inforName">여행 선호 국가</li>
+							<li class="inforName">*&nbsp;여행 선호 국가</li>
 							<li>
 								<select class="inputStylenation"  id="favornation" name="favornation" >
         							 <script>
@@ -369,9 +369,9 @@
 									<option value='${vo.favorstate}' selected>${vo.favorstate}</option>
 								</select>
 							</li>
-							<li class="inforName">이름</li>
+							<li class="inforName">*&nbsp;이름</li>
 							<li><input class="inputStyle" type="text" name="username" value="${vo.username}"></li>
-							<li class="inforName">연락처</li>
+							<li class="inforName">*&nbsp;연락처</li>
 							<li>
 								<select class="inputStyletel1" name='telArray' id='tel1'>
 									<option value="010" <c:if test="${vo.tel1=='010'}">selected</c:if>>010</option>

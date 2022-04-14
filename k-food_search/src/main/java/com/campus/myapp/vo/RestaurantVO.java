@@ -115,4 +115,6 @@ public class RestaurantVO {
 	public void setReshourend(String reshourend) {
 		this.reshourend = reshourend;
 	}
+	
+	
 }
