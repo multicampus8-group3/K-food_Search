@@ -74,7 +74,4 @@ public class AdVO {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	
-	
-	
 }

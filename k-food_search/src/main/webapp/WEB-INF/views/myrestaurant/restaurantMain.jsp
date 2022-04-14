@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- 꽃가루 이펙트 -->
+<script src="https://tistory4.daumcdn.net/tistory/3134841/skin/images/confetti_v2.js"></script>
 	<style>
 		#resMainDiv{
 			width:1000px;
@@ -34,43 +36,40 @@
 			height:60px;
 			font-size:1.2em;
 		}
-		.bell {
-	  		animation-duration: 0.1s;
+		.bell{
+			width:50px;
+		}
+		.bell:hover {
+	  		animation-duration: 0.5s;
 	  		animation-name: rot;
 	  		animation-iteration-count: infinite;
 	  		animation-direction: alternate;
 	  		transform-origin:50% 5%;
-	  		width:50px;
 		}
-	
 		@keyframes rot {
 	  		0% {transform: rotateZ(-30deg);}
 	  		100% {transform: rotateZ(30deg);}
 		}
-		
-		.balloon {
-			position:relative;
-			margin: 50px;
-			width:400px;
-			height:100px;
-			background:#ddd;
-			border-radius: 10px;
-		}
-		.balloon:after {
-			border-top:15px solid #ddd;
-			border-left: 15px solid transparent;
-			border-right: 0px solid transparent;
-			border-bottom: 0px solid transparent;
-			content:"";
-			position:absolute;
-			top:10px;
-			left:-15px;
-		}
+		canvas{z-index:10;pointer-events: none;position: fixed;top: 0;transform: scale(1.1);}
 	</style>
-	<div class='balloon'></div>
-	<img src='img/bell.png' class='bell'/>
+	<script>
+		$(()=>{
+			function reAction(){
+				$("#startButton").trigger("click");
+			  	setTimeout(function(){
+			  		$("#stopButton").trigger("click");
+				}, 5000);
+			}
+			$(".bell").on('click', function(){
+			    reAction();
+			});	
+		});
+	</script>
+	<canvas id="canvas"></canvas>
+	<button id="stopButton" style='display:none;'>Stop Confetti</button>
+	<button id="startButton"  style='display:none;'>Drop Confetti</button>	
 	<div id='resMainDiv'>
-		<div>owner's Menu</div>
+		<div><img src='img/bell.png' class='bell' title='클릭 하세요.'/> owner's Menu</div>
 		${username }님 환영합니다.
 		<hr style='margin-bottom:40px;'/>
 		<ul id='resMain'>
@@ -83,7 +82,7 @@
 			<li><a href='/restaurantReserveCheck'>예약 현황</a></li>
 			<li>13.</li>
 			<li>- 고객의 예약 현황을 확인하세요.</li>
-			<li><a href=''>광고 신청</a></li>
+			<li><a href='/restaurantAdApplication'>광고 신청</a></li>
 			<li>15.</li>
 			<li>- 당신의 업장을 광고하세요.</li>
 		</ul>		
