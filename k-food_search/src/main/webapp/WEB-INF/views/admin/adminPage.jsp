@@ -559,8 +559,12 @@ $(function(){
 	line-height: 40px;
 	width: 5%;
 	border-bottom:1px solid #ddd;
-	overflow: auto;
-	white-space:pre-wrap;	
+	text-overflow: ellipsis;
+	white-space: break-word;
+	display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+	overflow: hidden;	
 }
 #restaurantList>ul>li:nth-child(7n+2){
 	width: 25%;
@@ -591,8 +595,12 @@ $(function(){
 	line-height: 40px;
 	width: 5%;
 	border-bottom:1px solid #ddd;
-	overflow: auto;
-	white-space:pre-wrap;	
+	text-overflow: ellipsis;
+	white-space: break-word;
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+	overflow: hidden;
 }
 #reviewList>ul>li:nth-child(6n){
 	width: 15%;
@@ -677,16 +685,21 @@ $(function(){
 #faqList>div{
  	float: left;
  	width: 45%;
- 	height: 80px;
+ 	height: 90px;
 	border: 1px solid black;
 	border-radius: 5px;
 	margin: 10px 5px 5px 5px;
-	padding: 10px;	
+	padding: 10px;
+	line-height: 25px;	
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	
 }
 #faqList>div:nth-child(2n){
  	float: right;
  	width: 45%;
- 	height: 80px;
+ 	height: 90px;
  	border: 1px solid black;
 	border-radius: 5px;
 	margin: 10px 5px 5px 5px;
@@ -722,8 +735,12 @@ $(function(){
 	line-height: 40px;
 	width: 5%;
 	border-bottom:1px solid #ddd;
-	overflow: auto;
-	white-space:pre-wrap;	
+	text-overflow: ellipsis;
+	white-space: break-word;
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 #adList>ul>li:nth-child(9n+3){
