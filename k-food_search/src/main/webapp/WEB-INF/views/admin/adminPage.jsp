@@ -747,7 +747,7 @@ $(function(){
 	border-bottom: 3px solid #ddd;
 	height: 40px;
 	line-height: 40px;
-	background-color: rgba(125, 144, 159, 0.5);
+	background-color: rgba(125, 144, 159, 0.3);
 	font-weight: bold;
 }
 #adList select {
@@ -792,7 +792,7 @@ $(function(){
 	width:45px;
 	height: 30px;
 	border: 1px solid #2F4858;
-	background-color: rgba(89, 121, 115, 0.7);;
+	background-color: rgba(89, 121, 115, 0.7);
 	vertical-align: top;
 	color: #fff;
 	font-weight: 500;

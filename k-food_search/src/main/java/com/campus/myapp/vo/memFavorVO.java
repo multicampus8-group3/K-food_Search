@@ -9,7 +9,10 @@ public class memFavorVO {
 	private String resnation;
 	private String resstate;
 	private String resimg;
-
+	private String reshour;
+	private String reshourend;
+	
+	
 	public int getNo() {
 		return no;
 	}
@@ -60,6 +63,18 @@ public class memFavorVO {
 	}
 	public void setResname(String resname) {
 		this.resname = resname;
+	}
+	public String getReshour() {
+		return reshour;
+	}
+	public void setReshour(String reshour) {
+		this.reshour = reshour;
+	}
+	public String getReshourend() {
+		return reshourend;
+	}
+	public void setReshourend(String reshourend) {
+		this.reshourend = reshourend;
 	}
 	
 	

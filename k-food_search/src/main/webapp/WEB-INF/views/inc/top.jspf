@@ -53,6 +53,41 @@
 		});
 	});
 	
+	$(function(){
+		// 즐겨찾기
+		function barFavorList() {
+			var url = "/memFavor/memFavorList";
+			$.ajax({
+				url: url,
+				success: function(result) {
+					var $result = $(result);
+					var now = new Date();
+					var realnow = now.getHours()*60 + now.getMinutes();
+					
+					var tag = '<ul>';
+					$result.each(function(idx, vo){
+						var open = parseInt(vo.reshour.split(':')[0]*60) + parseInt(vo.reshour.split(':')[1]);
+						var close = parseInt(vo.reshourend.split(':')[0]*60) + parseInt(vo.reshourend.split(':')[1]);
+					
+						if(realnow < open || realnow > close) {
+							tag += '<li><span class="on">●</span></li>';
+						}else{
+							tag += '<li><span class="off">●</span></li>';
+						}
+						tag += '<li><a href="#">' + vo.resname + '</a></li>';
+					});
+					tag += '</ul>';
+					
+					$("#favorList").html(tag);
+				},
+				error: function(e) {
+					console.log(e.responseText);
+				}
+			});
+		}
+		barFavorList();
+	});
+	
 	function movePage(url){
 		location.href=url;
 		console.log("실행"+url);
@@ -72,7 +107,7 @@
 	.topMenu{
 		height:50px;
 	}
-	.topMenu ul{
+	.topMenu>ul{
 		background-color: #fff;
 		width:100%;
 		height:50px;
@@ -165,6 +200,47 @@
 		height: 150px;
 	}
 	
+	#favorList{
+		margin: 10px auto;
+		width: 85%;
+		height: 500px;
+		display: block;
+		overflow: auto;
+		margin-left: 30px;
+	}
+	#favorList ul>li{
+		float: left;
+		width: 10%;
+		height: 50px;
+		line-height: 50px;
+		text-align: left;
+	}
+	#favorList ul>li:nth-child(2n){
+		width: 90%;
+		overflow:hidden;
+      	text-overflow:ellipsis;
+      	white-space:nowrap;
+	}
+	#favorList ul>li>a{
+		font-size: 18px;
+		font-weight: bold;
+		line-height: 50px;
+		margin-bottom: 30px;
+		color: #2F4858;
+	}
+	#favorList ul>li>span{
+		display: table-cell;
+		line-height: 50px;
+		font-size: 12px;
+	}
+	#favorList ul>li>span.on{
+		color: #33FF33;
+	}
+	#favorList ul>li>span.off{
+		color: #FF0000;
+	}
+	
+	
 </style>
 </head>
 <body>
@@ -211,9 +287,12 @@
 					<a href="/logout">로그아웃</a>
 				</div>
 				<hr style="width:90%; margin-top:-50px;"/>
-				<div id="favor_div" style="height:40px; line-height:20px; overflow:hidden; white-space:nowrap;">
-					<span style="margin-left:-170px; color:white;">즐겨찾기</span><br/>
+				<div id="favor_div">
+					<b style="margin-left:-170px; color:white;">즐겨찾기</b>
+					<div id="favorList">
+					</div>
 				</div>
+				
 			</c:if>
 			
 		</li>

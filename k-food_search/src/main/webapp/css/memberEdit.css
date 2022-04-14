@@ -57,6 +57,10 @@
 	height:30px;
 	margin-left: 21px;
 }
+#mFrm input[name="userid"]{
+	font-weight: bold;
+	border: none;
+}
 #chgbtn, #signEditBtn, #signDelBtn{
 	border: 1px solid #2F4858 !important;
 	background-color: rgba(89, 121, 115, 0.7) !important;
