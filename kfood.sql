@@ -26,7 +26,7 @@ insert into member_reserv(userid, resno, reservdate, reservtime, reservp, status
 values('goguma', '5', '2022-04-18', '10:00', '2', 'apply');
 
 insert into member_favorite(userid, resno)
-values('goguma', '5');
+values('potter123', '8');
 
 insert into ad_table(resno, bannerimg, userid, startdate, enddate, status)
 values('2', 'koreanbbq.jpg', 'blueberry', '2022-04-18 10:13:42', '2022-04-28 10:13:42', '대기');
@@ -47,8 +47,9 @@ select resno, resname, resadress, format(resgrade,1) resgrade,
 update member_table set username="이순신", userpwd="1234", favornation="일본", favorstate="대마도" where userid="apple";
 update restaurant_table set resadress="11 Rue Jonquoy, 75014 Paris, 프랑스" where resname="HKOOK 한식예찬";
 update ad_table set bannerimg="hs.jpg" where no="2";
+update member_table set username="이순신", userpwd="1234", favornation="일본", favorstate="대마도" where userid="apple";
 
-update member_reserv set status="apply" where userid="goguma";
+update restaurant_table set reshour="12:00", reshourend="22:30" where resno="4";
 
 
 ALTER TABLE restaurant_table CHANGE resgrade resgrade decimal(2,1);
@@ -71,4 +72,6 @@ select rev.no no, rev.userid userid, res.resname resname, rev.grade grade,
 update member_table set usertype='owner(jin)'
 		where userid='mango';
         
-drop table ad_table;
+ALTER TABLE restaurant_table change restaurant_table reshourend time;
+
+drop table restaurant_table;
