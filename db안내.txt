@@ -1,0 +1,7 @@
+1) 워크벤치 접속
+2) 기존 kfood데이터베이스 삭제 --> drop database kfood;
+3) kfood.mwb 실행 & Database -> Foward Engineer.. 진행 -> 데이터베이스 생성
+4) handdamX2_data.sql 실행(상단메뉴에 File -> Open SQL Script..)
+5) 내용 전체선택
+6) 번개모양 아이콘 클릭(Excecute the selected portion of .... 마우스올리면 이렇게 나오는 것)
+7) 기다리면 끝

@@ -243,8 +243,8 @@ $(function(){
 						tag += "<li>" + vo.tel + "</li>";				
 						tag += "<li><form method='post'>";
 						tag += "<input type='hidden' name='userid' value='" + vo.userid + "'/>";
-						tag += "<select name='usertype'>";
-						tag += "<option value='owner(jin)'>보류</option>";
+						tag += "<select id='usertype' name='usertype'>";
+						tag += "<option value=''>선택</option>";
 						tag += "<option value='owner'>승인</option>";
 						tag += "<option value='normal'>거절</option>";
 						tag += "</select><input type='submit' value='확인'/></form></li>"
@@ -263,6 +263,12 @@ $(function(){
 	// 업주신청처리(수정)
 	$(document).on('submit', '#ownershipList form', function(){
 		event.preventDefault();
+		
+		if($("#usertype").val()==''){
+			alert("상태를 선택해주세요.");
+			$("#usertype").focus();
+			return false;
+		}
 		
 		var params = $(this).serialize();
 		var url = "/ownershipChangeOk";
@@ -382,7 +388,8 @@ $(function(){
 					tag += "<li>" + vo.writedate + "</li>";
 					tag += "<li>"+ vo.status + "<br/><form method='post'>";
 					tag += "<input type='hidden' name='no' value='" + vo.no + "'/>";
-					tag += "<select name='status'>";
+					tag += "<select id='status' name='status'>";
+					tag += "<option value=''>선택</option>";
 					tag += "<option value='apply'>신청</option>";
 					tag += "<option value='reject'>거절</option>";
 					tag += "<option value='ok'>승인</option>";
@@ -403,6 +410,12 @@ $(function(){
 	// 광고신청처리(수정)
 	$(document).on('submit', '#adList form', function(){
 		event.preventDefault();
+		
+		if($("#status").val()==''){
+			alert("상태를 선택해주세요.");
+			$("#status").focus();
+			return false;
+		}
 		
 		var params = $(this).serialize();
 		var url = "/adStatusChangeOk";
@@ -532,8 +545,9 @@ $(function(){
 	line-height: 40px;
 	width: 10%;
 	border-bottom:1px solid #ddd;
-	overflow-x: scroll;
-	white-space:nowrap;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 #memberList>ul>li:nth-child(7n){
 	width: 17%;
