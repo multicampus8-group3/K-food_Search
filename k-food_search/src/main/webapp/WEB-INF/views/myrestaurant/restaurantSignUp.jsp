@@ -157,8 +157,7 @@
 			<span>가게 홈페이지 *(선택 사항)</span><br/>
 			<input type="text" name='website'/><br/>
 			<img src='/img/qna.png' width='50px' id='qna' style='cursor:pointer'/><br/>
-			<div id='qnaDiv'></div>
-			
+			<div id='qnaDiv'></div>		
 			<button>등록</button>
 		</form>
 	</div>

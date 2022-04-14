@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.memReservService;
 import com.campus.myapp.vo.memReservVO;
@@ -29,5 +30,10 @@ public class memReservController {
 		System.out.println(list.get(0).getStatus());
 		return service.memReservList(vo);
 	}
-	
+	@GetMapping("/restaurantReserveCheck")
+	public ModelAndView restaurantReserveCheck() {
+		ModelAndView mav = new ModelAndView ();
+		mav.setViewName("/myrestaurant/restaurantReserveCheck");
+		return mav;
+	}
 }
