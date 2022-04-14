@@ -21,9 +21,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.FaqService;
 import com.campus.myapp.service.RestaurantService;
+import com.campus.myapp.service.countryService;
 import com.campus.myapp.vo.FaqAnswerVO;
 import com.campus.myapp.vo.FaqVO;
 import com.campus.myapp.vo.RestaurantVO;
+import com.campus.myapp.vo.countryVO;
 
 @RestController
 public class RestaurantController {
@@ -31,6 +33,8 @@ public class RestaurantController {
 	RestaurantService service;
 	@Inject
 	FaqService fservice;
+	@Inject
+	countryService countryService;
 	
 	// 관리자페이지에서 가게목록 보기
 	@GetMapping("/restaurant/resListToAdmin")
@@ -58,6 +62,8 @@ public class RestaurantController {
 	public ModelAndView restaurantSignUp() {
 		ModelAndView mav = new ModelAndView();
 		List<FaqVO> lst = fservice.faqList(null);
+		List<countryVO> countrylist = countryService.countryList();
+		mav.addObject("countrylist", countrylist);
 		mav.addObject("faqList",lst);
 		mav.setViewName("/myrestaurant/restaurantSignUp");
 		return mav;
@@ -87,6 +93,8 @@ public class RestaurantController {
 		ModelAndView mav = new ModelAndView ();
 		List<FaqVO> lst = fservice.faqList(null);
 		List<FaqAnswerVO> alst = fservice.faqAnswerUpdateList(resno);
+		List<countryVO> countrylist = countryService.countryList();
+		mav.addObject("countrylist", countrylist);
 		mav.addObject("faqAnsList",alst);
 		mav.addObject("faqList",lst);
 		mav.addObject("vo",service.restaurantUpdateList(resno));

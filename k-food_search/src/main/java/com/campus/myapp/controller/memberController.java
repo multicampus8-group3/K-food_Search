@@ -15,14 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.campus.myapp.service.countryService;
 import com.campus.myapp.service.memberService;
 import com.campus.myapp.vo.ReviewVO;
+import com.campus.myapp.vo.countryVO;
 import com.campus.myapp.vo.memberVO;
 
 @Controller
 public class memberController {
 	@Inject
 	memberService service;
+	@Inject
+	countryService countryService;
+	
 	
    @GetMapping("/logout")
    public ModelAndView logout(HttpSession session) {
@@ -31,7 +36,7 @@ public class memberController {
       mav.setViewName("redirect:/");
       return mav;
    }
-	   	
+	
    // 관리자페이지에서 회원목록 보기
 	@GetMapping("/memberListToAdmin")
 	@ResponseBody
@@ -82,10 +87,18 @@ public class memberController {
 		}
 		return entity;
 	}
-	
+	/*
 	@GetMapping("/signUp")
 	public String signUp() {
 		return "/memberSignUp/signUp";
+	}*/
+	@GetMapping("/signUp")
+	public ModelAndView signUp() {
+		ModelAndView mav = new ModelAndView();
+		List<countryVO> countrylist = countryService.countryList();
+		mav.addObject("countrylist", countrylist);
+		mav.setViewName("/memberSignUp/signUp");
+		return mav;
 	}
 	
 	@PostMapping("/sighUpOk")
@@ -110,7 +123,10 @@ public class memberController {
 		ModelAndView mav = new ModelAndView();
 		String userid = (String)session.getAttribute("logId"); 
 		memberVO vo =service.memberSelect(userid); 
+		//List<CountryVO> countrylist=countryService.getCountries()
+		List<countryVO> countrylist = countryService.countryList();
 		mav.addObject("vo",vo);
+		mav.addObject("countrylist", countrylist);
 		mav.setViewName("member/mypage");
 		return mav;
 	}
