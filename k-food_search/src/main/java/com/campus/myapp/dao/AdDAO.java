@@ -15,4 +15,7 @@ public interface AdDAO {
 	public List<AdVO> adList(AdVO vo);
 	// 광고신청처리(수정)
 	public int adStatusChange(AdVO vo);
+	// 광고 db 입력
+	public int restaurantAdInsert(AdVO vo);
+	public List<AdVO> restaurantAdListView(String userid);
 }

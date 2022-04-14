@@ -9,4 +9,6 @@ public interface AdService {
 	public List<AdVO> adList(AdVO vo);
 	// 광고신청처리(수정)
 	public int adStatusChange(AdVO vo);
+	public int restaurantAdInsert(AdVO vo);
+	public List<AdVO> restaurantAdListView(String userid);
 }

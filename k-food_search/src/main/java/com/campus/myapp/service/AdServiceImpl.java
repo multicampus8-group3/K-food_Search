@@ -24,4 +24,16 @@ public class AdServiceImpl implements AdService {
 		return dao.adStatusChange(vo);
 	}
 
+	@Override
+	public int restaurantAdInsert(AdVO vo) {
+		// TODO Auto-generated method stub
+		return dao.restaurantAdInsert(vo);
+	}
+
+	@Override
+	public List<AdVO> restaurantAdListView(String userid) {
+		// TODO Auto-generated method stub
+		return dao.restaurantAdListView(userid);
+	}
+
 }

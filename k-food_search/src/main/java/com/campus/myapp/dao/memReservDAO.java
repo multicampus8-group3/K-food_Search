@@ -20,4 +20,8 @@ public interface memReservDAO {
 	public int memReservDel(memReservVO vo);
 	//내 예약자 명단 불러오기
 	public List<memReservVO> myRestaurantReserveList(String userid);
+	//예약 승인 밒 거절
+	public int reserveCheckOk(int no, String status);
+	//예약 삭제 - 손님이 거절한 예약
+	public int reserveCheckDel(int no);
 }

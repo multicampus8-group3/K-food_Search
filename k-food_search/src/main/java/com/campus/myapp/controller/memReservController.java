@@ -41,6 +41,16 @@ public class memReservController {
 	public List<memReservVO> restaurantReserveCheckList(HttpSession session) {
 		return service.myRestaurantReserveList((String)session.getAttribute("logId"));
 	}
+	//예약 승인 및 거절
+	@GetMapping("/reserveCheckOk")
+	public int reserveCheckOk(int no, String status) {
+		return service.reserveCheckOk(no, status);
+	}
+	//손님 거절 예약 삭제
+	@GetMapping("/reserveCheckDel")
+	public int reserveCheckDel(int no) {
+		return service.reserveCheckDel(no);
+	}
 	@PostMapping("memReservCancel")
 	public int memReservCancel(memReservVO vo){
 		System.out.println(vo.getNo());
