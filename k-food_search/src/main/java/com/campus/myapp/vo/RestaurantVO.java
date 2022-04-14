@@ -13,8 +13,8 @@ public class RestaurantVO {
 	private String restype;
 	private String resimg;
 	private String reshour;
-	private String website;
 	private String reshourend;
+	private String website;
 	
 	private String searchKey;
 	private String searchWord;

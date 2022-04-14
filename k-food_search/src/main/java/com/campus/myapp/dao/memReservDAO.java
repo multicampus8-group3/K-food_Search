@@ -18,6 +18,6 @@ public interface memReservDAO {
 	public int memReservCancel(memReservVO vo);
 	//예약목록에서 삭제기능
 	public int memReservDel(memReservVO vo);
-
-	
+	//내 예약자 명단 불러오기
+	public List<memReservVO> myRestaurantReserveList(String userid);
 }

@@ -33,7 +33,6 @@
 				document.querySelectorAll('#restype option')[i].setAttribute("selected", "true");
 			}	
 		}
-
 	});
 	
 	function DrDw2(F,b){
@@ -77,7 +76,6 @@
 	function changeView(){
 		$(event.target).parent().css('display','none');
 		$('#resfile').css('display','block');
-		$('#resimg').css('display','none');
 	}
 </script>
 <style>
@@ -174,11 +172,13 @@
 			</select><br/>
 			<span>매장 메인 이미지</span><br/>
 			<span id='resimg'><img src='/resImg/${vo.resimg}' title='현재 등록 중인 이미지' style='width:100px; height:100px; border-radius:50px;'/><br/></span>
-			<span>${vo.resimg } <input type='button' value='x' onclick='changeView()'/></span>
+			<span>${vo.resimg } &nbsp;<input type='button' value='이미지 교체' onclick='changeView()'/></span>
 			<input type='file' name='resimg1' id='resfile' style='display:none;'/><br/>
 			<input type='hidden' name='resimgOrg' value='${vo.resimg}'/>
-			<span>영업 시간</span><br/>
+			<span>영업 시작 시간</span><br/>
 			<input type="time" name='reshour' value='${vo.reshour }'/><br/>
+			<span>영업 종료 시간</span><br/>
+			<input type="time" name='reshourend' value='${vo.reshourend }'/><br/>
 			<span>가게 홈페이지 *(선택 사항)</span><br/>
 			<input type="text" name='website' value='${vo.website }'/><br/>
 			<img src='/img/qna.png' width='50px' id='qna'/><br/>

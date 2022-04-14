@@ -3,6 +3,7 @@ package com.campus.myapp.service;
 import java.util.List;
 
 import com.campus.myapp.vo.ReviewVO;
+import com.campus.myapp.vo.memReservVO;
 import com.campus.myapp.vo.memberVO;
 
 public interface memberService {
@@ -18,6 +19,5 @@ public interface memberService {
 	public int ownershipChange(memberVO vo);
 	public int memberUpdate(memberVO vo);
 	public int memberDelete(memberVO vo);
-
 
 }
