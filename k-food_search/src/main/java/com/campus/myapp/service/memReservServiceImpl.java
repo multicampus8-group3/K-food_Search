@@ -33,6 +33,12 @@ public class memReservServiceImpl implements memReservService {
 	public int memReservDel(memReservVO vo) {
 		return dao.memReservDel(vo);
 	}
+
+	@Override
+	public List<memReservVO> myRestaurantReserveList(String userid) {
+		// TODO Auto-generated method stub
+		return dao.myRestaurantReserveList(userid);
+	}
 	
 	
 }

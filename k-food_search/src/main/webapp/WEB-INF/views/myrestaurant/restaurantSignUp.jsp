@@ -152,13 +152,14 @@
 			</select><br/>
 			<span>매장 메인 이미지</span><br/>
 			<input type='file' name='resimg1'/><br/>
-			<span>영업 시간</span><br/>
+			<span>영업 시작 시간</span><br/>
 			<input type="time" name='reshour'/><br/>
+			<span>영업 종료 시간</span><br/>
+			<input type="time" name='reshourend'/><br/>
 			<span>가게 홈페이지 *(선택 사항)</span><br/>
 			<input type="text" name='website'/><br/>
 			<img src='/img/qna.png' width='50px' id='qna' style='cursor:pointer'/><br/>
-			<div id='qnaDiv'></div>
-			
+			<div id='qnaDiv'></div>		
 			<button>등록</button>
 		</form>
 	</div>
