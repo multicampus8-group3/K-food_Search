@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.myapp.dao.AdDAO">
+	
+	<select id="adList" resultType="com.campus.myapp.vo.AdVO">
+		select ad.no no, res.resname resname, ad.userid userid, mem.tel tel, 
+		ad.bannerimg bannerimg, date_format(ad.startdate,'%Y-%m-%d') startdate, 
+		date_format(ad.enddate,'%Y-%m-%d') enddate, ad.writedate writedate, ad.status status
+		from ad_table as ad
+		join restaurant_table as res 
+		on ad.resno = res.resno
+		join member_table as mem
+		on ad.userid = mem.userid
+		order by ad.no desc
+	</select>
+	
+	<update id="adStatusChange">
+		update ad_table set status=#{status}
+		where no=#{no}
+	</update>
+	
+</mapper>

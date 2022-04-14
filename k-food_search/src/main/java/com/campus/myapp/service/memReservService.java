@@ -14,5 +14,5 @@ public interface memReservService {
 	public int memReservCancel(memReservVO vo);
 	//예약목록에서 삭제기능
 	public int memReservDel(memReservVO vo);
-
+	public List<memReservVO> myRestaurantReserveList(String userid);
 }

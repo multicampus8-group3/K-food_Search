@@ -7,6 +7,12 @@
 	<select id="memberList" resultType="com.campus.myapp.vo.memberVO">
 		select userid, username, usertype, tel, usernation, favornation, favorstate, writedate
 		from member_table
+		order by usertype
+	</select>
+	
+	<select id="getSearchList" resultType="com.campus.myapp.vo.memberVO">
+		select userid, username, usertype, tel, usernation, favornation, favorstate, writedate
+		from member_table
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'
 		</if>
@@ -37,5 +43,8 @@
   	  	favornation=#{favornation}, favorstate=#{favorstate}, tel=#{tel}, usertype=#{usertype}  
   	  	where userid=#{userid}
   	</update>
+  	<delete id="memberDelete">
+  		delete from member_table where userid=#{userid}
+  	</delete>
   	
 </mapper>

@@ -13,7 +13,11 @@ public class RestaurantVO {
 	private String restype;
 	private String resimg;
 	private String reshour;
+	private String reshourend;
 	private String website;
+	
+	private String searchKey;
+	private String searchWord;
 	
 	public Integer getResno() {
 		return resno;
@@ -92,5 +96,23 @@ public class RestaurantVO {
 	}
 	public void setWebsite(String website) {
 		this.website = website;
+	}
+	public String getSearchKey() {
+		return searchKey;
+	}
+	public void setSearchKey(String searchKey) {
+		this.searchKey = searchKey;
+	}
+	public String getSearchWord() {
+		return searchWord;
+	}
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
+	public String getReshourend() {
+		return reshourend;
+	}
+	public void setReshourend(String reshourend) {
+		this.reshourend = reshourend;
 	}
 }

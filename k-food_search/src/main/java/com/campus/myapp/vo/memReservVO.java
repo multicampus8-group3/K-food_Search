@@ -13,6 +13,9 @@ public class memReservVO {
 	//식당정보
 	private String resname;
 	private String website;
+	//예약 회원 정보
+	private String username;
+	private String tel;
 	
 	public int getNo() {
 		return no;
@@ -76,7 +79,16 @@ public class memReservVO {
 	public void setWebsite(String website) {
 		this.website = website;
 	}
-	
-	
-
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 }

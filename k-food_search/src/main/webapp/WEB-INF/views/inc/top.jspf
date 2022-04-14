@@ -139,6 +139,7 @@
 		margin-top:20px;
 		margin-bottom:20px;
 		background-color:#3E6167; 
+		border: 1px solid #597973;
 	}
 	
 	.menu_button{

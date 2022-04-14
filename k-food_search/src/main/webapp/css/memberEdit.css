@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+#memberEdit{
+	border-top: 1px solid black;
+	width: 555px;
+}
+#memberEdit>ul>li:nth-child(1){
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 40px;
+}
+#memberEdit>ul>li:nth-child(3){
+	float: left;
+	margin-left: 80px;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bold;
+	vertical-align: top;
+}
+#memberEdit>ul>li:nth-child(4){
+	float: left;
+	margin-left: 40px;
+	vertical-align: top;
+}
+#memberEdit>ul>li:nth-child(4) input{
+	width: 200px;
+	height: 24px;
+}
+#memberEdit>ul>li:nth-child(5){
+	float: left;
+	margin-left: 10px;
+	vertical-align: top;
+}
+#memberEdit>ul>li:nth-child(5) input{
+	width: 60px;
+	height: 30px;
+	color: #fff;
+	background-color: rgba(89, 121, 115, 0.7);
+	border: 1px solid #2F4858;
+}
+
+#memberEdit2{
+	border-top: 1px solid black;
+	width: 555px;
+}
+#mFrm{
+	padding-left: 50px;
+}
+#mFrm>ul>li:nth-child(1){
+	margin-top: 15px;
+}
+#mFrm input, select {
+	background-color:inherit;
+	border:none;
+	border-bottom:1px solid #2F4858;
+	box-sizing:border-box;
+	height:30px;
+	margin-left: 21px;
+}
+#chgbtn, #signEditBtn, #signDelBtn{
+	border: 1px solid #2F4858 !important;
+	background-color: rgba(89, 121, 115, 0.7) !important;
+	color: white;
+	cursor:pointer;
+	font-weight: 600;
+	height:40px;
+	width: 120px;
+}
+.inforName{
+	display:inline-block;
+	width:100%;
+	margin-top:30px;
+	margin-bottom: 10px;
+	font-size:18px;
+	color: #2F4858;
+	font-weight: 600;
+}
+#chgbtn{
+	float: right;
+}
+.inputStyle{
+	width: 73%;
+}
+.inputStylenation{
+	width:36%;
+}
+.inputStylestate{
+	width:36%;
+	margin-left: 0 !important;
+}
+.inputStyletel1{
+	width:18%;
+}
+.inputStyletel2{
+	margin-left: 0 !important;
+	width:20%;
+}
+#mFrm>ul>li:last-child{
+	margin-top: 30px;
+	margin-left: 17%;
+}

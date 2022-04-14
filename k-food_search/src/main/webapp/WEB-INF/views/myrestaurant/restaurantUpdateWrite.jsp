@@ -175,8 +175,10 @@
 			<span>${vo.resimg } &nbsp;<input type='button' value='이미지 교체' onclick='changeView()'/></span>
 			<input type='file' name='resimg1' id='resfile' style='display:none;'/><br/>
 			<input type='hidden' name='resimgOrg' value='${vo.resimg}'/>
-			<span>영업 시간</span><br/>
+			<span>영업 시작 시간</span><br/>
 			<input type="time" name='reshour' value='${vo.reshour }'/><br/>
+			<span>영업 종료 시간</span><br/>
+			<input type="time" name='reshourend' value='${vo.reshourend }'/><br/>
 			<span>가게 홈페이지 *(선택 사항)</span><br/>
 			<input type="text" name='website' value='${vo.website }'/><br/>
 			<img src='/img/qna.png' width='50px' id='qna'/><br/>

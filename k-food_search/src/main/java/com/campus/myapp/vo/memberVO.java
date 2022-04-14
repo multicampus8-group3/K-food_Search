@@ -9,7 +9,7 @@ public class memberVO {
 	private String favorstate;
 	private String tel;
 	private String usertype;
-	private String wrtedate;
+	private String writedate;
 	
 	private String searchKey;
 	private String searchWord;
@@ -71,11 +71,11 @@ public class memberVO {
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
-	public String getWrtedate() {
-		return wrtedate;
+	public String getWritedate() {
+		return writedate;
 	}
-	public void setWrtedate(String wrtedate) {
-		this.wrtedate = wrtedate;
+	public void setWritedate(String writedate) {
+		this.writedate = writedate;
 	}
 	
 	public String[] getTelArray() {

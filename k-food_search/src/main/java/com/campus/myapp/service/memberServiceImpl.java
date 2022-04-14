@@ -43,9 +43,16 @@ public class memberServiceImpl implements memberService {
 		return dao.ownershipChange(vo);
 	}
 	@Override
+	public List<memberVO> getSearchList(memberVO vo) {
+		return dao.getSearchList(vo);
+	}
+	@Override
 	public int memberUpdate(memberVO vo) {
-		// TODO Auto-generated method stub
 		return dao.memberUpdate(vo);
+	}
+	@Override
+	public int memberDelete(memberVO vo) {
+		return dao.memberDelete(vo);
 	}
 	
 	

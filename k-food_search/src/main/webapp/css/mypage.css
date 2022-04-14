@@ -1,28 +1,55 @@
 @charset "UTF-8";
+.container{
+	width: 1200px;	
+}
 .container div{
 	float: left;
 }
+.hello{
+	margin-top: 30px;
+	width: 100%;
+	font-size: 24px;
+}
 .mypage_menu{
-	margin: 0px; padding: 0px; width: 200px;
-	outline: 1px solid red;
+	margin-top: 30px;
+	padding: 20px; 
+	width: 555px;
+	height: 600px;
+	background-color: rgba(205, 188, 171, 0.3);
+	line-height: 32px;
+	overflow: auto;
+	border-radius: 3% 0 0 3%;
+	border-bottom: 5px solid #2F4858;
+	border-left: 5px solid #2F4858;
 }
-.mypage_menu li{
-	text-align: center;
-	font-size: 20px;
-	padding-bottom: 10px;
-	outline: 1px solid gray;
+.mypage_menu span{
+	font-weight: 900;
+	font-size: 32px;
+	color: #2F4858;
+	cursor: pointer;
+	border-bottom: 1px solid #2F4858;
+	border-left: 15px solid #2F4858;
 }
-
-.mypage_menu li a{
-	text-decoration: none;
-	color: black;
-}
-.mypage_menu li a:hover{
+.mypage_menu span.on{
 	color: red;
+	border-bottom: 1px solid red;
+	border-left: 15px solid red;
+}
+.mypage_menu span:hover{
+	font-size: 48px;
+}
+.mypage_menu b{
+	margin-left: 65%;
 }
 .mypage_container{
-	margin: 0px; padding: 0px; width: 1000px;
-	outline: 1px solid blue;	
+	margin-top: 30px;
+	padding: 20px; 
+	width: 555px;
+	height: 600px;
+	background-color: rgba(165, 166, 143, 0.3);
+	border-radius: 0 3% 3% 0;
+	border-bottom: 5px solid #2F4858;
+	border-right: 5px solid #2F4858;
 }
 
 .mypage_container>div{
