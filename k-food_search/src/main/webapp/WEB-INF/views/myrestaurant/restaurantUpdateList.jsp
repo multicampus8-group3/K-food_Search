@@ -11,6 +11,7 @@
 				$(this).css('width','10%').css('transition-duration','0.5s');
 			});
 		});
+		
 		function resListView(){
 			$.ajax({
 				type:'get',
@@ -75,6 +76,9 @@
 			height:50px;
 			line-height:50px;
 			border-bottom:1px solid black;
+			overflow:hidden;
+			white-space:nowrap;
+			text-overflow: ellipsis;
 		}
 		.listMenu{
 			border-top:2px solid black;

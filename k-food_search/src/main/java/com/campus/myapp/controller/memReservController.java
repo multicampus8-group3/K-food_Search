@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,10 +31,19 @@ public class memReservController {
 		
 		return service.memReservList(vo);
 	}
+	@GetMapping("/restaurantReserveCheck")
+	public ModelAndView restaurantReserveCheck() {
+		ModelAndView mav = new ModelAndView ();
+		mav.setViewName("/myrestaurant/restaurantReserveCheck");
+		return mav;
+	}
+	@GetMapping("/restaurantReserveCheckList")
+	public List<memReservVO> restaurantReserveCheckList(HttpSession session) {
+		return service.myRestaurantReserveList((String)session.getAttribute("logId"));
+	}
 	@PostMapping("memReservCancel")
-	public int memReservCancel(memReservVO vo)	{
+	public int memReservCancel(memReservVO vo){
 		System.out.println(vo.getNo());
 		return service.memReservCancel(vo);
 	}
-	
 }

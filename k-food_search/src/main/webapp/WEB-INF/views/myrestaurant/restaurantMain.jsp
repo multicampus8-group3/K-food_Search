@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<style>
 		#resMainDiv{
 			width:1000px;
@@ -32,7 +34,41 @@
 			height:60px;
 			font-size:1.2em;
 		}
+		.bell {
+	  		animation-duration: 0.1s;
+	  		animation-name: rot;
+	  		animation-iteration-count: infinite;
+	  		animation-direction: alternate;
+	  		transform-origin:50% 5%;
+	  		width:50px;
+		}
+	
+		@keyframes rot {
+	  		0% {transform: rotateZ(-30deg);}
+	  		100% {transform: rotateZ(30deg);}
+		}
+		
+		.balloon {
+			position:relative;
+			margin: 50px;
+			width:400px;
+			height:100px;
+			background:#ddd;
+			border-radius: 10px;
+		}
+		.balloon:after {
+			border-top:15px solid #ddd;
+			border-left: 15px solid transparent;
+			border-right: 0px solid transparent;
+			border-bottom: 0px solid transparent;
+			content:"";
+			position:absolute;
+			top:10px;
+			left:-15px;
+		}
 	</style>
+	<div class='balloon'></div>
+	<img src='img/bell.png' class='bell'/>
 	<div id='resMainDiv'>
 		<div>owner's Menu</div>
 		${username }님 환영합니다.

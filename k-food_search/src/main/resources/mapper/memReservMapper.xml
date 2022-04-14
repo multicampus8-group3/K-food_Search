@@ -28,5 +28,10 @@
   	  	where no=#{no}
   	</update>
   	
+  	<select id="myRestaurantReserveList" resultType="memReservVO">
+  		select r.userid, m.username, m.tel, r.reservp, r.reservdate, r.reservtime, res.resname 
+  		from member_reserv r join member_table m on r.userid=m.userid join restaurant_table res on res.resno=r.resno 
+  		where res.userid=#{param1} order by r.resno;
+  	</select>
   	
 </mapper>

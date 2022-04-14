@@ -22,12 +22,12 @@
 	</select>
 	
 	<insert id="restaurantInsert">
-		insert into restaurant_table(resname,resadress,rescontent,userid,resnation,resstate,restype,resimg,reshour,website) 
-		value(#{resname},#{resadress},#{rescontent},#{userid},#{resnation},#{resstate},#{restype},#{resimg},#{reshour},#{website})
+		insert into restaurant_table(resname,resadress,rescontent,userid,resnation,resstate,restype,resimg,reshour,reshourend,website) 
+		value(#{resname},#{resadress},#{rescontent},#{userid},#{resnation},#{resstate},#{restype},#{resimg},#{reshour},#{reshourend},#{website})
 	</insert>
 	
 	<select id="restaurantMyList" resultType="RestaurantVO">
-		select resno, resname, resadress, reshour, format(resgrade,1) resgrade, 
+		select resno, resname, resadress, reshour, reshourend, format(resgrade,1) resgrade, 
 		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
 		from restaurant_table where userid = #{param1} 
 		order by resno asc
@@ -38,7 +38,7 @@
 	</delete>
 	
 	<select id="restaurantUpdateList" resultType="RestaurantVO">
-		select resno, resimg, resname, rescontent, reshour, website, restype, resadress, format(resgrade,1) resgrade, 
+		select resno, resimg, resname, rescontent, reshour, reshourend, website, restype, resadress, format(resgrade,1) resgrade, 
 		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
 		from restaurant_table where resno = #{param1}
 	</select>
@@ -52,6 +52,6 @@
 	</select>
 	
 	<update id="restaurantUpdateOk">
-		update restaurant_table set resname=#{resname}, resadress=#{resadress}, rescontent=#{rescontent}, userid=#{userid}, resnation=#{resnation}, resstate=#{resstate}, restype=#{restype}, resimg=#{resimg}, reshour=#{reshour}, website=#{website} where resno=#{resno}
+		update restaurant_table set resname=#{resname}, resadress=#{resadress}, rescontent=#{rescontent}, userid=#{userid}, resnation=#{resnation}, resstate=#{resstate}, restype=#{restype}, resimg=#{resimg}, reshour=#{reshour}, reshourend=#{reshourend}, website=#{website} where resno=#{resno}
 	</update>
 </mapper>
