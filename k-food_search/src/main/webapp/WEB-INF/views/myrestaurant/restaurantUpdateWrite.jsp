@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
+<script src="/js/backjs/resCheck.js"></script>
 <script>
 	$(()=>{
 		
@@ -20,13 +21,6 @@
 		qna += "<input type='text' name='content'/><input type='button' value='x' onclick='faqDel()'/><br/></span>"
 		$("#qna").click(function(){
 			$("#qnaDiv").append(qna);
-		});
-		
-		$('#acordian div').mouseenter(function(){
-			$(this).css('width','50%').css('transition-duration','0.5s');
-		});
-		$('#acordian div').mouseleave(function(){
-			$(this).css('width','10%').css('transition-duration','0.5s');
 		});
 		
 		for(var i=0; i<document.querySelectorAll('#restype option').length; i++){
@@ -96,48 +90,13 @@
 		height:30px;
 		margin-bottom:20px;
 	}
-	#acordian{
-		width:1200px;
-		height:300px;
-		overflow:hidden;
-		background-image:url('img/acorImg/acorback.jpg');
-		background-size:600px;
-		margin:0 auto;
-		margin-top:50px;
-		margin-bottom:50px;
-	}
-	#acordian div{
-		width:10%;
-		height:100%;
-		float:left;
-		overflow:hidden;
-	}
-	#acordian img{
-		width:600px;
-	}
 	.mainText{
 		font-size:2em !important;
 	}
 </style>
-	<div id='acordian'>
-		<div>
-			<img src='img/acorImg/acor1.jpg'/>
-		</div>
-		<div>
-			<img src='img/acorImg/acor2.jpg'/>
-		</div>
-		<div>
-			<img src='img/acorImg/acor3.jpg'/>
-		</div>
-		<div>
-			<img src='img/acorImg/acor4.jpg'/>
-		</div>
-		<div>
-			<img src='img/acorImg/acor5.jpg'/>
-		</div>
-	</div>
+	﻿<%@ include file="acordian.jspf" %>
 	<div class='resSignUpDiv'>
-		<form method='post' action='/restaurantUpdateOk' enctype="multipart/form-data">
+		<form method='post' action='/restaurantUpdateOk' enctype="multipart/form-data" id='resSignUpFrm'>
 			<input type='hidden' name='resno' value='${vo.resno}'/>
 			<span class='mainText'>업체등록</span><br/>
 			<hr style='margin-bottom:40px;'/> 
@@ -159,7 +118,7 @@
 			</select><br/>
 			<span>업종 분류</span><br/> 
 			<select name='restype' id='restype'>
-				<option>타입선택</option>
+				<option value=''>타입선택</option>
 				<option>타입1</option>
 				<option>타입2</option>
 				<option>타입3</option>
@@ -170,9 +129,9 @@
 			<input type='file' name='resimg1' id='resfile' style='display:none;'/><br/>
 			<input type='hidden' name='resimgOrg' value='${vo.resimg}'/>
 			<span>영업 시작 시간</span><br/>
-			<input type="time" name='reshour' value='${vo.reshour }'/><br/>
+			<input type="time" name='reshour' value='${vo.reshour }' id='reshour'/><br/>
 			<span>영업 종료 시간</span><br/>
-			<input type="time" name='reshourend' value='${vo.reshourend }'/><br/>
+			<input type="time" name='reshourend' value='${vo.reshourend }' id='reshourend'/><br/>
 			<span>가게 홈페이지 *(선택 사항)</span><br/>
 			<input type="text" name='website' value='${vo.website }'/><br/>
 			<img src='/img/qna.png' width='50px' id='qna'/><br/>
