@@ -3,13 +3,6 @@
 	<script>
 		$(()=>{
 			resListView();
-			
-			$('#acordian div').mouseenter(function(){
-				$(this).css('width','50%').css('transition-duration','0.5s');
-			});
-			$('#acordian div').mouseleave(function(){
-				$(this).css('width','10%').css('transition-duration','0.5s');
-			});
 		});
 		
 		function resListView(){
@@ -84,43 +77,8 @@
 			border-top:2px solid black;
 			border-bottom:2px solid black !important;
 		}	
-		#acordian{
-			width:1200px;
-			height:300px;
-			overflow:hidden;
-			background-image:url('img/acorImg/acorback.jpg');
-			background-size:600px;
-			margin:0 auto;
-			margin-top:50px;
-			margin-bottom:50px;
-		}
-		#acordian div{
-			width:10%;
-			height:100%;
-			float:left;
-			overflow:hidden;
-		}
-		#acordian img{
-			width:600px;
-		}	
 	</style>
-	<div id='acordian'>
-		<div>
-			<img src='img/acorImg/acor1.jpg'/>
-		</div>
-		<div>
-			<img src='img/acorImg/acor2.jpg'/>
-		</div>
-		<div>
-			<img src='img/acorImg/acor3.jpg'/>
-		</div>
-		<div>
-			<img src='img/acorImg/acor4.jpg'/>
-		</div>
-		<div>
-			<img src='img/acorImg/acor5.jpg'/>
-		</div>
-	</div>
+	﻿<%@ include file="acordian.jspf" %>
 	<div class='resSignUpDiv'>
 		<span class='mainText'>매장 리스트</span>
 		<ul class='resList'></ul>

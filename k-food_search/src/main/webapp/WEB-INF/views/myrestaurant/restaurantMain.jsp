@@ -76,9 +76,9 @@
 			<li><a href='/restaurantSignUp'>업체 등록</a></li>
 			<li>10.</li>
 			<li>- 당신의 사업체를 등록하세요.</li>
-			<li><a href='/restaurantUpdateList'>업체 수정</a></li>
+			<li><a href='/restaurantUpdateList'>내 업체 정보</a></li>
 			<li>13.</li>
-			<li>- 업체에 등록된 정보를 수정하세요.</li>
+			<li>- 등록된 업체의 정보를 확인하세요.</li>
 			<li><a href='/restaurantReserveCheck'>예약 현황</a></li>
 			<li>13.</li>
 			<li>- 고객의 예약 현황을 확인하세요.</li>

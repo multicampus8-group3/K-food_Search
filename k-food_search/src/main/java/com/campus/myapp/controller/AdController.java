@@ -99,15 +99,16 @@ public class AdController {
 		}//파일 저장 및 vo 배너 이미지 set 완료
 		//인서트 작성 부분
 		System.out.println(vo.getBannerimg());
-		service.restaurantAdInsert(vo);
 		//엔티티 전송부분
 		try {
 			msg = "<script>alert('광고 신청이 완료되었습니다.');location.href='/myrestaurant'</script>";
+			service.restaurantAdInsert(vo);
 			//글목록으로 이동
 			entity = new ResponseEntity<String>(msg,hearders,HttpStatus.OK);
 		}catch(Exception e) {
 			e.printStackTrace();
-			msg = "<script>alert('광고 신청이 실패하였습니다.');history.back()</script>";
+			rc.fileDelete(path, vo.getBannerimg());
+			msg = "<script>alert('광고 신청이 실패하였습니다. \\n매장등록번호가 맞는지 확인하세요!!');history.back()</script>";
 			//글 등록폼으로
 			entity = new ResponseEntity<String>(msg,hearders,HttpStatus.BAD_REQUEST);
 		}
