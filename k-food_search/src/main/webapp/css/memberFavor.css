@@ -1,51 +1,95 @@
 @charset "UTF-8";
-
+.memberFav{
+	float: left;
+	width: 1178px;
+	margin-top: 20px;
+	height: 700px;
+	margin-bottom: 20px;
+	border: 1px solid rgba(62, 97, 103, 0.3);
+	border-radius: 5px;
+	padding: 10px;
+}
+.memberFav:hover{
+	box-shadow: 1px 1px 10px rgba(42, 72, 88, 0.3);
+}
+.memberFav:focus-within {
+  	box-shadow: 1px 1px 10px rgba(42, 72, 88, 0.3);
+}
 .memFavorList li{
 	float: left;
-	background-color: rgba(165, 166, 143, 0.2);
 	border: 1px solid rgba(165, 166, 143, 0.7);
 	border-radius: 5px;
 	margin-top: 10px;
-	width: 28%;
+	margin-left: 10px;
+	width: 48%;
+	height: 150px;
+}
+.memFavorList li:nth-child(2n){
+	float: right;
+	margin-left: 0;
+	margin-right: 10px;
+}
+
+.memFavorList li div:nth-child(1){
+	float: left;
+	width: 100%;
+	height: 25px;
+	line-height: 25px;
+	position:relative;
+	z-index: 1;
+}
+.memFavorList li div:nth-child(2){
+	float: left;
+	width: 73%;
+	height: 125px;
 	margin-left: 2%;
-	margin-right: 2%;
+}
+.memFavorList li div:nth-child(2) span:nth-child(1){
+	font-size: 18px;
+}
+.memFavorList li div:nth-child(2) span:nth-child(2){
+	color: red;
+	font-weight: bold;
+}
+.memFavorList li div:nth-child(2) span:nth-child(3){
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+span.favon{
+	font-weight: bold;
+	color: green;
+}
+span.favoff{
+	font-weight: bold;
+	color: red;
+}
+
+.memFavorList li div:nth-child(3){
+	float: left;
+	width: 25%;
+	height: 150px;
+	margin-top: -25px;
 }
 .memFavorList img{
 	text-align: center;
 	width: 100%;
-	height: 100px;
-	margin-top: 5px;
-	margin-bottom: 10px;
+	height: 100%;
 	object-fit: cover;
-}
-.memFavorList li span{
-	display: block;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	width: 100%;
-	white-space: nowrap;
-	margin-bottom: 5px;
-	color: #2F4858;
-}
-.memFavorList li span:last-child{
-	margin-bottom: 10px;
-	font-weight: bold;
-}
-.memFavorList li span b {
-	font-size: 16px;
-	overflow: hidden;
-	white-space: nowrap;
 }
 .heart{
 	width: 20px !important;
-	font-size: 18px;
-	margin-left: 82%;
-	margin-top: 3px;
+	font-size: 24px;
+	margin-left: 95%;
 	color: #FF69B4 !important;
 }
 #memberFavor{
-	border-top: 1px solid black;
-	width: 555px;
-	height: 550px;
+	border-top: 1px solid rgba(62, 97, 103, 0.3);
+	width: 100%;
+	height: 630px;
 	overflow: auto;
+}
+
+.memFavorList li:hover{
+	background-color: rgba(205, 188, 171, 0.1);
 }

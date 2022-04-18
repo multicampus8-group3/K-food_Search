@@ -5,8 +5,9 @@
 <mapper namespace="com.campus.myapp.dao.memFavorDAO">
 
 	<select id="memFavorList" resultType="com.campus.myapp.vo.memFavorVO">
-		select res.resimg resimg, res.resname resname, res.resnation resnation,
-		res.resstate resstate, res.resgrade resgrade, res.reshour reshour, res.reshourend reshourend
+		select res.resimg resimg, res.resname resname, res.resnation resnation, res.resadress resadress,
+		res.resstate resstate, res.resgrade resgrade, res.reshour reshour, 
+		res.reshourend reshourend, res.restype restype
 		from member_favorite as memf
 		join restaurant_table as res
 		on res.resno = memf.resno

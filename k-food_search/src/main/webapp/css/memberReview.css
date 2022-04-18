@@ -1,49 +1,67 @@
 @charset "UTF-8";
+
+.memberRev{
+	float: left;
+	width: 1178px;
+	margin-top: 20px;
+	height: 600px;
+	border: 1px solid rgba(62, 97, 103, 0.3);
+	border-radius: 5px;
+	padding: 10px;
+}
+.memberRev:hover{
+	box-shadow: 1px 1px 10px rgba(42, 72, 88, 0.3);
+}
+.memberRev:focus-within {
+  	box-shadow: 1px 1px 10px rgba(42, 72, 88, 0.3);
+}
 #memberReviewList {
-	width: 360px;
-	height: 180px;
+	width: 95%;
+	height: 200px;
 	margin-top: 20px;
 	margin-left: 5px;
-	background-color: rgba(89, 121, 115, 0.2);
-	position: relative;
 	padding-left: 15px;
 	padding-right: 15px;
-	border: 1px solid rgba(89, 121, 115, 0.7);
+	border-bottom: 1px solid rgba(62, 97, 103, 0.3);
 	border-right: none;
 }
 #memberReviewList img {
-	position: absolute;
-	height: 100%;
-	width: 150px;
-	right: -150px;
-	top:-1px;
-	border: 1px solid rgba(89, 121, 115, 0.7);
-	border-left: none;
+	float: left;
+	height: 90%;
+	width: 15%;
 }
 #a{
-	width: 100%;
+	float: right;
+	width: 83%;
 	display: block;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	margin-top:5px;
+	margin-top:10px;
 	margin-bottom: 5px;
-	border-bottom: 1px solid black;
 	line-height: 30px;
 }
-#a a{
+#a span{
 	font-size: 28px;
 	margin-left: 10px;
 	font-weight: 600;
 	color: #2F4858;
 }
 #b{
-	width: 150px;
 	float: right;
+	width: 83%;
+}
+#b span{
+	margin-left: 10px;
+}
+.adrr{
+	float: right;
+	margin-right: 10px;
 }
 #c{
-	width: 100%;
-	height: 90px;
+	float: right;
+	width: 83%;
+	height: 95px;
 	line-height: 30px;
 	text-overflow: ellipsis;
 	white-space: break-word;
@@ -55,10 +73,14 @@
 }
 #c b{
 	color: red;
+	margin-left: 10px;
+}
+#c span{
+	margin-left: 10px;
 }
 #memberReview{
-	border-top: 1px solid black;
-	width: 555px;
-	height: 550px;
+	border-top: 1px solid rgba(62, 97, 103, 0.3);
+	width: 100%;
+	height: 530px;
 	overflow: auto;
 }

@@ -1,12 +1,29 @@
 @charset "UTF-8";
+.memberRes{
+	float: right;
+	width: 57%;
+	margin-left: 1%;
+	margin-top: 20px;
+	height: 600px;
+	border: 1px solid rgba(62, 97, 103, 0.3);
+	border-radius: 5px;
+	padding: 10px;
+}
+.memberRes:hover{
+	box-shadow: 1px 1px 10px rgba(42, 72, 88, 0.3);
+}
+.memberRes:focus-within {
+  	box-shadow: 1px 1px 10px rgba(42, 72, 88, 0.3);
+}
 .memberReservList{
-	width: 515px;
+	width: 500px;
 	float: left;
 	margin-top: 20px;
 	margin-left: 20px;
 	position: relative;
 }
 .memberReservInfo{
+	float: left;
 	width: 250px;
 	padding: 10px;
 	background-color: rgba(125, 144, 159, 0.2);
@@ -34,9 +51,9 @@
 	float: right;
 }
 #memberReserv{
-	border-top: 1px solid black;
-	width: 555px;
-	height: 550px;
+	width: 100%;
+	height: 500px;
+	border-top: 1px solid rgba(62, 97, 103, 0.3);
 	overflow: auto;
 }
 .resname{
@@ -49,21 +66,24 @@
 	background-color: rgba(89, 121, 115, 0.7);
 	border: 1px solid #2F4858;
 	margin-top: 5px;
+	margin-top: 5px;
 }
 
 .memberReservListOk{
-	width: 515px;
-	float: left;
+	float: right;
+	width: 500px;
+	float: right;
 	margin-top: 20px;
-	margin-left: 20px;
+	margin-right: 20px;
 	position: relative;
 }
 .memberReservInfoOk{
+	float: right;
 	width: 250px;
 	margin-left: 235px;
 	padding: 10px;
 	background-color: rgba(125, 144, 159, 0.2);
-	border: 1px solid #2F4858;
+	border: 1px solid rgba(125, 144, 159, 0.7);
 	border-radius: 8px;
 }
 .memberReservInfoOk li:first-child{
@@ -80,6 +100,6 @@
 .writedateOk{
 	position: absolute;
 	width: 150px;
-	right: 285px;
+	right: 280px;
 	top: 85%;
 }
