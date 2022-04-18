@@ -25,8 +25,6 @@
 		left: 10px;
 		width: 980px;
 		height: 600px;
-		
-		border: solid 1px blue;
 	}
 	
 	#menu{
@@ -36,7 +34,7 @@
 		width: 980px;
 		height: 200px;
 		
-		border: solid 1px blue;
+		border: solid 0px blue;
 	}
 	#top_menu{
 		position: relative;
@@ -45,7 +43,7 @@
 		width: 980px;
 		height: 350px;
 		
-		border: solid 1px blue;
+		border: solid 0px blue;
 	}
 	#bm_list{
 		background-color:#ffff00;
@@ -70,7 +68,7 @@
 		width: 980px;
 		height: 450px;
 		
-		border: solid 1px blue;
+		border: solid 0px blue;
 	}
 	
 	#footer1{
@@ -80,7 +78,7 @@
 		width: 980px;
 		height: 170px;
 		
-		border: solid 1px orange;
+		border: solid 0px orange;
 	}
 	#mapSearch{
 		position:absolute;

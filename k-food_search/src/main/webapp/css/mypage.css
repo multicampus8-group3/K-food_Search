@@ -1,6 +1,7 @@
 @charset "UTF-8";
 .container{
 	width: 1200px;	
+	margin: 0 auto;
 }
 .container div{
 	float: left;
