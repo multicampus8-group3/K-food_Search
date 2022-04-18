@@ -1,6 +1,7 @@
 @charset "UTF-8";
 .container{
-	width: 1200px;	
+	width: 1200px;
+	margin: 0px auto;
 }
 .container div{
 	float: left;
@@ -58,4 +59,7 @@
 
 .mypage_container>div.on{
 	display: block;
+}
+#favorSeacrhFrm {
+	float: right;
 }
