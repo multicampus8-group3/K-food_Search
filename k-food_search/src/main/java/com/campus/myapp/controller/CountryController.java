@@ -9,10 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.countryService;
 import com.campus.myapp.vo.RestaurantVO2;
 import com.campus.myapp.vo.countryVO;
+import com.campus.myapp.vo.memberVO;
 
 //@Controller
 @RestController
@@ -22,12 +24,13 @@ public class CountryController {
 	/*
 	@GetMapping("/country_rest")
 	public List<RestaurantVO2> country_rest(@RequestParam("code") int code) {
-		//ì„œë¹„ìŠ¤ í†µí•´ì„œ Listë°›ì•„ì˜¤ê¸°
+		//¼­ºñ½º ÅëÇØ¼­ List¹Ş¾Æ¿À±â
 		List<RestaurantVO2> arr=new ArrayList<>();
-		arr.add(new RestaurantVO2(code+"","ê°€ë‚˜","ì•„í¬ë¼","í•œì†¥"));
+		arr.add(new RestaurantVO2(code+"","°¡³ª","¾ÆÅ©¶ó","ÇÑ¼Ü"));
 		return arr;
 	}
 	*/
+	/*
 	@GetMapping("/country_rest")
 	public List<RestaurantVO2> country_rest(
 				@RequestParam("nation") String nation,
@@ -42,14 +45,23 @@ public class CountryController {
 	public String country_test() {
 		return "/test";
 	}
-	
+	*/
 	/*
 	 * @GetMapping("/countryList") public List<countryVO> countryList() { return "";
 	 * }
 	 */
+	/*
 	@GetMapping("/country/stateList")
 	public List<countryVO> stateList(String nation){
 		return service.stateList(nation);
 	}
-	
+	*/
+	//home_word Å×½ºÆ®
+	@GetMapping("/restaurantList_default") // "/restaurantList_default?nation=${mvo.favornation}" ÁÖ¼Ò°ª µî·Ï½Ã ÀÌÂÊÀ¸·Î °ª ³Ñ¾î¿È.
+	public ModelAndView restaurantList_default(memberVO mVO) {//¸Å°³º¯¼ö·Î member_tableÀÇ favoernationÀ» °¡Á®¿È
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("mVO", mVO); //°¡ÀÔÇÑ °í°´ÀÇ ¼±È£Áö¿ªÀ» ±â¹İÀ¸·Î ·¹½ºÅä¶û Á¤º¸ ÀüºÎ °¡Á®¿È. 
+		mav.setViewName("restaurant/restaurantDesignTest");
+		return mav;
+	}
 }
