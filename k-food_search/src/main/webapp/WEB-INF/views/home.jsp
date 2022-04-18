@@ -92,7 +92,7 @@ img[usemap] {
 
 	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
 		
-		<div id="jido_world">
+		<div id="jido_world" style='background-color:pink'>
 			<%@ include file="home_world.jsp" %>
 		</div> <!-- 상단지도 -->
 		

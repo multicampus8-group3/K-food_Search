@@ -3,79 +3,51 @@
 
 <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
 <script src="/js/backjs/resCheck.js"></script>
+<link rel="stylesheet"  href='/css/backCSS/restaurantSignUp.css' type="text/css"/>
 <script>
-	$(()=>{
-		ClassicEditor
-		.create(document.querySelector( '#editor' ), {
-		    language: 'ko'
-		  })
-        .catch( error => {
-            console.error( error );
-        });
-		
-		$("#resnation").change(function(){
- 			var url = "/country/stateList"
- 			var params = $("#resnation option:selected").val();
- 			$.ajax({
-				url: url,
-				data:{
-					nation:params
-				},
-				success: function(result) {
-					var $result = $(result);
-					var tag = "<option value=''>지역선택</option>";
-					$result.each(function(idx, vo){
-						tag += "<option value="+vo.state+">"+vo.state+"</option>";						
-					});
-					$("#resstate").html(tag);
-				},
-				error: function(e) {
-					console.log(e.responseText);
-				}
-			});
-		});
-		
-		var qna = "<span><select name='faqno'><c:forEach var='item' items='${faqList }'><option value='${item.no }'>${item.content }</option></c:forEach></select>";
-		qna += "<input type='text' name='content'/><input type='button' value='x' onclick='faqDel()'/><br/></span>"
-		$("#qna").click(function(){
-			$("#qnaDiv").append(qna);
+$(()=>{
+	ClassicEditor
+	.create(document.querySelector( '#editor' ), {
+	    language: 'ko'
+	  })
+    .catch( error => {
+        console.error( error );
+    });
+	
+	$("#resnation").change(function(){
+			var url = "/country/stateList"
+			var params = $("#resnation option:selected").val();
+			$.ajax({
+			url: url,
+			data:{
+				nation:params
+			},
+			success: function(result) {
+				var $result = $(result);
+				var tag = "<option value=''>지역선택</option>";
+				$result.each(function(idx, vo){
+					tag += "<option value="+vo.state+">"+vo.state+"</option>";						
+				});
+				$("#resstate").html(tag);
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
 		});
 	});
 	
-	function faqDel(){
-		$(event.target).parent().remove();
-	}
-	
-</script>
-<style>
-	.ck.ck-editor{
-		width:1000px;
-	}
-	.resSignUpDiv{
-		width:1200px;
-		margin:0 auto;
-		margin-top:100px;
-		height:1500px;
-	}
-	.resSignUpDiv input, .resSignUpDiv select{
-		background-color:inherit;
-		border:none;
-		border-bottom:1px solid black;
-		box-sizing:border-box;
-		height:30px;
-		margin-bottom:20px;
-	}
+	var qna = "<span><select name='faqno'><c:forEach var='item' items='${faqList }'><option value='${item.no }'>${item.content }</option></c:forEach></select>";
+	qna += "<input type='text' name='content'/><input type='button' value='취소' onclick='faqDel()'/><br/></span>"
+	$("#qna").click(function(){
+		$("#qnaDiv").append(qna);
+	});
+});
 
-	.resSignUpDiv span{
-		display:block;
-		font-size:1.2em;
-		font-weight:bold;
-		margin-bottom:10px;
-	}
-	.mainText{
-		font-size:2em !important;
-	}
-</style>
+function faqDel(){
+	$(event.target).parent().remove();
+}
+
+</script>
 	﻿<%@ include file="acordian.jspf" %>
 	<div class='resSignUpDiv'>
 		<form method='post' action='/resSignUp' enctype="multipart/form-data" id='resSignUpFrm'>
@@ -107,7 +79,7 @@
 				<option>타입3</option>
 			</select><br/>
 			<span>매장 메인 이미지</span><br/>
-			<input type='file' name='resimg1'/><br/>
+			<input type='file' name='resimg1' accept=".gif, .jpg, .png"/><br/>
 			<span>영업 시작 시간</span><br/>
 			<input type="time" name='reshour' id='reshour'/><br/>
 			<span>영업 종료 시간</span><br/>
