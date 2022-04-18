@@ -150,7 +150,7 @@
 <script>
 $(document).ready(function() {
 	$("#favornation").click(function(){
-			var url = "/country/stateList"
+			var url = "/stateList"
 			var params = $("input:radio[name='nation']:checked").val();
 			console.log(params);
 			$.ajax({

@@ -27,7 +27,7 @@
 			});
 			
 			$("#favornation").change(function(){
-	 			var url = "/country/stateList"
+	 			var url = "/stateList"
 	 			var params = $("#favornation option:selected").val();
 	 			$.ajax({
 					url: url,

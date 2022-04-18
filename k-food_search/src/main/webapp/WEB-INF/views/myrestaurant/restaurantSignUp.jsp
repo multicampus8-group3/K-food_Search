@@ -18,7 +18,7 @@ $(()=>{
 	
 	$("#resnation").change(function(){
 		console.log('실행')
-			var url = "/country/stateList"
+			var url = "/stateList"
 			var params = $("#resnation option:selected").val();
 			$.ajax({
 			url: url,
