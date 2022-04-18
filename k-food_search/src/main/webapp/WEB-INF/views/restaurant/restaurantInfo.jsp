@@ -144,6 +144,13 @@ section .info .detail .review {
   margin-bottom: 2rem;
 }
 </style>
+<script>
+$(document).ready(function() {
+	$("#heart").click(function() {
+		alert("즐겨찾기 추가하기");
+	});
+});
+</script>
 </head>
 <body style="overflow:hidden">
   <section>
@@ -152,21 +159,28 @@ section .info .detail .review {
         <img src="https://cdn.pixabay.com/photo/2017/01/11/08/30/market-1971125_960_720.jpg" alt="가게 사진">
       </div>
       <div class="detail">
-        <h1>뉴욕 분식</h1>
+        <h1>${vo.resname }</h1>
         <div class="score">
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i>
-          <span>(5.0)</span>
+          <span>${vo.resgrade }</span>
         </div>
-        <span class="adress">75 PARK PLACE 8TH FLOOR NEW YORK NY 10007 United States</span>
+        <span class="adress">${vo.resadress }</span>
         <h3>식당소개</h3>
-        <span class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span>
+        <span class="desc">${vo.rescontent }</span>
         <div class="btn_box">
           <button class="reservation">reservation</button>
-          <button class="favorites"><i class="fa-regular fa-heart"></i></button>
+          <button class="favorites">
+          	<c:if test="${logId==null }">
+          	<i class="fa-regular fa-heart" id="heart"></i>
+          	</c:if>
+          	<c:if test="${logId!=null }">
+          		<i class="fa-solid fa-heart" id="heart"></i>
+          	</c:if>
+          </button>
         </div>
         <span class="reservation_date"></span>
         <div class="review">
