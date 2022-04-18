@@ -35,7 +35,7 @@ $(()=>{
 });
 
 function setState(){
-	var url = "/country/stateList"
+	var url = "/stateList"
 		var params = $("#resnation option:selected").val();
 		$.ajax({
 		url: url,

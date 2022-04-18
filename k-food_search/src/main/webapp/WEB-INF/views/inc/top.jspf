@@ -28,7 +28,6 @@
 		
 		//텍스트 배율에 따라 변경
 		let pr = window.devicePixelRatio;
-		console.log(pr+'픽셀');
 		var menuCheck=true;
 		
 		if(pr==1.25){
