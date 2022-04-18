@@ -436,13 +436,27 @@ $(function(){
 </script>
 <style>
 .container{
-	width: 1200px;
+	width: 1500px;
 	margin: 0 auto;
 	overflow: auto;
 }
 .hi_admin{
+	width: 100%;
+	height: 300px;
+	margin-bottom: 5px;	
+	background-image: url('/img/city.jpg');
+	position: relative;
+	text-align: center;
 	font-size: 24px;
-	margin-top: 20px;
+}
+.hi_admin p{
+	position: absolute;
+	top: 30%;
+	font-family: 궁서;
+	font-size: 72px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
 }
 .tab_title li.on{
 	font-weight: 900;
@@ -460,7 +474,7 @@ $(function(){
 	display: block;
 }
 .tab_title{
-	width: 90%;
+	width: 80%;
 	height: 230px;
 	margin: 0 auto;
 	cursor:pointer;
@@ -530,7 +544,7 @@ $(function(){
 	background-color: rgba(125, 144, 159, 1);
 }
 .tab_content{
-	width: 90%;
+	width: 80%;
 	margin: 0 auto;
 	padding: 0 20px 20px 20px;
 }
@@ -831,12 +845,10 @@ $(function(){
 	font-weight: 500;
 }
 </style>
-
+<div class="hi_admin">
+	<p>관리자</p>
+</div>
 <div class="container">
-	<div class="hi_admin">
-	Hello, <b>${username }</b>🍚<br/>
-	Welcome to Admin
-	</div>
 	<ul class="tab_title">
 		<li>회원목록</li>
 		<li>가게목록</li>

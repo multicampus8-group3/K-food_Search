@@ -130,7 +130,7 @@
 			width:390px;
 			height: 800px;
 			background-color: rgba(125, 144, 127, 0.3);
-			margin-top: 30px;
+			margin-top: 0px;
 			overflow: hidden;
 			position: relative;
 		}
@@ -174,7 +174,7 @@
 		}
 		#signUpDiv{
 			float: right;
-			margin-top: 30px;
+			margin-top: 0px;
 			width:390px;
 			height: 800px;
 			background-color: rgba(205, 188, 168, 0.3);

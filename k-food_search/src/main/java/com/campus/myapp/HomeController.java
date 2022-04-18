@@ -34,7 +34,6 @@ public class HomeController {
 	   mav.addObject("bmgrade",bmservice.bmSelect());
 	   mav.addObject("mainadbanner",mainadservice.mainAdSelect());
 	   mav.setViewName("home");
-	   System.out.println("아메가메");
 	   return mav;
 	}
 	// 源��옄�쁺- 硫붿씤�럹�씠吏� top_res ad_banner

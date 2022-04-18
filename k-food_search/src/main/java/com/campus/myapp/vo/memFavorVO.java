@@ -11,7 +11,9 @@ public class memFavorVO {
 	private String resimg;
 	private String reshour;
 	private String reshourend;
-
+	private String resadress;
+	private String restype;
+	
 	public int getNo() {
 		return no;
 	}
@@ -74,6 +76,18 @@ public class memFavorVO {
 	}
 	public void setReshourend(String reshourend) {
 		this.reshourend = reshourend;
+	}
+	public String getResadress() {
+		return resadress;
+	}
+	public void setResadress(String resadress) {
+		this.resadress = resadress;
+	}
+	public String getRestype() {
+		return restype;
+	}
+	public void setRestype(String restype) {
+		this.restype = restype;
 	}
 	
 	
