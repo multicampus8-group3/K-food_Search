@@ -13,7 +13,7 @@ public class ReviewVO {
 	
 	private String searchKey;
 	private String searchWord;
-
+	
 	public int getNo() {
 		return no;
 	}
@@ -101,7 +101,7 @@ public class ReviewVO {
 	public void setResgrade(double resgrade) {
 		this.resgrade = resgrade;
 	}
-	
+
 	
 	
 }

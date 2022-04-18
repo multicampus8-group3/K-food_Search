@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.campus.myapp.service.ReviewService;
 import com.campus.myapp.service.countryService;
 import com.campus.myapp.service.memberService;
 import com.campus.myapp.vo.ReviewVO;
@@ -27,7 +28,6 @@ public class memberController {
 	memberService service;
 	@Inject
 	countryService countryService;
-	
 	
    @GetMapping("/logout")
    public ModelAndView logout(HttpSession session) {

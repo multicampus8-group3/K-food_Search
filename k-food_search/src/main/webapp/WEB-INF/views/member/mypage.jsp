@@ -123,9 +123,10 @@
 				url: url,
 				success: function(result) {
 					var $result = $(result);
-					
+					var cnt = 0;
 					var tag = "";
 					$result.each(function(idx, vo){
+						cnt++;
 						tag += '<div id="memberReviewList">';
 						tag += '<img id="resimg" name="resimg" src="/img/noImg.jpg"/>';
 // 지훈 ---> parseFloat().toFixed(1) 사용해서 소수점 아래 한자리까지 표시!! ///////////////////////
@@ -134,9 +135,9 @@
 						tag += '<div id="c"><b>★'+parseFloat(vo.grade).toFixed(1)+'</b><br/>&nbsp;'+vo.content+'</div>';
 						tag += '</div>'
 					});
-					
-					
 					$("#memberReview").html(tag);
+					$("#reviewcnt").html(cnt);
+					
 				},
 				error: function(e) {
 					console.log(e.responseText);
@@ -154,9 +155,10 @@
 				url: url,
 				success: function(result) {
 					var $result = $(result);
-					
+					var cnt = 0;
 					var tag = '<ul class="memFavorList">';
 					$result.each(function(idx, vo){
+						cnt++;
 // 지훈 ---> 일단은 의미없는 하트 추가!! 혹시 시간이 된다면 하트눌러서 즐겨찾기에서 지울수있으면 좋을거같기도? ///////////////////////
 						tag += '<li class="favorList"><span class="heart" value='+vo.no+'>♥</span>';
 						tag += '<a href="#"><img src="/img/noImg.jpg"</>';
@@ -168,6 +170,7 @@
 					tag += '</ul>';
 					
 					$("#memberFavor").html(tag);
+					$("#favorcnt").html(cnt);
 				},
 				error: function(e) {
 					console.log(e.responseText);
@@ -319,8 +322,9 @@
 	});
 </script>
 <div class='container'>
-	<div class="hello">"안녕하세요 <b>${username }</b>님📖 <br/>마이페이지에 오신걸 환영합니다."</div>
-	
+	<div class="hello">"안녕하세요 <b>${username }</b>님📖 <br/>마이페이지에 오신걸 환영합니다." 
+	즐겨찾기: <span id="favorcnt"></span> &nbsp; 내리뷰: <span id="reviewcnt"></span></div>
+	<div class='containerWrap'>
 	<div class='mypage_menu'>
 			&nbsp;옛날에 나무꾼 부부가 살았습니다. 나무꾼의 부인은 수다쟁이였습니다. “이봐요! 
 		<span class="on">개인정보변경</span>
@@ -461,5 +465,6 @@
 			<div id="memberFavor">
 			</div>
 		</div>
+	</div>
 	</div>
 </div>

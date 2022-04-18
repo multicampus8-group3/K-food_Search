@@ -24,9 +24,9 @@ public class CountryController {
 	/*
 	@GetMapping("/country_rest")
 	public List<RestaurantVO2> country_rest(@RequestParam("code") int code) {
-		//¼­ºñ½º ÅëÇØ¼­ List¹Þ¾Æ¿À±â
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ Listï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
 		List<RestaurantVO2> arr=new ArrayList<>();
-		arr.add(new RestaurantVO2(code+"","°¡³ª","¾ÆÅ©¶ó","ÇÑ¼Ü"));
+		arr.add(new RestaurantVO2(code+"","ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½Å©ï¿½ï¿½","ï¿½Ñ¼ï¿½"));
 		return arr;
 	}
 	*/
@@ -50,17 +50,17 @@ public class CountryController {
 	 * @GetMapping("/countryList") public List<countryVO> countryList() { return "";
 	 * }
 	 */
-	/*
+	
 	@GetMapping("/country/stateList")
 	public List<countryVO> stateList(String nation){
 		return service.stateList(nation);
 	}
-	*/
-	//home_word Å×½ºÆ®
-	@GetMapping("/restaurantList_default") // "/restaurantList_default?nation=${mvo.favornation}" ÁÖ¼Ò°ª µî·Ï½Ã ÀÌÂÊÀ¸·Î °ª ³Ñ¾î¿È.
-	public ModelAndView restaurantList_default(memberVO mVO) {//¸Å°³º¯¼ö·Î member_tableÀÇ favoernationÀ» °¡Á®¿È
+	
+	//home_word ï¿½×½ï¿½Æ®
+	@GetMapping("/restaurantList_default") // "/restaurantList_default?nation=${mvo.favornation}" ï¿½Ö¼Ò°ï¿½ ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½.
+	public ModelAndView restaurantList_default(memberVO mVO) {//ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ member_tableï¿½ï¿½ favoernationï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mVO", mVO); //°¡ÀÔÇÑ °í°´ÀÇ ¼±È£Áö¿ªÀ» ±â¹ÝÀ¸·Î ·¹½ºÅä¶û Á¤º¸ ÀüºÎ °¡Á®¿È. 
+		mav.addObject("mVO", mVO); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. 
 		mav.setViewName("restaurant/restaurantDesignTest");
 		return mav;
 	}
