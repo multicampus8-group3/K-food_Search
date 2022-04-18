@@ -11,9 +11,9 @@ import com.campus.myapp.vo.memberVO;
 @Mapper
 @Repository
 public interface RestaurantDAO {
-	// ���������������� ���Ը�� ����
+	// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쌉몌옙占� 占쏙옙占쏙옙
 	public List<RestaurantVO> restaurantList(RestaurantVO vo);
-	// ���������������� ���԰˻�
+	// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쌉검삼옙
 	public List<RestaurantVO> getSearchList(RestaurantVO vo);
 		
 	public int restaurantInsert(RestaurantVO vo);
@@ -24,9 +24,9 @@ public interface RestaurantDAO {
 	public String restarantImgDel(int resno);
 	public int restaurantUpdateOk(RestaurantVO vo);
 	
-	//���� Ŭ���� ���������������� �ش� ������ ���Ը�ϸ� ���̰� �ϱ�.
-	public List<RestaurantVO> restaurantList_world(memberVO mVO);
-	//레스토랑 서치페이지
+	//占쏙옙占쏙옙 클占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쌔댐옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쌉몌옙玖占� 占쏙옙占싱곤옙 占싹깍옙.
+	public List<RestaurantVO> restaurantList_world(String nation);
+	//�젅�뒪�넗�옉 �꽌移섑럹�씠吏�
 	public List<RestaurantVO> resList(RestaurantVO vo);
 	public RestaurantVO resSelect(int resno);
 }
