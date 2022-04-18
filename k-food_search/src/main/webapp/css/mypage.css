@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .container{
-	width: 1200px;
+	width: 1300px;
 	margin: 0px auto;
 }
 .container div{
@@ -16,12 +16,12 @@
 	padding: 20px; 
 	width: 555px;
 	height: 600px;
-	background-color: rgba(205, 188, 171, 0.3);
 	line-height: 32px;
 	overflow: auto;
+	background-color: rgba(205, 188, 171, 0.3);
 	border-radius: 3% 0 0 3%;
 	border-bottom: 5px solid #2F4858;
-	border-left: 5px solid #2F4858;
+	border-left: 5px solid #2F4858;  
 }
 .mypage_menu span{
 	font-weight: 900;
@@ -50,7 +50,7 @@
 	background-color: rgba(165, 166, 143, 0.3);
 	border-radius: 0 3% 3% 0;
 	border-bottom: 5px solid #2F4858;
-	border-right: 5px solid #2F4858;
+	border-right: 5px solid #2F4858; 
 }
 
 .mypage_container>div{
@@ -59,4 +59,7 @@
 
 .mypage_container>div.on{
 	display: block;
+}
+#favorSeacrhFrm {
+	float: right;
 }

@@ -147,6 +147,32 @@
 	color: #fff;
 }
 </style>
+<script>
+$(document).ready(function() {
+	$("#favornation").click(function(){
+			var url = "/country/stateList"
+			var params = $("input:radio[name='nation']:checked").val();
+			console.log(params);
+			$.ajax({
+			url: url,
+			data:{
+				nation:params
+			},
+			success: function(result) {
+				var $result = $(result);
+				var tag = "";
+				$result.each(function(idx, vo){
+					tag += "<input type='radio' name='state' value="+vo.state+"><label>"+vo.state+"</label>";						
+				});								
+				$("#favorstate").html(tag);
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	});
+});
+</script>
 
 <div class="container">
 	<div id="justImageBox">
@@ -262,45 +288,16 @@
 	    <h2>Filters</h2>
 		<div id="nationFilter">
 			<h3>#resnation</h3>
-			<form action="">
-				<ul>
-					<li><input type="checkbox" name="" id=""><label>한국</label></li>
-					<li><input type="checkbox" name="" id=""><label>미국</label></li>
-					<li><input type="checkbox" name="" id=""><label>캐나다</label></li>
-					<li><input type="checkbox" name="" id=""><label>호주</label></li>
-					<li><input type="checkbox" name="" id=""><label>일본</label></li>
-					<li><input type="checkbox" name="" id=""><label>독일</label></li>
-					<li><input type="checkbox" name="" id=""><label>프랑스</label></li>
-					<li><input type="checkbox" name="" id=""><label>베트남</label></li>
-					<li><input type="checkbox" name="" id=""><label>태국</label></li>
-					<li><input type="checkbox" name="" id=""><label>중국</label></li>
-					<li><input type="checkbox" name="" id=""><label>대만</label></li>
-					<li><input type="checkbox" name="" id=""><label>이탈리아</label></li>
-					<li><input type="checkbox" name="" id=""><label>가나</label></li>
-					<li><input type="checkbox" name="" id=""><label>포르투갈</label></li>
-					<li><input type="checkbox" name="" id=""><label>우루과이</label></li>
-				</ul>
+			<form action="" id="favornation">
+				<c:forEach items="${countrylist}" var="item">
+        			<input type='radio' name="nation" value="${item.nation}"><label>${item.nation}</label>
+        		</c:forEach>
 			</form>
 		</div>
 		<div id="stateFilter">
 			<h3>#resstate</h3>
-			<form action="">
-				<ul>
-					<li><input type="checkbox" name="" id=""><label>서울</label></li>
-					<li><input type="checkbox" name="" id=""><label>마산</label></li>
-					<li><input type="checkbox" name="" id=""><label>안산</label></li>
-					<li><input type="checkbox" name="" id=""><label>창원</label></li>
-					<li><input type="checkbox" name="" id=""><label>부산</label></li>
-					<li><input type="checkbox" name="" id=""><label>제주</label></li>
-					<li><input type="checkbox" name="" id=""><label>화성</label></li>
-					<li><input type="checkbox" name="" id=""><label>강릉</label></li>
-					<li><input type="checkbox" name="" id=""><label>속초</label></li>
-					<li><input type="checkbox" name="" id=""><label>포천</label></li>
-					<li><input type="checkbox" name="" id=""><label>수원</label></li>
-					<li><input type="checkbox" name="" id=""><label>안성</label></li>
-					<li><input type="checkbox" name="" id=""><label>전주</label></li>
-					<li><input type="checkbox" name="" id=""><label>광주</label></li>
-				</ul>
+			<form action="" id="favorstate">
+				
 			</form>
 		</div>
 		<div id="typeFilter">

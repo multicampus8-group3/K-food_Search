@@ -11,4 +11,5 @@ public interface ReviewService {
 	public List<ReviewVO> getSearchList(ReviewVO vo);
 	// 멤버페이지에서 리뷰목록 보기
 	public List<ReviewVO> memberReviewList(ReviewVO vo);
+
 }

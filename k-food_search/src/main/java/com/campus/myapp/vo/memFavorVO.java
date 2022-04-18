@@ -11,8 +11,7 @@ public class memFavorVO {
 	private String resimg;
 	private String reshour;
 	private String reshourend;
-	
-	
+
 	public int getNo() {
 		return no;
 	}
