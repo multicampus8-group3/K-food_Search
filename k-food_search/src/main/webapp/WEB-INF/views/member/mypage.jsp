@@ -123,9 +123,10 @@
 				url: url,
 				success: function(result) {
 					var $result = $(result);
-					
+					var cnt = 0;
 					var tag = "";
 					$result.each(function(idx, vo){
+						cnt++;
 						tag += '<div id="memberReviewList"><a href="#">';
 						tag += '<img id="resimg" name="resimg" src="/img/noImg.jpg"/>';
 						tag += '<div id="a"><span>'+vo.resname+'</span><br/></div>';
@@ -133,9 +134,9 @@
 						tag += '<div id="c"><b>★'+parseFloat(vo.grade).toFixed(1)+'</b><br/><span>'+vo.content+'</span></div>';
 						tag += '</a></div>'
 					});
-					
-					
 					$("#memberReview").html(tag);
+					$("#reviewcnt").html(cnt);
+					
 				},
 				error: function(e) {
 					console.log(e.responseText);
@@ -153,11 +154,14 @@
 				url: url,
 				success: function(result) {
 					var $result = $(result);
+					var cnt = 0;
 					var now = new Date();
 					var realnow = now.getHours()*60 + now.getMinutes();
 										
 					var tag = '<ul class="memFavorList">';
 					$result.each(function(idx, vo){
+						cnt++;
+						
 						var open = parseInt(vo.reshour.split(':')[0]*60) + parseInt(vo.reshour.split(':')[1]);
 						var close = parseInt(vo.reshourend.split(':')[0]*60) + parseInt(vo.reshourend.split(':')[1]);
 					
@@ -177,14 +181,33 @@
 					tag += '</ul>';
 					
 					$("#memberFavor").html(tag);
+					$("#favorcnt").html(cnt);
 				},
 				error: function(e) {
 					console.log(e.responseText);
 				}
 			});
 		}
-		memberFavor();
+		//즐겨찾기 취소
+		$(document).on("click", ".heart", function(){
+			console.log("no= "+$(this).attr('value'));
+			var params = "no= "+$(this).attr('value');
+			var url = "/memFavor/memFavorDelete";
+			$.ajax({
+				url: url,
+				data: params,
+				type: "get",
+				success: function(result){
+					memberFavor();				
+				},
+				error: function(e){
+					console.log(e.responseText);
+				}
+			});
+		});
+		memberFavor();	
 	});
+
 	$(function(){
 		// 예약현황
 		function memberReserv() {
@@ -200,7 +223,7 @@
 						if(vo.status == "ok"){
 							tag += '<div class="memberReservListOk">'; <!-- 반복될부분 -->
 							tag += '<div class="memberReservInfoOk">'; <!-- 예약정보 -->
-							tag += '<ul>';
+							tag += '<ul class="memok">';
 							tag += '<li>예약이 <b>승인</b>되었습니다.</li>';
 							tag += '<li>&nbsp;만약 예약을 취소하시려면 아래 문의 이메일로 연락주시길바랍니다.</li>';
 							tag += '<li class="resname"><b>'+vo.resname+'</b></li>';
@@ -215,8 +238,8 @@
 						}else {
 							tag += '<div class="memberReservList">'; <!-- 반복될부분 -->
 							tag += '<div class="memberReservInfo">'; <!-- 예약정보 -->
-							tag += '<ul>';
 							if(vo.status == "apply"){
+								tag += '<ul class="memapply">';
 								tag += '<li>예약 가능여부를 <b>확인중</b> 입니다.</li>';
 								tag += '<li>&nbsp;['+vo.resname+']에서 확인하는대로 빠른 시간내 결과를 안내해 드리겠습니다.</li>';
 								tag += '<form method="post">';
@@ -224,10 +247,12 @@
 								tag += '<input type="hidden" name="status" value="cancel" readonly>';
 							};
 							if(vo.status == "reject"){
+								tag += '<ul class="memreject">';
 								tag += '<li>예약이 <b>거부</b>되었습니다.</li>';
 								tag += '<li>&nbsp;자세한 문의사항은 아래 문의 이메일로 연락주시길바랍니다.</li>';
 							};
 							if(vo.status == "cancel"){
+								tag += '<ul class="memcancel">';
 								tag += '<li>예약을 <b>취소</b>하셨습니다.</li>';
 								tag += '<li>&nbsp;예약 취소가 완료되었습니다.</li>';
 							};
@@ -273,6 +298,35 @@
 			}
 		});
 	});
+
+		$("#reservFt").change(function(){
+			if($("#reservFt option:selected").val() == "전체보기"){
+ 				$(".memberReservListOk").css("display", "block");
+ 				$(".memberReservList").css("display", "block");
+ 			}
+ 			if($("#reservFt option:selected").val() == "apply"){
+ 				$(".memberReservListOk").css("display", "none");
+ 				$(".memberReservList").css("display", "none");
+ 				$(".memapply").parents('div.memberReservList').css("display", "block");
+ 			}
+ 			if($("#reservFt option:selected").val() == "ok"){
+ 				$(".memberReservListOk").css("display", "none");
+ 				$(".memberReservList").css("display", "none");
+ 				$(".memok").parents('div.memberReservListOk').css("display", "block");
+ 			}
+ 			if($("#reservFt option:selected").val() == "reject"){
+ 				$(".memberReservListOk").css("display", "none");
+ 				$(".memberReservList").css("display", "none");
+ 				$(".memreject").parents('div.memberReservList').css("display", "block");
+ 			}
+ 			if($("#reservFt option:selected").val() == "cancel"){
+ 				$(".memberReservListOk").css("display", "none");
+ 				$(".memberReservList").css("display", "none");
+ 				$(".memcancel").parents('div.memberReservList').css("display", "block");
+ 			}
+			
+		});
+		
 		memberReserv();
 	});
 </script>
@@ -281,7 +335,8 @@
 		<div class="hellotext">
 			"안녕하세요 <b>${username }</b>님📖 <br/>
 			마이페이지에 오신걸 환영합니다."	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			☆ 48 리뷰 &nbsp;&nbsp;&nbsp; ♡ 5 즐겨찾기
+			<span id="revStarCnt">☆&nbsp;<span id="reviewcnt"></span>&nbsp;리뷰</span> &nbsp;&nbsp;&nbsp;
+			<span id="favHeartCnt">♡&nbsp;<span id="favorcnt"></span>&nbsp;즐겨찾기</span>
 		</div>
 	</div>
 </div>
@@ -364,6 +419,13 @@
 		
 		<div class="memberRes">
 			<h3>예약현황</h3>
+			<select id='reservFt'>
+				<option value="전체보기" selected>전체보기</option>
+				<option value="apply" >확인중</option>
+				<option value="ok" >승인</option>
+				<option value="reject" >거절</option>
+				<option value="cancel" >취소</option>
+			</select>
 			<div id="memberReserv">
 			</div>
 		</div>
@@ -379,5 +441,6 @@
 			<div id="memberFavor">
 			</div>
 		</div>
+	</div>
 	</div>
 </div>

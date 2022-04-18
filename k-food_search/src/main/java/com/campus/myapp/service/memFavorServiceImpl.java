@@ -22,6 +22,12 @@ public class memFavorServiceImpl implements memFavorService {
 	public List<memFavorVO> memFavorList(memFavorVO vo) {
 		return dao.memFavorList(vo);
 	}
-	
+
+	@Override
+	public int memFavorDelete(memFavorVO vo) {
+		return dao.memFavorDelete(vo);
+	}
+
+
 	
 }

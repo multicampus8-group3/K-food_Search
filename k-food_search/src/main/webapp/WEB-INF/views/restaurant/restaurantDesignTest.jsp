@@ -147,6 +147,68 @@
 	color: #fff;
 }
 </style>
+<script>
+$(document).ready(function() {
+	$("#favornation").click(function(){
+			var url = "/country/stateList"
+			var params = $("input:radio[name='nation']:checked").val();
+			console.log(params);
+			$.ajax({
+			url: url,
+			data:{
+				nation:params
+			},
+			success: function(result) {
+				var $result = $(result);
+				var tag = "";
+				$result.each(function(idx, vo){
+					tag += "<input type='radio' name='state' value="+vo.state+"><label>"+vo.state+"</label>";						
+				});								
+				$("#favorstate").html(tag);
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	});
+});
+$(function(){
+	// 가게목록
+	function restaurantList() {
+		var url = "/restaurant/resList";
+		$.ajax({
+			url: url,
+			success: function(result) {
+				var $result = $(result);
+				var tag = "";
+				$result.each(function(idx, vo){
+					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">';
+					tag += '<div class="resCard">';
+					tag += '<div class="img_box">';
+					tag += 		'<img src="/img/noImg.jpg"/>';
+					tag += 	'</div>';
+					tag += 	'<div class="contents">';
+					tag += 		'<div class="info">';
+					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
+					tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="adr">'+vo.resadress+'</span>'
+					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
+					tag += 		'</div>';
+					tag += 		'<div class="seeMore">더보기</div>';
+					tag += 	'</div>';
+					tag += '</div>';
+					tag += '</a>';
+				});
+				$("#section").html(tag);				
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	}
+	restaurantList();
+});
+</script>
 
 <div class="container">
 	<div id="justImageBox">
@@ -154,107 +216,7 @@
 	
 	<!-- section -->
 	<div id="section">
-		<a href="/restaurantInfo">
-			<div class="resCard">
-				<div class="img_box">
-					<img src="/img/noImg.jpg"/>
-				</div>
-				<div class="contents">
-					<div class="info">
-						<span class="resname">(vo.resname)</span><br/>
-						<span class="resgrade">★(vo.resgrade)</span><span class="restype">(vo.restype)</span><br/>
-						<span class="adr">(vo.resadress)서울특별시 특별한 곳 1000번지 12</span>
-						<div class="intro">
-							(vo.rescontent)It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-						</div>
-					</div>
-					<div class="seeMore">더보기</div>
-				</div>
-			</div>
-		</a>
-		
-		<!-- dummy -->
-		<a href="/restaurantInfo">
-			<div class="resCard">
-				<div class="img_box">
-					<img src="/img/noImg.jpg"/>
-				</div>
-				<div class="contents">
-					<div class="info">
-						<span class="resname">(vo.resname)</span><br/>
-						<span class="resgrade">★(vo.resgrade)</span><span class="restype">(vo.restype)</span><br/>
-						<span class="adr">(vo.resadress)서울특별시 특별한 곳 1000번지 12</span>
-						<div class="intro">
-							(vo.rescontent)It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-						</div>
-					</div>
-					<div class="seeMore">더보기</div>
-				</div>
-			</div>
-		</a>
-		
-		<a href="/restaurantInfo">
-			<div class="resCard">
-				<div class="img_box">
-					<img src="/img/noImg.jpg"/>
-				</div>
-				<div class="contents">
-					<div class="info">
-						<span class="resname">(vo.resname)</span><br/>
-						<span class="resgrade">★(vo.resgrade)</span><span class="restype">(vo.restype)</span><br/>
-						<span class="adr">(vo.resadress)서울특별시 특별한 곳 1000번지 12</span>
-						<div class="intro">
-							(vo.rescontent)It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-						</div>
-					</div>
-					<div class="seeMore">더보기</div>
-				</div>
-			</div>
-		</a>
-		
-		<a href="/restaurantInfo">
-			<div class="resCard">
-				<div class="img_box">
-					<img src="/img/noImg.jpg"/>
-				</div>
-				<div class="contents">
-					<div class="info">
-						<span class="resname">(vo.resname)</span><br/>
-						<span class="resgrade">★(vo.resgrade)</span><span class="restype">(vo.restype)</span><br/>
-						<span class="adr">(vo.resadress)서울특별시 특별한 곳 1000번지 12</span>
-						<div class="intro">
-							(vo.rescontent)It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-						</div>
-					</div>
-					<div class="seeMore">더보기</div>
-				</div>
-			</div>
-		</a>
-		
-		<a href="/restaurantInfo">
-			<div class="resCard">
-				<div class="img_box">
-					<img src="/img/noImg.jpg"/>
-				</div>
-				<div class="contents">
-					<div class="info">
-						<span class="resname">(vo.resname)</span><br/>
-						<span class="resgrade">★(vo.resgrade)</span><span class="restype">(vo.restype)</span><br/>
-						<span class="adr">(vo.resadress)서울특별시 특별한 곳 1000번지 12</span>
-						<div class="intro">
-							(vo.rescontent)It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-						</div>
-					</div>
-					<div class="seeMore">더보기</div>
-				</div>
-			</div>
-		</a>
-		
+				
 	</div>
 	
 	<!-- check box -->
@@ -262,45 +224,16 @@
 	    <h2>Filters</h2>
 		<div id="nationFilter">
 			<h3>#resnation</h3>
-			<form action="">
-				<ul>
-					<li><input type="checkbox" name="" id=""><label>한국</label></li>
-					<li><input type="checkbox" name="" id=""><label>미국</label></li>
-					<li><input type="checkbox" name="" id=""><label>캐나다</label></li>
-					<li><input type="checkbox" name="" id=""><label>호주</label></li>
-					<li><input type="checkbox" name="" id=""><label>일본</label></li>
-					<li><input type="checkbox" name="" id=""><label>독일</label></li>
-					<li><input type="checkbox" name="" id=""><label>프랑스</label></li>
-					<li><input type="checkbox" name="" id=""><label>베트남</label></li>
-					<li><input type="checkbox" name="" id=""><label>태국</label></li>
-					<li><input type="checkbox" name="" id=""><label>중국</label></li>
-					<li><input type="checkbox" name="" id=""><label>대만</label></li>
-					<li><input type="checkbox" name="" id=""><label>이탈리아</label></li>
-					<li><input type="checkbox" name="" id=""><label>가나</label></li>
-					<li><input type="checkbox" name="" id=""><label>포르투갈</label></li>
-					<li><input type="checkbox" name="" id=""><label>우루과이</label></li>
-				</ul>
+			<form action="" id="favornation">
+				<c:forEach items="${countrylist}" var="item">
+        			<input type='radio' name="nation" value="${item.nation}"><label>${item.nation}</label>
+        		</c:forEach>
 			</form>
 		</div>
 		<div id="stateFilter">
 			<h3>#resstate</h3>
-			<form action="">
-				<ul>
-					<li><input type="checkbox" name="" id=""><label>서울</label></li>
-					<li><input type="checkbox" name="" id=""><label>마산</label></li>
-					<li><input type="checkbox" name="" id=""><label>안산</label></li>
-					<li><input type="checkbox" name="" id=""><label>창원</label></li>
-					<li><input type="checkbox" name="" id=""><label>부산</label></li>
-					<li><input type="checkbox" name="" id=""><label>제주</label></li>
-					<li><input type="checkbox" name="" id=""><label>화성</label></li>
-					<li><input type="checkbox" name="" id=""><label>강릉</label></li>
-					<li><input type="checkbox" name="" id=""><label>속초</label></li>
-					<li><input type="checkbox" name="" id=""><label>포천</label></li>
-					<li><input type="checkbox" name="" id=""><label>수원</label></li>
-					<li><input type="checkbox" name="" id=""><label>안성</label></li>
-					<li><input type="checkbox" name="" id=""><label>전주</label></li>
-					<li><input type="checkbox" name="" id=""><label>광주</label></li>
-				</ul>
+			<form action="" id="favorstate">
+				
 			</form>
 		</div>
 		<div id="typeFilter">

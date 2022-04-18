@@ -4,6 +4,8 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
 <script src="/js/backjs/resCheck.js"></script>
 <link rel="stylesheet"  href='/css/backCSS/restaurantSignUp.css' type="text/css"/>
+<link rel="stylesheet"  href='/css/backCSS/hanokback.css' type="text/css"/>
+<link rel="stylesheet"  href='/css/backCSS/inputButton.css' type="text/css"/>
 <script>
 $(()=>{
 	ClassicEditor
@@ -15,6 +17,7 @@ $(()=>{
     });
 	
 	$("#resnation").change(function(){
+		console.log('실행')
 			var url = "/country/stateList"
 			var params = $("#resnation option:selected").val();
 			$.ajax({
@@ -37,7 +40,7 @@ $(()=>{
 	});
 	
 	var qna = "<span><select name='faqno'><c:forEach var='item' items='${faqList }'><option value='${item.no }'>${item.content }</option></c:forEach></select>";
-	qna += "<input type='text' name='content'/><input type='button' value='취소' onclick='faqDel()'/><br/></span>"
+	qna += "<br/><input type='text' name='content' placeholder='답변 내용을 입력하세요.'/><input type='button' value='삭제' onclick='faqDel()'/><br/></span>"
 	$("#qna").click(function(){
 		$("#qnaDiv").append(qna);
 	});
@@ -50,7 +53,7 @@ function faqDel(){
 </script>
 	﻿<%@ include file="acordian.jspf" %>
 	<div class='resSignUpDiv'>
-		<form method='post' action='/resSignUp' enctype="multipart/form-data" id='resSignUpFrm'>
+		<form method='post' action='/myrestaurant/resSignUp' enctype="multipart/form-data" id='resSignUpFrm'>
 			<span class='mainText'>업체등록</span><br/>
 			<hr style='margin-bottom:40px;'/> 
 			<span>매장명</span><br/>
@@ -74,9 +77,13 @@ function faqDel(){
 			<span>업종 분류</span><br/>
 			<select name='restype' id='restype'>
 				<option value=''>타입선택</option>
-				<option>타입1</option>
-				<option>타입2</option>
-				<option>타입3</option>
+				<option>떡복이</option>
+				<option>전</option>
+				<option>백반</option>
+				<option>치킨</option>
+				<option>삼겹살</option>
+				<option>비빔밥</option>
+				<option>국밥</option>
 			</select><br/>
 			<span>매장 메인 이미지</span><br/>
 			<input type='file' name='resimg1' accept=".gif, .jpg, .png"/><br/>
@@ -88,7 +95,7 @@ function faqDel(){
 			<input type="text" name='website'/><br/>
 			<img src='/img/qna.png' width='50px' id='qna' style='cursor:pointer'/><br/>
 			<div id='qnaDiv'></div>		
-			<button>등록</button>
+			<button id='inBtn'>등록</button>
 		</form>
 	</div>
 </body>

@@ -10,7 +10,20 @@
 		from restaurant_table
 		order by resno desc
 	</select>
-	
+	<select id="restaurantList_world" resultType="com.campus.myapp.vo.RestaurantVO">
+		select
+										resno,
+										resname,
+										resadress,
+										format(resgrade,1) resgrade,
+										userid,
+										resnation,
+										resstate,
+                                        restype,
+										date_format(writedate,'%Y-%m-%d') writedate
+		from restaurant_table where resnation=#{param}
+        order by resno desc;
+	</select>
 	<select id="getSearchList" resultType="com.campus.myapp.vo.RestaurantVO">
 		select resno, resname, resadress, format(resgrade,1) resgrade, 
 		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
@@ -54,4 +67,16 @@
 	<update id="restaurantUpdateOk">
 		update restaurant_table set resname=#{resname}, resadress=#{resadress}, rescontent=#{rescontent}, userid=#{userid}, resnation=#{resnation}, resstate=#{resstate}, restype=#{restype}, resimg=#{resimg}, reshour=#{reshour}, reshourend=#{reshourend}, website=#{website} where resno=#{resno}
 	</update>
+
+<!-- 추가부분 -->
+	<select id="resList" resultType="com.campus.myapp.vo.RestaurantVO">
+		select resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, resno 
+		from restaurant_table
+		order by resno desc
+	</select>
+	<select id="resSelect" resultType="com.campus.myapp.vo.RestaurantVO">
+		select resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, resno 
+		from restaurant_table
+		where resno=#{resno}
+	</select>
 </mapper>

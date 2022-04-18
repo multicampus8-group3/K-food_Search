@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,22 +12,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.campus.myapp.service.RestaurantService;
 import com.campus.myapp.service.countryService;
 import com.campus.myapp.vo.RestaurantVO2;
 import com.campus.myapp.vo.countryVO;
 import com.campus.myapp.vo.memberVO;
 
-//@Controller
-@RestController
+@Controller
+//@RestController
 public class CountryController {
 	@Inject
 	countryService service;
+	@Inject
+	RestaurantService res_service;
 	/*
 	@GetMapping("/country_rest")
 	public List<RestaurantVO2> country_rest(@RequestParam("code") int code) {
-		//¼­ºñ½º ÅëÇØ¼­ List¹Ş¾Æ¿À±â
+		//å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ìŒ”ì‡½ì˜™ Listå ìŒ¨ì•„ìš¸ì˜™å ì™ì˜™
 		List<RestaurantVO2> arr=new ArrayList<>();
-		arr.add(new RestaurantVO2(code+"","°¡³ª","¾ÆÅ©¶ó","ÇÑ¼Ü"));
+		arr.add(new RestaurantVO2(code+"","å ì™ì˜™å ì™ì˜™","å ì™ì˜™í¬å ì™ì˜™","å ì‹¼ì‡½ì˜™"));
 		return arr;
 	}
 	*/
@@ -50,18 +54,26 @@ public class CountryController {
 	 * @GetMapping("/countryList") public List<countryVO> countryList() { return "";
 	 * }
 	 */
-	/*
+	
 	@GetMapping("/country/stateList")
 	public List<countryVO> stateList(String nation){
 		return service.stateList(nation);
 	}
-	*/
-	//home_word Å×½ºÆ®
-	@GetMapping("/restaurantList_default") // "/restaurantList_default?nation=${mvo.favornation}" ÁÖ¼Ò°ª µî·Ï½Ã ÀÌÂÊÀ¸·Î °ª ³Ñ¾î¿È.
-	public ModelAndView restaurantList_default(memberVO mVO) {//¸Å°³º¯¼ö·Î member_tableÀÇ favoernationÀ» °¡Á®¿È
+	
+	//home_word í…ŒìŠ¤íŠ¸
+	@GetMapping("/shop_test") // "/restaurantList_default?nation=${mvo.favornation}" ì£¼ì†Œê°’ ë“±ë¡ì‹œ ì´ìª½ìœ¼ë¡œ ê°’ ë„˜ì–´ì˜´.
+	public ModelAndView restaurantList_default(String nation, HttpSession session) {//ë§¤ê°œë³€ìˆ˜ë¡œ member_tableì˜ favoernationì„ ê°€ì ¸ì˜´
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("mVO", mVO); //°¡ÀÔÇÑ °í°´ÀÇ ¼±È£Áö¿ªÀ» ±â¹İÀ¸·Î ·¹½ºÅä¶û Á¤º¸ ÀüºÎ °¡Á®¿È. 
-		mav.setViewName("restaurant/restaurantDesignTest");
+		//mav.addObject("mVO", mVO); //ê°€ì…í•œ ê³ ê°ì˜ ì„ í˜¸ì§€ì—­ì„ ê¸°ë°˜ìœ¼ë¡œ ë ˆìŠ¤í† ë‘ ì •ë³´ ì „ë¶€ ê°€ì ¸ì˜´.
+		String userid = (String)session.getAttribute("logId");
+		if(userid==null) {
+			mav.addObject("list", res_service.restaurantList_world(nation));
+		}/*else {
+			String favorNation = (String)session.getAttribute("favorNation");
+			System.out.println(favorNation);
+			mav.addObject("list", res_service.restaurantList_world(favorNation));
+		}*/
+		mav.setViewName("/shop_test");
 		return mav;
 	}
 }

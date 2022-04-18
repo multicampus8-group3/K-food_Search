@@ -67,10 +67,19 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return dao.restaurantUpdateOk(vo);
 	}
 	
-	//지도 클릭시 관리자페이지에서 해당 나라의 가게목록만 보이게 하기.
 	@Override
-	public List<RestaurantVO> restaurantList_world(memberVO mVO) {
+	public List<RestaurantVO> restaurantList_world(String nation) { //memberVO mVO  (매개변수 추가 필요 favornation 위해서)
 		// TODO Auto-generated method stub
-		return null;
+		return dao.restaurantList_world(nation);
+	}
+
+	@Override
+	public List<RestaurantVO> resList(RestaurantVO vo) {
+		return dao.resList(vo);
+	}
+
+	@Override
+	public RestaurantVO resSelect(int resno) {
+		return dao.resSelect(resno);
 	}
 }

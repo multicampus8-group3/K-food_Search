@@ -26,5 +26,5 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewVO> getSearchList(ReviewVO vo) {
 		return dao.getSearchList(vo);
 	}
-
+	
 }

@@ -9,12 +9,12 @@ public class ReviewVO {
 	private int resno;
 	private double resgrade;
 	
-	private String resadress;
 	private String resname;
+	private String resadress;
 	
 	private String searchKey;
 	private String searchWord;
-
+	
 	public int getNo() {
 		return no;
 	}

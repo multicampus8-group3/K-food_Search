@@ -23,7 +23,7 @@
 		function move(){
 			var index=$(event.target).parent().index();
 			var resno = $('.resList li').eq(index-5).html();
-			location.href="/restaurantUpdateWrite?resno="+resno;
+			location.href="/myrestaurant/restaurantUpdateWrite?resno="+resno;
 		};
 		function listDel(){
 			var index=$(event.target).parent().index();

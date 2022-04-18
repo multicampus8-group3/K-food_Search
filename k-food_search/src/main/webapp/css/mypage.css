@@ -37,6 +37,15 @@
 	margin: 0 auto;
 	position: relative;
 }
+#revStarCnt{
+	font-weight: bold;
+	color: yellow;
+}
+#favHeartCnt{
+	font-weight: bold;
+	color: pink;
+}
+
 
 .mypage_menu span{
 	font-weight: 900;
@@ -62,4 +71,10 @@
 
 .mypage_container>div.edit{
 	display: none;
+}
+.mypage_container>div.on{
+	display: block;
+}
+#favorSeacrhFrm {
+	float: right;
 }

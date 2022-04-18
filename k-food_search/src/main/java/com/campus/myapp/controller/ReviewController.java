@@ -42,5 +42,5 @@ public class ReviewController {
 		List<ReviewVO> list = service.memberReviewList(vo);
 		return service.memberReviewList(vo);
 	}
-	
+
 }

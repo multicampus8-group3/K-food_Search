@@ -35,5 +35,9 @@
 		where rev.userid = #{userid} 
 		order by rev.no desc
 	</select>
+	
+	<select id="memberReviewCount" resultType="com.campus.myapp.vo.ReviewVO">
+		select count(no) memreviewcount from review_table where userid=#{userid} 
+	</select>
 
 </mapper>

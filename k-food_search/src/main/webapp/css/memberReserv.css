@@ -15,6 +15,13 @@
 .memberRes:focus-within {
   	box-shadow: 1px 1px 10px rgba(42, 72, 88, 0.3);
 }
+.memberRes h3{
+	float: left;
+}
+#reservFt{
+	float: left;
+	margin-top: 16px;
+}
 .memberReservList{
 	width: 500px;
 	float: left;

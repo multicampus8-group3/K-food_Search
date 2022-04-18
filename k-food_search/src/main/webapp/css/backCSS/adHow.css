@@ -1,0 +1,73 @@
+@charset "UTF-8";
+		#addHow{
+			height:600px;
+			width:1000px;
+			margin:0 auto;
+			box-shadow:0px 0px 10px 10px rgb(159,216,223);
+			background-color:rgb(159,216,223);
+			margin-top:50px;
+			margin-bottom:100px;
+		}
+		#addHow div{
+			float:left;
+		}
+		.addHowLeft{
+			width:50%;
+			margin-top:20px;
+		}
+		.addHowRight{
+			width:50%;
+			margin-top:60px;
+		}
+		.addHowRight div{
+			width:80%;
+			height:100px;
+			margin-left:50px;
+			margin-bottom:20px !important;
+			border-radius:5px;
+			text-align:center;
+			font-size:1.2em;
+			background-image:url(/img/check.png);
+			background-size:10%;
+			background-repeat:no-repeat;
+			background-position:350px 30px;
+		}
+		.addHowBlue{
+			box-shadow:10px 10px 0px 0px rgb(162,190,224);
+			background-color:rgb(209,222,240);
+		}
+		.addHowYellow{
+			box-shadow:10px 10px 0px 0px rgb(246,223,170);
+			background-color:rgb(251,239,212);
+		}
+		#conputerImgDiv{
+			background-color:white;
+			background-image:url(/img/HowAd.PNG);
+			width:450px;
+			height:450px;
+			box-shadow:10px 10px 10px 0px rgb(75,75,75);
+			background-repeat:no-repeat;
+			background-size:100%;
+			background-position:0px -50px;
+			border:1px solid #ddd;
+			position:relative;
+			left:40px;
+		}
+		#moveAd{
+			margin-left:50px;
+			font-size:1.5em;
+			background-color:white;
+			height:50px;
+			width:150px;
+			text-align:center;
+			line-height:50px;
+			border:1px solid #ddd;
+			box-shadow:5px 5px 5px 0px rgb(75,75,75);
+		}
+		#moveAd:hover{
+			box-shadow:0px 0px 5px 2px black;
+		}
+		#adListMenu{
+			display:inline-block;
+			margin-left:30px;
+		}

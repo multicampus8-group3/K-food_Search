@@ -11,9 +11,9 @@ import com.campus.myapp.vo.memberVO;
 @Mapper
 @Repository
 public interface RestaurantDAO {
-	// °ü¸®ÀÚÆäÀÌÁö¿¡¼­ °¡°Ô¸ñ·Ï º¸±â
+	// å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ìŒ‰ëªŒì˜™å ï¿½ å ì™ì˜™å ì™ì˜™
 	public List<RestaurantVO> restaurantList(RestaurantVO vo);
-	// °ü¸®ÀÚÆäÀÌÁö¿¡¼­ °¡°Ô°Ë»ö
+	// å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ìŒ‰ê²€ì‚¼ì˜™
 	public List<RestaurantVO> getSearchList(RestaurantVO vo);
 		
 	public int restaurantInsert(RestaurantVO vo);
@@ -24,6 +24,9 @@ public interface RestaurantDAO {
 	public String restarantImgDel(int resno);
 	public int restaurantUpdateOk(RestaurantVO vo);
 	
-	//Áöµµ Å¬¸¯½Ã °ü¸®ÀÚÆäÀÌÁö¿¡¼­ ÇØ´ç ³ª¶óÀÇ °¡°Ô¸ñ·Ï¸¸ º¸ÀÌ°Ô ÇÏ±â.
-	public List<RestaurantVO> restaurantList_world(memberVO mVO);
+	//å ì™ì˜™å ì™ì˜™ í´å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ìŒ”ëŒì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ìŒ‰ëªŒì˜™ç–å ï¿½ å ì™ì˜™å ì‹±ê³¤ì˜™ å ì‹¹ê¹ì˜™.
+	public List<RestaurantVO> restaurantList_world(String nation);
+	//ï¿½ì …ï¿½ë’ªï¿½ë„—ï¿½ì˜‰ ï¿½ê½Œç§»ì„‘ëŸ¹ï¿½ì” ï§ï¿½
+	public List<RestaurantVO> resList(RestaurantVO vo);
+	public RestaurantVO resSelect(int resno);
 }

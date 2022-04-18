@@ -7,12 +7,16 @@
 	<select id="memFavorList" resultType="com.campus.myapp.vo.memFavorVO">
 		select res.resimg resimg, res.resname resname, res.resnation resnation, res.resadress resadress,
 		res.resstate resstate, res.resgrade resgrade, res.reshour reshour, 
-		res.reshourend reshourend, res.restype restype
+		res.reshourend reshourend, res.restype restype, memf.no no
 		from member_favorite as memf
 		join restaurant_table as res
 		on res.resno = memf.resno
 		where memf.userid = #{userid}
 		order by memf.no desc
 	</select>
+	<delete id="memFavorDelete">
+  		delete from member_favorite where no=#{no}
+	</delete>
+	
 
 </mapper>
