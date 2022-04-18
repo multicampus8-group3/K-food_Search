@@ -12,7 +12,7 @@
 						html+='<li>'+result[i].resno+"</li>";
 						html+="<li>"+result[i].resname+"</li>";
 						html+='<li>'+result[i].resadress+"</li>";
-						html+='<li>'+result[i].resgrade+"</li>";
+						html+='<li>'+parseFloat(result[i].resgrade).toFixed(1)+"</li>";
 						html+='<li>'+result[i].writedate+"</li>";
 						html+="<li><button onclick='listDel()'>삭제</button><button onclick='move()'>수정</button></li>";
 					}
