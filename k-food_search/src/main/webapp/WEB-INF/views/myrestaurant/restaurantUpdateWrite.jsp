@@ -2,103 +2,76 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
 <script src="/js/backjs/resCheck.js"></script>
+<link rel="stylesheet"  href='/css/backCSS/restaurantUpdateWrite.css' type="text/css"/>
 <script>
-	$(()=>{
-		
+$(()=>{
+	
+	setState();
+	
+	$("#resnation").change(function(){
 		setState();
-		
-		$("#resnation").change(function(){
-			setState();
-		});
-		
-		ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        });
-		
-		var qna = "<span><select name='faqno'><c:forEach var='item' items='${faqList }'><option value='${item.no }'>${item.content }</option></c:forEach></select>";
-		qna += "<input type='text' name='content'/><input type='button' value='x' onclick='faqDel()'/><br/></span>"
-		$("#qna").click(function(){
-			$("#qnaDiv").append(qna);
-		});
-		
-		for(var i=0; i<document.querySelectorAll('#restype option').length; i++){
-			if(document.querySelectorAll('#restype option')[i].value=='${vo.restype}'){
-				document.querySelectorAll('#restype option')[i].setAttribute("selected", "true");
-			}	
-		}
-		
 	});
+	
+	ClassicEditor
+    .create( document.querySelector( '#editor' ) )
+    .catch( error => {
+        console.error( error );
+    });
 
-	function setState(){
-		var url = "/country/stateList"
- 		var params = $("#resnation option:selected").val();
- 		$.ajax({
-			url: url,
-			data:{
-				nation:params
-			},
-			success: function(result) {
-				var $result = $(result);
-				var tag = "<option value=''>지역선택</option>";
-					$result.each(function(idx, vo){
-					if(vo.state=='${vo.resstate}'){
-						tag += "<option value="+vo.state+" selected>"+vo.state+"</option>";						
-					}else{
-						tag += "<option value="+vo.state+">"+vo.state+"</option>";													
-					}
-				});				
-				$("#resstate").html(tag);
-			},
-			error: function(e) {
-				console.log(e.responseText);
-			}
-		});
+	var qna = "<span><select name='faqno'><c:forEach var='item' items='${faqList }'><option value='${item.no }'>${item.content }</option></c:forEach></select>";
+	qna += "<input type='text' name='content'/><input type='button' value='취소' onclick='faqDel()'/><br/></span>"
+	$("#qna").click(function(){
+		$("#qnaDiv").append(qna);
+	});
+	
+	for(var i=0; i<document.querySelectorAll('#restype option').length; i++){
+		if(document.querySelectorAll('#restype option')[i].value=='${vo.restype}'){
+			document.querySelectorAll('#restype option')[i].setAttribute("selected", "true");
+		}	
 	}
 	
-	function faqDel(){
-		$(event.target).parent().remove();
-	}
-	
-	function changeView(){
-		$(event.target).parent().css('display','none');
-		$('#resfile').css('display','block');
-	}
+});
+
+function setState(){
+	var url = "/country/stateList"
+		var params = $("#resnation option:selected").val();
+		$.ajax({
+		url: url,
+		data:{
+			nation:params
+		},
+		success: function(result) {
+			var $result = $(result);
+			var tag = "<option value=''>지역선택</option>";
+				$result.each(function(idx, vo){
+				if(vo.state=='${vo.resstate}'){
+					tag += "<option value="+vo.state+" selected>"+vo.state+"</option>";						
+				}else{
+					tag += "<option value="+vo.state+">"+vo.state+"</option>";													
+				}
+			});				
+			$("#resstate").html(tag);
+		},
+		error: function(e) {
+			console.log(e.responseText);
+		}
+	});
+}
+
+function faqDel(){
+	$(event.target).parent().remove();
+}
+
+function changeView(){
+	$(event.target).parent().css('display','none');
+	$('#resfile').css('display','block');
+}
 </script>
-<style>
-	.ck.ck-editor{
-		width:1000px;
-	}
-	.resSignUpDiv{
-		width:1200px;
-		margin:0 auto;
-		margin-top:100px;
-		height:1700px;
-	}
-	.resSignUpDiv span{
-		display:block;
-		font-size:1.2em;
-		font-weight:bold;
-		margin-bottom:10px;
-	}
-	.resSignUpDiv input, .resSignUpDiv select{
-		background-color:inherit;
-		border:none;
-		border-bottom:1px solid black;
-		box-sizing:border-box;
-		height:30px;
-		margin-bottom:20px;
-	}
-	.mainText{
-		font-size:2em !important;
-	}
-</style>
 	﻿<%@ include file="acordian.jspf" %>
 	<div class='resSignUpDiv'>
 		<form method='post' action='/restaurantUpdateOk' enctype="multipart/form-data" id='resSignUpFrm'>
 			<input type='hidden' name='resno' value='${vo.resno}'/>
-			<span class='mainText'>업체등록</span><br/>
+			<span class='mainText'>업체 정보 수정</span><br/>
 			<hr style='margin-bottom:40px;'/> 
 			<span>매장명</span><br/>
 			<input type='text' name='resname' id='resmane' value="${vo.resname }"/><br/>
@@ -126,7 +99,7 @@
 			<span>매장 메인 이미지</span><br/>
 			<span id='resimg'><img src='/resImg/${vo.resimg}' title='현재 등록 중인 이미지' style='width:100px; height:100px; border-radius:50px;'/><br/></span>
 			<span>${vo.resimg } &nbsp;<input type='button' value='이미지 교체' onclick='changeView()'/></span>
-			<input type='file' name='resimg1' id='resfile' style='display:none;'/><br/>
+			<input type='file' name='resimg1' id='resfile' style='display:none;' accept=".gif, .jpg, .png"/><br/>
 			<input type='hidden' name='resimgOrg' value='${vo.resimg}'/>
 			<span>영업 시작 시간</span><br/>
 			<input type="time" name='reshour' value='${vo.reshour }' id='reshour'/><br/>
