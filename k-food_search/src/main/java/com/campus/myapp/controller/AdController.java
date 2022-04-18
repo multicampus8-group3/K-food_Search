@@ -40,19 +40,19 @@ public class AdController {
 	public int adStatusChangeOk(AdVO vo) {
 		return service.adStatusChange(vo);
 	}
-	@GetMapping("/restaurantAdApplication")
+	@GetMapping("/myrestaurant/restaurantAdApplication")
 	public ModelAndView restaurantAdApplication() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/myrestaurant/restaurantAdApplication");
 		return mav;
 	}
-	@GetMapping("/restaurantAdApplicationWrite")
+	@GetMapping("/myrestaurant/restaurantAdApplicationWrite")
 	public ModelAndView restaurantAdApplicationWrite() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/myrestaurant/restaurantAdApplicationWrite");
 		return mav;
 	}
-	@PostMapping("/restaurantAdApplicationWriteOk")
+	@PostMapping("/myrestaurant/restaurantAdApplicationWriteOk")
 	public ResponseEntity<String> restaurantAdApplicationWriteOk(AdVO vo, HttpServletRequest request){
 		ResponseEntity<String> entity = null;
 		HttpHeaders hearders = new HttpHeaders();
@@ -101,14 +101,14 @@ public class AdController {
 		System.out.println(vo.getBannerimg());
 		//엔티티 전송부분
 		try {
-			msg = "<script>alert('광고 신청이 완료되었습니다.');location.href='/myrestaurant'</script>";
+			msg = "<script>alert('광고 신청이 완료되었습니다.');location.href='/myrestaurant/myrestaurant'</script>";
 			service.restaurantAdInsert(vo);
 			//글목록으로 이동
 			entity = new ResponseEntity<String>(msg,hearders,HttpStatus.OK);
 		}catch(Exception e) {
 			e.printStackTrace();
 			rc.fileDelete(path, vo.getBannerimg());
-			msg = "<script>alert('광고 신청이 실패하였습니다. \\n매장등록번호가 맞는지 확인하세요!!');history.back()</script>";
+			msg = "<script>alert('광고 신청이 실패하였습니다. \\n매장등록번호가 맞지 않거나 배너 파일 이름이 너무 깁니다.');history.back()</script>";
 			//글 등록폼으로
 			entity = new ResponseEntity<String>(msg,hearders,HttpStatus.BAD_REQUEST);
 		}

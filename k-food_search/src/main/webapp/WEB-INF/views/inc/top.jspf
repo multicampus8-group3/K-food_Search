@@ -10,6 +10,7 @@
 	<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de3fd42ca3e0fb9',m:'0GgGI7zDnSr1gpNO2aZt8xuf09.XqNFNAl26Nz09FSY-1644985288-0-ASIOJg74TZmDRx8PzqS0GkltyDGVyqiSSZLtikz9s36I2aTVOteA5aILjGLx/TvgGfZOC34QXGdgGJEI7UTyYI2swg2rVlcLG+zN8s1omkQCLVVc7WXj34iS7QfsW1JQL3W3rSS9+7lm604st4BH9AV/jLfEPihAMuP3FjzGHBqZzvoQQUge0wcXl4Kh1PCIYD2ajQu35bDszAae0YT0SjQ=',s:[0x2900a90da7,0xbc627ac0ef],}})();</script>
 <script>
 	$(()=>{
+		
 		//top 스크롤 이동시 움직임.
 		/*
 		$(window).scroll(function(){
@@ -21,8 +22,19 @@
 			}
 		});
 		*/
-		//menu 이미지 클릭시 메뉴 보이게 하는 이벤트.
+		//menu 이미지 클릭시 메뉴 보이게 하는 이벤트.\
+		
+		//텍스트 배율에 따라 변경
+		let pr = window.devicePixelRatio;
+		console.log(pr+'픽셀');
 		var menuCheck=true;
+		
+		if(pr>=1.25){
+			menuCheck=false;
+			$('.menu').css('width','0px');
+			console.log('1.25픽셀')
+		}
+		
 		$(".menu_img").click(function(){
 			//console.log('클릭이벤트 발생');
 			if(menuCheck==false){
@@ -271,7 +283,7 @@
 					</c:if>
 					<c:if test="${logType =='owner' }">
 						(사장님)<br/><br/>
-						<a href="/myrestaurant">식당관리</a>&nbsp;|&nbsp;
+						<a href="/myrestaurant/myrestaurant">식당관리</a>&nbsp;|&nbsp;
 					</c:if>
 					<c:if test="${logType =='admin' }">
 						(관리자)<br/><br/>

@@ -3,7 +3,6 @@
 		width:1200px;
 		margin:0 auto;
 		margin-top:100px;
-		height:1700px;
 		font-family : "Binggrae";
 	}
 	.resList{
@@ -11,6 +10,7 @@
 		width:1200px;
 		margin:0 auto;
 		text-align:center;
+		margin-top:20px;
 	}
 	.resList li{
 		float:left;
@@ -21,6 +21,9 @@
 		overflow:hidden;
 		white-space:nowrap;
 		text-overflow: ellipsis;
+	}
+	.resList li:last-of-type{
+		margin-bottom:50px;
 	}
 	.listMenu{
 		border-top:2px solid black;

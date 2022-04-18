@@ -1,0 +1,26 @@
+@charset "UTF-8";
+input[type=button]{
+	width:100px;
+	background-color:white;
+	border:1px solid #ddd;
+	cursor:pointer;
+	box-shadow:2px 2px 5px 0px rgb(75,75,75);
+}
+input[type=button]:hover{
+	box-shadow:0px 0px 5px 2px black;
+}
+#inBtn{
+	font-size:1.5em;
+	background-color:white;
+	height:50px;
+	width:150px;
+	text-align:center;
+	line-height:50px;
+	border:1px solid #ddd;
+	box-shadow:2px 2px 5px 0px rgb(75,75,75);
+	margin-bottom:100px;
+	margin-top:50px;
+}
+#inBtn:hover{
+	box-shadow:0px 0px 5px 2px black;
+}
