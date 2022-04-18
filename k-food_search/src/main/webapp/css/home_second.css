@@ -4,39 +4,47 @@
 		position: relative;		
 		width: 100%;
 		height: 2000px;
+		margin: 0px auto;
 		
-		/*border: solid 1px black;*/
+		background-color: white;
 	}
 	
 	#mainContents{
 		position: relative;
-		
+		left:18.5%;
+		right:18.5%;
 		top:10px;
 		bottom:100px;
-		left: 25%;
 		
-		width: 1000px;
-		height: 1970px;
+		width: 1200px;
+		height: 2200px;
+		
+		background-color: red;
 	}
 	
 	#jido_world{
 		position: relative;
-		top: 10px;
-		left: 10px;
-		width: 980px;
+		top: 0px;
+		left: 0px;
+		width: 1200px;
 		height: 600px;
 		
-		border: solid 1px blue;
+		background-color: gray;
+	}
+	.map{
+		position: relative;
+		top: 0px;
+		left: 0px;
 	}
 	
 	#menu{
 		position: relative;
-		top: 20px;
-		left: 10px;
-		width: 980px; /*980 1900*/
-		height: 450px; /*412 600 800*/
+		top: 10px;
+		left: 0px;
+		width: 1200px; /*980 1200 1900*/
+		height: 551px; /*412 450 551 600 800*/
 		
-		border: solid 1px blue;
+		background-color: gray;
 	}
 	#top_menu{
 		position: relative;
@@ -45,7 +53,7 @@
 		width: 980px;
 		height: 350px;
 		
-		border: solid 1px blue;
+		background-color: gray;
 	}
 	#bm_list{
 		background-color:#ffff00;
@@ -70,16 +78,16 @@
 		width: 980px;
 		height: 500px;
 		
-		border: solid 1px blue;
+		background-color: gray;
 	}
 	
 	/* 멀티플 슬라이더 */
 	#menu li h2{
 		text-align: center;
-		width:248px; /*248 481*/
-		line-height:151px; /*151 294*/
+		width:303px; /*248 303 481*/
+		line-height:184px; /*151 184 294*/
 		margin:0px;
-		padding:16px; /*16 32*/
+		padding:19px; /*16 32*/
 		position:absolute;
 		transform:translate(0%, -100%);
 		color:white;
@@ -93,25 +101,25 @@
 		background-color:gray;
 		opacity: 0.3;
 		position:absolute;
-		top:16px;
-		left:16px;
-		right:16px;
-		bottom:16px;
+		top:19px;
+		left:19px;
+		right:19px;
+		bottom:19px;
 		
 	}
 	/*메뉴슬라이드 공통분모*/
 	#menu .menuslide{
-		max-width: 820px;	/*820 960 1900*/
+		max-width: 1004px;	/*820 960 1004 1900*/
 	    width:100%;
-	    height: 412px;		/*412 600 800*/
+	    height: 504px;		/*412 504 600 800*/
 	    position: relative;
 	}
 	/*메뉴슬라이드 공통*/
 	
 	#menu .multiple_slider li img{
-	    width: 248px; /*200 248 481*/
-	    height: 151px; /*110 151 294*/	   
-	    padding: 16px; /*16 32*/
+	    width: 303px; /*200 248 303 481*/
+	    height: 184px; /*110 151 184 294*/	   
+	    padding: 19px; /*16 19 32*/
 	}
 	
 	#menu .controls .bx-prev, #menu .controls .bx-next{
@@ -128,9 +136,4 @@
 	}
 	#menu .controls .bx-next {
 	    left:calc(100% + 40px);
-	}
-	.map{
-		position: relative;
-		top: 10%;
-		left: 9%;
 	}

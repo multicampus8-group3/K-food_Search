@@ -1,0 +1,33 @@
+@charset "UTF-8";
+	.ck.ck-editor{
+		width:1000px;
+	}
+	.resSignUpDiv{
+		width:1200px;
+		margin:0 auto;
+		margin-top:100px;
+		height:1500px;
+		font-family : "Binggrae";
+	}
+	.resSignUpDiv input, .resSignUpDiv select{
+		background-color:inherit;
+		border:none;
+		border-bottom:1px solid black;
+		box-sizing:border-box;
+		height:30px;
+		margin-bottom:20px;
+		font-family : "BinggraeReguler";
+		width:300px;
+	}
+
+	.resSignUpDiv span{
+		display:block;
+		font-size:1.2em;
+		font-weight:bold;
+		margin-bottom:10px;
+		font-family:Binggrae;
+		
+	}
+	.mainText{
+		font-size:2em !important;
+	}
