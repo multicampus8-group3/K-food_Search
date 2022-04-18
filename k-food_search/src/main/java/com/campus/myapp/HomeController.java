@@ -34,9 +34,10 @@ public class HomeController {
 	   mav.addObject("bmgrade",bmservice.bmSelect());
 	   mav.addObject("mainadbanner",mainadservice.mainAdSelect());
 	   mav.setViewName("home");
+	   System.out.println("아메가메");
 	   return mav;
 	}
-	// 김자영- 메인페이지 top_res ad_banner
+	// 源��옄�쁺- 硫붿씤�럹�씠吏� top_res ad_banner
 	
 	@RequestMapping("/restaurant")
 	public String restaurant() {
@@ -46,7 +47,7 @@ public class HomeController {
 	public String restaurantInfo() {
 		return "restaurant/restaurantInfo"; 
 	}
-	// 식당 목록 게시판 디자인 테스트용
+	// �떇�떦 紐⑸줉 寃뚯떆�뙋 �뵒�옄�씤 �뀒�뒪�듃�슜
 	@RequestMapping("/restaurantDesignTest")
 	public ModelAndView restaurantDesignTest() {
 		ModelAndView mav = new ModelAndView();
