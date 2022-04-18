@@ -25,6 +25,7 @@
 	});</script>
 	<script type="text/javascript" src="/js/bm_jy.js"></script>
 	
+	
 	<script>
 		function formatDate() { 
 			var today = new Date(); 
@@ -47,8 +48,28 @@
 			} 
 		} 
 		formatDate();
-	</script>
-	
+		</script>
+		
+		<script type="text/javascript" src="../js/jquery.rwdImageMaps.js"></script>
+		<script>
+		$(function(){
+		
+		   $('img[usemap]').rwdImageMaps();
+		
+		});
+		</script>
+		
+<style type="text/css">
+img[usemap] {
+	max-height: 150%;
+	height: 600px;
+	max-width: 150%;
+	width: 1200px;
+   }
+</style>
+
+
+
 <style>
 	#slider ul,li{
 		margin:0;
@@ -59,6 +80,9 @@
     	height: 400px;
     	float:left; 
     	margin-right: 20px;
+    }
+    .map{
+    	size: width: 1200px;
     }
 </style>
 </head>
@@ -75,14 +99,45 @@
 		<div id="menu">
 			<div class="menuslide controls">
 				<ul class="multiple_slider">
-					<li><img src="../img/1.jpg" alt=""><h2>비빔밥<span><div class="inner_div">비빔밥</div></span></h2><img src="../img/2.jpg" alt=""><h2>볶음밥<span><div class="inner_div">볶음밥</div></span></h2></li>
-					<li><img src="../img/3.jpg" alt=""><h2>죽<span><div class="inner_div">죽</div></span></h2><img src="../img/4.jpg" alt=""><h2>영양돌솥밥<span><div class="inner_div">영양돌솥밥</div></span></h2></li>
-					<li><img src="../img/5.jpg" alt=""><h2>된장찌개<span><div class="inner_div">된장찌개</div></span></h2><img src="../img/6.jpg" alt=""><h2>철판볶음밥<span><div class="inner_div">철판볶음밥</div></span></h2></li>
-					<li><img src="../img/7.jpg" alt=""><h2>김밥<span><div class="inner_div">김밥</div></span></h2><img src="../img/8.jpg" alt=""><h2>떡볶이<span><div class="inner_div">떡볶이</div></span></h2></li>
-					<li><img src="../img/1.jpg" alt=""><h2>비빔밥<span><div class="inner_div">비빔밥</div></span></h2><img src="../img/2.jpg" alt=""><h2>볶음밥<span><div class="inner_div">볶음밥</div></span></h2></li>
-					<li><img src="../img/3.jpg" alt=""><h2>죽<span><div class="inner_div">죽</div></span></h2><img src="../img/4.jpg" alt=""><h2>영양돌솥밥<span><div class="inner_div">영양돌솥밥</div></span></h2></li>
-					<li><img src="../img/5.jpg" alt=""><h2>된장찌개<span><div class="inner_div">된장찌개</div></span></h2><img src="../img/6.jpg" alt=""><h2>철판볶음밥<span><div class="inner_div">철판볶음밥</div></span></h2></li>
-					<li><img src="../img/7.jpg" alt=""><h2>김밥<span><div class="inner_div">김밥</div></span></h2><img src="../img/8.jpg" alt=""><h2>떡볶이<span><div class="inner_div">떡볶이</div></span></h2></li>
+					<li>
+						<a href="/restaurantDesignTest"><img src="../img/1.jpg" alt=""><h2>비빔밥<span><div class="inner_div">비빔밥</div></span></h2></a>
+						<a href="/restaurantDesignTest"><img src="../img/2.jpg" alt=""><h2>볶음밥<span><div class="inner_div">볶음밥</div></span></h2></a>
+					</li>
+					
+					<li>
+						<a href="/restaurantDesignTest"><img src="../img/3.jpg" alt=""><h2>죽<span><div class="inner_div">죽</div></span></h2></a>
+						<a href="/restaurantDesignTest"><img src="../img/4.jpg" alt=""><h2>영양돌솥밥<span><div class="inner_div">영양돌솥밥</div></span></h2></a>
+					</li>
+					
+					<li>
+						<a href="/restaurantDesignTest"><img src="../img/5.jpg" alt=""><h2>된장찌개<span><div class="inner_div">된장찌개</div></span></h2></a>
+						<a href="/restaurantDesignTest"><img src="../img/6.jpg" alt=""><h2>철판볶음밥<span><div class="inner_div">철판볶음밥</div></span></h2></a>
+					</li>
+					
+					<li>
+						<a href="/restaurantDesignTest"><img src="../img/7.jpg" alt=""><h2>김밥<span><div class="inner_div">김밥</div></span></h2></a>
+						<a href="/restaurantDesignTest"><img src="../img/8.jpg" alt=""><h2>떡볶이<span><div class="inner_div">떡볶이</div></span></h2></a>
+					</li>
+					
+					<li>
+						<a href="/restaurantDesignTest"><img src="../img/1.jpg" alt=""><h2>비빔밥<span><div class="inner_div">비빔밥</div></span></h2></a>
+						<a href="/restaurantDesignTest"><img src="../img/2.jpg" alt=""><h2>볶음밥<span><div class="inner_div">볶음밥</div></span></h2></a>
+					</li>
+					
+					<li>
+						<a href="/restaurantDesignTest"><img src="../img/3.jpg" alt=""><h2>죽<span><div class="inner_div">죽</div></span></h2></a>
+						<a href="/restaurantDesignTest"><img src="../img/4.jpg" alt=""><h2>영양돌솥밥<span><div class="inner_div">영양돌솥밥</div></span></h2></a>
+					</li>
+					
+					<li>
+						<a href="/restaurantDesignTest"><img src="../img/5.jpg" alt=""><h2>된장찌개<span><div class="inner_div">된장찌개</div></span></h2></a>
+						<a href="/restaurantDesignTest"><img src="../img/6.jpg" alt=""><h2>철판볶음밥<span><div class="inner_div">철판볶음밥</div></span></h2></a>
+					</li>
+					
+					<li>
+						<a href="/restaurantDesignTest"><img src="../img/7.jpg" alt=""><h2>김밥<span><div class="inner_div">김밥</div></span></h2></a>
+						<a href="/restaurantDesignTest"><img src="../img/8.jpg" alt=""><h2>떡볶이<span><div class="inner_div">떡볶이</div></span></h2></a>
+					</li>
 				</ul>
 			</div>
 		</div> <!-- 메뉴 -->
@@ -125,6 +180,7 @@
 	</div>
 </div>
 <script>
+/*
 $(function(){
 	$('map[name="world"]>area').click(function(){
 		var nation=$(this).attr('data-nation');
@@ -150,6 +206,7 @@ function getInfo(nation, state){
 		}
 	})
 }
+*/
 </script>
 </body>
 </html>

@@ -5,8 +5,8 @@ $(function(){
 		minSlides:1, //1
 		maxSlides:3, //6
 		moveSlides : 3,
-		slideWidth:248, //137 //248 //481
-		slideMargin:30, //12 //30 //58
+		slideWidth:303, //137 //248 //303 //481
+		slideMargin:36, //12 //30 //36 //58
 		pager:true,
 		nextText: '▶',
 		prevText: '◀',
