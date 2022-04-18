@@ -29,7 +29,7 @@
 		console.log(pr+'픽셀');
 		var menuCheck=true;
 		
-		if(pr==1.25){
+		if(pr>=1.25){
 			menuCheck=false;
 			$('.menu').css('width','0px');
 			console.log('1.25픽셀')
@@ -283,7 +283,7 @@
 					</c:if>
 					<c:if test="${logType =='owner' }">
 						(사장님)<br/><br/>
-						<a href="/myrestaurant">식당관리</a>&nbsp;|&nbsp;
+						<a href="/myrestaurant/myrestaurant">식당관리</a>&nbsp;|&nbsp;
 					</c:if>
 					<c:if test="${logType =='admin' }">
 						(관리자)<br/><br/>

@@ -1,0 +1,22 @@
+@charset "UTF-8";
+.resSignUpDiv::before{
+		filter: blur(1.5px);
+	    background:linear-gradient(
+    		to left,
+            rgba(255, 255, 255, 0) 10%,
+            rgba(255, 255, 255, 0.25) 25%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0.75) 75%,
+            rgba(255, 255, 255, 1) 100%
+            ),url('/img/hanok2.jpg');
+   		background-repeat:no-repeat;
+		opacity:0.5;
+		width:1200px;
+		height:1150px;
+		content: "";
+        background-size: cover;
+        position: absolute;
+        top: 800px;
+        margin:0 auto;
+        z-index:-1;
+	}
