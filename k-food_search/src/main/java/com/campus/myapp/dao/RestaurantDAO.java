@@ -6,13 +6,14 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.campus.myapp.vo.RestaurantVO;
+import com.campus.myapp.vo.memberVO;
 
 @Mapper
 @Repository
 public interface RestaurantDAO {
-	// ê´€ë¦¬ìí˜ì´ì§€ì—ì„œ ê°€ê²Œëª©ë¡ ë³´ê¸°
+	// °ü¸®ÀÚÆäÀÌÁö¿¡¼­ °¡°Ô¸ñ·Ï º¸±â
 	public List<RestaurantVO> restaurantList(RestaurantVO vo);
-	// ê´€ë¦¬ìí˜ì´ì§€ì—ì„œ ê°€ê²Œê²€ìƒ‰
+	// °ü¸®ÀÚÆäÀÌÁö¿¡¼­ °¡°Ô°Ë»ö
 	public List<RestaurantVO> getSearchList(RestaurantVO vo);
 		
 	public int restaurantInsert(RestaurantVO vo);
@@ -22,4 +23,7 @@ public interface RestaurantDAO {
 	public int maxResno ();
 	public String restarantImgDel(int resno);
 	public int restaurantUpdateOk(RestaurantVO vo);
+	
+	//Áöµµ Å¬¸¯½Ã °ü¸®ÀÚÆäÀÌÁö¿¡¼­ ÇØ´ç ³ª¶óÀÇ °¡°Ô¸ñ·Ï¸¸ º¸ÀÌ°Ô ÇÏ±â.
+	public List<RestaurantVO> restaurantList_world(memberVO mVO);
 }

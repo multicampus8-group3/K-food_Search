@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.RestaurantDAO;
 import com.campus.myapp.vo.RestaurantVO;
+import com.campus.myapp.vo.memberVO;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -64,5 +65,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public int restaurantUpdateOk(RestaurantVO vo) {
 		// TODO Auto-generated method stub
 		return dao.restaurantUpdateOk(vo);
+	}
+	
+	//지도 클릭시 관리자페이지에서 해당 나라의 가게목록만 보이게 하기.
+	@Override
+	public List<RestaurantVO> restaurantList_world(memberVO mVO) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
