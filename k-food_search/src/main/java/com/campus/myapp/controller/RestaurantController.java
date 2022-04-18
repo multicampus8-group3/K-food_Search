@@ -233,4 +233,19 @@ public class RestaurantController {
 			file.delete();
 		}
 	}
+
+	//식당서치 페이지변경 부분
+	@GetMapping("/restaurant/resList")
+	public List<RestaurantVO> resList(RestaurantVO vo) {
+		return service.resList(vo);
+	}
+	//식당정보 페이지
+	@GetMapping("restaurantInfo")
+	public ModelAndView restaurantInfo(int resno) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo", service.resSelect(resno));
+		mav.setViewName("/restaurant/restaurantInfo");
+		
+		return mav;		
+	}
 }

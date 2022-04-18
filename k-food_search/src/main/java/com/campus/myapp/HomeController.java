@@ -12,6 +12,7 @@ import com.campus.myapp.service.countryService;
 import com.campus.myapp.vo.countryVO;
 
 import com.campus.myapp.service.BestMenuService;
+import com.campus.myapp.service.RestaurantService;
 import com.campus.myapp.service.mainAdService;
 
 
@@ -24,6 +25,8 @@ public class HomeController {
 	BestMenuService bmservice;
 	@Inject
 	mainAdService mainadservice;
+	@Inject
+	RestaurantService resservice;
 
 	@RequestMapping("/")
 	public ModelAndView home() {

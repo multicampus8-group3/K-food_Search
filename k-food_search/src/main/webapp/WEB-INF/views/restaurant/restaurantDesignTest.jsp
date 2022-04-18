@@ -172,6 +172,42 @@ $(document).ready(function() {
 		});
 	});
 });
+$(function(){
+	// 가게목록
+	function restaurantList() {
+		var url = "/restaurant/resList";
+		$.ajax({
+			url: url,
+			success: function(result) {
+				var $result = $(result);
+				var tag = "";
+				$result.each(function(idx, vo){
+					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">';
+					tag += '<div class="resCard">';
+					tag += '<div class="img_box">';
+					tag += 		'<img src="/img/noImg.jpg"/>';
+					tag += 	'</div>';
+					tag += 	'<div class="contents">';
+					tag += 		'<div class="info">';
+					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
+					tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="adr">'+vo.resadress+'</span>'
+					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
+					tag += 		'</div>';
+					tag += 		'<div class="seeMore">더보기</div>';
+					tag += 	'</div>';
+					tag += '</div>';
+					tag += '</a>';
+				});
+				$("#section").html(tag);				
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	}
+	restaurantList();
+});
 </script>
 
 <div class="container">
@@ -180,107 +216,7 @@ $(document).ready(function() {
 	
 	<!-- section -->
 	<div id="section">
-		<a href="/restaurantInfo">
-			<div class="resCard">
-				<div class="img_box">
-					<img src="/img/noImg.jpg"/>
-				</div>
-				<div class="contents">
-					<div class="info">
-						<span class="resname">(vo.resname)</span><br/>
-						<span class="resgrade">★(vo.resgrade)</span><span class="restype">(vo.restype)</span><br/>
-						<span class="adr">(vo.resadress)서울특별시 특별한 곳 1000번지 12</span>
-						<div class="intro">
-							(vo.rescontent)It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-						</div>
-					</div>
-					<div class="seeMore">더보기</div>
-				</div>
-			</div>
-		</a>
-		
-		<!-- dummy -->
-		<a href="/restaurantInfo">
-			<div class="resCard">
-				<div class="img_box">
-					<img src="/img/noImg.jpg"/>
-				</div>
-				<div class="contents">
-					<div class="info">
-						<span class="resname">(vo.resname)</span><br/>
-						<span class="resgrade">★(vo.resgrade)</span><span class="restype">(vo.restype)</span><br/>
-						<span class="adr">(vo.resadress)서울특별시 특별한 곳 1000번지 12</span>
-						<div class="intro">
-							(vo.rescontent)It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-						</div>
-					</div>
-					<div class="seeMore">더보기</div>
-				</div>
-			</div>
-		</a>
-		
-		<a href="/restaurantInfo">
-			<div class="resCard">
-				<div class="img_box">
-					<img src="/img/noImg.jpg"/>
-				</div>
-				<div class="contents">
-					<div class="info">
-						<span class="resname">(vo.resname)</span><br/>
-						<span class="resgrade">★(vo.resgrade)</span><span class="restype">(vo.restype)</span><br/>
-						<span class="adr">(vo.resadress)서울특별시 특별한 곳 1000번지 12</span>
-						<div class="intro">
-							(vo.rescontent)It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-						</div>
-					</div>
-					<div class="seeMore">더보기</div>
-				</div>
-			</div>
-		</a>
-		
-		<a href="/restaurantInfo">
-			<div class="resCard">
-				<div class="img_box">
-					<img src="/img/noImg.jpg"/>
-				</div>
-				<div class="contents">
-					<div class="info">
-						<span class="resname">(vo.resname)</span><br/>
-						<span class="resgrade">★(vo.resgrade)</span><span class="restype">(vo.restype)</span><br/>
-						<span class="adr">(vo.resadress)서울특별시 특별한 곳 1000번지 12</span>
-						<div class="intro">
-							(vo.rescontent)It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-						</div>
-					</div>
-					<div class="seeMore">더보기</div>
-				</div>
-			</div>
-		</a>
-		
-		<a href="/restaurantInfo">
-			<div class="resCard">
-				<div class="img_box">
-					<img src="/img/noImg.jpg"/>
-				</div>
-				<div class="contents">
-					<div class="info">
-						<span class="resname">(vo.resname)</span><br/>
-						<span class="resgrade">★(vo.resgrade)</span><span class="restype">(vo.restype)</span><br/>
-						<span class="adr">(vo.resadress)서울특별시 특별한 곳 1000번지 12</span>
-						<div class="intro">
-							(vo.rescontent)It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-						</div>
-					</div>
-					<div class="seeMore">더보기</div>
-				</div>
-			</div>
-		</a>
-		
+				
 	</div>
 	
 	<!-- check box -->
