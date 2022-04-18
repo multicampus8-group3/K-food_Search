@@ -4,17 +4,13 @@
 		position: relative;		
 		width: 100%;
 		height: 2000px;
-		
-		/*border: solid 1px black;*/
 	}
 	
 	#mainContents{
 		position: relative;
-		
 		top:10px;
 		bottom:100px;
 		left: 25%;
-		
 		width: 1000px;
 		height: 1970px;
 	}
@@ -25,8 +21,6 @@
 		left: 10px;
 		width: 980px;
 		height: 600px;
-		
-		border: solid 1px blue;
 	}
 	
 	#menu{
@@ -35,17 +29,14 @@
 		left: 10px;
 		width: 980px;
 		height: 200px;
-		
-		border: solid 1px blue;
 	}
+	
 	#top_menu{
 		position: relative;
 		top: 30px;
 		left: 10px;
 		width: 980px;
 		height: 350px;
-		
-		border: solid 1px blue;
 	}
 	#bm_list{
 		background-color:#ffff00;
@@ -61,16 +52,14 @@
 	.bm_box img{
 		width:100%;
 		height: 200px;
-		align:bottom;
 	}
+	
 	#gg{
 		position: relative;
 		top: 40px;
 		left: 10px;
 		width: 980px;
 		height: 450px;
-		
-		border: solid 1px blue;
 	}
 	
 	#footer1{
@@ -79,7 +68,6 @@
 		left: 10px;
 		width: 980px;
 		height: 170px;
-		
 		border: solid 1px orange;
 	}
 	#mapSearch{
