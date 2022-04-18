@@ -1,7 +1,7 @@
 package com.campus.myapp;
 
-import java.util.List;
 
+import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -11,16 +11,30 @@ import org.springframework.web.servlet.ModelAndView;
 import com.campus.myapp.service.countryService;
 import com.campus.myapp.vo.countryVO;
 
+import com.campus.myapp.service.BestMenuService;
+import com.campus.myapp.service.mainAdService;
+
+
 @Controller
 public class HomeController {
+
 	@Inject
 	countryService countryService;
-	
+	@Inject
+	BestMenuService bmservice;
+	@Inject
+	mainAdService mainadservice;
+
 	@RequestMapping("/")
-	public String Home() {
-		//return "home_main";
-		return "home";
+	public ModelAndView home() {
+	   ModelAndView mav=new ModelAndView();
+	   mav.addObject("bmgrade",bmservice.bmSelect());
+	   mav.addObject("mainadbanner",mainadservice.mainAdSelect());
+	   mav.setViewName("home");
+	   return mav;
 	}
+	// 김자영- 메인페이지 top_res ad_banner
+	
 	@RequestMapping("/restaurant")
 	public String restaurant() {
 		return "restaurant/restaurant"; 
