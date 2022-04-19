@@ -318,7 +318,6 @@ img[usemap] {
 		
 	</div>
 </div>
-
 <script>
 	function menu_click(resty) {
 		//alert(resty);
