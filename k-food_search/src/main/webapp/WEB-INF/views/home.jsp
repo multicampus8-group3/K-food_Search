@@ -21,7 +21,7 @@
 	
 	<script type="text/javascript" src="../js/jquery.maphilight.min.js"></script>
 	<script type="text/javascript">$(function() {
-		$('.map').maphilight({fade: false});
+		$('.map').maphilight({strokeColor: 'black', strokeWidth: 0, fill: 'ff0000', fillColor: 'ff0000', fade: false});
 	});</script>
 	<script type="text/javascript" src="/js/bm_jy.js"></script>
 	
@@ -100,43 +100,209 @@ img[usemap] {
 			<div class="menuslide controls">
 				<ul class="multiple_slider">
 					<li>
-						<a href="/restaurantDesignTest"><img src="../img/1.jpg" alt=""><h2>비빔밥<span><div class="inner_div">비빔밥</div></span></h2></a>
-						<a href="/restaurantDesignTest"><img src="../img/2.jpg" alt=""><h2>볶음밥<span><div class="inner_div">볶음밥</div></span></h2></a>
+						<a onclick="menu_click('비빔밥')" href="/restaurantDesignTest">
+							<img class="img_box" src="../img/hansik_img/bibimbab_title.PNG" alt="">
+								<h2>비빔밥
+								<span>
+									<div class="inner_div">
+									비빔밥
+									</div>
+								</span>
+							</h2>
+						</a>
+						<a onclick="menu_click('볶음밥')" href="/restaurantDesignTest">
+							<img class="img_box" src="../img/hansik_img/gimchi_rice.PNG" alt="">
+								<h2>볶음밥
+								<span>
+									<div class="inner_div">
+									볶음밥
+									</div>
+								</span>
+							</h2>
+						</a>
 					</li>
 					
 					<li>
-						<a href="/restaurantDesignTest"><img src="../img/3.jpg" alt=""><h2>죽<span><div class="inner_div">죽</div></span></h2></a>
-						<a href="/restaurantDesignTest"><img src="../img/4.jpg" alt=""><h2>영양돌솥밥<span><div class="inner_div">영양돌솥밥</div></span></h2></a>
+						<a onclick="menu_click('감자탕')" href="/restaurantDesignTest">
+							<img class="img_box" src="../img/hansik_img/gamjatang.PNG" alt="">
+							<h2>감자탕
+								<span>
+									<div class="inner_div">
+										감자탕
+									</div>
+								</span>
+							</h2>
+						</a>
+						<a onclick="menu_click('떡국')" href="/restaurantDesignTest">
+							<img class="img_box" src="../img/hansik_img/dduckguk.PNG" alt="">
+							<h2>떡국
+								<span>
+									<div class="inner_div">
+										떡국
+									</div>
+								</span>
+							</h2>
+						</a>
 					</li>
 					
 					<li>
-						<a href="/restaurantDesignTest"><img src="../img/5.jpg" alt=""><h2>된장찌개<span><div class="inner_div">된장찌개</div></span></h2></a>
-						<a href="/restaurantDesignTest"><img src="../img/6.jpg" alt=""><h2>철판볶음밥<span><div class="inner_div">철판볶음밥</div></span></h2></a>
+						<a onclick="menu_click('국밥')" href="/restaurantDesignTest">
+							<img class="img_box" src="../img/hansik_img/gukbab.PNG" alt="">
+							<h2>국밥
+								<span>
+									<div class="inner_div">
+										국밥
+									</div>
+								</span>
+							</h2>
+						</a>
+						<a onclick="menu_click('꽃게탕')" href="/restaurantDesignTest">
+							<img class="img_box" src="../img/hansik_img/ggogetang.PNG" alt="">
+							<h2>꽃게탕
+								<span>
+									<div class="inner_div">
+										꽃게탕
+									</div>
+								</span>
+							</h2>
+						</a>
 					</li>
 					
 					<li>
-						<a href="/restaurantDesignTest"><img src="../img/7.jpg" alt=""><h2>김밥<span><div class="inner_div">김밥</div></span></h2></a>
-						<a href="/restaurantDesignTest"><img src="../img/8.jpg" alt=""><h2>떡볶이<span><div class="inner_div">떡볶이</div></span></h2></a>
+						<a onclick="menu_click('김밥')" href="/restaurantDesignTest">
+						<img class="img_box" src="../img/hansik_img/gimbab.PNG" alt="">
+							<h2>김밥
+								<span>
+									<div class="inner_div">
+										김밥
+									</div>
+								</span>
+							</h2>
+						</a>
+						<a onclick="menu_click('칼국수')" href="/restaurantDesignTest">
+						<img class="img_box" src="../img/hansik_img/kalguksu.PNG" alt="">
+							<h2>칼국수
+								<span>
+									<div class="inner_div">
+										칼국수
+									</div>
+								</span>
+							</h2>
+						</a>
 					</li>
 					
 					<li>
-						<a href="/restaurantDesignTest"><img src="../img/1.jpg" alt=""><h2>비빔밥<span><div class="inner_div">비빔밥</div></span></h2></a>
-						<a href="/restaurantDesignTest"><img src="../img/2.jpg" alt=""><h2>볶음밥<span><div class="inner_div">볶음밥</div></span></h2></a>
+						<a onclick="menu_click('떡볶이')" href="/restaurantDesignTest">
+						<img class="img_box" src="../img/hansik_img/tteokbokki.PNG" alt="">
+							<h2>떡볶이
+								<span>
+									<div class="inner_div">
+										떡볶이
+									</div>
+								</span>
+							</h2>
+						</a>
+						<a onclick="menu_click('어묵탕')" href="/restaurantDesignTest">
+							<img class="img_box" src="../img/hansik_img/odentang.PNG" alt="">
+							<h2>어묵탕
+								<span>
+									<div class="inner_div">
+										어묵탕
+									</div>
+								</span>
+							</h2>
+						</a>
 					</li>
 					
 					<li>
-						<a href="/restaurantDesignTest"><img src="../img/3.jpg" alt=""><h2>죽<span><div class="inner_div">죽</div></span></h2></a>
-						<a href="/restaurantDesignTest"><img src="../img/4.jpg" alt=""><h2>영양돌솥밥<span><div class="inner_div">영양돌솥밥</div></span></h2></a>
+						<a onclick="menu_click('부침개')" href="/restaurantDesignTest">
+						<img class="img_box" src="../img/hansik_img/Korean_pancake.PNG" alt="">
+							<h2>부침개
+								<span>
+									<div class="inner_div">
+										부침개
+									</div>
+								</span>
+							</h2>
+						</a>
+						<a onclick="menu_click('냉면')" href="/restaurantDesignTest">
+						<img class="img_box" src="../img/hansik_img/naengmyun.PNG" alt="">
+							<h2>냉면
+								<span>
+									<div class="inner_div">
+										냉면
+									</div>
+								</span>
+							</h2>
+						</a>
 					</li>
 					
 					<li>
-						<a href="/restaurantDesignTest"><img src="../img/5.jpg" alt=""><h2>된장찌개<span><div class="inner_div">된장찌개</div></span></h2></a>
-						<a href="/restaurantDesignTest"><img src="../img/6.jpg" alt=""><h2>철판볶음밥<span><div class="inner_div">철판볶음밥</div></span></h2></a>
+						<a onclick="menu_click('치킨')" href="/restaurantDesignTest">
+						<img class="img_box" src="../img/hansik_img/chicken.PNG" alt="">
+							<h2>치킨
+								<span>
+									<div class="inner_div">
+										치킨
+									</div>
+								</span>
+							</h2>
+						</a>
+						<a onclick="menu_click('닭꼬치')" href="/restaurantDesignTest">
+						<img class="img_box" src="../img/hansik_img/darkggochi.PNG" alt="">
+							<h2>닭꼬치
+								<span>
+									<div class="inner_div">
+										닭꼬치
+									</div>
+								</span>
+							</h2>
+						</a>
 					</li>
 					
 					<li>
-						<a href="/restaurantDesignTest"><img src="../img/7.jpg" alt=""><h2>김밥<span><div class="inner_div">김밥</div></span></h2></a>
-						<a href="/restaurantDesignTest"><img src="../img/8.jpg" alt=""><h2>떡볶이<span><div class="inner_div">떡볶이</div></span></h2></a>
+						<a onclick="menu_click('삼겹살')" href="/restaurantDesignTest">
+						<img class="img_box" src="../img/hansik_img/samgyupsal.jpg" alt="">
+							<h2>삼겹살
+								<span>
+									<div class="inner_div">
+										삼겹살
+									</div>
+								</span>
+							</h2>
+						</a>
+						<a onclick="menu_click('갈비찜')" href="/restaurantDesignTest">
+							<img class="img_box" src="../img/hansik_img/galbee.PNG" alt="">
+							<h2>갈비찜
+								<span>
+									<div class="inner_div">
+										갈비찜
+									</div>
+								</span>
+							</h2>
+						</a>
+					</li>
+					<li>
+						<a onclick="menu_click('불고기')" href="/restaurantDesignTest">
+						<img class="img_box" src="../img/hansik_img/bulgogi.PNG" alt="">
+							<h2>불고기
+								<span>
+									<div class="inner_div">
+										불고기
+									</div>
+								</span>
+							</h2>
+						</a>
+						<a onclick="menu_click('족발')" href="/restaurantDesignTest">
+						<img class="img_box" src="../img/hansik_img/jokbal.PNG" alt="">
+							<h2>족발
+								<span>
+									<div class="inner_div">
+										족발
+									</div>
+								</span>
+							</h2>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -180,33 +346,11 @@ img[usemap] {
 	</div>
 </div>
 <script>
-/*
-$(function(){
-	$('map[name="world"]>area').click(function(){
-		var nation=$(this).attr('data-nation');
-		var state=$(this).attr('data-state');
-		//alert(nation);
-		//alert(state);
-		getInfo(nation, state);
-	})
-})
-
-function getInfo(nation, state){
-	var nast = "nation="+nation+"&state="+state;
-	$.ajax({
-		type:'get',
-		url:'/country_rest?'+nast,
-		dataType:'json',
-		success:function(data){
-			alert(JSON.stringify(data));
-			//일단 나오는 값은 아이디명, 국가명, 수도명, 음식점이름 (RestaurantVO2의 순서대로)이 나온다. 
-		},
-		error:function(e){
-			alert("데이터 출력 에러발생");
-		}
-	})
-}
-*/
+	function menu_click(resty) {
+		//alert(resty);
+		event.preventDefault();
+		location.href="/shop_test?resty="+resty;
+	}
 </script>
 </body>
 </html>

@@ -15,7 +15,18 @@
 		where nation=#{param1} 
 		order by no
 	</select>
-	
-
+	<select id="restListByNation" resultType="com.campus.myapp.vo.RestaurantVO">
+		select distinct(resname), resstate, resnation,rescontent,resadress,restype,resgrade
+		from restaurant_table r join country c
+		on r.resnation = c.nation and r.resnation=#{param1}
+	</select>
+	<select id="restList" resultType="com.campus.myapp.vo.RestaurantVO">
+		select *
+		from restaurant_table r join country c
+		on r.resnation = c.nation and 
+		r.resstate=c.state 
+		where
+		r.resnation=#{param1} and r.resstate=#{param2}
+	</select>
 	
 </mapper>
