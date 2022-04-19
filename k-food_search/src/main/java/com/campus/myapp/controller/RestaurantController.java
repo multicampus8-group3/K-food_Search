@@ -254,7 +254,6 @@ public class RestaurantController {
 			result = "0";
 		}
 		mav.addObject("memfavor", result);
-		
 		mav.setViewName("/restaurant/restaurantInfo");
 		return mav;		
 	}
