@@ -7,7 +7,10 @@
 	float: right;
 	margin-right: 3%;
 }
-
+#favornation{
+	height:13vh;
+	overflow-y:scroll;
+}
 #justImageBox{
 	float: left;
 	width: 35%;
@@ -150,7 +153,7 @@
 <script>
 $(document).ready(function() {
 	$("#favornation").click(function(){
-			var url = "/stateList"
+			var url = "/country/stateList"
 			var params = $("input:radio[name='nation']:checked").val();
 			console.log(params);
 			$.ajax({
@@ -159,12 +162,35 @@ $(document).ready(function() {
 				nation:params
 			},
 			success: function(result) {
-				var $result = $(result);
-				var tag = "";
-				$result.each(function(idx, vo){
-					tag += "<input type='radio' name='state' value="+vo.state+"><label>"+vo.state+"</label>";						
+				alert(JSON.stringify(result))
+				var $result = $(result.stateList);
+				var $result2 = $(result.restList);
+				var tag2 = "";
+				var tag="";//레스토랑 정보를 담을 html태그가 들어가야
+				$result.each(function(idx, vo){					
+					tag2 += "<input type='radio' class='state' name='state' onclick='restInfo(\""+vo.state+"\")' value="+vo.state+"><label>"+vo.state+"</label><br>";
+				});
+				$result2.each(function(idx, vo){
+				
+					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">'; 
+					tag += '<div class="resCard">';
+					tag += '<div class="img_box">';
+					tag += 		'<img src="/img/noImg.jpg"/>';
+					tag += 	'</div>';
+					tag += 	'<div class="contents">';
+					tag += 		'<div class="info">';
+					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
+					tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="adr">'+vo.resadress+'</span>'
+					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
+					tag += 		'</div>';
+					tag += 		'<div class="seeMore">더보기</div>';
+					tag += 	'</div>';
+					tag += '</div>';
+					tag += '</a>';
 				});								
-				$("#favorstate").html(tag);
+				$("#favorstate").html(tag2);
+				$("#section").html(tag);
 			},
 			error: function(e) {
 				console.log(e.responseText);
@@ -208,6 +234,53 @@ $(function(){
 	}
 	restaurantList();
 });
+
+
+	function restInfo(state){
+		alert('state'+state)
+			var url = "/country/restList"
+			
+			var params1 = $("input:radio[name='nation']:checked").val();
+			
+			$.ajax({
+			url: url,
+			data:{
+				nation:params1,
+				state:state
+			},
+			success: function(result) {
+				alert(JSON.stringify(result))
+				var $result = $(result);
+				var tag2 = "";
+				var tag="";//레스토랑 정보를 담을 html태그가 들어가야
+				$result.each(function(idx, vo){
+					tag2 += "<input type='radio' name='state' value="+vo.resstate+"><label>"+vo.resstate+"</label><br>";	
+					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">';
+					tag += '<div class="resCard">';
+					tag += '<div class="img_box">';
+					tag += 		'<img src="/img/noImg.jpg"/>';
+					tag += 	'</div>';
+					tag += 	'<div class="contents">';
+					tag += 		'<div class="info">';
+					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
+					tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="adr">'+vo.resadress+'</span>'
+					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
+					tag += 		'</div>';
+					tag += 		'<div class="seeMore">더보기</div>';
+					tag += 	'</div>';
+					tag += '</div>';
+					tag += '</a>';
+				});								
+				$("#favorstate").html(tag2);
+				$("#section").html(tag);
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	}//restInfo()-----------------------
+
 </script>
 
 <div class="container">
@@ -226,7 +299,7 @@ $(function(){
 			<h3>#resnation</h3>
 			<form action="" id="favornation">
 				<c:forEach items="${countrylist}" var="item">
-        			<input type='radio' name="nation" value="${item.nation}"><label>${item.nation}</label>
+        			<input type='radio' name="nation" value="${item.nation}"><label>${item.nation}</label><br>
         		</c:forEach>
 			</form>
 		</div>

@@ -2,11 +2,14 @@ package com.campus.myapp.service;
 
 import java.util.List;
 
+import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.countryVO;
 
 public interface countryService {
-	//êµ­ê°€ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
+	//±¹°¡¸ñ·Ï °¡Á®¿À±â
 	public List<countryVO> countryList();
-	//ë„ì‹œëª©ë¡ ì „ë¶€ê°€ì ¸ì˜¤ê¸°
+	//µµ½Ã¸ñ·Ï ÀüºÎ°¡Á®¿À±â
 	public List<countryVO> stateList(String nation);
+	public List<RestaurantVO> restList(String nation, String state);
+	public List<RestaurantVO> restListByNation(String nation);
 }
