@@ -11,7 +11,7 @@
 				$('#resadress').focus();
 				return false;
 			}
-			if($('#editor').val()==''){
+			if(theEditor.getData()==''){
 				alert('소개글을 입력하세요');
 				$(".ck-editor__editable").focus();
 				return false;
