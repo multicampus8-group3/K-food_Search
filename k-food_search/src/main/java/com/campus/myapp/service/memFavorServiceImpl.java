@@ -28,6 +28,16 @@ public class memFavorServiceImpl implements memFavorService {
 		return dao.memFavorDelete(vo);
 	}
 
+	@Override
+	public String memFavorSelect(String userid, int resno) {
+		return dao.memFavorSelect(userid, resno);
+	}
+
+	@Override
+	public int memFavorInsert(memFavorVO vo) {
+		return dao.memFavorInsert(vo);
+	}
+
 
 	
 }
