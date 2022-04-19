@@ -55,7 +55,7 @@ public class RestaurantController {
 		vo.setSearchWord(searchWord);
 		return service.getSearchList(vo);
 	}	
-		
+		 
 	@GetMapping("/myrestaurant/myrestaurant")
 	public ModelAndView myrestaurant() {
 		ModelAndView mav = new ModelAndView();
@@ -166,7 +166,7 @@ public class RestaurantController {
 				fservice.faqAnswerInsert(max,Fvo.getFaqno()[i],Fvo.getContent()[i]);
 			}
 		}
-		mav.setViewName("redirect:/restaurantInfo");
+		mav.setViewName("redirect:/restaurantInfo?resno="+vo.getResno());
 		return mav;
 	}
 	@PostMapping("/myrestaurant/resSignUp")
@@ -255,6 +255,6 @@ public class RestaurantController {
 		}
 		mav.addObject("memfavor", result);
 		mav.setViewName("/restaurant/restaurantInfo");
-		return mav;		
+		return mav;
 	}
 }

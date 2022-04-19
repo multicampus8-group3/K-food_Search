@@ -39,6 +39,7 @@
 	overflow: hidden;
 	margin-top:10px;
 	margin-bottom: 5px;
+	margin-right: 7%;
 	line-height: 30px;
 }
 #a span{
@@ -50,6 +51,7 @@
 #b{
 	float: right;
 	width: 83%;
+	margin-right: 7%;
 }
 #b span{
 	margin-left: 10px;
@@ -70,6 +72,7 @@
     -webkit-box-orient: vertical;
 	overflow: hidden;
 	margin-top: 5px;
+	margin-right: 7%;
 }
 #c b{
 	color: red;
