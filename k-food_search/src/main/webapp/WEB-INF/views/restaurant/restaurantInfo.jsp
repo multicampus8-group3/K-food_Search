@@ -48,7 +48,8 @@ $(document).ready(function() {
 	    startTime: '9:00',
 	    dynamic: false,
 	    dropdown: true,
-	    scrollbar: true
+	    scrollbar: true,
+	    containerClass:"test"
 	});
 	$('#memReserv').submit(function(){
 		event.preventDefault();
@@ -212,8 +213,8 @@ $(document).ready(function() {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
-  height: 50%;
+  width: 700px;
+  height: 400px;
   background-color: #fff;
   padding: 2rem;
   border-radius: 20px;
@@ -232,9 +233,11 @@ $(document).ready(function() {
   font-size: 2rem;
   margin-bottom: 2rem;
 }
-.test{
-  position: relative;
-  background-color: red;
+.ui-timepicker-container{
+  position: fixed;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-135%, -32%);
 }
 </style>
 
@@ -289,8 +292,8 @@ $(document).ready(function() {
 		<div>${vo.resadress}</div>
 		<div>${vo.reshour} - ${vo.reshourend}</div>
 	</div>
-	
-	
+</div>
+
 <div class="reservation_box">
 	<div class="reservation_box_bg"></div>
 		<div class="date_setting">
@@ -318,7 +321,6 @@ $(document).ready(function() {
 
         <button>submit</button>
       </form>
-		</div>
 	</div>
 </div>
   

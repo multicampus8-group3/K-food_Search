@@ -10,16 +10,16 @@
 	}
 	
 	#mainContents{
-		position: relative;
-		left:18.5%;
-		right:18.5%;
+		margin:0 auto;
 		top:10px;
 		bottom:100px;
 		
 		width: 1200px;
+
 		height: 2271px;
 		
 		/*background-color: red;*/
+
 	}
 	
 	#jido_world{
@@ -27,9 +27,13 @@
 		top: 10px;
 		left: 0px;
 		width: 1200px;
+<<<<<<< HEAD
+		height: 600px;
+=======
 		height: 600px;
 		
 		/* background-color: gray; */
+>>>>>>> branch 'main' of https://github.com/qorehdgus/K-food_Search.git
 	}
 	.map{
 		position: relative;

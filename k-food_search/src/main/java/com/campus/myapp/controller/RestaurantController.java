@@ -166,7 +166,7 @@ public class RestaurantController {
 				fservice.faqAnswerInsert(max,Fvo.getFaqno()[i],Fvo.getContent()[i]);
 			}
 		}
-		mav.setViewName("redirect:/restaurantInfo");
+		mav.setViewName("redirect:/restaurantInfo?resno="+vo.getResno());
 		return mav;
 	}
 	@PostMapping("/myrestaurant/resSignUp")
