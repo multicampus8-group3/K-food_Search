@@ -55,9 +55,9 @@ $(document).ready(function() {
 		event.preventDefault();
 		if($("#reservDate").val()=="" || $("#reservTime").val()=="" || $("#reservp").val()==""){
 			alert("정확한 날짜, 시간, 인원을 선택해주세요.");
-			return false;
+			
 		}
-		
+		console.log("실행")
 	});
 	    
 
