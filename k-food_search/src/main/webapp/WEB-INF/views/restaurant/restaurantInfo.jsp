@@ -48,7 +48,8 @@ $(document).ready(function() {
 	    startTime: '9:00',
 	    dynamic: false,
 	    dropdown: true,
-	    scrollbar: true
+	    scrollbar: true,
+	    containerClass:"test"
 	});
 	$('#memReserv').submit(function(){
 		event.preventDefault();
@@ -386,6 +387,7 @@ $(document).ready(function() {
 	height: 52px;
 	background-color: rgba(89, 121, 115, 0.7);
 	color: #fff;
+
 }
 </style>
 
@@ -477,12 +479,14 @@ $(document).ready(function() {
 	</div>
 	<div id="reviewList">
 	</div>
-			
-			
+		
+</div>
+
 <div class="reservation_box">
 	<div class="reservation_box_bg"></div>
 		<div class="date_setting">
 			<button>✖</button>
+
 			<div class="reservName">${vo.resname}</div>
 			<div class="reservMent">매장예약</div>
 			<form id="memReserv">
@@ -519,5 +523,5 @@ $(document).ready(function() {
 				<button>예약 신청하기</button>
 			</form>
 		</div>
-	</div>
+		
 </div>

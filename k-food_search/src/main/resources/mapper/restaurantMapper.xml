@@ -89,7 +89,8 @@
 		order by resno desc
 	</select>
 	<select id="resSelect" resultType="com.campus.myapp.vo.RestaurantVO">
-		select resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, resno, reshour, reshourend  
+		select resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, 
+		resno, time_format(reshour,'%H:%i') reshour, time_format(reshourend,'%H:%i') reshourend
 		from restaurant_table
 		where resno=#{resno}
 	</select>

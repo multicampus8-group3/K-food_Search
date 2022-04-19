@@ -6,20 +6,20 @@
 		height: 2271px;
 		margin: 0px auto;
 		
-		background-color: white;
+		/* background-color: white; */
 	}
 	
 	#mainContents{
-		position: relative;
-		left:18.5%;
-		right:18.5%;
+		margin:0 auto;
 		top:10px;
 		bottom:100px;
 		
 		width: 1200px;
+
 		height: 2271px;
 		
 		/*background-color: red;*/
+
 	}
 	
 	#jido_world{
@@ -27,9 +27,13 @@
 		top: 10px;
 		left: 0px;
 		width: 1200px;
+<<<<<<< HEAD
+		height: 600px;
+=======
 		height: 600px;
 		
-		/*background-color: gray;*/
+		/* background-color: gray; */
+>>>>>>> branch 'main' of https://github.com/qorehdgus/K-food_Search.git
 	}
 	.map{
 		position: relative;
@@ -51,18 +55,18 @@
 		width: 1200px; /*980 1200 1900*/
 		height: 551px; /*412 450 551 600 800*/
 		
-		/*background-color: gray;*/
+		/* background-color: gray; */
 	}
 	#top_menu{
 		position: relative;
 		top: 17px;
 		width: 1200px; /*980 1200*/
-		height: 428px; /*350 428*/
+		height: 430px; /*350 428*/
 		
-		/*background-color: gray;*/
+		/* background-color: gray; */
 	}
 	#bm_list{
-		background-color:#ffff00;
+		/* background-color:#ffff00; */
 		margin:0 auto;
 		width:100%;
 	}
@@ -70,15 +74,16 @@
 		width:23.3%;
 		height:428px; /*350 428*/
 		float:left;
-		margin-right: 18px;
+		margin-right: 16px;
 		position: relative;
-		left:13px;
+		left:15px;
 		top: 0px;
 	}
 	.bm_box img{
 		width:100%;
-		height: 244px; /*200 244*/
-		align:bottom;
+		height: 250px; /*200 244*/
+		margin-bottom:15px;
+		border: solid 1px black;
 	}
 	#gg{
 		position: relative;
@@ -86,7 +91,7 @@
 		width: 1200px; /*980 1200*/
 		height: 612px; /*500 612*/
 		
-		/*background-color: gray;*/
+		/* background-color: gray; */
 	}
 	
 	/* 멀티플 슬라이더 */
