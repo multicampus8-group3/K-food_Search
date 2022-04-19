@@ -1,8 +1,8 @@
 $(function () {
         $("#slider").bxSlider({
         	mode : 'horizontal'// 기본 -> 'horizontal', 'vertical', 'fade'
-            ,slideWidth:980
-            ,slideHeight:450
+            ,slideWidth:1200
+            ,slideHeight:489
             ,speed:500
             ,pause:4000
             ,auto: true//자동시작

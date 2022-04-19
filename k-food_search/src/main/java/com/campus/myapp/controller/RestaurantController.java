@@ -22,10 +22,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.campus.myapp.service.FaqService;
 import com.campus.myapp.service.RestaurantService;
 import com.campus.myapp.service.countryService;
+import com.campus.myapp.service.memFavorService;
 import com.campus.myapp.vo.FaqAnswerVO;
 import com.campus.myapp.vo.FaqVO;
 import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.countryVO;
+import com.campus.myapp.vo.memFavorVO;
 
 @RestController
 public class RestaurantController {
@@ -35,6 +37,8 @@ public class RestaurantController {
 	FaqService fservice;
 	@Inject
 	countryService countryService;
+	@Inject
+	memFavorService memFavorService;
 	
 	// 관리자페이지에서 가게목록 보기
 	@GetMapping("/restaurant/resListToAdmin")
@@ -241,11 +245,16 @@ public class RestaurantController {
 	}
 	//식당정보 페이지
 	@GetMapping("restaurantInfo")
-	public ModelAndView restaurantInfo(int resno) {
+	public ModelAndView restaurantInfo(int resno, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", service.resSelect(resno));
+		String userid = (String)session.getAttribute("logId");
+		String result = memFavorService.memFavorSelect(userid, resno);
+		if(result == null) {
+			result = "0";
+		}
+		mav.addObject("memfavor", result);
 		mav.setViewName("/restaurant/restaurantInfo");
-		
 		return mav;		
 	}
 }
