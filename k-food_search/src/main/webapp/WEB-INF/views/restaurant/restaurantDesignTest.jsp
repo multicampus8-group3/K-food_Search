@@ -172,7 +172,7 @@ $(document).ready(function() {
 				});
 				$result2.each(function(idx, vo){
 				
-					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">'; 
+					tag += '<a href="/?resno='+vo.resno+'">'; 
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
 					tag += 		'<img src="/img/noImg.jpg"/>';
