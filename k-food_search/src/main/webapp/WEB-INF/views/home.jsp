@@ -20,11 +20,12 @@
 	<script type="text/javascript" src="../js/bxslider_jquery.js"></script>
 	
 	<script type="text/javascript" src="../js/jquery.maphilight.min.js"></script>
-	<script type="text/javascript">$(function() {
-		$('.map').maphilight({fade: false});
-	});</script>
+	<script type="text/javascript">
+		//$(function() {
+			//$('.map').maphilight({strokeColor: '33F1FF', strokeWidth: 0, fillColor: '33F1FF', fade: false});
+		//});
+	</script>
 	<script type="text/javascript" src="/js/bm_jy.js"></script>
-	
 	
 	<script>
 		function formatDate() { 
@@ -49,7 +50,24 @@
 		} 
 		formatDate();
 		</script>
-		
+		<script type="text/javascript">
+        $(function () {
+            $('area').mouseover(function (event) {
+            	console.log("마우스 오버")
+                var map = document.getElementById('#world');                
+                var areas = document.querySelectorAll('area');
+                for (var i = 0; i < areas.length; i++) {
+                    var area = areas[i];
+                    var id = area.id;
+                    var data = $('#' + id).data('maphilight') || {};
+                    if (area.id == $(this)[0].id)
+                        data.fillColor = '02FC1F'; // Sample color           
+                    else data.fillColor = 'ff0000'; // Sample color           
+                    $('#' + id).data('maphilight', data).trigger('alwaysOn.maphilight');
+                }
+            });
+        });
+    </script>
 		<script type="text/javascript" src="../js/jquery.rwdImageMaps.js"></script>
 		<script>
 		$(function(){
@@ -58,17 +76,24 @@
 		
 		});
 		</script>
-		
 <style type="text/css">
 img[usemap] {
 	max-height: 150%;
 	height: 600px;
 	max-width: 150%;
 	width: 1200px;
+	border:1px solid black;
    }
+map::before{
+ width:200px;
+ height:200px;
+ background-color:
+   linear-gradient(to bottom left,transparent 49.8%,#E0E6E5 50%) top   /100% 35%,
+   linear-gradient(to top    left,transparent 49.8%,#E0E6E5 50%) bottom/100% 35%,
+   linear-gradient(#E0E6E5,#E0E6E5) center/100% 30%;
+ background-repeat:no-repeat;
+  }
 </style>
-
-
 
 <style>
 	#slider ul,li{
@@ -82,17 +107,19 @@ img[usemap] {
     	margin-right: 20px;
     }
     .map{
-    	size: width: 1200px;
+    	size: width: 1200px;		
     }
+
 </style>
+
 </head>
 <body>
 
 <div class="container"> <!-- 컨테이너 -->
 
 	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
-		
-		<div id="jido_world" style='background-color:pink'>
+		<div style='background-color:pink; margin-top:20px; margin-bottom:20px;'>a</div>
+		<div id="jido_world" style='background-color:pink; margin-top:20px; margin-bottom:20px;'>
 			<%@ include file="home_world.jsp" %>
 		</div> <!-- 상단지도 -->
 		
