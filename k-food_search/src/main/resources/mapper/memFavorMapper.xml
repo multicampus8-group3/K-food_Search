@@ -17,6 +17,13 @@
 	<delete id="memFavorDelete">
   		delete from member_favorite where no=#{no}
 	</delete>
-	
+	<select id="memFavorSelect" resultType="String">
+		select no 
+		from member_favorite 
+		where userid=#{param1} and resno=#{param2}
+	</select>
+	<insert id="memFavorInsert">
+		insert into member_favorite(userid, resno) values (#{userid},#{resno});
+	</insert>
 
 </mapper>

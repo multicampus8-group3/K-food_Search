@@ -55,4 +55,10 @@ public class HomeController {
 		mav.setViewName("restaurant/restaurantDesignTest");
 		return mav; 
 	}
+	
+	// 식당상세_디자인_샘플 
+	@RequestMapping("/restaurantInfoDesignTest")
+	public String restaurantInfoDesignTest() {
+		return "restaurant/restaurantInfoDesignTest"; 
+	}
 }

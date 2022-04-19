@@ -37,4 +37,10 @@ public class memFavorController {
 		return service.memFavorDelete(vo);
 	}
 	
+	@GetMapping("memFavorInsert")
+	public int memFavorInsert(memFavorVO vo, HttpSession session) {
+		vo.setUserid((String)session.getAttribute("logId"));
+		return service.memFavorInsert(vo);
+	}
+	
 }

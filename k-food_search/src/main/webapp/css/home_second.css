@@ -19,7 +19,11 @@
 		width: 1200px;
 		height: 2271px;
 		
+<<<<<<< HEAD
 		/* background-color: red; */
+=======
+		/*background-color: red;*/
+>>>>>>> branch 'main' of https://github.com/multicampus8-group3/K-food_Search.git
 	}
 	
 	#jido_world{
@@ -29,12 +33,23 @@
 		width: 1200px;
 		height: 600px;
 		
+<<<<<<< HEAD
 		/* background-color: gray; */
+=======
+		/*background-color: gray;*/
+>>>>>>> branch 'main' of https://github.com/multicampus8-group3/K-food_Search.git
 	}
 	.map{
 		position: relative;
 		top: 0px;
 		left: 0px;
+	}
+	
+	#menu, #top_menu {
+		-moz-box-shadow: 0 0 2px #ccc;
+		-webkit-box-shadow: 0 0 2px #ccc;
+		box-shadow: 0 0 2px #ccc;
+		background: #fff;
 	}
 	
 	#menu{
@@ -44,15 +59,27 @@
 		width: 1200px; /*980 1200 1900*/
 		height: 551px; /*412 450 551 600 800*/
 		
+<<<<<<< HEAD
 		/* background-color: gray; */
+=======
+		/*background-color: gray;*/
+>>>>>>> branch 'main' of https://github.com/multicampus8-group3/K-food_Search.git
 	}
 	#top_menu{
 		position: relative;
 		top: 17px;
 		width: 1200px; /*980 1200*/
+<<<<<<< HEAD
 		height: 430px; /*350 428*/
+=======
+		height: 428px; /*350 428*/
+>>>>>>> branch 'main' of https://github.com/multicampus8-group3/K-food_Search.git
 		
+<<<<<<< HEAD
 		/* background-color: gray; */
+=======
+		/*background-color: gray;*/
+>>>>>>> branch 'main' of https://github.com/multicampus8-group3/K-food_Search.git
 	}
 	#bm_list{
 		/* background-color:#ffff00; */
@@ -63,16 +90,27 @@
 		width:23.3%;
 		height:428px; /*350 428*/
 		float:left;
+<<<<<<< HEAD
 		margin-right: 16px;
 		position: relative;
 		left:15px;
+=======
+		margin-right: 18px;
+		position: relative;
+		left:13px;
+>>>>>>> branch 'main' of https://github.com/multicampus8-group3/K-food_Search.git
 		top: 0px;
 	}
 	.bm_box img{
 		width:100%;
+<<<<<<< HEAD
 		height: 250px; /*200 244*/
 		margin-bottom:15px;
 		border: solid 1px black;
+=======
+		height: 244px; /*200 244*/
+		align:bottom;
+>>>>>>> branch 'main' of https://github.com/multicampus8-group3/K-food_Search.git
 	}
 	#gg{
 		position: relative;
@@ -80,7 +118,11 @@
 		width: 1200px; /*980 1200*/
 		height: 612px; /*500 612*/
 		
+<<<<<<< HEAD
 		/* background-color: gray; */
+=======
+		/*background-color: gray;*/
+>>>>>>> branch 'main' of https://github.com/multicampus8-group3/K-food_Search.git
 	}
 	
 	/* 멀티플 슬라이더 */
