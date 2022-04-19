@@ -10,6 +10,7 @@ public class ReviewVO {
 	private double resgrade;
 	
 	private String resname;
+	private String resadress;
 	
 	private String searchKey;
 	private String searchWord;
@@ -102,6 +103,15 @@ public class ReviewVO {
 		this.resgrade = resgrade;
 	}
 
+	public String getResadress() {
+		return resadress;
+	}
+
+	public void setResadress(String resadress) {
+		this.resadress = resadress;
+	}
+	
+	
 	
 	
 }

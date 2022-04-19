@@ -5,11 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>한땀한땀 : 한식만 따로 담았다</title>
+<link rel="icon" href="/img/favicon.ico/">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
 	<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de3fd42ca3e0fb9',m:'0GgGI7zDnSr1gpNO2aZt8xuf09.XqNFNAl26Nz09FSY-1644985288-0-ASIOJg74TZmDRx8PzqS0GkltyDGVyqiSSZLtikz9s36I2aTVOteA5aILjGLx/TvgGfZOC34QXGdgGJEI7UTyYI2swg2rVlcLG+zN8s1omkQCLVVc7WXj34iS7QfsW1JQL3W3rSS9+7lm604st4BH9AV/jLfEPihAMuP3FjzGHBqZzvoQQUge0wcXl4Kh1PCIYD2ajQu35bDszAae0YT0SjQ=',s:[0x2900a90da7,0xbc627ac0ef],}})();</script>
 <script>
 	$(()=>{
+		
 		//top 스크롤 이동시 움직임.
 		/*
 		$(window).scroll(function(){
@@ -21,8 +23,18 @@
 			}
 		});
 		*/
+		
 		//menu 이미지 클릭시 메뉴 보이게 하는 이벤트.
+		
+		//텍스트 배율에 따라 변경
+		let pr = window.devicePixelRatio;
 		var menuCheck=true;
+		
+		if(pr==1.25){
+		   menuCheck=false;
+		   $('.menu').css('width','0px');
+		}
+		
 		$(".menu_img").click(function(){
 			//console.log('클릭이벤트 발생');
 			if(menuCheck==false){
@@ -91,6 +103,8 @@
 	}
 	.topMenu>ul{
 		background-color: #fff;
+		border-bottom: 2px solid #A5A68F;
+		box-shadow: 0 0 5px #7D909F;
 		width:100%;
 		height:50px;
 		padding-top:0px;
@@ -127,8 +141,9 @@
 	.menu{
 		position: absolute;
 		background-color:#A5A68F;
+		box-shadow: 0 0 5px #7D909F;
 		width:300px;
-		height: 100vw;
+		height: 100vh;
 		overflow:hidden;
 		text-align:center;
 	}
@@ -249,7 +264,8 @@
 			<div id='menu_div'>
 				<a class='menu_button' href='/'><img style="height:25px;" src="/img/homebtn.png"/>&nbsp;HOME</a><br/>
 				<a class='menu_button' href='/restaurant'><img style="height:25px;" src="/img/searchbtn.png"/>&nbsp;SEARCH</a>
-				<a class='menu_button' style="font-size: 14px;" href='/restaurantDesignTest'>식당목록_디자인_샘플</a>
+				<a class='menu_button' style="font-size: 14px; line-height:14px; height: 16px;" href='/restaurantDesignTest'>식당목록_디자인_샘플</a>
+				<a class='menu_button' style="font-size: 14px; line-height:14px; height: 16px;" href='/restaurantInfoDesignTest'>식당상세_디자인_샘플</a>
 			</div>
 			<c:if test="${logId==null }">
 				<div id='login_div'>
@@ -271,7 +287,7 @@
 					</c:if>
 					<c:if test="${logType =='owner' }">
 						(사장님)<br/><br/>
-						<a href="/myrestaurant">식당관리</a>&nbsp;|&nbsp;
+						<a href="/myrestaurant/myrestaurant">식당관리</a>&nbsp;|&nbsp;
 					</c:if>
 					<c:if test="${logType =='admin' }">
 						(관리자)<br/><br/>

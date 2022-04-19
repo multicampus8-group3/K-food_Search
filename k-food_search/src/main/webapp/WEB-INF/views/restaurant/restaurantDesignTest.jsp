@@ -75,7 +75,7 @@
 .resCard{
 	height: 245px;
 	padding: 10px;
-	border: 1px solid #3E6167;
+	border: 1px solid rgba(62, 97, 103, 0.3);
 	border-radius: 5px;
   	display: flex;
   	margin-top:15px;
@@ -140,7 +140,7 @@
 	font-weight: bold;
 }
 .resCard:hover{
-	box-shadow: 1px 1px 20px #2F4858;
+	box-shadow: 1px 1px 10px rgba(42, 72, 88, 0.3);
 }
 .seeMore:hover{
 	background-color: #2F4858;
@@ -150,7 +150,7 @@
 <script>
 $(document).ready(function() {
 	$("#favornation").click(function(){
-			var url = "/country/stateList"
+			var url = "/stateList"
 			var params = $("input:radio[name='nation']:checked").val();
 			console.log(params);
 			$.ajax({

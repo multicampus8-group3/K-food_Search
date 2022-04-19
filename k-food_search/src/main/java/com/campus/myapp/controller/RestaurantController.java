@@ -56,13 +56,13 @@ public class RestaurantController {
 		return service.getSearchList(vo);
 	}	
 		
-	@GetMapping("/myrestaurant")
+	@GetMapping("/myrestaurant/myrestaurant")
 	public ModelAndView myrestaurant() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/myrestaurant/restaurantMain");
 		return mav;
 	}
-	@GetMapping("/restaurantSignUp")
+	@GetMapping("/myrestaurant/restaurantSignUp")
 	public ModelAndView restaurantSignUp() {
 		ModelAndView mav = new ModelAndView();
 		List<FaqVO> lst = fservice.faqList(null);
@@ -72,7 +72,7 @@ public class RestaurantController {
 		mav.setViewName("/myrestaurant/restaurantSignUp");
 		return mav;
 	}
-	@GetMapping("/restaurantUpdateList")
+	@GetMapping("/myrestaurant/restaurantUpdateList")
 	public ModelAndView restaurantUpdate(RestaurantVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/myrestaurant/restaurantUpdateList");
@@ -92,7 +92,7 @@ public class RestaurantController {
 		fileDelete(path, resimg);
 		return service.restaurantDel(resno);
 	}
-	@GetMapping("/restaurantUpdateWrite")
+	@GetMapping("/myrestaurant/restaurantUpdateWrite")
 	public ModelAndView restaurantUpdateWrite(int resno) {
 		ModelAndView mav = new ModelAndView ();
 		List<FaqVO> lst = fservice.faqList(null);
@@ -105,7 +105,7 @@ public class RestaurantController {
 		mav.setViewName("/myrestaurant/restaurantUpdateWrite");
 		return mav;
 	}
-	@PostMapping("/restaurantUpdateOk")
+	@PostMapping("/myrestaurant/restaurantUpdateOk")
 	public ModelAndView restaurantUpdateOk(RestaurantVO vo, FaqAnswerVO Fvo, HttpServletRequest request, String resimgOrg) {
 		ModelAndView mav = new ModelAndView();
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
@@ -169,7 +169,7 @@ public class RestaurantController {
 		mav.setViewName("redirect:/restaurantInfo");
 		return mav;
 	}
-	@PostMapping("/resSignUp")
+	@PostMapping("/myrestaurant/resSignUp")
 	public ModelAndView resSignUp (RestaurantVO vo, FaqAnswerVO Fvo, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView ();
 		vo.setUserid((String)request.getSession().getAttribute("logId"));
@@ -220,10 +220,10 @@ public class RestaurantController {
 				fservice.faqAnswerInsert(max,Fvo.getFaqno()[i],Fvo.getContent()[i]);
 			}
 		}
-		mav.setViewName("redirect:/myrestaurant");
+		mav.setViewName("redirect:/myrestaurant/myrestaurant");
 		return mav;
 	}
-	@GetMapping("/restaurantReserveCheck")
+	@GetMapping("/myrestaurant/restaurantReserveCheck")
 	public ModelAndView restaurantReserveCheck() {
 		ModelAndView mav = new ModelAndView ();
 		mav.setViewName("/myrestaurant/restaurantReserveCheck");

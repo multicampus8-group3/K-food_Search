@@ -67,11 +67,10 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return dao.restaurantUpdateOk(vo);
 	}
 	
-	//ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¸ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ï±ï¿½.
 	@Override
-	public List<RestaurantVO> restaurantList_world(memberVO mVO) {
+	public List<RestaurantVO> restaurantList_world(String nation) { //memberVO mVO  (¸Å°³º¯¼ö Ãß°¡ ÇÊ¿ä favornation À§ÇØ¼­)
 		// TODO Auto-generated method stub
-		return null;
+		return dao.restaurantList_world(nation);
 	}
 
 	@Override

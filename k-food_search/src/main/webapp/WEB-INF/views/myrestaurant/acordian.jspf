@@ -15,7 +15,7 @@
 		width:1200px;
 		height:300px;
 		overflow:hidden;
-		background-image:url('img/acorImg/acorback.jpg');
+		background-image:url('/img/acorImg/acorback.jpg');
 		background-size:600px;
 		margin:0 auto;
 		margin-top:50px;
@@ -34,25 +34,25 @@
 <div id='acordian'>
 		<div>
 			<a href='/restaurantSignUp'>
-				<img src='img/acorImg/acor1.jpg' title='업체 등록으로 이동'/>
+				<img src='/img/acorImg/acor1.jpg' title='업체 등록으로 이동'/>
 			</a>
 		</div>
 		<div>
 			<a href='/restaurantUpdateList'>
-				<img src='img/acorImg/acor2.jpg' title='내 업체 정보로 이동'/>
+				<img src='/img/acorImg/acor2.jpg' title='내 업체 정보로 이동'/>
 			</a>
 		</div>
 		<div>
 			<a href='/restaurantReserveCheck'>
-				<img src='img/acorImg/acor3.jpg' title='예약현황으로 이동'/>
+				<img src='/img/acorImg/acor3.jpg' title='예약현황으로 이동'/>
 			</a>
 		</div>
 		<div>
 			<a href='/restaurantAdApplication'>
-				<img src='img/acorImg/acor4.jpg' title='광고 신청으로 이동'/>
+				<img src='/img/acorImg/acor4.jpg' title='광고 신청으로 이동'/>
 			</a>
 		</div>
 		<div>
-			<img src='img/acorImg/acor5.jpg'/>
+			<img src='/img/acorImg/acor5.jpg'/>
 		</div>
 </div>

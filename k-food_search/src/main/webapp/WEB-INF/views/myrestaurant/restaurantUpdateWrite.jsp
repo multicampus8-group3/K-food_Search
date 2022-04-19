@@ -3,6 +3,8 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
 <script src="/js/backjs/resCheck.js"></script>
 <link rel="stylesheet"  href='/css/backCSS/restaurantUpdateWrite.css' type="text/css"/>
+<link rel="stylesheet"  href='/css/backCSS/hanokback.css' type="text/css"/>
+<link rel="stylesheet"  href='/css/backCSS/inputButton.css' type="text/css"/>
 <script>
 $(()=>{
 	
@@ -19,7 +21,7 @@ $(()=>{
     });
 
 	var qna = "<span><select name='faqno'><c:forEach var='item' items='${faqList }'><option value='${item.no }'>${item.content }</option></c:forEach></select>";
-	qna += "<input type='text' name='content'/><input type='button' value='취소' onclick='faqDel()'/><br/></span>"
+	qna += "<br/><input type='text' name='content' placeholder='답변 내용을 입력하세요.'/><input type='button' value='삭제' onclick='faqDel()'/><br/></span>"
 	$("#qna").click(function(){
 		$("#qnaDiv").append(qna);
 	});
@@ -33,7 +35,7 @@ $(()=>{
 });
 
 function setState(){
-	var url = "/country/stateList"
+	var url = "/stateList"
 		var params = $("#resnation option:selected").val();
 		$.ajax({
 		url: url,
@@ -69,7 +71,7 @@ function changeView(){
 </script>
 	﻿<%@ include file="acordian.jspf" %>
 	<div class='resSignUpDiv'>
-		<form method='post' action='/restaurantUpdateOk' enctype="multipart/form-data" id='resSignUpFrm'>
+		<form method='post' action='/myrestaurant/restaurantUpdateOk' enctype="multipart/form-data" id='resSignUpFrm'>
 			<input type='hidden' name='resno' value='${vo.resno}'/>
 			<span class='mainText'>업체 정보 수정</span><br/>
 			<hr style='margin-bottom:40px;'/> 
@@ -92,13 +94,17 @@ function changeView(){
 			<span>업종 분류</span><br/> 
 			<select name='restype' id='restype'>
 				<option value=''>타입선택</option>
-				<option>타입1</option>
-				<option>타입2</option>
-				<option>타입3</option>
+				<option>떡복이</option>
+				<option>전</option>
+				<option>백반</option>
+				<option>치킨</option>
+				<option>삼겹살</option>
+				<option>비빔밥</option>
+				<option>국밥</option>
 			</select><br/>
 			<span>매장 메인 이미지</span><br/>
 			<span id='resimg'><img src='/resImg/${vo.resimg}' title='현재 등록 중인 이미지' style='width:100px; height:100px; border-radius:50px;'/><br/></span>
-			<span>${vo.resimg } &nbsp;<input type='button' value='이미지 교체' onclick='changeView()'/></span>
+			<span>${vo.resimg } &nbsp;<input type='button' id='btn' value='이미지 교체' onclick='changeView()'/></span>
 			<input type='file' name='resimg1' id='resfile' style='display:none;' accept=".gif, .jpg, .png"/><br/>
 			<input type='hidden' name='resimgOrg' value='${vo.resimg}'/>
 			<span>영업 시작 시간</span><br/>
@@ -111,15 +117,15 @@ function changeView(){
 			<div id='qnaDiv'>
 				<c:forEach var="item" items="${faqAnsList }">
 					<span style='font-weight:normal;'>
-						${item.faqcontent2 }
+						${item.faqcontent2 }&nbsp;&nbsp;&nbsp;
 						${item.content2 }
 						<input type='hidden' name='faqno' value='${item.faqno2 }'/>
 						<input type='hidden' name='content' value='${item.faqcontent2 }'/>
-						<input type='button' value='x' onclick='faqDel()'/><br/>
+						<input type='button' value='삭제' onclick='faqDel()'/><br/>
 					</span>
 				</c:forEach>
 			</div>
-			<button>등록</button>
+			<button id='inBtn'>등록</button>
 		</form>
 	</div>
 </body>
