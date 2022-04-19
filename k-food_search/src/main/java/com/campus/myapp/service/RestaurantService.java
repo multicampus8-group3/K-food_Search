@@ -21,6 +21,7 @@ public interface RestaurantService {
 	
 	//占쏙옙占쏙옙 클占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쌔댐옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쌉몌옙玖占� 占쏙옙占싱곤옙 占싹깍옙.
 	public List<RestaurantVO> restaurantList_world(String nation);
+	public List<RestaurantVO> restaurantList_restype(String resty);
 	
 	//�젅�뒪�넗�옉 �꽌移섑럹�씠吏�
 	public List<RestaurantVO> resList(RestaurantVO vo);

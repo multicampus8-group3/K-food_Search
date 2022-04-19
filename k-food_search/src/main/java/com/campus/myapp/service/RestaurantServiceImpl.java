@@ -72,7 +72,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 		// TODO Auto-generated method stub
 		return dao.restaurantList_world(nation);
 	}
-
+	@Override
+	public List<RestaurantVO> restaurantList_restype(String resty) {
+		return dao.restaurantList_restype(resty);
+	}
+	
 	@Override
 	public List<RestaurantVO> resList(RestaurantVO vo) {
 		return dao.resList(vo);

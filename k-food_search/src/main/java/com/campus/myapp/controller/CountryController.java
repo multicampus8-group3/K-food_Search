@@ -24,9 +24,10 @@ public class CountryController {
 	countryService service;
 	@Inject
 	RestaurantService res_service;
+	
 	@GetMapping("/country/stateList")
 	@ResponseBody
-	public Map<String,Object> stateList(String nation){
+	public Map<String,Object> stateList2(String nation){
 		List<countryVO> stList=service.stateList(nation);
 		List<RestaurantVO> restList=service.restListByNation(nation);
 		Map<String,Object>map=new HashMap<String,Object>();
@@ -34,26 +35,33 @@ public class CountryController {
 		map.put("restList", restList);
 		return map;
 	}
+	@GetMapping("/stateList")
+	
+	@ResponseBody
+	public List<countryVO> stateList1(String nation){
+		return service.stateList(nation);
+	}
+	
 	@GetMapping("/country/restList")
 	@ResponseBody
 	public List<RestaurantVO> restList(String nation, String state){
 		System.out.println(nation+"/"+state);
 		return service.restList(nation, state);
 	}
-	 
-	//home_word Å×½ºÆ®
-	@GetMapping("/shop_test") // "/restaurantList_default?nation=${mvo.favornation}" ÁÖ¼Ò°ª µî·Ï½Ã ÀÌÂÊÀ¸·Î °ª ³Ñ¾î¿È.
-	public ModelAndView restaurantList_default(String nation, HttpSession session) {//¸Å°³º¯¼ö·Î member_tableÀÇ favoernationÀ» °¡Á®¿È
+	
+	//home_word í…ŒìŠ¤íŠ¸
+	@GetMapping("/shop_test") // "/restaurantList_default?nation=${mvo.favornation}" ì£¼ì†Œê°’ ë“±ë¡ì‹œ ì´ìª½ìœ¼ë¡œ ê°’ ë„˜ì–´ì˜´.
+	public ModelAndView restaurantList_default(String nation, String resty, HttpSession session) {//ë§¤ê°œë³€ìˆ˜ë¡œ member_tableì˜ favoernationì„ ê°€ì ¸ì˜´
 		ModelAndView mav = new ModelAndView();
-		//mav.addObject("mVO", mVO); //°¡ÀÔÇÑ °í°´ÀÇ ¼±È£Áö¿ªÀ» ±â¹İÀ¸·Î ·¹½ºÅä¶û Á¤º¸ ÀüºÎ °¡Á®¿È.
+		//mav.addObject("mVO", mVO); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		String userid = (String)session.getAttribute("logId");
 		if(userid==null) {
-			mav.addObject("list", res_service.restaurantList_world(nation));
-		}/*else {
-			String favorNation = (String)session.getAttribute("favorNation");
-			System.out.println(favorNation);
-			mav.addObject("list", res_service.restaurantList_world(favorNation));
-		}*/
+			if(resty==null){
+				mav.addObject("list", res_service.restaurantList_world(nation));
+			}else if(nation==null){
+				mav.addObject("list", res_service.restaurantList_restype(resty));
+			}
+		}
 		mav.setViewName("/shop_test");
 		return mav;
 	}
