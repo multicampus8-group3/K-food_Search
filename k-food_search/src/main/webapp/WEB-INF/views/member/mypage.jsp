@@ -128,7 +128,6 @@
 					$result.each(function(idx, vo){
 						cnt++;
 						tag += '<div id="memberReviewList"><a href="#">';
-						tag += '<img id="resimg" name="resimg" src="/img/noImg.jpg"/>';
 						tag += '<div id="a"><span>'+vo.resname+'</span><br/></div>';
 						tag += '<div id="b"><span class="wrdate">'+vo.writedate+'</span><b class="adrr">'+vo.resadress+'</b></div>';
 						tag += '<div id="c"><b>★'+parseFloat(vo.grade).toFixed(1)+'</b><br/><span>'+vo.content+'</span></div>';

@@ -265,7 +265,6 @@
 				<a class='menu_button' href='/'><img style="height:25px;" src="/img/homebtn.png"/>&nbsp;HOME</a><br/>
 				<a class='menu_button' href='/restaurant'><img style="height:25px;" src="/img/searchbtn.png"/>&nbsp;SEARCH</a>
 				<a class='menu_button' style="font-size: 14px; line-height:14px; height: 16px;" href='/restaurantDesignTest'>식당목록_디자인_샘플</a>
-				<a class='menu_button' style="font-size: 14px; line-height:14px; height: 16px;" href='/restaurantInfoDesignTest'>식당상세_디자인_샘플</a>
 			</div>
 			<c:if test="${logId==null }">
 				<div id='login_div'>
