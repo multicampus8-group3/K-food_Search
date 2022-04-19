@@ -1,72 +1,51 @@
 package com.campus.myapp.controller;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.campus.myapp.service.RestaurantService;
+import com.campus.myapp.service.RestaurantService;	
 import com.campus.myapp.service.countryService;
-import com.campus.myapp.vo.RestaurantVO2;
+import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.countryVO;
-import com.campus.myapp.vo.memberVO;
 
 @Controller
-//@RestController
+//@RestController   
 public class CountryController {
 	@Inject
 	countryService service;
 	@Inject
 	RestaurantService res_service;
-	/*
-	@GetMapping("/country_rest")
-	public List<RestaurantVO2> country_rest(@RequestParam("code") int code) {
-		//å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ìŒ”ì‡½ì˜™ Listå ìŒ¨ì•„ìš¸ì˜™å ì™ì˜™
-		List<RestaurantVO2> arr=new ArrayList<>();
-		arr.add(new RestaurantVO2(code+"","å ì™ì˜™å ì™ì˜™","å ì™ì˜™í¬å ì™ì˜™","å ì‹¼ì‡½ì˜™"));
-		return arr;
-	}
-	*/
-	/*
-	@GetMapping("/country_rest")
-	public List<RestaurantVO2> country_rest(
-				@RequestParam("nation") String nation,
-				@RequestParam("state") String state
-			) {
-		List<RestaurantVO2> arr=new ArrayList<>();
-		arr.add(new RestaurantVO2("goguma",nation,state));
-		return arr;
-	}
-	
-	@GetMapping("/country_test")
-	public String country_test() {
-		return "/test";
-	}
-	*/
-	/*
-	 * @GetMapping("/countryList") public List<countryVO> countryList() { return "";
-	 * }
-	 */
-	
-	@GetMapping("/stateList")
+	@GetMapping("/country/stateList")
 	@ResponseBody
-	public List<countryVO> stateList(String nation){
-		return service.stateList(nation);
+	public Map<String,Object> stateList(String nation){
+		List<countryVO> stList=service.stateList(nation);
+		List<RestaurantVO> restList=service.restListByNation(nation);
+		Map<String,Object>map=new HashMap<String,Object>();
+		map.put("stateList", stList);
+		map.put("restList", restList);
+		return map;
 	}
-	
-	//home_word í…ŒìŠ¤íŠ¸
-	@GetMapping("/shop_test") // "/restaurantList_default?nation=${mvo.favornation}" ì£¼ì†Œê°’ ë“±ë¡ì‹œ ì´ìª½ìœ¼ë¡œ ê°’ ë„˜ì–´ì˜´.
-	public ModelAndView restaurantList_default(String nation, HttpSession session) {//ë§¤ê°œë³€ìˆ˜ë¡œ member_tableì˜ favoernationì„ ê°€ì ¸ì˜´
+	@GetMapping("/country/restList")
+	@ResponseBody
+	public List<RestaurantVO> restList(String nation, String state){
+		System.out.println(nation+"/"+state);
+		return service.restList(nation, state);
+	}
+	 
+	//home_word Å×½ºÆ®
+	@GetMapping("/shop_test") // "/restaurantList_default?nation=${mvo.favornation}" ÁÖ¼Ò°ª µî·Ï½Ã ÀÌÂÊÀ¸·Î °ª ³Ñ¾î¿È.
+	public ModelAndView restaurantList_default(String nation, HttpSession session) {//¸Å°³º¯¼ö·Î member_tableÀÇ favoernationÀ» °¡Á®¿È
 		ModelAndView mav = new ModelAndView();
-		//mav.addObject("mVO", mVO); //ê°€ì…í•œ ê³ ê°ì˜ ì„ í˜¸ì§€ì—­ì„ ê¸°ë°˜ìœ¼ë¡œ ë ˆìŠ¤í† ë‘ ì •ë³´ ì „ë¶€ ê°€ì ¸ì˜´.
+		//mav.addObject("mVO", mVO); //°¡ÀÔÇÑ °í°´ÀÇ ¼±È£Áö¿ªÀ» ±â¹İÀ¸·Î ·¹½ºÅä¶û Á¤º¸ ÀüºÎ °¡Á®¿È.
 		String userid = (String)session.getAttribute("logId");
 		if(userid==null) {
 			mav.addObject("list", res_service.restaurantList_world(nation));
