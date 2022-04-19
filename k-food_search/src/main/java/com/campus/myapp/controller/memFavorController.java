@@ -40,8 +40,6 @@ public class memFavorController {
 	@GetMapping("memFavorInsert")
 	public int memFavorInsert(memFavorVO vo, HttpSession session) {
 		vo.setUserid((String)session.getAttribute("logId"));
-		System.out.println(vo.getResno());
-		System.out.println(vo.getUserid());
 		return service.memFavorInsert(vo);
 	}
 	
