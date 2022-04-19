@@ -64,17 +64,21 @@ public class CountryController {
 	
 	//home_word 테스트
 	@GetMapping("/shop_test") // "/restaurantList_default?nation=${mvo.favornation}" 주소값 등록시 이쪽으로 값 넘어옴.
-	public ModelAndView restaurantList_default(String nation, HttpSession session) {//매개변수로 member_table의 favoernation을 가져옴
+	public ModelAndView restaurantList_default(String nation, String resty, HttpSession session) {//매개변수로 member_table의 favoernation을 가져옴
 		ModelAndView mav = new ModelAndView();
 		//mav.addObject("mVO", mVO); //가입한 고객의 선호지역을 기반으로 레스토랑 정보 전부 가져옴.
 		String userid = (String)session.getAttribute("logId");
 		if(userid==null) {
 			mav.addObject("list", res_service.restaurantList_world(nation));
-		}/*else {
+			mav.addObject("list", res_service.restaurantList_restype(resty));
+		}
+		
+		/*else {
 			String favorNation = (String)session.getAttribute("favorNation");
 			System.out.println(favorNation);
 			mav.addObject("list", res_service.restaurantList_world(favorNation));
 		}*/
+		
 		mav.setViewName("/shop_test");
 		return mav;
 	}
