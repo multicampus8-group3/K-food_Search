@@ -161,11 +161,6 @@ $(document).ready(function() {
       <div class="detail">
         <h1>${vo.resname }</h1>
         <div class="score">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
           <span>${vo.resgrade }</span>
         </div>
         <span class="adress">${vo.resadress }</span>
@@ -185,6 +180,11 @@ $(document).ready(function() {
         <span class="reservation_date"></span>
         <div class="review">
           <h3>리뷰</h3>
+		<form method="post" id="replyFrm">
+			<input type="hidden" name="no" value=""/>
+			<textarea name="coment" id="coment" style="width:500px; height:100px;"></textarea>
+			<input type="submit" value="댓글등록"/>
+		</form>
         </div>
       </div>
     </div>
