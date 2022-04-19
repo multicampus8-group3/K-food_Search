@@ -8,9 +8,12 @@
 }
 #gg>.bx-wrapper {
   position: relative;
+  max-width:1200px;
+  min-width:1200px;
+  height: 612px;
   margin-bottom: 60px;
   padding: 0;
-  *zoom: 1;
+  *zoom: 1.22;
   -ms-touch-action: pan-y;
   touch-action: pan-y;
 }
@@ -46,6 +49,7 @@ ul.bxslider {
 }*/
 #gg .bx-viewport {
   -webkit-transform: translateZ(0);
+  height: 489px;
 }
 #menu .bx-viewport {
   -webkit-transform: translateZ(0);
@@ -67,10 +71,9 @@ ul.bxslider {
 	width:100%;
 }
 #gg>.bx-wrapper {
-  -moz-box-shadow: 0 0 5px #ccc;
-  -webkit-box-shadow: 0 0 5px #ccc;
-  box-shadow: 0 0 5px #ccc;
-  border: 5px solid #fff;
+  -moz-box-shadow: 0 0 2px #ccc;
+  -webkit-box-shadow: 0 0 2px #ccc;
+  box-shadow: 0 0 2px #ccc;
   background: #fff;
 }
 .bx-wrapper .bx-pager,
@@ -167,7 +170,7 @@ ul.bxslider {
 #gg .bx-wrapper .bx-controls-direction a {
   position: absolute;
   top: 50%;
-  margin-top: -16px;
+  margin-top: -19px;
   outline: 0;
   width: 32px;
   height: 32px;
