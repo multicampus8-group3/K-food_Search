@@ -1,7 +1,7 @@
 package com.campus.myapp.vo;
 
 public class memFavorVO {
-	private int no;
+	private Integer no;
 	private String userid;
 	private int resno;
 	private double resgrade;

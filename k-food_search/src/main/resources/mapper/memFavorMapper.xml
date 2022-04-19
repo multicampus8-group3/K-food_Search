@@ -5,7 +5,7 @@
 <mapper namespace="com.campus.myapp.dao.memFavorDAO">
 
 	<select id="memFavorList" resultType="com.campus.myapp.vo.memFavorVO">
-		select res.resimg resimg, res.resname resname, res.resnation resnation,
+		select res.resimg resimg, res.resname resname, res.resnation resnation, 
 		res.resstate resstate, res.resgrade resgrade, res.reshour reshour, res.reshourend reshourend, memf.no no  
 		from member_favorite as memf
 		join restaurant_table as res
@@ -16,6 +16,13 @@
 	<delete id="memFavorDelete">
   		delete from member_favorite where no=#{no}
 	</delete>
-	
+	<select id="memFavorSelect" resultType="String">
+		select no 
+		from member_favorite 
+		where userid=#{param1} and resno=#{param2}
+	</select>
+	<insert id="memFavorInsert">
+		insert into member_favorite(userid, resno) values (#{userid},#{resno});
+	</insert>
 
 </mapper>
