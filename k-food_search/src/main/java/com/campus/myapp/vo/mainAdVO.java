@@ -8,6 +8,7 @@ public class mainAdVO {
 	private String resname; // 식당 이름
 	private String resadress; // 식당 주소
 	private String rescontent; // 식당 정보
+	private int resno; //식당 번호
 	
 	public String getBannerimg() {
 		return bannerimg;
@@ -44,5 +45,11 @@ public class mainAdVO {
 	}
 	public void setRescontent(String rescontent) {
 		this.rescontent = rescontent;
+	}
+	public int getResno() {
+		return resno;
+	}
+	public void setResno(int resno) {
+		this.resno = resno;
 	}	
 }

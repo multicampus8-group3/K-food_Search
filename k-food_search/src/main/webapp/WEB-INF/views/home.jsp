@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet" href="../css/home_second.css" type="text/css" />
-	<link rel="stylesheet" href="../css/jquery.bxslider_multiSlider_second.css" type="text/css">
+	<link rel="stylesheet" href="/css/home_second.css" type="text/css" />
+	<link rel="stylesheet" href="/css/jquery.bxslider_multiSlider_second.css" type="text/css">
 	
 	<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script>
 	
@@ -14,84 +14,33 @@
 	<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de3fd42ca3e0fb9',m:'0GgGI7zDnSr1gpNO2aZt8xuf09.XqNFNAl26Nz09FSY-1644985288-0-ASIOJg74TZmDRx8PzqS0GkltyDGVyqiSSZLtikz9s36I2aTVOteA5aILjGLx/TvgGfZOC34QXGdgGJEI7UTyYI2swg2rVlcLG+zN8s1omkQCLVVc7WXj34iS7QfsW1JQL3W3rSS9+7lm604st4BH9AV/jLfEPihAMuP3FjzGHBqZzvoQQUge0wcXl4Kh1PCIYD2ajQu35bDszAae0YT0SjQ=',s:[0x2900a90da7,0xbc627ac0ef],}})();</script>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script type="text/javascript" src="../js/mango_test_multi_slide.js"></script>
-	<script type="text/javascript" src="../js/jquery.bxslider.js"></script>
-	<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
-	<script type="text/javascript" src="../js/bxslider_jquery.js"></script>
+	<script type="text/javascript" src="/js/mango_test_multi_slide.js"></script>
+	<script type="text/javascript" src="/js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="/js/bxslider_jquery.js"></script>
 	
-	<script type="text/javascript" src="../js/jquery.maphilight.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.maphilight.min.js"></script>
 	<script type="text/javascript">$(function() {
 		$('.map').maphilight({strokeColor: 'black', strokeWidth: 0, fill: 'ff0000', fillColor: 'ff0000', fade: false});
 	});</script>
 	<script type="text/javascript" src="/js/bm_jy.js"></script>
-	
+	<script type="text/javascript" src="/js/jquery.rwdImageMaps.js"></script>
 	<script>
-		function formatDate() { 
-			var today = new Date(); 
-			var inYear = 2022; 
-			var inMonth = 4; 
-			var inDate = 8; 
-			var stdDate = new Date(inYear,(inMonth-1),inDate); 
-			var gapDate = stdDate.getTime() - today.getTime(); 
-			var gapDay = Math.ceil(gapDate / (60*1000*60*24)); 
-			var gapImg = gapDay % 4; 
-	
-			if(gapImg==0) { 
-				$(".bm_box img").attr("src",'이미지 URL 주소').attr("alt",'텍스트'); 
-			} else if(gapImg==1) { 
-				$(".bm_box img").attr("src",'이미지 URL 주소').attr("alt",'텍스트');
-			} else if(gapImg==2) { 
-				$(".bm_box img").attr("src",'이미지 URL 주소').attr("alt",'텍스트'); 
-			} else if(gapImg==3) { 
-				$(".bm_box img").attr("src",'이미지 URL 주소').attr("alt",'텍스트'); 
-			} 
-		} 
-		formatDate();
-		</script>
-		<script type="text/javascript">
-        $(function () {
-            $('area').mouseover(function (event) {
-            	console.log("마우스 오버")
-                var map = document.getElementById('#world');                
-                var areas = document.querySelectorAll('area');
-                for (var i = 0; i < areas.length; i++) {
-                    var area = areas[i];
-                    var id = area.id;
-                    var data = $('#' + id).data('maphilight') || {};
-                    if (area.id == $(this)[0].id)
-                        data.fillColor = '02FC1F'; // Sample color           
-                    else data.fillColor = 'ff0000'; // Sample color           
-                    $('#' + id).data('maphilight', data).trigger('alwaysOn.maphilight');
-                }
-            });
-        });
-    </script>
-		<script type="text/javascript" src="../js/jquery.rwdImageMaps.js"></script>
-		<script>
 		$(function(){
-		
-		   $('img[usemap]').rwdImageMaps();
-		
+			$('img[usemap]').rwdImageMaps();
 		});
-		</script>
+	</script>
+		
 <style type="text/css">
 img[usemap] {
 	max-height: 150%;
 	height: 600px;
 	max-width: 150%;
 	width: 1200px;
-	border:1px solid black;
    }
-map::before{
- width:200px;
- height:200px;
- background-color:
-   linear-gradient(to bottom left,transparent 49.8%,#E0E6E5 50%) top   /100% 35%,
-   linear-gradient(to top    left,transparent 49.8%,#E0E6E5 50%) bottom/100% 35%,
-   linear-gradient(#E0E6E5,#E0E6E5) center/100% 30%;
- background-repeat:no-repeat;
-  }
 </style>
+
+
 
 <style>
 	#slider ul,li{
@@ -105,19 +54,17 @@ map::before{
     	margin-right: 20px;
     }
     .map{
-    	size: width: 1200px;		
+    	size: width: 1200px;
     }
-
 </style>
-
 </head>
 <body>
 
 <div class="container"> <!-- 컨테이너 -->
 
 	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
-		<div style='background-color:pink; margin-top:20px; margin-bottom:20px;'>a</div>
-		<div id="jido_world" style='background-color:pink; margin-top:20px; margin-bottom:20px;'>
+		
+		<div id="jido_world" style='background-color:pink'>
 			<%@ include file="home_world.jsp" %>
 		</div> <!-- 상단지도 -->
 		
@@ -333,36 +280,37 @@ map::before{
 			</div>
 		</div> <!-- 메뉴 -->
 		
-		<div id="top_menu">
-			<h1 style="font-size:20px;">TOP</h1>
+		<!-- 음식 종류 메뉴 -->
+		<div id="top_menu"> <!-- 평점 좋은 식당 -->
+			<h1 style="font-size:22px; margin-left:16px;">TOP</h1>
 			<ul id="bm_list" >
-				<li class="bm_box">
-					<img src="/img/bibim.PNG" alt="" >
-					평점: ${vo.grade}
-				</li>
-				<li class="bm_box">
-					<img src="/img/makgeolli.PNG" alt="">
-				</li>
-				<li class="bm_box">
-					<img src="/img/kimchisoup.PNG" alt="">
-				</li>
-				<li class="bm_box">
-					<img src="/img/rice.PNG" alt="">
-				</li>
+				<c:forEach var="tr" items="${bmgrade}"> <!-- tr: top_res -->
+						<li class="bm_box">
+							<img src="/resImg/${tr.resimg }" alt="" >
+							<a href="/restaurantInfo?resno=${tr.resno}"><strong style="font-size:16px;">${tr.resname}</strong><br/></a>
+							${tr.resnation}, ${tr.resstate} <br/>
+							<strong>${tr.resgrade}</strong> <br/>
+						</li>
+				</c:forEach>
 			</ul>
 		</div>
+		
 		<div id="gg"> <!-- 광고 -->
 			<ul id="slider">
-			    <li class="ad_box">배너이미지: ${vo.bannerimg} 식당정보</li>
-			    <li class="ad_box"><img src="/img/2.jpg" title="목록2..." >식당정보</li>
-			    <li class="ad_box"><img src="/img/3.jpg" title="목록3..." >식당정보</li>
-			    <li class="ad_box"><img src="/img/4.jpg" title="목록4..." >식당정보</li>
-			    <li class="ad_box"><img src="/img/5.jpg" title="목록5..." >식당정보</li>
-			    <li class="ad_box"><img src="/img/6.jpg" title="목록6..." >식당정보</li>
-			    <li class="ad_box"><img src="/img/7.jpg" title="목록7..." >식당정보</li>
-			    <li class="ad_box"><img src="/img/8.jpg" title="목록8..." >식당정보</li>
+				<c:forEach var="ma" items="${mainadbanner}"> <!-- ma: main_ad -->
+					<li class="ad_box">
+						<a href="/restaurantInfo?resno=${ma.resno}"><img src="/adImg/${ma.bannerimg }"></a>
+						<div id="ns" style="color:gray">
+							${ma.resnation}, ${ma.resstate }
+						</div><br/>
+			    		<h1>${ma.resname }</h1><br/>
+			    		<div id="addr" style="color:gray">${ma.resadress } </div><br/>
+			    		<div id="content">${ma.rescontent}</div> <br/>
+					</li>
+				</c:forEach>		
 			</ul>
 		</div><!-- 광고 -->
+
 		
 		<div id="footer1">
 		
