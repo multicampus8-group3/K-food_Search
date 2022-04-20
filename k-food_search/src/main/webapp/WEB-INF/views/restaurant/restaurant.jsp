@@ -195,7 +195,7 @@ main section > div a {
               <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
             </div>
           </div>
-          <a href="/restaurantInfo">더보기 ></a>
+          <a href="/">더보기 ></a>
         </div>
       </div>
 

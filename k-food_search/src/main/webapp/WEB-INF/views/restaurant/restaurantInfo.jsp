@@ -48,16 +48,15 @@ $(document).ready(function() {
 	    startTime: '9:00',
 	    dynamic: false,
 	    dropdown: true,
-	    scrollbar: true,
-	    containerClass:"test"
+	    scrollbar: true
 	});
 	$('#memReserv').submit(function(){
 		event.preventDefault();
 		if($("#reservDate").val()=="" || $("#reservTime").val()=="" || $("#reservp").val()==""){
 			alert("정확한 날짜, 시간, 인원을 선택해주세요.");
-			
+			return false;
 		}
-		console.log("실행")
+		
 	});
 	    
 
@@ -213,8 +212,8 @@ $(document).ready(function() {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 700px;
-  height: 400px;
+  width: 40%;
+  height: 50%;
   background-color: #fff;
   padding: 2rem;
   border-radius: 20px;
@@ -233,11 +232,9 @@ $(document).ready(function() {
   font-size: 2rem;
   margin-bottom: 2rem;
 }
-.ui-timepicker-container{
-  position: fixed;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-135%, -32%);
+.test{
+  position: relative;
+  background-color: red;
 }
 </style>
 
@@ -292,8 +289,8 @@ $(document).ready(function() {
 		<div>${vo.resadress}</div>
 		<div>${vo.reshour} - ${vo.reshourend}</div>
 	</div>
-</div>
-
+	
+	
 <div class="reservation_box">
 	<div class="reservation_box_bg"></div>
 		<div class="date_setting">
@@ -321,6 +318,7 @@ $(document).ready(function() {
 
         <button>submit</button>
       </form>
+		</div>
 	</div>
 </div>
   

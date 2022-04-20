@@ -44,8 +44,6 @@ img[usemap] {
    }
 </style>
 
-
-
 <style>
 	#slider ul,li{
 		margin:0;
@@ -97,6 +95,7 @@ img[usemap] {
 <div class="container"> <!-- 컨테이너 -->
 
 	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
+	
 		<span class='smallMenu'>Select Map</span>
 		<hr/>
 		<div id="jido_world" style='background-color:pink'>
@@ -359,7 +358,7 @@ img[usemap] {
 							${ma.resnation}, ${ma.resstate }
 						</div><br/>
 			    		<h1>${ma.resname }</h1><br/>
-			    		<div id="addr" style="color:gray">${ma.resadress } </div><br/>
+			    		<div style="color:gray">${ma.resadress} </div><br/>
 			    		<div id="content">${ma.rescontent}</div> <br/>
 					</li>
 				</c:forEach>		

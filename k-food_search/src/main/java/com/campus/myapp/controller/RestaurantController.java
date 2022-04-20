@@ -57,6 +57,7 @@ public class RestaurantController {
 	   return vo;
 	}
 
+
 	@GetMapping("/myrestaurant/myrestaurant")
 	public ModelAndView myrestaurant() {
 		ModelAndView mav = new ModelAndView();
@@ -256,6 +257,6 @@ public class RestaurantController {
 		}
 		mav.addObject("memfavor", result);
 		mav.setViewName("/restaurant/restaurantInfo");
-		return mav;		
+		return mav;
 	}
 }
