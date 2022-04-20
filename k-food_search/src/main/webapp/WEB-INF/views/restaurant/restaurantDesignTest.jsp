@@ -21,10 +21,10 @@
 	opacity: 0.1;
 }
 #filterBox{
-	float: left;
 	width: 11%;
 	height: 100vh;
 	position : fixed;
+	top:0px;
 	right: 3%;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -69,12 +69,7 @@
 }
 
 
-#section{
-	float: right;
-	width: 50%;
-	margin-top: 70px;
-	margin-right: 250px;
-}
+
 .resCard{
 	height: 245px;
 	padding: 10px;
@@ -149,9 +144,32 @@
 	background-color: #2F4858;
 	color: #fff;
 }
+#section{
+	width: 50%;
+	margin-top: 70px;
+	margin-left:35%;
+}
+#pagingbox ul{
+	margin-left:35%;
+	width:50%;
+	height:150px;
+	text-align:center;
+}
+#pagingbox li{
+	display:inline-block;
+	text-align:center;
+	margin: -2.9px;
+	margin-top:20px;
+	width:50px;
+}
+#pagingbox li, #pagingbox a{
+	font-size:1.1em;
+}
 </style>
 <script>
 $(document).ready(function() {
+	console.log("실행");
+	console.log("${nation}");
 
 	$("#favornation").click(function(){
 			var url = "/country/stateList"
@@ -163,41 +181,16 @@ $(document).ready(function() {
 				nation:params,
 			},
 			success: function(result) {
-				//alert(JSON.stringify(result))
+				alert(JSON.stringify(result))
 				var $result = $(result.stateList);
 				var $result2 = $(result.restList);
-				
 				var tag2 = "";
 				var tag="";//레스토랑 정보를 담을 html태그가 들어가야
-				if($result2.length==0){
-					tag=""
-				}else{
-					$result2.each(function(idx, vo){
-						
-						tag += '<a href="/?resno='+vo.resno+'">'; 
-						tag += '<div class="resCard">';
-						tag += '<div class="img_box">';
-						tag += 		'<img src="/img/noImg.jpg"/>';
-						tag += 	'</div>';
-						tag += 	'<div class="contents">';
-						tag += 		'<div class="info">';
-						tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
-						tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
-						tag += 			'<span class="adr">'+vo.resadress+'</span>'
-						tag += 			'<div class="intro">'+vo.rescontent+'</div>';
-						tag += 		'</div>';
-						tag += 		'<div class="seeMore">더보기</div>';
-						tag += 	'</div>';
-						tag += '</div>';
-						tag += '</a>';
-					});		
-				}
 				$result.each(function(idx, vo){					
-					tag2 += "<input type='radio' class='state"+idx+"' name='state' onclick='restInfo(\""+vo.state+"\")' value="+vo.state+"><label>"+vo.state+"</label><br>";
+					tag2 += "<input type='radio' class='state' name='state' onclick='restInfo(\""+vo.state+"\")' value="+vo.state+"><label>"+vo.state+"</label><br>";
 				});
-										
 				$result2.each(function(idx, vo){
-					
+				
 					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">'; 
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
@@ -215,8 +208,6 @@ $(document).ready(function() {
 					tag += '</div>';
 					tag += '</a>';
 					
-					
-					
 				});
 				$("#favorstate").html(tag2);
 				$("#section").html(tag);
@@ -227,20 +218,67 @@ $(document).ready(function() {
 		});
 	});
 	// 가게목록
-	function restaurantList() {
+	var pageNum = "${pVO.pageNum}";
+	function restaurantList(pageNum) {
 		var url = "/restaurant/resList";
 		$.ajax({
 			url: url,
-
 			data: {
 				'pageNum':pageNum,
 				'nation':"${nation}"
 			},
 			success: function(result) {
-				console.log(result);
+				
 				var $result = $(result);
 				var tag = "";
 				$result.each(function(idx, vo){
+					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">';
+					tag += '<div class="resCard">';
+					tag += '<div class="img_box">';
+					tag += 		'<img src="/resImg/'+vo.resimg+'"/>';
+					tag += 	'</div>';
+					tag += 	'<div class="contents">';
+					tag += 		'<div class="info">';
+					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
+					tag += 			'<span class="resgrade">★'+parseFloat(vo.resgrade).toFixed(1)+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="adr">'+vo.resadress+'</span>'
+					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
+					tag += 		'</div>';
+					tag += 		'<div class="seeMore">더보기</div>';
+					tag += 	'</div>';
+					tag += '</div>';
+					tag += '</a>';
+				});
+				$("#section").html(tag);				
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	}
+	restaurantList(pageNum);
+});
+
+	function restInfo(state){
+		alert('state'+state)
+			var url = "/country/restList"
+			
+			var params1 = $("input:radio[name='nation']:checked").val();
+			
+			$.ajax({
+			url: url,
+			data:{
+				nation:params1,
+				state:state
+			},
+			success: function(result) {
+				console.log("anjwl"+result)
+				alert(JSON.stringify(result))
+				var $result = $(result);
+				var tag2 = "";
+				var tag="";//레스토랑 정보를 담을 html태그가 들어가야
+				$result.each(function(idx, vo){
+					tag2 += "<input type='radio' name='state' value="+vo.resstate+"><label>"+vo.resstate+"</label><br>";	
 					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">';
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
@@ -257,69 +295,7 @@ $(document).ready(function() {
 					tag += 	'</div>';
 					tag += '</div>';
 					tag += '</a>';
-					
-				});
-				$("#section").html(tag);				
-			},
-			error: function(e) {
-				console.log(e.responseText);
-			}
-		});
-	}
-	restaurantList(pageNum);
-});
-
-	function restInfo(state){
-			//let tmpState=event.target.value;
-			//alert(event.target.value)
-			var url = "/country/restList"
-			
-			var params1 = $("input:radio[name='nation']:checked").val();
-			
-			$.ajax({
-			url: url,
-			data:{
-				nation:params1,
-				state:state
-			},
-			success: function(result) {
-				console.log(JSON.stringify(result.restList));
-				var $result = $(result.stateList);
-				var $result2 = $(result.restList);
-				var tag2 = "";
-				var tag="";//레스토랑 정보를 담을 html태그가 들어가야
-				$result.each(function(idx, vo){					
-					if(state==vo.state){
-					 tag2 += "<input type='radio' class='state"+idx+"' checked name='state' onclick='restInfo(\""+vo.state+"\")' value="+vo.state+"><label>"+vo.state+"</label><br>";
-					}else{
-						tag2 += "<input type='radio' class='state"+idx+"' name='state' onclick='restInfo(\""+vo.state+"\")' value="+vo.state+"><label>"+vo.state+"</label><br>";
-					}
-					/* tag2 += "<input type='radio' name='state' value="+vo.state+"><label>abc "+vo.state+"</label><br>"; */ 
-				});
-				if($result2.lenght==0){
-					tag="";
-				}else{
-					$result2.each(function(idx, vo){
-							
-						tag += '<a href="/restaurantInfo?resno='+vo.resno+'">';
-						tag += '<div class="resCard">';
-						tag += '<div class="img_box">';
-						tag += 		'<img src="/img/noImg.jpg"/>';
-						tag += 	'</div>';
-						tag += 	'<div class="contents">';
-						tag += 		'<div class="info">';
-						tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
-						tag += 			'<span class="resgrade">★'+parseFloat(vo.resgrade).toFixed(1)+'</span><span class="restype">'+vo.restype+'</span><br/>';
-						tag += 			'<span class="adr">'+vo.resadress+'</span>'
-						tag += 			'<div class="intro">'+vo.rescontent+'</div>';
-						tag += 		'</div>';
-						tag += 		'<div class="seeMore">더보기</div>';
-						tag += 	'</div>';
-						tag += '</div>';
-						tag += '</a>';
-					});	
-				}
-				
+				});								
 				$("#favorstate").html(tag2);
 				$("#section").html(tag);
 			},
@@ -327,7 +303,9 @@ $(document).ready(function() {
 				console.log(e.responseText);
 			}
 		});
+	<!-- 양지석 수정 -->
 	}//restInfo()-----------------------
+	<!-- 양지석 수정 -->
 
 	$(function(){
 		var chk=[]
@@ -366,30 +344,12 @@ $(document).ready(function() {
 </script>
 
 <div class="container">
+	
 	<div id="justImageBox">
 	</div>
 	
 	<!-- section -->
 	<div id="section">
-		<c:forEach var="vo" items="${restList}">
-			<a href="/restaurantInfo?resno=${vo.resno}">'
-					 <div class="resCard">
-					 	<div class="img_box">
-						<img src="/img/noImg.jpg"/>
-							</div>
-								<div class="contents">
-									<div class="info">
-										<span class="resname">${vo.resname}</span><br/>
-										<span class="resgrade">★+${vo.resgrade}</span><span class="restype">${vo.restype}</span><br/>
-										<span class="adr">${vo.resadress}</span>
-									<div class="intro">${vo.rescontent}</div>
-								</div>
-							<div class="seeMore">더보기</div>
-						</div>
-					</div>
-			</a>
-		</c:forEach>
-	</div>
 	</div>
 <!-- 페이징 -->
 	<div id="pagingbox">
@@ -427,12 +387,11 @@ $(document).ready(function() {
 
 	<!-- section -->
 	<div id="section"></div>
-	
 	<!-- check box -->
 	<div id="filterBox">
-	    <h2>필터</h2>
+	    <h2>Filters</h2>
 		<div id="nationFilter">
-			<h3>국가</h3>
+			<h3>#resnation</h3>
 			<form action="" id="favornation">
 				<c:forEach items="${countrylist}" var="item">
         			<input type='radio' name="nation" value="${item.nation}"><label>${item.nation}</label><br>
@@ -440,7 +399,7 @@ $(document).ready(function() {
 			</form>
 		</div>
 		<div id="stateFilter">
-			<h3>지역</h3>
+			<h3>#resstate</h3>
 			<form action="" id="favorstate">
 				
 			</form>
@@ -459,11 +418,13 @@ $(document).ready(function() {
 				</ul>
 			</form>
 		</div>
+		
 		<div id="filterImage">
 			<div>
 				<img src="/img/logo.png"/>
 			</div>
 		</div>
+		
 	</div>
 	
 </div>
