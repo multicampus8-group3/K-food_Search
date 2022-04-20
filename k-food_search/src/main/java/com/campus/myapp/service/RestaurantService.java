@@ -2,15 +2,14 @@ package com.campus.myapp.service;
 
 import java.util.List;
 
+import com.campus.myapp.vo.PagingVO;
 import com.campus.myapp.vo.ResPagingVO;
 import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.memberVO;
 
 public interface RestaurantService {
-	// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쌉몌옙占� 占쏙옙占쏙옙
-	public List<RestaurantVO> restaurantList(RestaurantVO vo);
-	// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쌉검삼옙
-	public List<RestaurantVO> getSearchList(RestaurantVO vo);
+	// �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�뙃紐뚯삕�뜝占� �뜝�룞�삕�뜝�룞�삕
+	public List<RestaurantVO> restaurantList(PagingVO vo);
 		
 	public int restaurantInsert(RestaurantVO vo);
 	public List<RestaurantVO> restaurantMyList(String userid);
@@ -20,15 +19,11 @@ public interface RestaurantService {
 	public String restarantImgDel(int resno);
 	public int restaurantUpdateOk(RestaurantVO vo);
 	
-	//占쏙옙占쏙옙 클占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쌔댐옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쌉몌옙玖占� 占쏙옙占싱곤옙 占싹깍옙.
-	public List<RestaurantVO> restaurantList_world(String nation);
-	public List<RestaurantVO> restaurantList_restype(String resty);
-	
-	//�젅�뒪�넗�옉 �꽌移섑럹�씠吏�
+	//占쎌쟿占쎈뮞占쎈꽅占쎌삂 占쎄퐣燁살꼹�읂占쎌뵠筌욑옙
 	public List<RestaurantVO> resList(ResPagingVO pVO);
 	
 	public RestaurantVO resSelect(int resno);
-	//페이징테스트
+	//�럹�씠吏뺥뀒�뒪�듃
 	public int totalRecord(ResPagingVO pVO);
 
 }

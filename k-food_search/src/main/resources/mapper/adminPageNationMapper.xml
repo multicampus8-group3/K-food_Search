@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.myapp.dao.adminPageNationDAO">
+	<select id='memberTotalRecord' resultType='int'>
+		select count(userid) from member_table 
+		<if test="searchWord!=null">
+  			where ${searchKey} like '%${searchWord}%'
+  		</if>
+	</select>
+	
+	<select id='restaurantTotalRecord' resultType='int'>
+		select count(resno) from restaurant_table
+		<if test="searchWord!=null">
+  			where ${searchKey} like '%${searchWord}%'
+  		</if>
+	</select>
+	
+	<select id='reviewTotalRecord' resultType='int'>
+		select count(rev.no) from review_table as rev
+		join restaurant_table as res
+		on rev.resno = res.resno 
+		<if test="searchWord!=null">
+  			where ${searchKey} like '%${searchWord}%'
+  		</if>
+	</select>
+	
+	<select id='adTotalRecord' resultType='int'>
+		select count(no) from ad_table 
+	</select>
+</mapper>

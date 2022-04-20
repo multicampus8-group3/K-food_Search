@@ -12,14 +12,15 @@ import com.campus.myapp.vo.countryVO;
 @Repository
 public interface countryDAO {
 
-	//±¹°¡¸ñ·Ï °¡Á®¿À±â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<countryVO> countryList();
 	
-	//µµ½Ã¸ñ·Ï ÀüºÎ°¡Á®¿À±â
+	//ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<countryVO> stateList(String nation);
 
 	public List<RestaurantVO> restList(String nation, String state);
 
 	public List<RestaurantVO> restListByNation(String nation);
 	
+	public List<RestaurantVO> restListRestype(String resty);
 }

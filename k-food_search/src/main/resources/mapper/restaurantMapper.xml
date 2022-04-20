@@ -3,42 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.campus.myapp.dao.RestaurantDAO">
-	
+
 	<select id="restaurantList" resultType="com.campus.myapp.vo.RestaurantVO">
 		select resno, resname, resadress, format(resgrade,1) resgrade, 
 		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
-		from restaurant_table
-		order by resno desc
+		from restaurant_table 
+		<if test="searchWord!=null">
+  			where ${searchKey} like '%${searchWord}%'
+  		</if>
+		order by resno desc limit ${onePageRecord} offset ${offsetIndex}
 	</select>
 	
-	<select id="restaurantList_world" resultType="com.campus.myapp.vo.RestaurantVO">
-		select
-										resno,
-										resname,
-										resadress,
-										format(resgrade,1) resgrade,
-										userid,
-										resnation,
-										resstate,
-                                        restype,
-										date_format(writedate,'%Y-%m-%d') writedate
-		from restaurant_table where resnation=#{param}
-        order by resno desc;
-	</select>
-	<select id="restaurantList_restype" resultType="com.campus.myapp.vo.RestaurantVO">
-		select
-										resno,
-										resname,
-										resadress,
-										format(resgrade,1) resgrade,
-										userid,
-										resnation,
-										resstate,
-                                        restype,
-										date_format(writedate,'%Y-%m-%d') writedate
-		from restaurant_table where restype=#{param}
-        order by resno desc;
-	</select>
 	<select id="getSearchList" resultType="com.campus.myapp.vo.RestaurantVO">
 		select resno, resname, resadress, format(resgrade,1) resgrade, 
 		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
@@ -87,6 +62,9 @@
 	<select id="resList" resultType="com.campus.myapp.vo.RestaurantVO">
 		select resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, resno 
 		from restaurant_table
+		<if test='nation != null'>
+			where resnation like '%${nation}%'
+		</if>
 		order by resno desc
 		limit ${onePageRecord} offset ${offsetIndex} 
 	</select>
@@ -98,5 +76,8 @@
 	</select>
 	<select id='totalRecord' resultType='int'>
 		select count(resno) cnt from restaurant_table 
+		<if test='nation != null'>
+			where resnation like '%${nation}%'
+		</if>
 	</select>
 </mapper>

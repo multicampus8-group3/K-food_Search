@@ -1,25 +1,17 @@
 package com.campus.myapp.vo;
 
-public class ResPagingVO {
-	private int onePageRecord = 5;
-	private int pageNum = 1;
-	private int totalRecord; 
-	private int totalPage; 
+public class PagingVO {
+	//페이징
+	private int onePageRecord = 10;//한페이지당 출력할 레코드 수
+	private int pageNum = 1;//현재페이지
+	private int totalRecord = 0;//총 레코드의 수
+	private int totalPage = 0;//총 페이지 수
 	private int offsetIndex = 0;
-	private int onePageCount = 5;
+	private int onePageCount = 5;//한번에 표시할 페이지 수
 	private int startPage = 1;
-	
-	/////////////////////////
-	private String nation;
-	
-	
-	public String getNation() {
-		return nation;
-	}
-	public void setNation(String nation) {
-		this.nation = nation;
-	}
-	/////////////////////////
+	//검색
+	private String searchKey;
+	private String searchWord;
 	
 	public int getOnePageRecord() {
 		return onePageRecord;
@@ -32,7 +24,9 @@ public class ResPagingVO {
 	}
 	public void setPageNum(int pageNum) {
 		this.pageNum = pageNum;
+		//offset��ġ ���
 		offsetIndex = (pageNum-1)*onePageRecord;
+		//������ ��ȣ�� ���۰�
 		startPage = ((pageNum-1)/onePageCount*onePageCount)+1;
 	}
 	public int getTotalRecord() {
@@ -41,8 +35,8 @@ public class ResPagingVO {
 	public void setTotalRecord(int totalRecord) {
 		this.totalRecord = totalRecord;
 		
-		
-		if(totalRecord%onePageRecord==0) {
+		//����������
+		if(totalRecord%onePageRecord==0) {//���������ڵ尡 ������
 			totalPage = totalRecord/onePageRecord;
 		}else {
 			totalPage = totalRecord/onePageRecord+1;
@@ -73,5 +67,18 @@ public class ResPagingVO {
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
 	}
+	public String getSearchKey() {
+		return searchKey;
+	}
+	public void setSearchKey(String searchKey) {
+		this.searchKey = searchKey;
+	}
+	public String getSearchWord() {
+		return searchWord;
+	}
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
+	
 	
 }

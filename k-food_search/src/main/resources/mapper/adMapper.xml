@@ -13,7 +13,7 @@
 		on ad.resno = res.resno
 		join member_table as mem
 		on ad.userid = mem.userid
-		order by ad.no desc
+		order by ad.no desc limit ${onePageRecord} offset ${offsetIndex}
 	</select>
 	
 	<update id="adStatusChange">

@@ -24,7 +24,7 @@
 		$(function() {
 			$('.bx-prev').html('<');
 			$('.bx-next').html('>');
-			$('.map').maphilight({strokeColor: 'FFAA00', strokeWidth: 0, fill: 'FFAA00', fillColor: 'FFAA00', fade: false});
+			$('.map').maphilight({strokeColor: 'FFAA00', strokeWidth: 3, fill: true, fillColor: 'FFAA00',fillOpacity: 0.7, fade: false});
 		});
 	</script>
 	<script type="text/javascript" src="/js/bm_jy.js"></script>
@@ -63,15 +63,15 @@ img[usemap] {
     .smallMenu{
     	display:inline-block;
     	font-family : "Binggrae";
-    	color:rgb(203,100,58);
+    	color:rgb(50, 128, 70);
 		font-size:1.5em;
 		margin-top:20px;
-		text-shadow:0px 5px 10px rgb(203,100,58);
+		text-shadow:0px 5px 10px rgb(50, 128, 70);
     }
     hr{
     	height:1px;
-    	background-color:rgb(203,100,58);
-    	border:1px solid rgb(203,100,58);
+    	background-color:rgb(50, 128, 70);
+    	border:1px solid rgb(50, 128, 70);
 
     }
     .bx-prev{
@@ -88,19 +88,48 @@ img[usemap] {
     }
     /*추가 백동현*/
     
+    #jido_Box_before{
+    	width: 100%;
+    	overflow: hidden;
+    	height: 620px;
+    	background-color: rgba(205, 188, 171, 0.3);
+    }
+    #jido_Box{
+    	width: 2400px;
+    	height: 600px;
+    	margin-bottom: 150px;
+    }
+    .jido_world{
+    	margin-top: 0px;
+    	float:left;
+    }
+    .jido1{
+    	
+    } 
+    .jido2{
+    margin-left:-9px;
+    	
+    }
 </style>
 </head>
 <body>
-
+	<div style="width:1200px; height:50px; margin:0 auto; margin-bottom:10px; margin-top:-10px;">
+		<span class='smallMenu' style=" float:right;">Select Map</span>
+	</div>
+<div id="jido_Box_before">
+	<div id="jido_Box">
+		<div class="jido_world jido1" style=''>
+			<%@ include file="home_world.jsp" %>
+		</div>
+		<div class="jido_world jido2" style=''>
+			<%@ include file="home_world.jsp" %>
+		</div>
+	</div>
+</div>
 <div class="container"> <!-- 컨테이너 -->
 
 	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
 	
-		<span class='smallMenu'>Select Map</span>
-		<hr/>
-		<div id="jido_world" style='background-color:pink'>
-			<%@ include file="home_world.jsp" %>
-		</div> <!-- 상단지도 -->
 		
 		<!-- 추가(백동현) -->
 		<br/>
@@ -373,11 +402,14 @@ img[usemap] {
 	</div>
 </div>
 <script>
+<!-- 양지석 수정 -->
 	function menu_click(resty) {
 		//alert(resty);
 		event.preventDefault();
-		location.href="/shop_test?resty="+resty;
+		//location.href="/shop_test?resty="+resty;
+		location.href="/restaurantDesignTest?resty="+resty;
 	}
+<!-- 양지석 수정 -->
 </script>
 </body>
 </html>
