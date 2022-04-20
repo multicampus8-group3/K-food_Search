@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.ReviewDAO;
+import com.campus.myapp.vo.PagingVO;
 import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.ReviewVO;
 
@@ -22,6 +23,18 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public List<ReviewVO> reviewList(PagingVO vo) {
 		return dao.reviewList(vo);
+	}
+	
+	@Override
+	public int reviewWrite(ReviewVO vo) {
+		
+		int result = dao.reviewWrite(vo);
+		setRating(vo.getResno());
+		return result;
+	}
+	@Override
+	public List<ReviewVO> resReviewList(Integer resno) {
+		return dao.resReviewList(resno);
 	}
 	
 	// 평점평균
@@ -42,5 +55,6 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		dao.updateRating(rvo);
 	}
+	
 	
 }

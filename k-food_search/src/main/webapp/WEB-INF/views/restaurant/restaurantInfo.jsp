@@ -145,10 +145,11 @@ $(document).ready(function() {
 	width: 100%;
 	height: 500px;
 	position: relative;
+	
 }
-#ownerImage, #reviewImage{
+#ownerImage{
 	float: left;
-	width: 50%;
+	width: 100%;
 	height: 100%;
 	filter: brightness(50%);
 }
@@ -488,16 +489,10 @@ $(document).ready(function() {
 	<!-- 업주가 식당등록할때 등록하는 이미지 -->
 	<!-- <img id="ownerImage" src="/img/noImg.jpg"/> -->
 	<img id="ownerImage" src="/resImg/${vo.resimg}">
-	<!-- 리뷰 작성자가 리뷰에 넣는 이미지 -->
-	<img id="reviewImage" src="/img/noImg.jpg"/>
 	
 	<div class="maininfo">
 		<span class="resname">${vo.resname}</span>
 		<div class="score">
-			<i class="fa-solid fa-star"></i>
-			<i class="fa-solid fa-star"></i>
-			<i class="fa-solid fa-star"></i>
-			<i class="fa-solid fa-star"></i>
 			<i class="fa-solid fa-star"></i>
 			<span>${vo.resgrade}</span>
 		</div>
