@@ -23,4 +23,8 @@ public interface countryDAO {
 	public List<RestaurantVO> restListByNation(String nation);
 	
 	public List<RestaurantVO> restListRestype(String resty);
+
+	public List<RestaurantVO> restListAll();
+
+	
 }

@@ -306,6 +306,41 @@ $(document).ready(function() {
 	<!-- 양지석 수정 -->
 	}//restInfo()-----------------------
 	<!-- 양지석 수정 -->
+
+	$(function(){
+		var chk=[]
+		var cnt=0;
+		$('input:checkbox[name="restype"]').click(function(){
+			
+			if($(this).is(':checked')){
+				chk.push($(this).val())
+					//alert(chk)
+			}else{
+					
+				for(var j=0;j<chk.length;j++){
+					console.log(chk[j]+">>>"+$(this).val())
+					if(chk[j]==$(this).val()){
+						chk.splice(j,1);
+						break;
+					}
+				}
+			}
+			//alert(chk)
+			var nation=$('input:radio[name="nation"]:checked').val()
+			var state=$('input:radio[name="state"]:checked').val()
+			$.ajax({
+				type:'post',
+				url :'/country/restype',
+				data:{
+					nation:nation,
+					state:state,
+					restype:chk
+				}, success : function (result){
+					alert(JSON.stringify(result))
+				}
+			})
+		})
+	});
 </script>
 
 <div class="container">
@@ -373,28 +408,13 @@ $(document).ready(function() {
 			<h3>#restype</h3>
 			<form action="">
 				<ul>
-					<li><input type="checkbox" name="" id=""><label>밥</label></li>
-					<li><input type="checkbox" name="" id=""><label>죽</label></li>
-					<li><input type="checkbox" name="" id=""><label>떡</label></li>
-					<li><input type="checkbox" name="" id=""><label>국수</label></li>
-					<li><input type="checkbox" name="" id=""><label>만두</label></li>
-					<li><input type="checkbox" name="" id=""><label>수제비</label></li>
-					<li><input type="checkbox" name="" id=""><label>술</label></li>
-					<li><input type="checkbox" name="" id=""><label>국</label></li>
-					<li><input type="checkbox" name="" id=""><label>찌개</label></li>
-					<li><input type="checkbox" name="" id=""><label>구이</label></li>
-					<li><input type="checkbox" name="" id=""><label>전</label></li>
-					<li><input type="checkbox" name="" id=""><label>조림</label></li>
-					<li><input type="checkbox" name="" id=""><label>볶음</label></li>
-					<li><input type="checkbox" name="" id=""><label>편육</label></li>
-					<li><input type="checkbox" name="" id=""><label>나물</label></li>
-					<li><input type="checkbox" name="" id=""><label>생채</label></li>
-					<li><input type="checkbox" name="" id=""><label>젓갈</label></li>
-					<li><input type="checkbox" name="" id=""><label>포</label></li>
-					<li><input type="checkbox" name="" id=""><label>장아찌</label></li>
-					<li><input type="checkbox" name="" id=""><label>찜</label></li>
-					<li><input type="checkbox" name="" id=""><label>전골</label></li>
-					<li><input type="checkbox" name="" id=""><label>김치</label></li>
+					<li><input type="checkbox" name="restype" id="restype1" value="떡볶이"><label>떡볶이</label></li>
+					<li><input type="checkbox" name="restype" id="restype2" value="전"><label>전</label></li>
+					<li><input type="checkbox" name="restype" id="restype3" value="백반"><label>백반</label></li>
+					<li><input type="checkbox" name="restype" id="restype4" value="치킨"><label>치킨</label></li>
+					<li><input type="checkbox" name="restype" id="restype5" value="삼겹살"><label>삼겹살</label></li>
+					<li><input type="checkbox" name="restype" id="restype6" value="비빔밥"><label>비빔밥</label></li>
+					<li><input type="checkbox" name="restype" id="restype7" value="국밥"><label>국밥</label></li>
 				</ul>
 			</form>
 		</div>
