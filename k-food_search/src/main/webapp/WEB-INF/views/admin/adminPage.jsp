@@ -267,7 +267,7 @@ function reviewPageNation(reviewpageNum){
 $(function(){
 	//업주신청목록
 	function ownershipListAll() {
-		var url = "/memberListToAdmin";
+		var url = "/ownershipListToAdmin";
 		$.ajax({
 			url: url,
 			type: "get",

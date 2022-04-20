@@ -168,8 +168,6 @@
 </style>
 <script>
 $(document).ready(function() {
-	console.log("실행");
-	console.log("${nation}");
 
 	$("#favornation").click(function(){
 			var url = "/country/stateList"
@@ -190,7 +188,7 @@ $(document).ready(function() {
 					tag2 += "<input type='radio' class='state' name='state' onclick='restInfo(\""+vo.state+"\")' value="+vo.state+"><label>"+vo.state+"</label><br>";
 				});
 				$result2.each(function(idx, vo){
-				
+					
 					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">'; 
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
@@ -207,6 +205,8 @@ $(document).ready(function() {
 					tag += 	'</div>';
 					tag += '</div>';
 					tag += '</a>';
+					
+					
 					
 				});
 				$("#favorstate").html(tag2);
@@ -228,7 +228,7 @@ $(document).ready(function() {
 				'nation':"${nation}"
 			},
 			success: function(result) {
-				
+				console.log(result);
 				var $result = $(result);
 				var tag = "";
 				$result.each(function(idx, vo){
@@ -248,6 +248,7 @@ $(document).ready(function() {
 					tag += 	'</div>';
 					tag += '</div>';
 					tag += '</a>';
+					
 				});
 				$("#section").html(tag);				
 			},
