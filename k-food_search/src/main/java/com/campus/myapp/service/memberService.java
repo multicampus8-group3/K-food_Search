@@ -14,6 +14,8 @@ public interface memberService {
 	public memberVO memberSelect(String userid);
 	// 관리자페이지에서 회원목록 보기
 	public List<memberVO> memberList(PagingVO vo);
+	// 관리자페이지에서 업주신청목록 보기
+	public List<memberVO> ownershipList(memberVO vo);
 	// 업주신청처리(수정)
 	public int ownershipChange(memberVO vo);
 	public int memberUpdate(memberVO vo);

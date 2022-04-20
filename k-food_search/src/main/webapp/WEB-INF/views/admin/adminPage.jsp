@@ -267,11 +267,13 @@ function reviewPageNation(reviewpageNum){
 $(function(){
 	//업주신청목록
 	function ownershipListAll() {
-		var url = "/memberListToAdmin";
+		var url = "/ownershipListToAdmin";
 		$.ajax({
 			url: url,
 			type: "get",
 			success: function(result) {
+				console.log("실행")
+				console.log(result)
 				var $result = $(result);
 				var tag = "<ul>";
 				tag += "<li>아이디</li><li>이름</li><li>연락처</li><li>상태</li>";
@@ -1003,7 +1005,7 @@ function adPageNation(adpageNum){
 		
 		<div>
 			<!-- <h3>업주승인</h3> -->
-			<div id="ownershipList">
+			<div id="ownershipList" style='display:block !important'>
 			</div>
 		</div>
 		

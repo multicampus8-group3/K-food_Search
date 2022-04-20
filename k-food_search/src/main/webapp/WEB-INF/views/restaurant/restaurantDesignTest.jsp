@@ -21,10 +21,10 @@
 	opacity: 0.1;
 }
 #filterBox{
-	float: left;
 	width: 11%;
 	height: 100vh;
 	position : fixed;
+	top:0px;
 	right: 3%;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -69,12 +69,7 @@
 }
 
 
-#section{
-	float: right;
-	width: 50%;
-	margin-top: 70px;
-	margin-right: 250px;
-}
+
 .resCard{
 	height: 245px;
 	padding: 10px;
@@ -149,26 +144,31 @@
 	background-color: #2F4858;
 	color: #fff;
 }
-#pagingbox{
-	background-color: red;
-	margin: 0px auto;
-	padding: 0px auto;
-	width: 728px;
-	height: 40px;
-	margin-left: 510px;
+#section{
+	width: 50%;
+	margin-top: 70px;
+	margin-left:35%;
 }
-.paging{
-	height: 30px; overflow: auto;
-	padding-top: 5px;
-	margin-left: 180px;
+#pagingbox ul{
+	margin-left:35%;
+	width:50%;
+	height:150px;
+	text-align:center;
 }
-.paging>li{
-	float:left; 
-	margin-right: 50px;
+#pagingbox li{
+	display:inline-block;
+	text-align:center;
+	margin: -2.9px;
+	margin-top:20px;
+	width:50px;
+}
+#pagingbox li, #pagingbox a{
+	font-size:1.1em;
 }
 </style>
 <script>
 $(document).ready(function() {
+
 	$("#favornation").click(function(){
 			var url = "/country/stateList"
 			var params = $("input:radio[name='nation']:checked").val();
@@ -176,7 +176,7 @@ $(document).ready(function() {
 			$.ajax({
 			url: url,
 			data:{
-				nation:params
+				nation:params,
 			},
 			success: function(result) {
 				alert(JSON.stringify(result))
@@ -188,7 +188,7 @@ $(document).ready(function() {
 					tag2 += "<input type='radio' class='state' name='state' onclick='restInfo(\""+vo.state+"\")' value="+vo.state+"><label>"+vo.state+"</label><br>";
 				});
 				$result2.each(function(idx, vo){
-				
+					
 					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">'; 
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
@@ -197,7 +197,7 @@ $(document).ready(function() {
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
 					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
-					tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="resgrade">★'+parseFloat(vo.resgrade).toFixed(1)+'</span><span class="restype">'+vo.restype+'</span><br/>';
 					tag += 			'<span class="adr">'+vo.resadress+'</span>'
 					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
 					tag += 		'</div>';
@@ -205,7 +205,10 @@ $(document).ready(function() {
 					tag += 	'</div>';
 					tag += '</div>';
 					tag += '</a>';
-				});								
+					
+					
+					
+				});
 				$("#favorstate").html(tag2);
 				$("#section").html(tag);
 			},
@@ -214,8 +217,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-});
-$(function(){
 	// 가게목록
 	var pageNum = "${pVO.pageNum}";
 	function restaurantList(pageNum) {
@@ -223,9 +224,11 @@ $(function(){
 		$.ajax({
 			url: url,
 			data: {
-				'pageNum':pageNum 
+				'pageNum':pageNum,
+				'nation':"${nation}"
 			},
 			success: function(result) {
+				console.log(result);
 				var $result = $(result);
 				var tag = "";
 				$result.each(function(idx, vo){
@@ -237,7 +240,7 @@ $(function(){
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
 					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
-					tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="resgrade">★'+parseFloat(vo.resgrade).toFixed(1)+'</span><span class="restype">'+vo.restype+'</span><br/>';
 					tag += 			'<span class="adr">'+vo.resadress+'</span>'
 					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
 					tag += 		'</div>';
@@ -245,6 +248,7 @@ $(function(){
 					tag += 	'</div>';
 					tag += '</div>';
 					tag += '</a>';
+					
 				});
 				$("#section").html(tag);				
 			},
@@ -254,9 +258,7 @@ $(function(){
 		});
 	}
 	restaurantList(pageNum);
-	
 });
-
 
 	function restInfo(state){
 		alert('state'+state)
@@ -271,6 +273,7 @@ $(function(){
 				state:state
 			},
 			success: function(result) {
+				console.log("anjwl"+result)
 				alert(JSON.stringify(result))
 				var $result = $(result);
 				var tag2 = "";
@@ -285,7 +288,7 @@ $(function(){
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
 					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
-					tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="resgrade">★'+parseFloat(vo.resgrade).toFixed(1)+'</span><span class="restype">'+vo.restype+'</span><br/>';
 					tag += 			'<span class="adr">'+vo.resadress+'</span>'
 					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
 					tag += 		'</div>';
@@ -301,14 +304,20 @@ $(function(){
 				console.log(e.responseText);
 			}
 		});
+	<!-- 양지석 수정 -->
 	}//restInfo()-----------------------
-
+	<!-- 양지석 수정 -->
 </script>
 
 <div class="container">
+	
 	<div id="justImageBox">
 	</div>
-	<!-- 페이징 -->
+	
+	<!-- section -->
+	<div id="section">
+	</div>
+<!-- 페이징 -->
 	<div id="pagingbox">
 	<!-- 페이징 -->
 				<ul class="paging">
@@ -317,7 +326,7 @@ $(function(){
 					<li>prev</li>
 				</c:if>
 				<c:if test="${pVO.pageNum > 1 }">
-					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum-1}">prev</a></li>
+					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum-1}&nation=${nation}">prev</a></li>
 				</c:if>
 				
 					<c:forEach var="p" begin="${pVO.startPage}" end="${pVO.startPage+pVO.onePageCount-1}">
@@ -328,7 +337,7 @@ $(function(){
 							<c:if test="${p!=pVO.pageNum}">
 								<li>
 							</c:if>
-							<a href="/restaurantDesignTest?pageNum=${p}">${p}</a></li>
+							<a href="/restaurantDesignTest?pageNum=${p}&nation=${nation}">${p}</a></li>
 						</c:if>
 					</c:forEach>
 				
@@ -337,13 +346,13 @@ $(function(){
 					<li>next</li>
 				</c:if>
 				<c:if test="${pVO.pageNum < pVO.totalPage }">
-					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum+1}">next</a></li>
+					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum+1}&nation=${nation}">next</a></li>
 				</c:if>	
 				</ul>
 	</div>
+
 	<!-- section -->
-	<div id="section">
-	</div>
+	<div id="section"></div>
 	<!-- check box -->
 	<div id="filterBox">
 	    <h2>Filters</h2>
@@ -390,11 +399,13 @@ $(function(){
 				</ul>
 			</form>
 		</div>
+		
 		<div id="filterImage">
 			<div>
 				<img src="/img/logo.png"/>
 			</div>
 		</div>
+		
 	</div>
 	
 </div>

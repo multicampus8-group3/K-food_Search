@@ -115,6 +115,10 @@ public class RestaurantVO {
 	public void setReshourend(String reshourend) {
 		this.reshourend = reshourend;
 	}
-	
+	//test
+	@Override
+	public String toString() {
+		return "RestaurantVO [resname=" + resname + ", resnation=" + resnation + ", resstate=" + resstate + "]";
+	}
 	
 }

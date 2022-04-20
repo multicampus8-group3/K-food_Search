@@ -55,6 +55,13 @@ public class memberController {
 		return service.memberList(pvo);
 	}
 
+	// 관리자페이지에서 업주신청목록 보기
+	@GetMapping("/ownershipListToAdmin")
+	@ResponseBody
+	public List<memberVO> list(memberVO vo) {
+		return service.ownershipList(vo);
+	}
+		
 	// 업주신청처리(수정)
 	@PostMapping("/ownershipChangeOk")
 	@ResponseBody

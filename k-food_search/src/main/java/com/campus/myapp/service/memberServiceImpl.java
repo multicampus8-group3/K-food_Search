@@ -33,7 +33,14 @@ public class memberServiceImpl implements memberService {
 	public memberVO memberSelect(String userid) {
 		return dao.memberSelect(userid);
 	}
-
+	@Override
+	public List<memberVO> memberList(PagingVO vo) {
+		return dao.memberList(vo);
+	}
+	@Override
+	public List<memberVO> ownershipList(memberVO vo) {
+		return dao.ownershipList(vo);
+	}
 	@Override
 	public int ownershipChange(memberVO vo) {
 		return dao.ownershipChange(vo);
@@ -46,9 +53,5 @@ public class memberServiceImpl implements memberService {
 	public int memberDelete(memberVO vo) {
 		return dao.memberDelete(vo);
 	}
-	@Override
-	public List<memberVO> memberList(PagingVO vo) {
-		// TODO Auto-generated method stub
-		return dao.memberList(vo);
-	}
+	
 }
