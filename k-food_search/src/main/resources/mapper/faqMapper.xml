@@ -26,4 +26,11 @@
 	<delete id="faqAnswerDel">
 		delete from faq_answer where resno=#{param1}
 	</delete>
+	<select id="faqSelect" resultType="FaqAnswerVO">
+		select que.content faqcontent2, ans.content content2 
+		from faq_answer as ans 
+		join faq_table as que 
+		on ans.faqno = que.no  
+		where ans.resno = #{resno};
+	</select>
 </mapper>

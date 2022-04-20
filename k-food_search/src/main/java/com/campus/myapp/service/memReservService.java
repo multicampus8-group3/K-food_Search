@@ -17,4 +17,5 @@ public interface memReservService {
 	public List<memReservVO> myRestaurantReserveList(String userid);
 	public int reserveCheckOk(int no, String status);
 	public int reserveCheckDel(int no);
+	public int memRservInsert(memReservVO vo);
 }

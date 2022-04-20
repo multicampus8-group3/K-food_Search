@@ -16,13 +16,13 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1/kfood?characterEncoding=utf-8
     username: root
-    password: 1234
-
+    password: 1234   
+    
   servlet:
     multipart:
       max-file-size: 10MB
-      max-request-size: 10MB
-        
+      max-request-size: 10MB   
+      
 mybatis: #mybatis에서 package명 생략가능하게 만드는 기능 spring 프로젝트 mapper에서 썻던 resultType의 vo패키지를 선택할 때 쓰는 것들 생략
   type-aliases-package: com.campus.myapp.vo
   mapper-locations: mapper/*Mapper.xml

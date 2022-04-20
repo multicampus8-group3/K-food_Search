@@ -32,7 +32,8 @@
 }
 #a{
 	float: right;
-	width: 83%;
+	/* width: 83%; */
+	width: 78%;
 	display: block;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -50,7 +51,8 @@
 }
 #b{
 	float: right;
-	width: 83%;
+	/* width: 83%; */
+	width: 78%;
 	margin-right: 7%;
 }
 #b span{
@@ -62,7 +64,8 @@
 }
 #c{
 	float: right;
-	width: 83%;
+	/* width: 83%; */
+	width: 78%;
 	height: 95px;
 	line-height: 30px;
 	text-overflow: ellipsis;
