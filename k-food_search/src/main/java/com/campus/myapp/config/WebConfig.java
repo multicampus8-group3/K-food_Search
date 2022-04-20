@@ -13,14 +13,16 @@ import com.campus.myapp.interceptor.OwnerInterceptor;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-	/*예시
+	
 	private static final List<String> LOGIN_URL = Arrays.asList(
-			"/member/**","/admin/**","/restaurant/**");
+			"/member/**","/admin/**");
 	private static final List<String> ADMIN_URL = Arrays.asList(
-			"/member/**","/admin/**","/restaurant/**");
-	private static final List<String> OWNER_URL = Arrays.asList(
-			"/member/**","/admin/**","/restaurant/**");
-	*/
+			"/admin/**");
+	/*
+	 * private static final List<String> OWNER_URL = Arrays.asList(
+	 * "/member/**","/admin/**","/restaurant/**");
+	 */
+	
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -29,8 +31,8 @@ public class WebConfig implements WebMvcConfigurer {
 		//registry.addInterceptor(new LoginInterceptor()).excludePathPatterns("/member/**");
 		
 		//인터셉터 적용
-		//registry.addInterceptor(new LoginInterceptor()).addPathPatterns(LOGIN_URL);
-		//registry.addInterceptor(new AdminInterceptor()).addPathPatterns(ADMIN_URL);
+		registry.addInterceptor(new LoginInterceptor()).addPathPatterns(LOGIN_URL);
+		registry.addInterceptor(new AdminInterceptor()).addPathPatterns(ADMIN_URL);
 		//registry.addInterceptor(new OwnerInterceptor()).addPathPatterns(OWNER_URL);
 		
 	}
