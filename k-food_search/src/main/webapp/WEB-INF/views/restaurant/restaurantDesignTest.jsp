@@ -199,7 +199,7 @@ $(document).ready(function() {
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
 					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
-					tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="resgrade">★'+parseFloat(vo.resgrade).toFixed(1)+'</span><span class="restype">'+vo.restype+'</span><br/>';
 					tag += 			'<span class="adr">'+vo.resadress+'</span>'
 					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
 					tag += 		'</div>';
@@ -240,7 +240,7 @@ $(document).ready(function() {
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
 					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
-					tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="resgrade">★'+parseFloat(vo.resgrade).toFixed(1)+'</span><span class="restype">'+vo.restype+'</span><br/>';
 					tag += 			'<span class="adr">'+vo.resadress+'</span>'
 					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
 					tag += 		'</div>';
@@ -287,7 +287,7 @@ $(document).ready(function() {
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
 					tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
-					tag += 			'<span class="resgrade">★'+vo.resgrade+'</span><span class="restype">'+vo.restype+'</span><br/>';
+					tag += 			'<span class="resgrade">★'+parseFloat(vo.resgrade).toFixed(1)+'</span><span class="restype">'+vo.restype+'</span><br/>';
 					tag += 			'<span class="adr">'+vo.resadress+'</span>'
 					tag += 			'<div class="intro">'+vo.rescontent+'</div>';
 					tag += 		'</div>';

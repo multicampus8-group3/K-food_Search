@@ -10,5 +10,11 @@ public interface ReviewService {
 	public List<ReviewVO> reviewList(PagingVO vo);
 	// 멤버페이지에서 리뷰목록 보기
 	public List<ReviewVO> memberReviewList(ReviewVO vo);
-
+	// 리뷰등록
+	public int reviewWrite(ReviewVO vo);
+	// 리뷰목록
+	public List<ReviewVO> resReviewList(Integer resno);
+	
+	// 평점평균
+	public void setRating(Integer resno);
 }
