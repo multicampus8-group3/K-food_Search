@@ -15,7 +15,12 @@ $(()=>{
 	});
 	
 	ClassicEditor
-    .create( document.querySelector( '#editor' ) )
+	.create(document.querySelector( '#editor' ), {
+	    language: 'ko'
+	  })
+	.then( editor => {
+        theEditor = editor;
+    } )
     .catch( error => {
         console.error( error );
     });
@@ -120,7 +125,7 @@ function changeView(){
 						${item.faqcontent2 }&nbsp;&nbsp;&nbsp;
 						${item.content2 }
 						<input type='hidden' name='faqno' value='${item.faqno2 }'/>
-						<input type='hidden' name='content' value='${item.faqcontent2 }'/>
+						<input type='hidden' name='content' value='${item.content2 }'/>
 						<input type='button' value='삭제' onclick='faqDel()'/><br/>
 					</span>
 				</c:forEach>

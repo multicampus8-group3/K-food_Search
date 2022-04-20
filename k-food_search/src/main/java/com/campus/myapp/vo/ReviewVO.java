@@ -6,7 +6,7 @@ public class ReviewVO {
 	private int grade;
 	private String userid;
 	private String writedate;
-	private int resno;
+	private Integer resno;
 	private double resgrade;
 	
 	private String resname;
@@ -63,11 +63,11 @@ public class ReviewVO {
 		this.writedate = datetime;
 	}
 
-	public int getResno() {
+	public Integer getResno() {
 		return resno;
 	}
 
-	public void setResno(int resno) {
+	public void setResno(Integer resno) {
 		this.resno = resno;
 	}
 

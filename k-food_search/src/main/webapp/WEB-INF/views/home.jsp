@@ -20,9 +20,13 @@
 	<script type="text/javascript" src="/js/bxslider_jquery.js"></script>
 	
 	<script type="text/javascript" src="/js/jquery.maphilight.min.js"></script>
-	<script type="text/javascript">$(function() {
-		$('.map').maphilight({strokeColor: 'black', strokeWidth: 0, fill: 'ff0000', fillColor: 'ff0000', fade: false});
-	});</script>
+	<script type="text/javascript">
+		$(function() {
+			$('.bx-prev').html('<');
+			$('.bx-next').html('>');
+			$('.map').maphilight({strokeColor: 'FFAA00', strokeWidth: 3, fill: true, fillColor: 'FFAA00',fillOpacity: 0.7, fade: false});
+		});
+	</script>
 	<script type="text/javascript" src="/js/bm_jy.js"></script>
 	<script type="text/javascript" src="/js/jquery.rwdImageMaps.js"></script>
 	<script>
@@ -56,17 +60,83 @@ img[usemap] {
     .map{
     	size: width: 1200px;
     }
+    
+    /*추가 백동현*/
+    .smallMenu{
+    	display:inline-block;
+    	font-family : "Binggrae";
+    	color:rgb(203,100,58);
+		font-size:1.5em;
+		margin-top:20px;
+		text-shadow:0px 5px 10px rgb(203,100,58);
+    }
+    hr{
+    	height:1px;
+    	background-color:rgb(203,100,58);
+    	border:1px solid rgb(203,100,58);
+
+    }
+    .bx-prev{
+    	color:#ddd !important
+    }
+    .bx-prev:hover{
+    	color:black !important;
+    }
+    .bx-next{
+    	color:#ddd !important
+    }
+    .bx-next:hover{
+    	color:black !important
+    }
+    /*추가 백동현*/
+    
+    #jido_Box_before{
+    	width: 100%;
+    	overflow: hidden;
+    	height: 620px;
+    	background-color: rgba(205, 188, 171, 0.3);
+    }
+    #jido_Box{
+    	width: 2400px;
+    	height: 600px;
+    	margin-bottom: 150px;
+    }
+    .jido_world{
+    	margin-top: 0px;
+    	float:left;
+    }
+    .jido1{
+    	
+    } 
+    .jido2{
+    margin-left:-9px;
+    	
+    }
 </style>
 </head>
 <body>
-
+	<div style="width:1200px; height:50px; margin:0 auto; margin-bottom:10px; margin-top:-10px;">
+		<span class='smallMenu' style=" float:right;">Select Map</span>
+	</div>
+<div id="jido_Box_before">
+	<div id="jido_Box">
+		<div class="jido_world jido1" style=''>
+			<%@ include file="home_world.jsp" %>
+		</div>
+		<div class="jido_world jido2" style=''>
+			<%@ include file="home_world.jsp" %>
+		</div>
+	</div>
+</div>
 <div class="container"> <!-- 컨테이너 -->
 
 	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
 		
-		<div id="jido_world" style='background-color:pink'>
-			<%@ include file="home_world.jsp" %>
-		</div> <!-- 상단지도 -->
+		<!-- 추가(백동현) -->
+		<br/>
+		<span class='smallMenu'>food Type</span>
+		<hr/>
+		<!-- 추가(백동현) -->
 		
 		<div id="menu">
 			<div class="menuslide controls">
@@ -279,10 +349,17 @@ img[usemap] {
 				</ul>
 			</div>
 		</div> <!-- 메뉴 -->
-		
 		<!-- 음식 종류 메뉴 -->
 		<div id="top_menu"> <!-- 평점 좋은 식당 -->
+		
+		<!-- 추가(백동현) -->
+		<span class='smallMenu'>Editor's Pick</span>
+		<hr/>
+		<br/>
+		<!-- 추가(백동현) -->
+		<!--
 			<h1 style="font-size:22px; margin-left:16px;">TOP</h1>
+		-->
 			<ul id="bm_list" >
 				<c:forEach var="tr" items="${bmgrade}"> <!-- tr: top_res -->
 						<li class="bm_box">
@@ -294,6 +371,13 @@ img[usemap] {
 				</c:forEach>
 			</ul>
 		</div>
+		
+		<!-- 추가(백동현) -->
+		<br/>
+		<span class='smallMenu'>Recommend Restaurant</span>
+		<hr/>
+		<br/>
+		<!-- 추가(백동현) -->
 		
 		<div id="gg"> <!-- 광고 -->
 			<ul id="slider">

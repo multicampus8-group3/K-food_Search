@@ -39,5 +39,29 @@
 	<select id="memberReviewCount" resultType="com.campus.myapp.vo.ReviewVO">
 		select count(no) memreviewcount from review_table where userid=#{userid} 
 	</select>
+	
+	<insert id="reviewWrite">
+		replace into review_table(resno, userid, grade, content)
+		values(#{resno}, #{userid}, #{grade}, #{content})
+	</insert>
+	
+	<select id="resReviewList" resultType="com.campus.myapp.vo.ReviewVO">
+		select resno, userid, content, writedate, grade 
+		from review_table
+		where resno=${param1}
+		order by no desc
+	</select>
+	
+	<select id="getRatingAverage" resultType="double">
+		select avg(grade) from review_table
+		where resno=#{resno}
+	</select>
+	
+	<update id="updateRating">
+		update restaurant_table
+		set resgrade=#{resgrade}
+		where resno=#{resno}
+	</update>
+	
 
 </mapper>
