@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.campus.myapp.dao.RestaurantDAO">
-
+	
 	<select id="restaurantList" resultType="com.campus.myapp.vo.RestaurantVO">
 		select resno, resname, resadress, format(resgrade,1) resgrade, 
 		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
@@ -13,7 +13,6 @@
   		</if>
 		order by resno desc limit ${onePageRecord} offset ${offsetIndex}
 	</select>
-	
 	<select id="getSearchList" resultType="com.campus.myapp.vo.RestaurantVO">
 		select resno, resname, resadress, format(resgrade,1) resgrade, 
 		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
@@ -69,7 +68,7 @@
 		limit ${onePageRecord} offset ${offsetIndex} 
 	</select>
 	<select id="resSelect" resultType="com.campus.myapp.vo.RestaurantVO">
-		select resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, website, 
+		select resno,resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, website,
 		resno, time_format(reshour,'%H:%i') reshour, time_format(reshourend,'%H:%i') reshourend
 		from restaurant_table
 		where resno=#{resno}
