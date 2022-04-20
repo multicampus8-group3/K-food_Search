@@ -55,15 +55,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 	
 	@Override
-	public List<RestaurantVO> restaurantList_world(String nation) { //memberVO mVO  (�Ű����� �߰� �ʿ� favornation ���ؼ�)
-		return dao.restaurantList_world(nation);
-	}
-	@Override
-	public List<RestaurantVO> restaurantList_restype(String resty) {
-		return dao.restaurantList_restype(resty);
-	}
-	
-	@Override
 	public List<RestaurantVO> resList(ResPagingVO pVO) {
 		return dao.resList(pVO);
 	}
@@ -77,7 +68,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List<RestaurantVO> restaurantList(PagingVO vo) {
 		return dao.restaurantList(vo);
 	}
+<<<<<<< HEAD
   @Override
+=======
+	
+	@Override
+>>>>>>> branch 'main' of https://github.com/qorehdgus/K-food_Search.git
 	public int totalRecord(ResPagingVO pVO) {
 		return dao.totalRecord(pVO);
 	}
