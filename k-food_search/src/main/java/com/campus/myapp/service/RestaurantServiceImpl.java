@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.RestaurantDAO;
+import com.campus.myapp.vo.ResPagingVO;
 import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.memberVO;
 
@@ -78,12 +79,17 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 	
 	@Override
-	public List<RestaurantVO> resList(RestaurantVO vo) {
-		return dao.resList(vo);
+	public List<RestaurantVO> resList(ResPagingVO pVO) {
+		return dao.resList(pVO);
 	}
 
 	@Override
 	public RestaurantVO resSelect(int resno) {
 		return dao.resSelect(resno);
+	}
+
+	@Override
+	public int totalRecord(ResPagingVO pVO) {
+		return dao.totalRecord(pVO);
 	}
 }

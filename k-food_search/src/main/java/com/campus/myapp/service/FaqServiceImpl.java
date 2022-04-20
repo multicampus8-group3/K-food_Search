@@ -46,4 +46,9 @@ public class FaqServiceImpl implements FaqService {
 		// TODO Auto-generated method stub
 		return dao.faqAnswerDel(resno);
 	}
+
+	@Override
+	public List<FaqAnswerVO> faqSelect(int resno) {
+		return dao.faqSelect(resno);
+	}
 }

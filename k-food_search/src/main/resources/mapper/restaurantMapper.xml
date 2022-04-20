@@ -10,6 +10,7 @@
 		from restaurant_table
 		order by resno desc
 	</select>
+	
 	<select id="restaurantList_world" resultType="com.campus.myapp.vo.RestaurantVO">
 		select
 										resno,
@@ -87,10 +88,14 @@
 		select resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, resno 
 		from restaurant_table
 		order by resno desc
+		limit ${onePageRecord} offset ${offsetIndex} 
 	</select>
 	<select id="resSelect" resultType="com.campus.myapp.vo.RestaurantVO">
 		select resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, resno, reshour, reshourend  
 		from restaurant_table
 		where resno=#{resno}
+	</select>
+	<select id='totalRecord' resultType='int'>
+		select count(resno) cnt from restaurant_table 
 	</select>
 </mapper>

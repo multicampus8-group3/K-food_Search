@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.countryService;
+import com.campus.myapp.vo.ResPagingVO;
 import com.campus.myapp.vo.countryVO;
 
 import com.campus.myapp.service.BestMenuService;
@@ -46,12 +47,14 @@ public class HomeController {
 	public String restaurantInfo() {
 		return "restaurant/restaurantInfo"; 
 	}
-	// �떇�떦 紐⑸줉 寃뚯떆�뙋 �뵒�옄�씤 �뀒�뒪�듃�슜
+	//디자인테스트 
 	@RequestMapping("/restaurantDesignTest")
-	public ModelAndView restaurantDesignTest() {
+	public ModelAndView restaurantDesignTest(ResPagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
 		List<countryVO> countrylist = countryService.countryList();
 		mav.addObject("countrylist", countrylist);
+		pVO.setTotalRecord(resservice.totalRecord(pVO));
+		mav.addObject("pVO", pVO);
 		mav.setViewName("restaurant/restaurantDesignTest");
 		return mav; 
 	}
