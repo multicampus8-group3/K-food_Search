@@ -373,11 +373,14 @@ img[usemap] {
 	</div>
 </div>
 <script>
+<!-- 양지석 수정 -->
 	function menu_click(resty) {
 		//alert(resty);
 		event.preventDefault();
-		location.href="/shop_test?resty="+resty;
+		//location.href="/shop_test?resty="+resty;
+		location.href="/restaurantDesignTest?resty="+resty;
 	}
+<!-- 양지석 수정 -->
 </script>
 </body>
 </html>

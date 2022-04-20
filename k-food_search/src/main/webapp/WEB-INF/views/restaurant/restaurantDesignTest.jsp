@@ -253,7 +253,8 @@ $(function(){
 			}
 		});
 	}
-	restaurantList(pageNum);
+	//restaurantList(pageNum);
+	
 	
 });
 
@@ -301,8 +302,9 @@ $(function(){
 				console.log(e.responseText);
 			}
 		});
+	<!-- 양지석 수정 -->
 	}//restInfo()-----------------------
-
+	<!-- 양지석 수정 -->
 </script>
 
 <div class="container">
@@ -343,6 +345,25 @@ $(function(){
 	</div>
 	<!-- section -->
 	<div id="section">
+		<!-- 양지석 수정 -->
+		<c:forEach var="vo" items="${restList}">
+			<a href="/?resno='+vo.resno+'">'
+				<div class="resCard">
+					<div class="img_box">
+					<img src="/img/noImg.jpg"/> <!-- ${vo.resimg} -->
+						</div>
+							<div class="contents">
+								<div class="info">
+									<span class="resname">${vo.resname}</span><br/>
+									<span class="resgrade">★+${vo.resgrade}</span><span class="restype">${vo.restype}</span><br/>
+									<span class="adr">${vo.resadress}</span>
+								<div class="intro">${vo.rescontent}</div>
+							</div>
+						<div class="seeMore">더보기</div>
+					</div>
+				</div>
+			</a>
+		</c:forEach>
 	</div>
 	<!-- check box -->
 	<div id="filterBox">
