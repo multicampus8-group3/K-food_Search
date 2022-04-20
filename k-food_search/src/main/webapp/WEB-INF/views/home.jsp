@@ -24,7 +24,7 @@
 		$(function() {
 			$('.bx-prev').html('<');
 			$('.bx-next').html('>');
-			$('.map').maphilight({strokeColor: 'FFAA00', strokeWidth: 0, fill: 'FFAA00', fillColor: 'FFAA00', fade: false});
+			$('.map').maphilight({strokeColor: 'FFAA00', strokeWidth: 3, fill: true, fillColor: 'FFAA00',fillOpacity: 0.7, fade: false});
 		});
 	</script>
 	<script type="text/javascript" src="/js/bm_jy.js"></script>
@@ -88,19 +88,48 @@ img[usemap] {
     }
     /*추가 백동현*/
     
+    #jido_Box_before{
+    	width: 100%;
+    	overflow: hidden;
+    	height: 620px;
+    	background-color: rgba(205, 188, 171, 0.3);
+    }
+    #jido_Box{
+    	width: 2400px;
+    	height: 600px;
+    	margin-bottom: 150px;
+    }
+    .jido_world{
+    	margin-top: 0px;
+    	float:left;
+    }
+    .jido1{
+    	
+    } 
+    .jido2{
+    margin-left:-9px;
+    	
+    }
 </style>
 </head>
 <body>
-
+	<div style="width:1200px; height:50px; margin:0 auto; margin-bottom:10px; margin-top:-10px;">
+		<span class='smallMenu' style=" float:right;">Select Map</span>
+	</div>
+<div id="jido_Box_before">
+	<div id="jido_Box">
+		<div class="jido_world jido1" style=''>
+			<%@ include file="home_world.jsp" %>
+		</div>
+		<div class="jido_world jido2" style=''>
+			<%@ include file="home_world.jsp" %>
+		</div>
+	</div>
+</div>
 <div class="container"> <!-- 컨테이너 -->
 
 	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->
 	
-		<span class='smallMenu'>Select Map</span>
-		<hr/>
-		<div id="jido_world" style='background-color:pink'>
-			<%@ include file="home_world.jsp" %>
-		</div> <!-- 상단지도 -->
 		
 		<!-- 추가(백동현) -->
 		<br/>
@@ -135,12 +164,12 @@ img[usemap] {
 					</li>
 					
 					<li>
-						<a onclick="menu_click('감자탕')" href="/restaurantDesignTest">
-							<img class="img_box" src="../img/hansik_img/gamjatang.PNG" alt="">
-							<h2>감자탕
+						<a onclick="menu_click('백반')" href="/restaurantDesignTest">
+							<img class="img_box" src="../img/hansik_img/baekban.PNG" alt="">
+							<h2>백반
 								<span>
 									<div class="inner_div">
-										감자탕
+										백반
 									</div>
 								</span>
 							</h2>

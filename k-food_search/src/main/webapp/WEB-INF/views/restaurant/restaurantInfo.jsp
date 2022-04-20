@@ -72,8 +72,67 @@ $(document).ready(function() {
 		});
 	});
 	    
+	// 리뷰등록
+	$("#reviewFrm").submit(function(){
+		event.preventDefault();
+		if(!$('input:radio[name=grade]').is(":checked")) {
+			alert("별점을 선택후 등록하세요.");
+			return;
+		}else if($('textarea[name=content]').val()=="") {
+			alert("내용을 입력후 등록하세요.");
+			return;
+		}else {
+		
+			var params = $("#reviewFrm").serialize();
+			$.ajax({
+				url: '/review/reviewOk',
+				async: true,
+				data:params,
+				type: 'POST',
+				success: function(r){
+					$("#content").val("");
+					reviewListAll();
+					history.go(0);
+				},
+				error: function(e){
+					console.log(e.responseText);
+				}
+			});
+		}
+	});
+		
+	// 리뷰목록
+	function reviewListAll() {
+		var url = "/review/resReviewList";
+		var params = "resno = ${vo.resno}";
+		
+		$.ajax({
+			url: url,
+			data: {
+				resno:"${vo.resno}"
+			},
+			success: function(result) {
+				var $result = $(result);
+				
+				var tag = "";
+				$result.each(function(idx, vo){
+					tag += "<div class='reviewCard'>";
+					tag += "<div id='userid'><span>"+vo.userid+"</span><br/></div>";
+					tag += '<div id="writedate"><span>'+vo.writedate+'</span></div>';
+					tag += '<div id="c"><b>★'+parseFloat(vo.grade).toFixed(1)+'</b><br/><span>'+vo.content+'</span></div>'; 
+					tag += '</div>'
+					
+				});
+				
+				$("#reviewList").html(tag);
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	}
+	reviewListAll();
 });
-
 </script>
 
 <style>
@@ -86,10 +145,11 @@ $(document).ready(function() {
 	width: 100%;
 	height: 500px;
 	position: relative;
+	
 }
-#ownerImage, #reviewImage{
+#ownerImage{
 	float: left;
-	width: 50%;
+	width: 100%;
 	height: 100%;
 	filter: brightness(50%);
 }
@@ -287,7 +347,7 @@ $(document).ready(function() {
 	resize: none;
 	border: none;
 }
-.reviewBox form button{
+.reviewBox form input[type="submit"]{
     background-color: rgba(224,7,7,1);
     color: rgba(255,255,255,1);
     border: 0;
@@ -300,13 +360,47 @@ $(document).ready(function() {
     vertical-align: middle;
     float: right;
     margin-right: 5%;
+    font-size: 18px;
 }
-.reviewBox form button:hover{
+.reviewBox form input[type="submit"]:hover{
     background-color: rgb(244,13,21);
     color: rgba(255,255,255,1);
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 30%);
 }
 
+#reviewList{
+	float: left;
+	width: 870px;
+}
+
+.reviewCard{
+	width: 100%;
+	height: 150px;
+	line-height: 30px;
+	border-bottom: 1px solid rgba(62, 97, 103, 0.3);
+	margin-bottom: 10px;
+}
+.reviewCard>div:first-child{
+	font-weight: bold;
+	font-size: 20px;
+}
+.reviewCard>div:nth-child(2){
+	margin-left: 20px;
+}
+.reviewCard>div:nth-child(3) b{
+	margin-left: 20px;
+	color: red;
+	font-weight: bold;
+}
+.reviewCard>div:nth-child(3) span{
+	margin-left: 20px;
+	text-overflow: ellipsis;
+	white-space: break-word;
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+	overflow: hidden;	
+}
 
 /* reservation_box */
 .reservation_box {
@@ -329,8 +423,8 @@ $(document).ready(function() {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
-  height: 50%;
+  width: 300px;
+  height: 600px;
   background-color: #fff;
   padding: 2rem;
   border-radius: 20px;
@@ -338,20 +432,67 @@ $(document).ready(function() {
 .reservation_box .date_setting > button {
   font-size: 2rem;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -30px;
+  right: -25px;
   margin: 2rem;
   border: none;
   background: none;
   cursor: pointer;
 }
-.reservation_box .date_setting h3 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+.ui-timepicker-container{
+  position: fixed;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-135%, -32%);
+}
+.reservName, .reservMent{
+	border-bottom: 1px solid rgba(62, 97, 103, 0.3);
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+.reservName{
+	font-size: 20px;
+	font-weight: bold;
 }
 .test{
-  position: relative;
-  background-color: red;
+	position: relative;
+	background-color: red;
+}
+.dateSelect, .timeSelect, .numberSelect{
+	float: left;
+	width: 300px;
+	height: 100px;
+	margin-top: 20px;
+	text-align: center;
+	font-weight: bold;
+	border-bottom: 1px solid rgba(62, 97, 103, 0.3);
+}
+.dateSelect input{
+	margin-top: 20px;
+	width: 250px;
+	height: 32px;
+	border: 1px solid black;
+}
+.timeSelect input{
+	margin-top: 20px;
+	width: 250px;
+	height: 30px;
+	border: 1px solid black;
+}
+.numberSelect select{
+	margin-top: 20px;
+	width: 250px;
+	height: 34px;
+	border: 1px solid black;
+}
+#memReserv button{
+	margin-top: 50px;
+	margin-left: 25px;
+	width: 250px;
+	height: 52px;
+	background-color: rgba(89, 121, 115, 0.7);
+	color: #fff;
 }
 </style>
 
@@ -359,16 +500,10 @@ $(document).ready(function() {
 	<!-- 업주가 식당등록할때 등록하는 이미지 -->
 	<!-- <img id="ownerImage" src="/img/noImg.jpg"/> -->
 	<img id="ownerImage" src="/resImg/${vo.resimg}">
-	<!-- 리뷰 작성자가 리뷰에 넣는 이미지 -->
-	<img id="reviewImage" src="/img/noImg.jpg"/>
 	
 	<div class="maininfo">
 		<span class="resname">${vo.resname}</span>
 		<div class="score">
-			<i class="fa-solid fa-star"></i>
-			<i class="fa-solid fa-star"></i>
-			<i class="fa-solid fa-star"></i>
-			<i class="fa-solid fa-star"></i>
 			<i class="fa-solid fa-star"></i>
 			<span>${vo.resgrade}</span>
 		</div>
@@ -379,7 +514,7 @@ $(document).ready(function() {
 <div class="container">
 	<div class="btn_box">
 		<div>
-			<a class="review">☆ 리뷰작성</a>
+			<a class="review" href="#content">☆ 리뷰작성</a>
 		</div>
 		<c:if test="${logId!=null }">
 		<button class="reservation">☎ 예약하기</button>
@@ -427,54 +562,68 @@ $(document).ready(function() {
 	
 	<div class="reviewBox">
 		<span class="title">REVIEW</span><br/><br/>
-		<form>
+		<form method='post' id="reviewFrm">
+			<input type="hidden" id="resno" name="resno" value="${vo.resno}"/>
 			<div class="star-rating">
-				<input type="radio" id="5-stars" name="rating" value="5" />
+				<input type="radio" id="5-stars" name="grade" value="5" />
 				<label for="5-stars" class="star">&#9733;</label>
-				<input type="radio" id="4-stars" name="rating" value="4" />
+				<input type="radio" id="4-stars" name="grade" value="4" />
 				<label for="4-stars" class="star">&#9733;</label>
-				<input type="radio" id="3-stars" name="rating" value="3" />
+				<input type="radio" id="3-stars" name="grade" value="3" />
 				<label for="3-stars" class="star">&#9733;</label>
-				<input type="radio" id="2-stars" name="rating" value="2" />
+				<input type="radio" id="2-stars" name="grade" value="2" />
 				<label for="2-stars" class="star">&#9733;</label>
-				<input type="radio" id="1-star" name="rating" value="1" />
+				<input type="radio" id="1-star" name="grade" value="1" />
 				<label for="1-star" class="star">&#9733;</label>
 			</div>
 			<textarea name="content" id="content" placeholder="내용을 작성해 주세요."></textarea>
-			<button type="submit">리뷰등록</button>
+			<input type="submit" value="리뷰등록"/>
 		</form>
 	</div>
 	<div id="reviewList">
+	
 	</div>
 			
 			
 <div class="reservation_box">
 	<div class="reservation_box_bg"></div>
 		<div class="date_setting">
-			<h3>Setting the Reservation date</h3>
 			<button>✖</button>
-		<form id="memReserv">
-      	 <fmt:formatDate value="<%=new java.util.Date()%>" var="today" pattern="yyyy-MM-dd"/>
-         <input type="date" id="reservDate" min="${today}" name="reservdate">
-         <input id="reservTime" class="timepicker" name="reservtime">
-         <input type="hidden" value="${vo.resno}" name="resno">
-         <input type="hidden" value="apply" name="status">
-       	<select name="reservp" id="reservp">
-        	<option value="" selected>인원선택</option>
-        	<option value="1">1명</option>
-        	<option value="2">2명</option>
-        	<option value="3">3명</option>
-        	<option value="4">4명</option>
-        	<option value="5">5명</option>
-        	<option value="6">6명</option>
-        	<option value="7">7명</option>
-        	<option value="8">8명</option>
-        	<option value="9">9명</option>
-        	<option value="10">10명</option>
-        </select>
-
-        <button>submit</button>
-      </form>
+			<div class="reservName">${vo.resname}</div>
+			<div class="reservMent">매장예약</div>
+			<form id="memReserv">
+			
+				<div class="dateSelect">
+					<span>날짜 선택</span><br/>
+					<fmt:formatDate value="<%=new java.util.Date()%>" var="today" pattern="yyyy-MM-dd"/>
+					<input type="date" id="reservDate" min="${today}">
+				</div>
+				
+				<div class="timeSelect">
+					<span>시간 선택</span><br/>
+					<input id="reservTime" class="timepicker">
+				</div>
+				
+				<div class="numberSelect">
+					<span>인원 선택</span><br/>
+					<select name="reservp" id="reservp">
+						<option value="" selected>인원선택</option>
+						<option value="1">1명</option>
+						<option value="2">2명</option>
+						<option value="3">3명</option>
+						<option value="4">4명</option>
+						<option value="5">5명</option>
+						<option value="6">6명</option>
+						<option value="7">7명</option>
+						<option value="8">8명</option>
+						<option value="9">9명</option>
+						<option value="10">10명</option>
+					</select>
+				</div>
+				
+				<input type="hidden" value="${vo.resno}">
+				<button>예약 신청하기</button>
+			</form>
 		</div>
 	</div>
 </div>

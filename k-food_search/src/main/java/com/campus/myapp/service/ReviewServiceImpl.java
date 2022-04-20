@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.ReviewDAO;
 import com.campus.myapp.vo.PagingVO;
+import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.ReviewVO;
 
 @Service
@@ -21,8 +22,39 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	@Override
 	public List<ReviewVO> reviewList(PagingVO vo) {
-		// TODO Auto-generated method stub
 		return dao.reviewList(vo);
 	}
+	
+	@Override
+	public int reviewWrite(ReviewVO vo) {
+		
+		int result = dao.reviewWrite(vo);
+		setRating(vo.getResno());
+		return result;
+	}
+	@Override
+	public List<ReviewVO> resReviewList(Integer resno) {
+		return dao.resReviewList(resno);
+	}
+	
+	// 평점평균
+	@Override
+	public void setRating(Integer resno) {
+		Double resgrade = dao.getRatingAverage(resno);
+		
+		if(resgrade == null) {
+			resgrade = 0.0;
+		}
+		
+		resgrade = (double) (Math.round(resgrade*10));
+		resgrade = resgrade / 10;
+		
+		RestaurantVO rvo = new RestaurantVO();
+		rvo.setResno(resno);
+		rvo.setResgrade(resgrade);
+		
+		dao.updateRating(rvo);
+	}
+	
 	
 }
