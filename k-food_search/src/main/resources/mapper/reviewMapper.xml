@@ -9,8 +9,11 @@
 		rev.content content, rev.writedate writedate, res.resimg resimg  
 		from review_table as rev
 		join restaurant_table as res
-		on rev.resno = res.resno
-		order by rev.no desc
+		on rev.resno = res.resno 
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by rev.no desc limit ${onePageRecord} offset ${offsetIndex}
 	</select>
 	
 	<select id="getSearchList" resultType="com.campus.myapp.vo.ReviewVO">

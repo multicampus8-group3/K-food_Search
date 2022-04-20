@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.memberDAO;
+import com.campus.myapp.vo.PagingVO;
 import com.campus.myapp.vo.ReviewVO;
 import com.campus.myapp.vo.memberVO;
 
@@ -32,19 +33,10 @@ public class memberServiceImpl implements memberService {
 	public memberVO memberSelect(String userid) {
 		return dao.memberSelect(userid);
 	}
-	
-	@Override
-	public List<memberVO> memberList(memberVO vo) {
-		return dao.memberList(vo);
-	}
 
 	@Override
 	public int ownershipChange(memberVO vo) {
 		return dao.ownershipChange(vo);
-	}
-	@Override
-	public List<memberVO> getSearchList(memberVO vo) {
-		return dao.getSearchList(vo);
 	}
 	@Override
 	public int memberUpdate(memberVO vo) {
@@ -54,6 +46,9 @@ public class memberServiceImpl implements memberService {
 	public int memberDelete(memberVO vo) {
 		return dao.memberDelete(vo);
 	}
-	
-	
+	@Override
+	public List<memberVO> memberList(PagingVO vo) {
+		// TODO Auto-generated method stub
+		return dao.memberList(vo);
+	}
 }
