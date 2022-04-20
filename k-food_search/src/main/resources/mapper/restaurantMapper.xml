@@ -7,8 +7,11 @@
 	<select id="restaurantList" resultType="com.campus.myapp.vo.RestaurantVO">
 		select resno, resname, resadress, format(resgrade,1) resgrade, 
 		userid, resnation, resstate, date_format(writedate,'%Y-%m-%d') writedate
-		from restaurant_table
-		order by resno desc
+		from restaurant_table 
+		<if test="searchWord!=null">
+  			where ${searchKey} like '%${searchWord}%'
+  		</if>
+		order by resno desc limit ${onePageRecord} offset ${offsetIndex}
 	</select>
 	<select id="restaurantList_world" resultType="com.campus.myapp.vo.RestaurantVO">
 		select

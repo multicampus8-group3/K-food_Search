@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.campus.myapp.dao.adminPageNationDAO;
 import com.campus.myapp.service.ReviewService;
 import com.campus.myapp.service.countryService;
 import com.campus.myapp.service.memberService;
+import com.campus.myapp.vo.PagingVO;
 import com.campus.myapp.vo.ReviewVO;
 import com.campus.myapp.vo.countryVO;
 import com.campus.myapp.vo.memberVO;
@@ -28,6 +30,8 @@ public class memberController {
 	memberService service;
 	@Inject
 	countryService countryService;
+	@Inject
+	adminPageNationDAO apnService;
 	
    @GetMapping("/logout")
    public ModelAndView logout(HttpSession session) {
@@ -36,24 +40,21 @@ public class memberController {
       mav.setViewName("redirect:/");
       return mav;
    }
-	
+   //관리자 맴버 페이지 네이션
+   @GetMapping("/admin/memberPageNation")
+   @ResponseBody
+	public PagingVO memberPageNation(PagingVO vo) {
+		vo.setTotalRecord(apnService.memberTotalRecord(vo));
+		return vo;
+	}
    // 관리자페이지에서 회원목록 보기
 	@GetMapping("/memberListToAdmin")
 	@ResponseBody
-	public List<memberVO> list(memberVO vo) {
-		return service.memberList(vo);
+	public List<memberVO> list(memberVO vo, PagingVO pvo) {
+		pvo.setTotalRecord(apnService.memberTotalRecord(pvo));
+		return service.memberList(pvo);
 	}
-	
-	// 관리자페이지에서 회원검색
-	@GetMapping("/memberSearchToAdmin")
-	@ResponseBody
-	public List<memberVO> getSearchList(@RequestParam("searchKey") String searchKey, 
-				@RequestParam("searchWord") String searchWord, memberVO vo) {
-		vo.setSearchKey(searchKey);
-		vo.setSearchWord(searchWord);
-		return service.getSearchList(vo);
-	}
-	
+
 	// 업주신청처리(수정)
 	@PostMapping("/ownershipChangeOk")
 	@ResponseBody

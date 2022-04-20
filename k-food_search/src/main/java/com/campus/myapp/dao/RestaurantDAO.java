@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.campus.myapp.vo.PagingVO;
 import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.memberVO;
 
@@ -12,9 +13,7 @@ import com.campus.myapp.vo.memberVO;
 @Repository
 public interface RestaurantDAO {
 	// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쌉몌옙占� 占쏙옙占쏙옙
-	public List<RestaurantVO> restaurantList(RestaurantVO vo);
-	// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쌉검삼옙
-	public List<RestaurantVO> getSearchList(RestaurantVO vo);
+	public List<RestaurantVO> restaurantList(PagingVO vo);
 		
 	public int restaurantInsert(RestaurantVO vo);
 	public List<RestaurantVO> restaurantMyList(String userid);

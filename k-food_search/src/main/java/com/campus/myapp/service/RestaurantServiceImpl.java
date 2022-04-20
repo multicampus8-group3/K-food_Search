@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.RestaurantDAO;
+import com.campus.myapp.vo.PagingVO;
 import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.memberVO;
 
@@ -15,10 +16,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 	@Inject
 	RestaurantDAO dao;
 	
-	@Override
-	public List<RestaurantVO> restaurantList(RestaurantVO vo) {
-		return dao.restaurantList(vo);
-	}
+	
 
 	@Override
 	public int restaurantInsert(RestaurantVO vo) {
@@ -42,11 +40,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public RestaurantVO restaurantUpdateList(int resno) {
 		// TODO Auto-generated method stub
 		return dao.restaurantUpdateList(resno);
-	}
-
-	@Override
-	public List<RestaurantVO> getSearchList(RestaurantVO vo) {
-		return dao.getSearchList(vo);
 	}
 
 	@Override
@@ -85,5 +78,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 	@Override
 	public RestaurantVO resSelect(int resno) {
 		return dao.resSelect(resno);
+	}
+
+	@Override
+	public List<RestaurantVO> restaurantList(PagingVO vo) {
+		// TODO Auto-generated method stub
+		return dao.restaurantList(vo);
 	}
 }

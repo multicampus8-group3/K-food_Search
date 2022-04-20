@@ -20,21 +20,29 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.campus.myapp.dao.adminPageNationDAO;
 import com.campus.myapp.service.AdService;
 import com.campus.myapp.vo.AdVO;
+import com.campus.myapp.vo.PagingVO;
 
 @RestController
 public class AdController {
 	@Inject
 	AdService service;
-	
+	@Inject
+	adminPageNationDAO apnService;
 	// 관리자페이지에서 광고신청목록 보기
 	@GetMapping("/ad/adListToAdmin")
 	@ResponseBody
-	public List<AdVO> list(AdVO vo) {
+	public List<AdVO> list(PagingVO vo) {
 		return service.adList(vo);
 	}
-	
+	@GetMapping("/ad/adPageNation")
+	@ResponseBody
+	public PagingVO restaurantPageNation(PagingVO vo) {
+	   vo.setTotalRecord(apnService.adTotalRecord(vo));
+	   return vo;
+	}
 	@PostMapping("/adStatusChangeOk")
 	@ResponseBody
 	public int adStatusChangeOk(AdVO vo) {
