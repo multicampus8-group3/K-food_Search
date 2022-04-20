@@ -127,7 +127,8 @@
 					var tag = "";
 					$result.each(function(idx, vo){
 						cnt++;
-						tag += '<div id="memberReviewList"><a href="#">';
+						tag += '<a href="/restaurantInfo?resno='+vo.resno+'"><div id="memberReviewList">';
+						tag += '<img id="resimg" name="resimg" src="/resImg/'+vo.resimg+'"/>';
 						tag += '<div id="a"><span>'+vo.resname+'</span><br/></div>';
 						tag += '<div id="b"><span class="wrdate">'+vo.writedate+'</span><b class="adrr">'+vo.resadress+'</b></div>';
 						tag += '<div id="c"><b>★'+parseFloat(vo.grade).toFixed(1)+'</b><br/><span>'+vo.content+'</span></div>';
@@ -164,7 +165,7 @@
 						var open = parseInt(vo.reshour.split(':')[0]*60) + parseInt(vo.reshour.split(':')[1]);
 						var close = parseInt(vo.reshourend.split(':')[0]*60) + parseInt(vo.reshourend.split(':')[1]);
 					
-						tag += '<li><a href="#"><div><span class="heart">♥</span></div>';
+						tag += '<li><a href="/restaurantInfo?resno='+vo.resno+'"><div><span class="heart">♥</span></div>';
 						tag += '<div><span><b>'+vo.resname+'</b><br/></span>';
 						tag += '<span>★'+parseFloat(vo.resgrade).toFixed(1)+'</span><br/>';
 						tag += '<span><b>'+vo.restype + '</b>&nbsp;·&nbsp;' + vo.resadress+'<br/></span><br/>';
@@ -175,7 +176,7 @@
 							tag += '<span class="favoff">영업 종료</span></div>';
 						}
 						
-						tag += '<div><img src="/img/noImg.jpg"/></div></a></li>';
+						tag += '<div><img src="/resImg/'+vo.resimg+'"/></div></a></li>';
 					});
 					tag += '</ul>';
 					
@@ -442,4 +443,3 @@
 		</div>
 	</div>
 	</div>
-</div>

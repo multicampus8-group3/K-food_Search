@@ -21,7 +21,6 @@
 		/*background-color: red;*/
 
 	}
-	
 	#jido_world{
 		position: relative;
 		top: 10px;
@@ -58,7 +57,7 @@
 		position: relative;
 		top: 17px;
 		width: 1200px; /*980 1200*/
-		height: 430px; /*350 428*/
+		height: 450px; /*350 428*/
 		
 		/* background-color: gray; */
 	}
@@ -69,7 +68,7 @@
 	}
 	.bm_box{
 		width:23.3%;
-		height:428px; /*350 428*/
+		height:430px; /*350 428*/
 		float:left;
 		margin-right: 16px;
 		position: relative;
@@ -86,7 +85,7 @@
 		position: relative;
 		top: 28px;
 		width: 1200px; /*980 1200*/
-		height: 612px; /*500 612*/
+		height: 500px; /*500 612*/
 		
 		/* background-color: gray; */
 	}

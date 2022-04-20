@@ -24,4 +24,6 @@ public interface memReservDAO {
 	public int reserveCheckOk(int no, String status);
 	//예약 삭제 - 손님이 거절한 예약
 	public int reserveCheckDel(int no);
+	//예약 등록
+	public int memRservInsert(memReservVO vo);
 }

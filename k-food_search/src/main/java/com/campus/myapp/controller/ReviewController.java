@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.campus.myapp.dao.adminPageNationDAO;
 import com.campus.myapp.service.ReviewService;
+import com.campus.myapp.vo.PagingVO;
 import com.campus.myapp.vo.ReviewVO;
 
 @RestController
@@ -22,21 +24,20 @@ import com.campus.myapp.vo.ReviewVO;
 public class ReviewController {
 	@Inject
 	ReviewService service;
-	
+	@Inject
+	adminPageNationDAO apnService;
 	// 관리자페이지에서 리뷰목록 보기
 	@GetMapping("/revListToAdmin")
-	public List<ReviewVO> list(ReviewVO vo)	{
+	public List<ReviewVO> list(PagingVO vo)	{
 		return service.reviewList(vo);
 	}
-	// 관리자페이지에서 리뷰검색
-	@GetMapping("/revSearchToAdmin")
+	@GetMapping("/reviewPageNation")
 	@ResponseBody
-	public List<ReviewVO> getSearchList(@RequestParam("searchKey") String searchKey, 
-				@RequestParam("searchWord") String searchWord, ReviewVO vo) {
-		vo.setSearchKey(searchKey);
-		vo.setSearchWord(searchWord);
-		return service.getSearchList(vo);
+	public PagingVO restaurantPageNation(PagingVO vo) {
+	   vo.setTotalRecord(apnService.reviewTotalRecord(vo));
+	   return vo;
 	}
+	
 	// 마이페이지에서 리뷰목록 보기
 	@GetMapping("/memberReviewList")
 	public List<ReviewVO> memberReviewList(ReviewVO vo, HttpSession session )	{

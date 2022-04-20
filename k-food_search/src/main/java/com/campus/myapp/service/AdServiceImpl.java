@@ -8,16 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.campus.myapp.dao.AdDAO;
 import com.campus.myapp.vo.AdVO;
+import com.campus.myapp.vo.PagingVO;
 
 @Service
 public class AdServiceImpl implements AdService {
 	@Inject
 	AdDAO dao;
-	
-	@Override
-	public List<AdVO> adList(AdVO vo) {
-		return dao.adList(vo);
-	}
 
 	@Override
 	public int adStatusChange(AdVO vo) {
@@ -34,6 +30,12 @@ public class AdServiceImpl implements AdService {
 	public List<AdVO> restaurantAdListView(String userid) {
 		// TODO Auto-generated method stub
 		return dao.restaurantAdListView(userid);
+	}
+
+	@Override
+	public List<AdVO> adList(PagingVO vo) {
+		// TODO Auto-generated method stub
+		return dao.adList(vo);
 	}
 
 }

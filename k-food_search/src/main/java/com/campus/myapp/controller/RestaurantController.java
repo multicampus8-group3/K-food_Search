@@ -19,12 +19,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.campus.myapp.dao.adminPageNationDAO;
 import com.campus.myapp.service.FaqService;
 import com.campus.myapp.service.RestaurantService;
 import com.campus.myapp.service.countryService;
 import com.campus.myapp.service.memFavorService;
 import com.campus.myapp.vo.FaqAnswerVO;
 import com.campus.myapp.vo.FaqVO;
+import com.campus.myapp.vo.PagingVO;
+import com.campus.myapp.vo.ResPagingVO;
 import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.countryVO;
 import com.campus.myapp.vo.memFavorVO;
@@ -39,23 +42,25 @@ public class RestaurantController {
 	countryService countryService;
 	@Inject
 	memFavorService memFavorService;
+	@Inject
+	adminPageNationDAO apnService;
+  @Inject
+	FaqService faqService;
 	
 	// 관리자페이지에서 가게목록 보기
 	@GetMapping("/restaurant/resListToAdmin")
 	@ResponseBody
-	public List<RestaurantVO> list(RestaurantVO vo) {
+	public List<RestaurantVO> list(PagingVO vo) {
 		return service.restaurantList(vo);
 	}
-	// 관리자페이지에서 가게검색
-	@GetMapping("/restaurant/resSearchToAdmin")
+	@GetMapping("/admin/restaurantPageNation")
 	@ResponseBody
-	public List<RestaurantVO> getSearchList(@RequestParam("searchKey") String searchKey, 
-				@RequestParam("searchWord") String searchWord, RestaurantVO vo) {
-		vo.setSearchKey(searchKey);
-		vo.setSearchWord(searchWord);
-		return service.getSearchList(vo);
-	}	
-		 
+	public PagingVO restaurantPageNation(PagingVO vo) {
+	   vo.setTotalRecord(apnService.restaurantTotalRecord(vo));
+	   return vo;
+	}
+
+
 	@GetMapping("/myrestaurant/myrestaurant")
 	public ModelAndView myrestaurant() {
 		ModelAndView mav = new ModelAndView();
@@ -240,8 +245,10 @@ public class RestaurantController {
 
 	//식당서치 페이지변경 부분
 	@GetMapping("/restaurant/resList")
-	public List<RestaurantVO> resList(RestaurantVO vo) {
-		return service.resList(vo);
+	public List<RestaurantVO> resList(RestaurantVO vo, ResPagingVO pVO) {
+		pVO.setTotalRecord(service.totalRecord(pVO));
+		//service.resList(vo);
+		return service.resList(pVO);
 	}
 	//식당정보 페이지
 	@GetMapping("restaurantInfo")
@@ -254,6 +261,8 @@ public class RestaurantController {
 			result = "0";
 		}
 		mav.addObject("memfavor", result);
+		//faq 정보가져오기
+		mav.addObject("faq", faqService.faqSelect(resno));
 		mav.setViewName("/restaurant/restaurantInfo");
 		return mav;
 	}

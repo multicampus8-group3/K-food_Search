@@ -13,216 +13,256 @@ $(document).ready(function(){
 	});
 });
 
-
 $(function(){
-	// 회원목록
-	function memberListAll() {
-		var url = "/memberListToAdmin";
-		$.ajax({
-			url: url,
-			type:"get",
-			success: function(result) {				
-				var $result = $(result);
-				var tag = "<ul>";
-				tag += "<li>아이디</li><li>이름</li><li>등급</li><li>연락처</li><li>국적</li><li>선호지역</li><li>가입일</li>";
-				
-				$result.each(function(idx, vo){
-					tag += "<li>" + vo.userid + "</li>";
-					tag += "<li>" + vo.username + "</li>";
-					tag += "<li>" + vo.usertype + "</li>";
-					tag += "<li>" + vo.tel + "</li>";
-					tag += "<li>" + vo.usernation + "</li>";
-					tag += "<li>" + vo.favorstate + ", " + vo.favornation + "</li>";
-					tag += "<li>" + vo.writedate + "</li>";
-				});
-				
-				tag += "</ul>";
-				
-				$("#memberList").html(tag);
-			},
-			error: function(e) {
-				console.log(e.responseText);
-			}
-		});
-	}
-	memberListAll();
+	memberListAll(pageNum);
+	//회원 검색
+	$("#memberSearchFrm").submit(function(){
+		event.preventDefault();
+		memberListAll(pageNum)
+	})
 });
-// 회원검색
-$(document).ready(function(){
-	$("#memberSearchFrm").click(function(){
-		var url = "/memberSearchToAdmin";
-		$.ajax({
-			url: url,
-			type: "get",
-			data: $("#memberSearchFrm").serialize(),
-			success: function(result) {
-				console.log(result);
-				$("#memberList").empty();
-				
-				var $result = $(result);
-				var tag = "<ul>";
-				tag += "<li>아이디</li><li>이름</li><li>등급</li><li>연락처</li><li>국적</li><li>선호지역</li><li>가입일</li>";
-				
-				$result.each(function(idx, vo){
-					tag += "<li>" + vo.userid + "</li>";
-					tag += "<li>" + vo.username + "</li>";
-					tag += "<li>" + vo.usertype + "</li>";
-					tag += "<li>" + vo.tel + "</li>";
-					tag += "<li>" + vo.usernation + "</li>";
-					tag += "<li>" + vo.favorstate + ", " + vo.favornation + "</li>";
-					tag += "<li>" + vo.writedate + "</li>";
-				});	
-				
-				tag += "</ul>";
-				
-				$("#memberList").html(tag);
-			},
-			error: function(e) {
-				console.log(e.responseText);
+//맴버리스트 페이지 네이션
+function memberPageNation(pageNum){
+	$.ajax({
+		url:"/admin/memberPageNation",
+		type:'get',
+		data:{
+			'pageNum':pageNum,
+			'searchKey':$('#searchKey').val(),
+			'searchWord':$('#searchWord').val()
+		},
+		success:function(result){
+			var tag = "<ul>"
+			if(result.pageNum==1){
+				tag+="<li>prev</li>";				
+			}else{
+				tag+="<li><a href='javascript:memberListAll("+(pageNum-1)+")'>prev</a></li>";				
 			}
-		});
+			for(var i=result.startPage; i<=(result.startPage+result.onePageCount-1);i++){
+				if(i<=result.totalPage){
+					if(i==result.pageNum){
+						tag+="<li style='color:red'>"+i+"</li>";
+					}else{
+						tag+="<li><a href='javascript:memberListAll("+i+")'>"+i+"</a></li>";
+					}
+				}
+			}
+			if(result.pageNum>=result.totalPage){
+				tag+="<li>next</li>";				
+			}else{
+				tag+="<li><a href='javascript:memberListAll("+(pageNum+1)+")'>next</a></li>";				
+			}
+			tag+="</ul>"
+			$("#memberPageNation").html(tag);
+		}
+	});
+}
+//회원목록
+var pageNum=1;
+function memberListAll(pageNum) {
+	var url = "/memberListToAdmin";
+	$.ajax({
+		url: url,
+		data:{
+			'pageNum':pageNum,
+			'searchKey':$('#searchKey').val(),
+			'searchWord':$('#searchWord').val()
+		},
+		type:"get",
+		success: function(result) {				
+			var $result = $(result);
+			var tag = "<ul>";
+			tag += "<li>아이디</li><li>이름</li><li>등급</li><li>연락처</li><li>국적</li><li>선호지역</li><li>가입일</li>";
+			
+			$result.each(function(idx, vo){
+				tag += "<li>" + vo.userid + "</li>";
+				tag += "<li>" + vo.username + "</li>";
+				tag += "<li>" + vo.usertype + "</li>";
+				tag += "<li>" + vo.tel + "</li>";
+				tag += "<li>" + vo.usernation + "</li>";
+				tag += "<li>" + vo.favorstate + ", " + vo.favornation + "</li>";
+				tag += "<li>" + vo.writedate + "</li>";
+			});
+			
+			tag += "</ul>";
+			
+			$("#memberList").html(tag);
+			memberPageNation(pageNum);
+		},
+		error: function(e) {
+			console.log(e.responseText);
+		}
+	});
+}
+
+var respageNum=1;
+$(function(){
+	restaurantListAll(respageNum);
+	//가게 검색
+	$("#resSearchFrm").submit(function(){
+		event.preventDefault();
+		restaurantListAll(respageNum);
 	})
 });
 
-$(function(){
-	// 가게목록
-	function restaurantListAll() {
-		var url = "/restaurant/resListToAdmin";
-		
-		$.ajax({
-			url: url,
-			success: function(result) {
-				var $result = $(result);
-				
-				var tag = "<ul>";
-				tag += "<li>번호</li><li>상호명</li><li>주소</li><li>평점</li><li>오너</li><li>위치</li><li>등록일</li>";
-				
-				$result.each(function(idx, vo){
-					tag += "<li>" + vo.resno + "</li>";
-					tag += "<li>" + vo.resname + "</li>";
-					tag += "<li>" + vo.resadress + "</li>";
-					tag += "<li>" + parseFloat(vo.resgrade).toFixed(1) + "</li>";
-					tag += "<li>" + vo.userid + "</li>";
-					tag += "<li>" + vo.resstate + ", " + vo.resnation + "</li>";
-					tag += "<li>" + vo.writedate + "</li>";
-				});
-				
-				tag += "</ul>";
-				
-				$("#restaurantList").html(tag);
-			},
-			error: function(e) {
-				console.log(e.responseText);
+//가게 목록 페이지 네이션
+function restaurantPageNation(respageNum){
+	$.ajax({
+		url:"/admin/restaurantPageNation",
+		type:'get',
+		data:{
+			'pageNum':respageNum,
+			'searchKey':$('#ressearchKey').val(),
+			'searchWord':$('#ressearchWord').val()
+		},
+		success:function(result){
+			var tag = "<ul>"
+			if(result.pageNum==1){
+				tag+="<li>prev</li>";				
+			}else{
+				tag+="<li><a href='javascript:restaurantListAll("+(respageNum-1)+")'>prev</a></li>";				
 			}
-		});
-	}
-	restaurantListAll();
-});
-//가게검색
-$(document).ready(function(){
-	$("#resSearchFrm").click(function(){
-		var url = "/restaurant/resSearchToAdmin";
-		$.ajax({
-			url: url,
-			type: "get",
-			data: $("#resSearchFrm").serialize(),
-			success: function(result) {
-				console.log(result);
-				$("#restaurantList").empty();
-				
-				var $result = $(result);
-				var tag = "<ul>";
-				tag += "<li>번호</li><li>상호명</li><li>주소</li><li>평점</li><li>오너</li><li>위치</li><li>등록일</li>";
-				
-				$result.each(function(idx, vo){
-					tag += "<li>" + vo.resno + "</li>";
-					tag += "<li>" + vo.resname + "</li>";
-					tag += "<li>" + vo.resadress + "</li>";
-					tag += "<li>" + parseFloat(vo.resgrade).toFixed(1) + "</li>";
-					tag += "<li>" + vo.userid + "</li>";
-					tag += "<li>" + vo.resstate + ", " + vo.resnation + "</li>";
-					tag += "<li>" + vo.writedate + "</li>";
-				});
-				
-				tag += "</ul>";
-				
-				$("#restaurantList").html(tag);
-			},
-			error: function(e) {
-				console.log(e.responseText);
+			for(var i=result.startPage; i<=(result.startPage+result.onePageCount-1);i++){
+				if(i<=result.totalPage){
+					if(i==result.pageNum){
+						tag+="<li style='color:red'>"+i+"</li>";
+					}else{
+						tag+="<li><a href='javascript:restaurantListAll("+i+")'>"+i+"</a></li>";
+					}
+				}
 			}
-		});
-	})
-});
+			if(result.pageNum>=result.totalPage){
+				tag+="<li>next</li>";				
+			}else{
+				tag+="<li><a href='javascript:restaurantListAll("+(respageNum+1)+")'>next</a></li>";				
+			}
+			tag+="</ul>"
+			$("#restaurantPageNation").html(tag);
+		}
+	});
+}
+
+//가게목록
+function restaurantListAll(respageNum) {
+	var url = "/restaurant/resListToAdmin";
+	
+	$.ajax({
+		url: url,
+		type:'get',
+		data:{
+			'pageNum':respageNum,
+			'searchKey':$('#ressearchKey').val(),
+			'searchWord':$('#ressearchWord').val()
+		},
+		success: function(result) {
+			var $result = $(result);
+			
+			var tag = "<ul>";
+			tag += "<li>번호</li><li>상호명</li><li>주소</li><li>평점</li><li>오너</li><li>위치</li><li>등록일</li>";
+			
+			$result.each(function(idx, vo){
+				tag += "<li>" + vo.resno + "</li>";
+				tag += "<li>" + vo.resname + "</li>";
+				tag += "<li>" + vo.resadress + "</li>";
+				tag += "<li>" + parseFloat(vo.resgrade).toFixed(1) + "</li>";
+				tag += "<li>" + vo.userid + "</li>";
+				tag += "<li>" + vo.resstate + ", " + vo.resnation + "</li>";
+				tag += "<li>" + vo.writedate + "</li>";
+			});
+			
+			tag += "</ul>";
+			
+			$("#restaurantList").html(tag);
+			restaurantPageNation(respageNum)
+		},
+		error: function(e) {
+			console.log(e.responseText);
+		}
+	});
+}
 
 $(function(){
-	// 리뷰목록
-	function reviewListAll() {
-		var url = "/review/revListToAdmin";
-		
-		$.ajax({
-			url: url,
-			success: function(result) {
-				var $result = $(result);
-				
-				var tag = "<ul>";
-				tag += "<li>번호</li><li>작성자</li><li>식당</li><li>평점</li><li>내용</li><li>작성일</li>";
-				
-				$result.each(function(idx, vo){
-					tag += "<li>" + vo.no + "</li>";
-					tag += "<li>" + vo.userid + "</li>";
-					tag += "<li>" + vo.resname + "</li>";
-					tag += "<li>" + parseFloat(vo.grade).toFixed(1) + "</li>";
-					tag += "<li>" + vo.content + "</li>";
-					tag += "<li>" + vo.writedate + "</li>";
-				});
-				
-				tag += "</ul>";
-				
-				$("#reviewList").html(tag);
-			},
-			error: function(e) {
-				console.log(e.responseText);
-			}
-		});
-	}
-	reviewListAll();
-});
-//리뷰검색
-$(document).ready(function(){
-	$("#revSearchFrm").click(function(){
-		var url = "/review/revSearchToAdmin";
-		$.ajax({
-			url: url,
-			type: "get",
-			data: $("#revSearchFrm").serialize(),
-			success: function(result) {
-				console.log(result);
-				$("#reviewList").empty();
-				
-				var $result = $(result);
-				var tag = "<ul>";
-				tag += "<li>번호</li><li>작성자</li><li>식당</li><li>평점</li><li>내용</li><li>작성일</li>";
-				
-				$result.each(function(idx, vo){
-					tag += "<li>" + vo.no + "</li>";
-					tag += "<li>" + vo.userid + "</li>";
-					tag += "<li>" + vo.resname + "</li>";
-					tag += "<li>" + parseFloat(vo.grade).toFixed(1) + "</li>";
-					tag += "<li>" + vo.content + "</li>";
-					tag += "<li>" + vo.writedate + "</li>";
-				});
-				
-				tag += "</ul>";
-				
-				$("#reviewList").html(tag);
-			},
-			error: function(e) {
-				console.log(e.responseText);
-			}
-		});
+	reviewListAll(reviewpageNum);
+	//리뷰검색
+	$("#revSearchFrm").submit(function(){
+		event.preventDefault();
+		reviewListAll(reviewpageNum);
 	})
 });
+//리뷰목록
+var reviewpageNum=1;
+function reviewListAll(reviewpageNum) {
+	var url = "/review/revListToAdmin";
+	$.ajax({
+		url: url,
+		type:'get',
+		data:{
+			'pageNum':reviewpageNum,
+			'searchKey':$('#reviewsearchKey').val(),
+			'searchWord':$('#reviewsearchWord').val()
+		},
+		success: function(result) {
+			var $result = $(result);
+			
+			var tag = "<ul>";
+			tag += "<li>번호</li><li>작성자</li><li>식당</li><li>평점</li><li>내용</li><li>작성일</li>";
+			
+			$result.each(function(idx, vo){
+				tag += "<li>" + vo.no + "</li>";
+				tag += "<li>" + vo.userid + "</li>";
+				tag += "<li>" + vo.resname + "</li>";
+				tag += "<li>" + parseFloat(vo.grade).toFixed(1) + "</li>";
+				tag += "<li>" + vo.content + "</li>";
+				tag += "<li>" + vo.writedate + "</li>";
+			});
+			
+			tag += "</ul>";
+			
+			$("#reviewList").html(tag);
+			reviewPageNation(reviewpageNum);
+		},
+		error: function(e) {
+			console.log(e.responseText);
+		}
+	});
+}
+
+//리뷰 목록 페이지 네이션
+function reviewPageNation(reviewpageNum){
+	$.ajax({
+		url:"/review/reviewPageNation",
+		type:'get',
+		data:{
+			'pageNum':reviewpageNum,
+			'searchKey':$('#reviewsearchKey').val(),
+			'searchWord':$('#reviewsearchWord').val()
+		},
+		success:function(result){
+			var tag = "<ul>"
+			if(result.pageNum==1){
+				tag+="<li>prev</li>";				
+			}else{
+				tag+="<li><a href='javascript:reviewListAll("+(reviewpageNum-1)+")'>prev</a></li>";				
+			}
+			for(var i=result.startPage; i<=(result.startPage+result.onePageCount-1);i++){
+				if(i<=result.totalPage){
+					if(i==result.pageNum){
+						tag+="<li style='color:red'>"+i+"</li>";
+					}else{
+						tag+="<li><a href='javascript:reviewListAll("+i+")'>"+i+"</a></li>";
+					}
+				}
+			}
+			if(result.pageNum>=result.totalPage){
+				tag+="<li>next</li>";				
+			}else{
+				tag+="<li><a href='javascript:reviewListAll("+(reviewpageNum+1)+")'>next</a></li>";				
+			}
+			tag+="</ul>"
+			$("#reviewPageNation").html(tag);
+		}
+	});
+}
 
 $(function(){
 	//업주신청목록
@@ -366,12 +406,43 @@ $(function(){
  });
 
  $(function(){
-	//광고신청목록
-	function adListAll() {
+	
+	// 광고신청처리(수정)
+	$(document).on('submit', '#adList form', function(){
+		event.preventDefault();
+		
+		if($("#status").val()==''){
+			alert("상태를 선택해주세요.");
+			$("#status").focus();
+			return false;
+		}
+		
+		var params = $(this).serialize();
+		var url = "/adStatusChangeOk";
+		$.ajax({
+			url: url,
+			data: params,
+			type: "post",
+			success: function(result){
+				adListAll();
+			},
+			error: function(e){
+				console.log(e.responseText);
+			}
+		});
+	});
+	adListAll(adpageNum);
+});
+//광고신청목록
+var adpageNum=1;
+function adListAll(adpageNum) {
 		var url = "/ad/adListToAdmin";
 		$.ajax({
 			url: url,
 			type: "get",
+			data:{
+				'pageNum':adpageNum,
+			},
 			success: function(result) {
 				var $result = $(result);
 				var tag = "<ul>";
@@ -401,38 +472,47 @@ $(function(){
 				tag += "</ul>";
 				
 				$("#adList").html(tag);
+				adPageNation(adpageNum)
 			},
 			error: function(e) {
 				console.log(e.responseText);
 			}
 		});
 	}
-	// 광고신청처리(수정)
-	$(document).on('submit', '#adList form', function(){
-		event.preventDefault();
-		
-		if($("#status").val()==''){
-			alert("상태를 선택해주세요.");
-			$("#status").focus();
-			return false;
-		}
-		
-		var params = $(this).serialize();
-		var url = "/adStatusChangeOk";
-		$.ajax({
-			url: url,
-			data: params,
-			type: "post",
-			success: function(result){
-				adListAll();
-			},
-			error: function(e){
-				console.log(e.responseText);
+	
+function adPageNation(adpageNum){
+	$.ajax({
+		url:"/ad/adPageNation",
+		type:'get',
+		data:{
+			'pageNum':adpageNum,
+		},
+		success:function(result){
+			var tag = "<ul>"
+			if(result.pageNum==1){
+				tag+="<li>prev</li>";				
+			}else{
+				tag+="<li><a href='javascript:adListAll("+(adpageNum-1)+")'>prev</a></li>";				
 			}
-		});
+			for(var i=result.startPage; i<=(result.startPage+result.onePageCount-1);i++){
+				if(i<=result.totalPage){
+					if(i==result.pageNum){
+						tag+="<li style='color:red'>"+i+"</li>";
+					}else{
+						tag+="<li><a href='javascript:adListAll("+i+")'>"+i+"</a></li>";
+					}
+				}
+			}
+			if(result.pageNum>=result.totalPage){
+				tag+="<li>next</li>";				
+			}else{
+				tag+="<li><a href='javascript:adListAll("+(adpageNum+1)+")'>next</a></li>";				
+			}
+			tag+="</ul>"
+			$("#adPageNation").html(tag);
+		}
 	});
-	adListAll();
-});
+}
 </script>
 <style>
 .container{
@@ -551,7 +631,7 @@ $(function(){
 
 #memberList {
 	display: block;
-	height: 500px;
+
 }
 #memberList>ul>li {
 	float: left;
@@ -581,7 +661,6 @@ $(function(){
 
 #restaurantList {
 	display: block;
-	height: 500px;
 }
 #restaurantList>ul>li {
 	float: left;
@@ -835,7 +914,7 @@ $(function(){
 	border: 1px solid #2F4858;
 	vertical-align: top;
 }
-.searchFrm input[type="button"]{
+.searchFrm button{
 	width:45px;
 	height: 30px;
 	border: 1px solid #2F4858;
@@ -843,6 +922,11 @@ $(function(){
 	vertical-align: top;
 	color: #fff;
 	font-weight: 500;
+}
+.pageNation li{
+	float:left;
+	margin:10px;
+	margin-bottom:50px;
 }
 </style>
 <div class="hi_admin">
@@ -862,53 +946,59 @@ $(function(){
 			<!-- <h3>회원목록</h3> -->
 			<div>
 				<form method="get" class="searchFrm" id="memberSearchFrm">
-					<select name="searchKey">
+					<select name="searchKey" id='searchKey'>
 						<option value="userid">아이디</option>
 						<option value="username">이름</option>
 						<option value="usertype">등급</option>
 						<option value="usernation">국적</option>
 					</select>
-					<input type="text" name="searchWord"/>
-					<input type="button" value="검색"/>
+					<input type="text" name="searchWord" id='searchWord'/>
+					<button>검색</button>
 				</form>
 			</div>
 			<div id="memberList">
 			</div>
+			<!-- 맴버 페이지 네이션 -->
+			<div class='pageNation' id='memberPageNation'></div>
 		</div>
 		
 		<div>
 			<!-- <h3>가게목록</h3> -->
 			<div>
 				<form method="get" class="searchFrm" id="resSearchFrm">
-					<select name="searchKey">
+					<select name="searchKey" id='ressearchKey'>
 						<option value="resname">상호명</option>
 						<option value="resadress">주소</option>
 						<option value="userid">오너</option>
 						<option value="resstate">위치</option>
 					</select>
-					<input type="text" name="searchWord"/>
-					<input type="button" value="검색"/>
+					<input type="text" name="searchWord" id='ressearchWord'/>
+					<button>검색</button>
 				</form>
 			</div>
 			<div id="restaurantList">
 			</div>
+			<!-- 가게목록 네이션 -->
+			<div class='pageNation' id='restaurantPageNation'></div>
 		</div>
 		
 		<div>
 			<!-- <h3>리뷰목록</h3> -->
 			<div>
 				<form method="get" class="searchFrm" id="revSearchFrm">
-					<select name="searchKey">
+					<select name="searchKey" id='reviewsearchKey'>
 						<option value="rev.userid">작성자</option>
 						<option value="res.resname">식당</option>
 						<option value="rev.grade">평점</option>
 					</select>
-					<input type="text" name="searchWord"/>
-					<input type="button" value="검색"/>
+					<input type="text" name="searchWord" id='reviewsearchWord'/>
+					<button>검색</button>
 				</form>
 			</div>
 			<div id="reviewList">
 			</div>
+			<!-- 리뷰목록 네이션 -->
+			<div class='pageNation' id='reviewPageNation'></div>
 		</div>
 		
 		<div>
@@ -932,6 +1022,8 @@ $(function(){
 			<!-- <h3>광고신청목록</h3> -->
 			<div id="adList">
 			</div>
+			<!-- 광고목록 네이션 -->
+			<div class='pageNation' id='adPageNation'></div>
 		</div>
 		
 	</div>

@@ -8,6 +8,7 @@ public class ReviewVO {
 	private String writedate;
 	private Integer resno;
 	private double resgrade;
+	private String resimg;
 	
 	private String resname;
 	private String resadress;
@@ -109,6 +110,14 @@ public class ReviewVO {
 
 	public void setResadress(String resadress) {
 		this.resadress = resadress;
+	}
+
+	public String getResimg() {
+		return resimg;
+	}
+
+	public void setResimg(String resimg) {
+		this.resimg = resimg;
 	}
 	
 	

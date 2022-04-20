@@ -13,7 +13,6 @@
 		where resv.userid = #{userid}
 		order by resv.no desc
 	</select>
-	
 	<update id="ownershipChange">
 		update member_table set usertype=#{usertype}
 		where userid=#{userid}
@@ -41,4 +40,9 @@
   	<delete id="reserveCheckDel">
   		delete from member_reserv where no=#{param1}
   	</delete>
+  	
+  	<insert id="memRservInsert">
+  		insert into member_reserv(userid, resno, reservdate, reservtime, reservp, status) 
+  		values (#{userid}, #{resno}, #{reservdate},#{reservtime},#{reservp},#{status}); 
+  	</insert>
 </mapper>

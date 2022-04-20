@@ -14,29 +14,14 @@ import com.campus.myapp.vo.ReviewVO;
 public class ReviewServiceImpl implements ReviewService {
 	@Inject
 	ReviewDAO dao;
-	
-	@Override
-	public List<ReviewVO> reviewList(ReviewVO vo) {
-		return dao.reviewList(vo);
-	}
+
 	@Override
 	public List<ReviewVO> memberReviewList(ReviewVO vo) {
 		return dao.memberReviewList(vo);
 	}
 	@Override
-	public List<ReviewVO> getSearchList(ReviewVO vo) {
-		return dao.getSearchList(vo);
-	}
-	@Override
-	public int reviewWrite(ReviewVO vo) {
-		
-		int result = dao.reviewWrite(vo);
-		setRating(vo.getResno());
-		return result;
-	}
-	@Override
-	public List<ReviewVO> resReviewList(Integer resno) {
-		return dao.resReviewList(resno);
+	public List<ReviewVO> reviewList(PagingVO vo) {
+		return dao.reviewList(vo);
 	}
 	
 	// 평점평균

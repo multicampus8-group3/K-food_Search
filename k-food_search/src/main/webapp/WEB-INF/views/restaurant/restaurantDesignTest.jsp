@@ -21,10 +21,10 @@
 	opacity: 0.1;
 }
 #filterBox{
-	float: left;
 	width: 11%;
 	height: 100vh;
 	position : fixed;
+	top:0px;
 	right: 3%;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -69,12 +69,7 @@
 }
 
 
-#section{
-	float: right;
-	width: 50%;
-	margin-top: 70px;
-	margin-right: 250px;
-}
+
 .resCard{
 	height: 245px;
 	padding: 10px;
@@ -149,9 +144,33 @@
 	background-color: #2F4858;
 	color: #fff;
 }
+#section{
+	width: 50%;
+	margin-top: 70px;
+	margin-left:35%;
+}
+#pagingbox ul{
+	margin-left:35%;
+	width:50%;
+	height:150px;
+	text-align:center;
+}
+#pagingbox li{
+	display:inline-block;
+	text-align:center;
+	margin: -2.9px;
+	margin-top:20px;
+	width:50px;
+}
+#pagingbox li, #pagingbox a{
+	font-size:1.1em;
+}
 </style>
 <script>
 $(document).ready(function() {
+	console.log("실행");
+	console.log("${nation}");
+
 	$("#favornation").click(function(){
 			var url = "/country/stateList"
 			var params = $("input:radio[name='nation']:checked").val();
@@ -159,7 +178,7 @@ $(document).ready(function() {
 			$.ajax({
 			url: url,
 			data:{
-				nation:params
+				nation:params,
 			},
 			success: function(result) {
 				alert(JSON.stringify(result))
@@ -172,10 +191,10 @@ $(document).ready(function() {
 				});
 				$result2.each(function(idx, vo){
 				
-					tag += '<a href="/?resno='+vo.resno+'">'; 
+					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">'; 
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
-					tag += 		'<img src="/img/noImg.jpg"/>';
+					tag += 		'<img src="/resImg/'+vo.resimg+'"/>';
 					tag += 	'</div>';
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
@@ -188,7 +207,8 @@ $(document).ready(function() {
 					tag += 	'</div>';
 					tag += '</div>';
 					tag += '</a>';
-				});								
+					
+				});
 				$("#favorstate").html(tag2);
 				$("#section").html(tag);
 			},
@@ -197,21 +217,25 @@ $(document).ready(function() {
 			}
 		});
 	});
-});
-$(function(){
 	// 가게목록
-	function restaurantList() {
+	var pageNum = "${pVO.pageNum}";
+	function restaurantList(pageNum) {
 		var url = "/restaurant/resList";
 		$.ajax({
 			url: url,
+			data: {
+				'pageNum':pageNum,
+				'nation':"${nation}"
+			},
 			success: function(result) {
+				
 				var $result = $(result);
 				var tag = "";
 				$result.each(function(idx, vo){
 					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">';
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
-					tag += 		'<img src="/img/noImg.jpg"/>';
+					tag += 		'<img src="/resImg/'+vo.resimg+'"/>';
 					tag += 	'</div>';
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
@@ -232,9 +256,8 @@ $(function(){
 			}
 		});
 	}
-	restaurantList();
+	restaurantList(pageNum);
 });
-
 
 	function restInfo(state){
 		alert('state'+state)
@@ -249,6 +272,7 @@ $(function(){
 				state:state
 			},
 			success: function(result) {
+				console.log("anjwl"+result)
 				alert(JSON.stringify(result))
 				var $result = $(result);
 				var tag2 = "";
@@ -279,19 +303,55 @@ $(function(){
 				console.log(e.responseText);
 			}
 		});
+	<!-- 양지석 수정 -->
 	}//restInfo()-----------------------
-
+	<!-- 양지석 수정 -->
 </script>
 
 <div class="container">
+	
 	<div id="justImageBox">
 	</div>
 	
 	<!-- section -->
 	<div id="section">
-				
 	</div>
-	
+<!-- 페이징 -->
+	<div id="pagingbox">
+	<!-- 페이징 -->
+				<ul class="paging">
+				<!--  이전페이지 -->
+				<c:if test="${pVO.pageNum == 1 }">
+					<li>prev</li>
+				</c:if>
+				<c:if test="${pVO.pageNum > 1 }">
+					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum-1}&nation=${nation}">prev</a></li>
+				</c:if>
+				
+					<c:forEach var="p" begin="${pVO.startPage}" end="${pVO.startPage+pVO.onePageCount-1}">
+						<c:if test="${p<=pVO.totalPage}">
+							<c:if test="${p==pVO.pageNum}">
+								<li style="font-weight: bold;">
+							</c:if>
+							<c:if test="${p!=pVO.pageNum}">
+								<li>
+							</c:if>
+							<a href="/restaurantDesignTest?pageNum=${p}&nation=${nation}">${p}</a></li>
+						</c:if>
+					</c:forEach>
+				
+				<!--  다음페이지 -->
+				<c:if test="${pVO.pageNum == pVO.totalPage }">
+					<li>next</li>
+				</c:if>
+				<c:if test="${pVO.pageNum < pVO.totalPage }">
+					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum+1}&nation=${nation}">next</a></li>
+				</c:if>	
+				</ul>
+	</div>
+
+	<!-- section -->
+	<div id="section"></div>
 	<!-- check box -->
 	<div id="filterBox">
 	    <h2>Filters</h2>
@@ -338,11 +398,13 @@ $(function(){
 				</ul>
 			</form>
 		</div>
+		
 		<div id="filterImage">
 			<div>
 				<img src="/img/logo.png"/>
 			</div>
 		</div>
+		
 	</div>
 	
 </div>

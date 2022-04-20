@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script src="https://kit.fontawesome.com/d6e34900cd.js" crossorigin="anonymous"></script>
@@ -41,24 +40,36 @@ $(document).ready(function() {
 		});
 	});
 	$('.timepicker').timepicker({
-	    timeFormat: 'h:mm p',
+	    timeFormat: 'H:mm',
 	    interval: 30,
 	    minTime: "${vo.reshour}",
 	    maxTime: "${vo.reshourend}",
-	    defaultTime: '9',
+	    defaultTime: '9:00',
 	    startTime: '9:00',
 	    dynamic: false,
 	    dropdown: true,
-	    scrollbar: true,
-	    containerClass:"test"
+	    scrollbar: true
 	});
 	$('#memReserv').submit(function(){
 		event.preventDefault();
 		if($("#reservDate").val()=="" || $("#reservTime").val()=="" || $("#reservp").val()==""){
 			alert("정확한 날짜, 시간, 인원을 선택해주세요.");
-			
+			return false;
 		}
-		console.log("실행")
+		var url = "/memReserv/memRservInsert";
+		var params = $(this).serialize();
+		$.ajax({
+			url: url,
+			data: params,
+			type: "post",
+			success: function(result){
+				alert("예약을 신청하셨습니다.");
+				history.go(0);			
+			},
+			error: function(e){
+				console.log(e.responseText);
+			}
+		});
 	});
 	    
 	// 리뷰등록
@@ -411,8 +422,8 @@ $(document).ready(function() {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
-  height: 600px;
+  width: 40%;
+  height: 50%;
   background-color: #fff;
   padding: 2rem;
   border-radius: 20px;
@@ -420,28 +431,16 @@ $(document).ready(function() {
 .reservation_box .date_setting > button {
   font-size: 2rem;
   position: absolute;
-  top: -30px;
-  right: -25px;
+  top: 0;
+  right: 0;
   margin: 2rem;
   border: none;
   background: none;
   cursor: pointer;
 }
-.ui-timepicker-container{
-  position: fixed;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-135%, -32%);
-}
-.reservName, .reservMent{
-	border-bottom: 1px solid rgba(62, 97, 103, 0.3);
-	height: 50px;
-	line-height: 50px;
-	text-align: center;
-}
-.reservName{
-	font-size: 20px;
-	font-weight: bold;
+.reservation_box .date_setting h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 .test{
 	position: relative;
@@ -487,7 +486,8 @@ $(document).ready(function() {
 
 <div class="img_box">
 	<!-- 업주가 식당등록할때 등록하는 이미지 -->
-	<img id="ownerImage" src="/img/noImg.jpg"/>
+	<!-- <img id="ownerImage" src="/img/noImg.jpg"/> -->
+	<img id="ownerImage" src="/resImg/${vo.resimg}">
 	<!-- 리뷰 작성자가 리뷰에 넣는 이미지 -->
 	<img id="reviewImage" src="/img/noImg.jpg"/>
 	
@@ -538,8 +538,10 @@ $(document).ready(function() {
 	<div class="faqBox">
 		<span class="title">FAQ</span><br/><br/>
 	<!-- FAQ질문&답변 반복 -->
-		<span class="question">vo.content(FAQ질문)</span><br/>
-		<span class="answer">vo.content(FAQ답변)</span>
+		<c:forEach var="vo" items="${faq}">
+			<span class="question">${vo.faqcontent2}</span><br/>
+			<span class="answer">${vo.content2}</span><br/>
+		</c:forEach>
 	</div>
 	
 	<div class="border"></div>
@@ -575,49 +577,35 @@ $(document).ready(function() {
 	<div id="reviewList">
 	
 	</div>
-		
-</div>
-
+			
+			
 <div class="reservation_box">
 	<div class="reservation_box_bg"></div>
 		<div class="date_setting">
+			<h3>Setting the Reservation date</h3>
 			<button>✖</button>
+		<form id="memReserv">
+      	 <fmt:formatDate value="<%=new java.util.Date()%>" var="today" pattern="yyyy-MM-dd"/>
+         <input type="date" id="reservDate" min="${today}" name="reservdate">
+         <input id="reservTime" class="timepicker" name="reservtime">
+         <input type="hidden" value="${vo.resno}" name="resno">
+         <input type="hidden" value="apply" name="status">
+       	<select name="reservp" id="reservp">
+        	<option value="" selected>인원선택</option>
+        	<option value="1">1명</option>
+        	<option value="2">2명</option>
+        	<option value="3">3명</option>
+        	<option value="4">4명</option>
+        	<option value="5">5명</option>
+        	<option value="6">6명</option>
+        	<option value="7">7명</option>
+        	<option value="8">8명</option>
+        	<option value="9">9명</option>
+        	<option value="10">10명</option>
+        </select>
 
-			<div class="reservName">${vo.resname}</div>
-			<div class="reservMent">매장예약</div>
-			<form id="memReserv">
-			
-				<div class="dateSelect">
-					<span>날짜 선택</span><br/>
-					<fmt:formatDate value="<%=new java.util.Date()%>" var="today" pattern="yyyy-MM-dd"/>
-					<input type="date" id="reservDate" min="${today}">
-				</div>
-				
-				<div class="timeSelect">
-					<span>시간 선택</span><br/>
-					<input id="reservTime" class="timepicker">
-				</div>
-				
-				<div class="numberSelect">
-					<span>인원 선택</span><br/>
-					<select name="reservp" id="reservp">
-						<option value="" selected>인원선택</option>
-						<option value="1">1명</option>
-						<option value="2">2명</option>
-						<option value="3">3명</option>
-						<option value="4">4명</option>
-						<option value="5">5명</option>
-						<option value="6">6명</option>
-						<option value="7">7명</option>
-						<option value="8">8명</option>
-						<option value="9">9명</option>
-						<option value="10">10명</option>
-					</select>
-				</div>
-				
-				<input type="hidden" value="${vo.resno}">
-				<button>예약 신청하기</button>
-			</form>
+        <button>submit</button>
+      </form>
 		</div>
-		
+	</div>
 </div>
