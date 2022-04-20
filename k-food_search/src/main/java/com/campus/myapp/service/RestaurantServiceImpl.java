@@ -68,8 +68,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List<RestaurantVO> restaurantList(PagingVO vo) {
 		return dao.restaurantList(vo);
 	}
+<<<<<<< HEAD
+  @Override
+=======
 	
 	@Override
+>>>>>>> branch 'main' of https://github.com/qorehdgus/K-food_Search.git
 	public int totalRecord(ResPagingVO pVO) {
 		return dao.totalRecord(pVO);
 	}

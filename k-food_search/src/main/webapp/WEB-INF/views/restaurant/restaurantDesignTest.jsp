@@ -21,10 +21,10 @@
 	opacity: 0.1;
 }
 #filterBox{
-	float: left;
 	width: 11%;
 	height: 100vh;
 	position : fixed;
+	top:0px;
 	right: 3%;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -69,12 +69,7 @@
 }
 
 
-#section{
-	float: right;
-	width: 50%;
-	margin-top: 70px;
-	margin-right: 250px;
-}
+
 .resCard{
 	height: 245px;
 	padding: 10px;
@@ -149,22 +144,26 @@
 	background-color: #2F4858;
 	color: #fff;
 }
-#pagingbox{
-	background-color: red;
-	margin: 0px auto;
-	padding: 0px auto;
-	width: 728px;
-	height: 40px;
-	margin-left: 510px;
+#section{
+	width: 50%;
+	margin-top: 70px;
+	margin-left:35%;
 }
-.paging{
-	height: 30px; overflow: auto;
-	padding-top: 5px;
-	margin-left: 180px;
+#pagingbox ul{
+	margin-left:35%;
+	width:50%;
+	height:150px;
+	text-align:center;
 }
-.paging>li{
-	float:left; 
-	margin-right: 50px;
+#pagingbox li{
+	display:inline-block;
+	text-align:center;
+	margin: -2.9px;
+	margin-top:20px;
+	width:50px;
+}
+#pagingbox li, #pagingbox a{
+	font-size:1.1em;
 }
 </style>
 <script>
@@ -205,7 +204,8 @@ $(document).ready(function() {
 					tag += 	'</div>';
 					tag += '</div>';
 					tag += '</a>';
-				});								
+					
+				});
 				$("#favorstate").html(tag2);
 				$("#section").html(tag);
 			},
@@ -308,9 +308,14 @@ $(function(){
 </script>
 
 <div class="container">
+	
 	<div id="justImageBox">
 	</div>
-	<!-- 페이징 -->
+	
+	<!-- section -->
+	<div id="section">
+	</div>
+<!-- 페이징 -->
 	<div id="pagingbox">
 	<!-- 페이징 -->
 				<ul class="paging">
@@ -343,6 +348,7 @@ $(function(){
 				</c:if>	
 				</ul>
 	</div>
+
 	<!-- section -->
 	<div id="section">
 		<!-- 양지석 수정 -->
@@ -411,11 +417,13 @@ $(function(){
 				</ul>
 			</form>
 		</div>
+		
 		<div id="filterImage">
 			<div>
 				<img src="/img/logo.png"/>
 			</div>
 		</div>
+		
 	</div>
 	
 </div>
