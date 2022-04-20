@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.campus.myapp.service.countryService;
 import com.campus.myapp.vo.ResPagingVO;
+import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.countryVO;
 
 import com.campus.myapp.service.BestMenuService;
@@ -51,14 +52,46 @@ public class HomeController {
 	//디자인테스트 
 	// 식당 목록 게시판 디자인 테스트
 	@RequestMapping("/restaurantDesignTest")
-	public ModelAndView restaurantDesignTest(ResPagingVO pVO) {
+	public ModelAndView restaurantDesignTest(ResPagingVO pVO, String nation, String resty) {
 		ModelAndView mav = new ModelAndView();
 		List<countryVO> countrylist = countryService.countryList();
+		List<RestaurantVO> restList = null;
+		if(nation!=null) {
+			restList=countryService.restListByNation(nation);
+		}
+		if(resty!=null) {
+			restList=countryService.restListRestype(resty);
+		}
 		mav.addObject("countrylist", countrylist);
+		mav.addObject("restList", restList);
+		mav.addObject("nation",nation);
+		//System.out.println(restList);
 		pVO.setTotalRecord(resservice.totalRecord(pVO));
 		mav.addObject("pVO", pVO);
 		mav.setViewName("restaurant/restaurantDesignTest");
 		return mav; 
 	}
+	
+	/*
+	// 식당 목록 게시판 디자인 테스트용
+	@RequestMapping("/restaurantDesignTest")
+	public ModelAndView restaurantDesignTest(String nation, String resty) {
+		ModelAndView mav = new ModelAndView();
+		List<countryVO> countrylist = countryService.countryList();
+		List<RestaurantVO> restList = null;
+		if(nation!=null) {
+			restList=countryService.restListByNation(nation);
+		}
+		if(resty!=null) {
+			restList=countryService.restListRestype(resty);
+		}
+		mav.addObject("countrylist", countrylist);
+		mav.addObject("restList", restList);
+		mav.addObject("nation",nation);
+		System.out.println(restList);
+		mav.setViewName("restaurant/restaurantDesignTest");
+		return mav; 
+	}
+	 * */
 	
 }

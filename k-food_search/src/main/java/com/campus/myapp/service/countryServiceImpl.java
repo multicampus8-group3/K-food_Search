@@ -35,6 +35,9 @@ public class countryServiceImpl implements countryService {
 	public List<RestaurantVO> restListByNation(String nation) {
 		return dao.restListByNation(nation);
 	}
-	
+	@Override
+	public List<RestaurantVO> restListRestype(String resty) {
+		return dao.restListRestype(resty);
+	}
 
 }
