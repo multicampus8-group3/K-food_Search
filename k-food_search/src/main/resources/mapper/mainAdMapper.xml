@@ -6,7 +6,7 @@
 <mapper namespace="com.campus.myapp.dao.mainAdDAO">
 	<select resultType="mainAdVO" id="mainAdSelect">
 		<!-- join문! ad.resno=res.resno 중에서 ad.status가 ok인 애들 배너 이미지, 국가, 지역, 이름, 주소, 정보 가져오기입니다.-->
-		select ad.bannerimg, res.resnation, res.resstate, res.resname, res.resadress, res.rescontent 
+		select ad.bannerimg, ad.resno, res.resnation, res.resstate, res.resname, res.resadress, res.rescontent
 		from ad_table ad join restaurant_table res on ad.resno = res.resno and ad.status="start";
 	</select>
 

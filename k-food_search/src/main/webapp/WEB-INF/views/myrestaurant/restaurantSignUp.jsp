@@ -8,10 +8,14 @@
 <link rel="stylesheet"  href='/css/backCSS/inputButton.css' type="text/css"/>
 <script>
 $(()=>{
+	
 	ClassicEditor
 	.create(document.querySelector( '#editor' ), {
 	    language: 'ko'
 	  })
+	.then( editor => {
+        theEditor = editor;
+    } )
     .catch( error => {
         console.error( error );
     });

@@ -127,7 +127,7 @@
 					var tag = "";
 					$result.each(function(idx, vo){
 						cnt++;
-						tag += '<div id="memberReviewList"><a href="/restaurantInfo?resno='+vo.resno+'">';
+						tag += '<a href="/restaurantInfo?resno='+vo.resno+'"><div id="memberReviewList">';
 						tag += '<img id="resimg" name="resimg" src="/resImg/'+vo.resimg+'"/>';
 						tag += '<div id="a"><span>'+vo.resname+'</span><br/></div>';
 						tag += '<div id="b"><span class="wrdate">'+vo.writedate+'</span><b class="adrr">'+vo.resadress+'</b></div>';
@@ -443,4 +443,3 @@
 		</div>
 	</div>
 	</div>
-</div>

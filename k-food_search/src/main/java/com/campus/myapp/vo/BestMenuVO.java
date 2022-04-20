@@ -7,6 +7,7 @@ public class BestMenuVO {
 	private String resnation; // 국가
 	private String resstate; // 지역
 	private String resimg; // 식당 이미지
+	private int resno; //식당 번호
 	
 	public String getResname() {
 		return resname;
@@ -37,6 +38,12 @@ public class BestMenuVO {
 	}
 	public void setResimg(String resimg) {
 		this.resimg = resimg;
+	}
+	public int getResno() {
+		return resno;
+	}
+	public void setResno(int resno) {
+		this.resno = resno;
 	}
 
 }

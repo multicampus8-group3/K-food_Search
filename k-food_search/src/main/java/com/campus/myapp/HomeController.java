@@ -37,7 +37,7 @@ public class HomeController {
 	   mav.setViewName("home");
 	   return mav;
 	}
-	// 源��옄�쁺- 硫붿씤�럹�씠吏� top_res ad_banner
+	// 김자영- 메인페이지 top_res ad_banner
 	
 	@RequestMapping("/restaurant")
 	public String restaurant() {
@@ -47,7 +47,9 @@ public class HomeController {
 	public String restaurantInfo() {
 		return "restaurant/restaurantInfo"; 
 	}
+	
 	//디자인테스트 
+	// 식당 목록 게시판 디자인 테스트
 	@RequestMapping("/restaurantDesignTest")
 	public ModelAndView restaurantDesignTest(ResPagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
@@ -59,9 +61,4 @@ public class HomeController {
 		return mav; 
 	}
 	
-	// 식당상세_디자인_샘플 
-	@RequestMapping("/restaurantInfoDesignTest")
-	public String restaurantInfoDesignTest() {
-		return "restaurant/restaurantInfoDesignTest"; 
-	}
 }

@@ -32,13 +32,15 @@
 }
 #a{
 	float: right;
-	width: 83%;
+	/* width: 83%; */
+	width: 78%;
 	display: block;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
 	margin-top:10px;
 	margin-bottom: 5px;
+	margin-right: 7%;
 	line-height: 30px;
 }
 #a span{
@@ -49,7 +51,9 @@
 }
 #b{
 	float: right;
-	width: 83%;
+	/* width: 83%; */
+	width: 78%;
+	margin-right: 7%;
 }
 #b span{
 	margin-left: 10px;
@@ -60,7 +64,8 @@
 }
 #c{
 	float: right;
-	width: 83%;
+	/* width: 83%; */
+	width: 78%;
 	height: 95px;
 	line-height: 30px;
 	text-overflow: ellipsis;
@@ -70,6 +75,7 @@
     -webkit-box-orient: vertical;
 	overflow: hidden;
 	margin-top: 5px;
+	margin-right: 7%;
 }
 #c b{
 	color: red;

@@ -58,7 +58,7 @@ public class RestaurantController {
 		vo.setSearchWord(searchWord);
 		return service.getSearchList(vo);
 	}	
-		
+		 
 	@GetMapping("/myrestaurant/myrestaurant")
 	public ModelAndView myrestaurant() {
 		ModelAndView mav = new ModelAndView();
@@ -266,6 +266,6 @@ public class RestaurantController {
 		//faq 정보가져오기
 		mav.addObject("faq", faqService.faqSelect(resno));
 		mav.setViewName("/restaurant/restaurantInfo");
-		return mav;		
+		return mav;
 	}
 }
