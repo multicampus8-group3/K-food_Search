@@ -63,15 +63,15 @@ img[usemap] {
     .smallMenu{
     	display:inline-block;
     	font-family : "Binggrae";
-    	color:rgb(203,100,58);
+    	color:rgb(50, 128, 70);
 		font-size:1.5em;
 		margin-top:20px;
-		text-shadow:0px 5px 10px rgb(203,100,58);
+		text-shadow:0px 5px 10px rgb(50, 128, 70);
     }
     hr{
     	height:1px;
-    	background-color:rgb(203,100,58);
-    	border:1px solid rgb(203,100,58);
+    	background-color:rgb(50, 128, 70);
+    	border:1px solid rgb(50, 128, 70);
 
     }
     .bx-prev{

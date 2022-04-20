@@ -240,7 +240,8 @@ $(document).ready(function() {
 
 <div class="img_box">
 	<!-- 업주가 식당등록할때 등록하는 이미지 -->
-	<img id="ownerImage" src="/img/noImg.jpg"/>
+	<!-- <img id="ownerImage" src="/img/noImg.jpg"/> -->
+	<img id="ownerImage" src="/resImg/${vo.resimg}">
 	<!-- 리뷰 작성자가 리뷰에 넣는 이미지 -->
 	<img id="reviewImage" src="/img/noImg.jpg"/>
 	
