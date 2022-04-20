@@ -423,8 +423,8 @@ $(document).ready(function() {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
-  height: 50%;
+  width: 300px;
+  height: 600px;
   background-color: #fff;
   padding: 2rem;
   border-radius: 20px;
@@ -432,16 +432,28 @@ $(document).ready(function() {
 .reservation_box .date_setting > button {
   font-size: 2rem;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -30px;
+  right: -25px;
   margin: 2rem;
   border: none;
   background: none;
   cursor: pointer;
 }
-.reservation_box .date_setting h3 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+.ui-timepicker-container{
+  position: fixed;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-135%, -32%);
+}
+.reservName, .reservMent{
+	border-bottom: 1px solid rgba(62, 97, 103, 0.3);
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+.reservName{
+	font-size: 20px;
+	font-weight: bold;
 }
 .test{
 	position: relative;
@@ -482,7 +494,6 @@ $(document).ready(function() {
 	background-color: rgba(89, 121, 115, 0.7);
 	color: #fff;
 }
-
 </style>
 
 <div class="img_box">
@@ -577,30 +588,42 @@ $(document).ready(function() {
 <div class="reservation_box">
 	<div class="reservation_box_bg"></div>
 		<div class="date_setting">
-			<h3>Setting the Reservation date</h3>
 			<button>✖</button>
-		<form id="memReserv">
-      	 <fmt:formatDate value="<%=new java.util.Date()%>" var="today" pattern="yyyy-MM-dd"/>
-         <input type="date" id="reservDate" min="${today}" name="reservdate">
-         <input id="reservTime" class="timepicker" name="reservtime">
-         <input type="hidden" value="${vo.resno}" name="resno">
-         <input type="hidden" value="apply" name="status">
-       	<select name="reservp" id="reservp">
-        	<option value="" selected>인원선택</option>
-        	<option value="1">1명</option>
-        	<option value="2">2명</option>
-        	<option value="3">3명</option>
-        	<option value="4">4명</option>
-        	<option value="5">5명</option>
-        	<option value="6">6명</option>
-        	<option value="7">7명</option>
-        	<option value="8">8명</option>
-        	<option value="9">9명</option>
-        	<option value="10">10명</option>
-        </select>
-
-        <button>submit</button>
-      </form>
+			<div class="reservName">${vo.resname}</div>
+			<div class="reservMent">매장예약</div>
+			<form id="memReserv">
+			
+				<div class="dateSelect">
+					<span>날짜 선택</span><br/>
+					<fmt:formatDate value="<%=new java.util.Date()%>" var="today" pattern="yyyy-MM-dd"/>
+					<input type="date" id="reservDate" min="${today}">
+				</div>
+				
+				<div class="timeSelect">
+					<span>시간 선택</span><br/>
+					<input id="reservTime" class="timepicker">
+				</div>
+				
+				<div class="numberSelect">
+					<span>인원 선택</span><br/>
+					<select name="reservp" id="reservp">
+						<option value="" selected>인원선택</option>
+						<option value="1">1명</option>
+						<option value="2">2명</option>
+						<option value="3">3명</option>
+						<option value="4">4명</option>
+						<option value="5">5명</option>
+						<option value="6">6명</option>
+						<option value="7">7명</option>
+						<option value="8">8명</option>
+						<option value="9">9명</option>
+						<option value="10">10명</option>
+					</select>
+				</div>
+				
+				<input type="hidden" value="${vo.resno}">
+				<button>예약 신청하기</button>
+			</form>
 		</div>
 	</div>
 </div>
