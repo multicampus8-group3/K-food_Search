@@ -13,6 +13,12 @@
 		order by usertype limit ${onePageRecord} offset ${offsetIndex}
 	</select>
 	
+	<select id="ownershipList" resultType="com.campus.myapp.vo.memberVO">
+		select userid, username, usertype, tel, usernation, favornation, favorstate, writedate
+		from member_table
+		order by usertype
+	</select>
+	
 	<update id="ownershipChange">
 		update member_table set usertype=#{usertype}
 		where userid=#{userid}
