@@ -36,19 +36,22 @@ public class memReservServiceImpl implements memReservService {
 
 	@Override
 	public List<memReservVO> myRestaurantReserveList(String userid) {
-		// TODO Auto-generated method stub
 		return dao.myRestaurantReserveList(userid);
 	}
 
 	@Override
 	public int reserveCheckOk(int no, String status) {
-		// TODO Auto-generated method stub
 		return dao.reserveCheckOk(no, status);
 	}
 
 	@Override
 	public int reserveCheckDel(int no) {
-		// TODO Auto-generated method stub
 		return dao.reserveCheckDel(no);
+	}
+
+	@Override
+	public int memRservInsert(memReservVO vo) {
+		System.out.println("실행");
+		return dao.memRservInsert(vo);
 	}
 }

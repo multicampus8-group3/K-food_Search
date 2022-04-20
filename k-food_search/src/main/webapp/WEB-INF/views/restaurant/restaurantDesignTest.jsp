@@ -149,6 +149,23 @@
 	background-color: #2F4858;
 	color: #fff;
 }
+#pagingbox{
+	background-color: red;
+	margin: 0px auto;
+	padding: 0px auto;
+	width: 728px;
+	height: 40px;
+	margin-left: 510px;
+}
+.paging{
+	height: 30px; overflow: auto;
+	padding-top: 5px;
+	margin-left: 180px;
+}
+.paging>li{
+	float:left; 
+	margin-right: 50px;
+}
 </style>
 <script>
 $(document).ready(function() {
@@ -175,7 +192,7 @@ $(document).ready(function() {
 					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">'; 
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
-					tag += 		'<img src="/img/noImg.jpg"/>';
+					tag += 		'<img src="/resImg/'+vo.resimg+'"/>';
 					tag += 	'</div>';
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
@@ -200,10 +217,14 @@ $(document).ready(function() {
 });
 $(function(){
 	// 가게목록
-	function restaurantList() {
+	var pageNum = "${pVO.pageNum}";
+	function restaurantList(pageNum) {
 		var url = "/restaurant/resList";
 		$.ajax({
 			url: url,
+			data: {
+				'pageNum':pageNum 
+			},
 			success: function(result) {
 				var $result = $(result);
 				var tag = "";
@@ -211,7 +232,7 @@ $(function(){
 					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">';
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
-					tag += 		'<img src="/img/noImg.jpg"/>';
+					tag += 		'<img src="/resImg/'+vo.resimg+'"/>';
 					tag += 	'</div>';
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
@@ -232,7 +253,8 @@ $(function(){
 			}
 		});
 	}
-	restaurantList();
+	restaurantList(pageNum);
+	
 });
 
 
@@ -286,12 +308,42 @@ $(function(){
 <div class="container">
 	<div id="justImageBox">
 	</div>
-	
+	<!-- 페이징 -->
+	<div id="pagingbox">
+	<!-- 페이징 -->
+				<ul class="paging">
+				<!--  이전페이지 -->
+				<c:if test="${pVO.pageNum == 1 }">
+					<li>prev</li>
+				</c:if>
+				<c:if test="${pVO.pageNum > 1 }">
+					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum-1}">prev</a></li>
+				</c:if>
+				
+					<c:forEach var="p" begin="${pVO.startPage}" end="${pVO.startPage+pVO.onePageCount-1}">
+						<c:if test="${p<=pVO.totalPage}">
+							<c:if test="${p==pVO.pageNum}">
+								<li style="font-weight: bold;">
+							</c:if>
+							<c:if test="${p!=pVO.pageNum}">
+								<li>
+							</c:if>
+							<a href="/restaurantDesignTest?pageNum=${p}">${p}</a></li>
+						</c:if>
+					</c:forEach>
+				
+				<!--  다음페이지 -->
+				<c:if test="${pVO.pageNum == pVO.totalPage }">
+					<li>next</li>
+				</c:if>
+				<c:if test="${pVO.pageNum < pVO.totalPage }">
+					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum+1}">next</a></li>
+				</c:if>	
+				</ul>
+	</div>
 	<!-- section -->
 	<div id="section">
-				
 	</div>
-	
 	<!-- check box -->
 	<div id="filterBox">
 	    <h2>Filters</h2>
