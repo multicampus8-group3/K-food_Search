@@ -9,6 +9,17 @@ public class ResPagingVO {
 	private int onePageCount = 5;
 	private int startPage = 1;
 	
+	/////////////////////////
+	private String nation;
+	
+	
+	public String getNation() {
+		return nation;
+	}
+	public void setNation(String nation) {
+		this.nation = nation;
+	}
+	/////////////////////////
 	
 	public int getOnePageRecord() {
 		return onePageRecord;

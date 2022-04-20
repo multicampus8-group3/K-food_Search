@@ -168,6 +168,9 @@
 </style>
 <script>
 $(document).ready(function() {
+	console.log("실행");
+	console.log("${nation}");
+
 	$("#favornation").click(function(){
 			var url = "/country/stateList"
 			var params = $("input:radio[name='nation']:checked").val();
@@ -175,7 +178,7 @@ $(document).ready(function() {
 			$.ajax({
 			url: url,
 			data:{
-				nation:params
+				nation:params,
 			},
 			success: function(result) {
 				alert(JSON.stringify(result))
@@ -214,8 +217,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-});
-$(function(){
 	// 가게목록
 	var pageNum = "${pVO.pageNum}";
 	function restaurantList(pageNum) {
@@ -223,9 +224,11 @@ $(function(){
 		$.ajax({
 			url: url,
 			data: {
-				'pageNum':pageNum 
+				'pageNum':pageNum,
+				'nation':"${nation}"
 			},
 			success: function(result) {
+				
 				var $result = $(result);
 				var tag = "";
 				$result.each(function(idx, vo){
@@ -253,11 +256,8 @@ $(function(){
 			}
 		});
 	}
-	//restaurantList(pageNum);
-	
-	
+	restaurantList(pageNum);
 });
-
 
 	function restInfo(state){
 		alert('state'+state)
@@ -272,6 +272,7 @@ $(function(){
 				state:state
 			},
 			success: function(result) {
+				console.log("anjwl"+result)
 				alert(JSON.stringify(result))
 				var $result = $(result);
 				var tag2 = "";
@@ -324,7 +325,7 @@ $(function(){
 					<li>prev</li>
 				</c:if>
 				<c:if test="${pVO.pageNum > 1 }">
-					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum-1}">prev</a></li>
+					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum-1}&nation=${nation}">prev</a></li>
 				</c:if>
 				
 					<c:forEach var="p" begin="${pVO.startPage}" end="${pVO.startPage+pVO.onePageCount-1}">
@@ -335,7 +336,7 @@ $(function(){
 							<c:if test="${p!=pVO.pageNum}">
 								<li>
 							</c:if>
-							<a href="/restaurantDesignTest?pageNum=${p}">${p}</a></li>
+							<a href="/restaurantDesignTest?pageNum=${p}&nation=${nation}">${p}</a></li>
 						</c:if>
 					</c:forEach>
 				
@@ -344,33 +345,13 @@ $(function(){
 					<li>next</li>
 				</c:if>
 				<c:if test="${pVO.pageNum < pVO.totalPage }">
-					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum+1}">next</a></li>
+					<li><a href="/restaurantDesignTest?pageNum=${pVO.pageNum+1}&nation=${nation}">next</a></li>
 				</c:if>	
 				</ul>
 	</div>
 
 	<!-- section -->
-	<div id="section">
-		<!-- 양지석 수정 -->
-		<c:forEach var="vo" items="${restList}">
-			<a href="/?resno='+vo.resno+'">'
-				<div class="resCard">
-					<div class="img_box">
-					<img src="/img/noImg.jpg"/> <!-- ${vo.resimg} -->
-						</div>
-							<div class="contents">
-								<div class="info">
-									<span class="resname">${vo.resname}</span><br/>
-									<span class="resgrade">★+${vo.resgrade}</span><span class="restype">${vo.restype}</span><br/>
-									<span class="adr">${vo.resadress}</span>
-								<div class="intro">${vo.rescontent}</div>
-							</div>
-						<div class="seeMore">더보기</div>
-					</div>
-				</div>
-			</a>
-		</c:forEach>
-	</div>
+	<div id="section"></div>
 	<!-- check box -->
 	<div id="filterBox">
 	    <h2>Filters</h2>

@@ -68,7 +68,7 @@ public class HomeController {
 		//System.out.println(restList);
 		pVO.setTotalRecord(resservice.totalRecord(pVO));
 		mav.addObject("pVO", pVO);
-		mav.setViewName("restaurant/restaurantDesignTest");
+		mav.setViewName("/restaurant/restaurantDesignTest");
 		return mav; 
 	}
 	
