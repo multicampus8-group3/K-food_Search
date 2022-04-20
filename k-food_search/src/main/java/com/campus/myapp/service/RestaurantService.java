@@ -3,6 +3,7 @@ package com.campus.myapp.service;
 import java.util.List;
 
 import com.campus.myapp.vo.PagingVO;
+import com.campus.myapp.vo.ResPagingVO;
 import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.memberVO;
 
@@ -23,8 +24,10 @@ public interface RestaurantService {
 	public List<RestaurantVO> restaurantList_restype(String resty);
 	
 	//�젅�뒪�넗�옉 �꽌移섑럹�씠吏�
-	public List<RestaurantVO> resList(RestaurantVO vo);
+	public List<RestaurantVO> resList(ResPagingVO pVO);
 	
 	public RestaurantVO resSelect(int resno);
+	//페이징테스트
+	public int totalRecord(ResPagingVO pVO);
 
 }

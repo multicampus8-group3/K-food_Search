@@ -6,7 +6,7 @@
 
 	<select id="reviewList" resultType="com.campus.myapp.vo.ReviewVO">
 		select rev.no no, rev.userid userid, res.resname resname, rev.grade grade, 
-		rev.content content, rev.writedate writedate
+		rev.content content, rev.writedate writedate, res.resimg resimg  
 		from review_table as rev
 		join restaurant_table as res
 		on rev.resno = res.resno 
@@ -31,7 +31,7 @@
 	<select id="memberReviewList" resultType="com.campus.myapp.vo.ReviewVO">
 		select rev.no no, rev.userid userid, res.resname resname, rev.grade grade, 
 		rev.content content, rev.writedate writedate, res.resgrade resgrade, res.resimg resimg,
-		res.resadress  
+		res.resadress resadress, res.resno resno   
 		from review_table as rev
 		join restaurant_table as res
 		on rev.resno = res.resno

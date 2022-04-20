@@ -27,6 +27,7 @@ import com.campus.myapp.service.memFavorService;
 import com.campus.myapp.vo.FaqAnswerVO;
 import com.campus.myapp.vo.FaqVO;
 import com.campus.myapp.vo.PagingVO;
+import com.campus.myapp.vo.ResPagingVO;
 import com.campus.myapp.vo.RestaurantVO;
 import com.campus.myapp.vo.countryVO;
 import com.campus.myapp.vo.memFavorVO;
@@ -43,6 +44,8 @@ public class RestaurantController {
 	memFavorService memFavorService;
 	@Inject
 	adminPageNationDAO apnService;
+  @Inject
+	FaqService faqService;
 	
 	// 관리자페이지에서 가게목록 보기
 	@GetMapping("/restaurant/resListToAdmin")
@@ -242,8 +245,14 @@ public class RestaurantController {
 
 	//식당서치 페이지변경 부분
 	@GetMapping("/restaurant/resList")
-	public List<RestaurantVO> resList(RestaurantVO vo) {
-		return service.resList(vo);
+	public List<RestaurantVO> resList(RestaurantVO vo, ResPagingVO pVO) {
+		pVO.setTotalRecord(service.totalRecord(pVO));
+		//service.resList(vo);
+		System.out.println(pVO.getPageNum());
+		System.out.println("전체레코드"+pVO.getTotalRecord());
+		System.out.println("한페이지"+pVO.getOnePageRecord());
+		System.out.println("인덱스"+pVO.getOffsetIndex());
+		return service.resList(pVO);
 	}
 	//식당정보 페이지
 	@GetMapping("restaurantInfo")
@@ -256,6 +265,8 @@ public class RestaurantController {
 			result = "0";
 		}
 		mav.addObject("memfavor", result);
+		//faq 정보가져오기
+		mav.addObject("faq", faqService.faqSelect(resno));
 		mav.setViewName("/restaurant/restaurantInfo");
 		return mav;
 	}

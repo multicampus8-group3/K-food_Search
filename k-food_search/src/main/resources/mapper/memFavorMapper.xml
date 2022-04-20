@@ -6,7 +6,7 @@
 
 	<select id="memFavorList" resultType="com.campus.myapp.vo.memFavorVO">
 		select res.resimg resimg, res.resname resname, res.resnation resnation, res.resadress resadress,
-		res.resstate resstate, res.resgrade resgrade, res.reshour reshour, 
+		res.resstate resstate, res.resgrade resgrade, res.reshour reshour, res.resno resno,   
 		res.reshourend reshourend, res.restype restype, memf.no no
 		from member_favorite as memf
 		join restaurant_table as res

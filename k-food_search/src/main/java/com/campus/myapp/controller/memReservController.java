@@ -56,4 +56,9 @@ public class memReservController {
 		System.out.println(vo.getNo());
 		return service.memReservCancel(vo);
 	}
+	@PostMapping("memRservInsert")
+	public int memRservInsert(memReservVO vo, HttpSession session){
+		vo.setUserid((String)session.getAttribute("logId"));
+		return service.memRservInsert(vo);
+	}
 }

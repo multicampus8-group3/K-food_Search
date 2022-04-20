@@ -20,4 +20,6 @@ public interface FaqDAO {
 	public int faqAnswerInsert(int resno, int faqno, String content);
 	public List<FaqAnswerVO> faqAnswerUpdateList(int resno);
 	public int faqAnswerDel(int resno);
+	// 식당정보페이지에서 FAQ불러오기
+	public List<FaqAnswerVO> faqSelect(int resno);
 }
