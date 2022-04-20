@@ -48,6 +48,7 @@ public class HomeController {
 	public String restaurantInfo() {
 		return "restaurant/restaurantInfo"; 
 	}
+
 	
 	//디자인테스트 
 	// 식당 목록 게시판 디자인 테스트
@@ -80,10 +81,15 @@ public class HomeController {
 		List<countryVO> countrylist = countryService.countryList();
 		List<RestaurantVO> restList = null;
 		if(nation!=null) {
-			restList=countryService.restListByNation(nation);
+			if(nation.equals("all")) {
+				restList=countryService.restListAll();
+			}else {
+				restList=countryService.restListByNation(nation);
+			}
 		}
 		if(resty!=null) {
 			restList=countryService.restListRestype(resty);
+		
 		}
 		mav.addObject("countrylist", countrylist);
 		mav.addObject("restList", restList);
