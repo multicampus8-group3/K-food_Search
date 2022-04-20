@@ -248,10 +248,6 @@ public class RestaurantController {
 	public List<RestaurantVO> resList(RestaurantVO vo, ResPagingVO pVO) {
 		pVO.setTotalRecord(service.totalRecord(pVO));
 		//service.resList(vo);
-		System.out.println(pVO.getPageNum());
-		System.out.println("전체레코드"+pVO.getTotalRecord());
-		System.out.println("한페이지"+pVO.getOnePageRecord());
-		System.out.println("인덱스"+pVO.getOffsetIndex());
 		return service.resList(pVO);
 	}
 	//식당정보 페이지

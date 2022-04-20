@@ -62,6 +62,9 @@
 	<select id="resList" resultType="com.campus.myapp.vo.RestaurantVO">
 		select resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, resno 
 		from restaurant_table
+		<if test='nation != null'>
+			where resnation like '%${nation}%'
+		</if>
 		order by resno desc
 		limit ${onePageRecord} offset ${offsetIndex} 
 	</select>
@@ -73,5 +76,8 @@
 	</select>
 	<select id='totalRecord' resultType='int'>
 		select count(resno) cnt from restaurant_table 
+		<if test='nation != null'>
+			where resnation like '%${nation}%'
+		</if>
 	</select>
 </mapper>
