@@ -135,12 +135,12 @@ img[usemap] {
 					</li>
 					
 					<li>
-						<a onclick="menu_click('감자탕')" href="/restaurantDesignTest">
-							<img class="img_box" src="../img/hansik_img/gamjatang.PNG" alt="">
-							<h2>감자탕
+						<a onclick="menu_click('백반')" href="/restaurantDesignTest">
+							<img class="img_box" src="../img/hansik_img/baekban.PNG" alt="">
+							<h2>백반
 								<span>
 									<div class="inner_div">
-										감자탕
+										백반
 									</div>
 								</span>
 							</h2>
