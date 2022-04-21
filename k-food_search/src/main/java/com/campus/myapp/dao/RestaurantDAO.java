@@ -29,4 +29,7 @@ public interface RestaurantDAO {
 	public RestaurantVO resSelect(int resno);
 	//페이징테스트
 	public int totalRecord(ResPagingVO pVO);
+	
+	//백동현22-04-21
+	public List<RestaurantVO> testreturn(RestaurantVO vo, String [] restypeArr);
 }

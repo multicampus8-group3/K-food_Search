@@ -5,13 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.campus.myapp.service.RestaurantService;	
 import com.campus.myapp.service.countryService;
 import com.campus.myapp.vo.RestaurantVO;
@@ -50,5 +46,11 @@ public class CountryController {
 		map.put("stateList", stList);
 		map.put("restList", restList);
 		return map;
+	}
+	@GetMapping("/country/restype2")
+	@ResponseBody
+	public List<RestaurantVO> babo (RestaurantVO vo) {
+		List<RestaurantVO> lst = res_service.testreturn(vo, vo.getRestypeArr());
+		return lst;
 	}
 }

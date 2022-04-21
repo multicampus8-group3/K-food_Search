@@ -25,5 +25,8 @@ public interface RestaurantService {
 	public RestaurantVO resSelect(int resno);
 	//�럹�씠吏뺥뀒�뒪�듃
 	public int totalRecord(ResPagingVO pVO);
+	
+	//fiorahoit
+	public List<RestaurantVO> testreturn(RestaurantVO vo, String [] restypeArr);
 
 }
