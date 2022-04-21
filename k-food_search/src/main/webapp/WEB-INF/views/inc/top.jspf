@@ -280,9 +280,11 @@
 						<input type='password' id='userpwd' name='userpwd' placeholder='비밀번호'/><br/>
 						<input class='login_button' type='submit' value='로그인'/>
 					</form>
-					<a href="">아이디 찾기</a>&nbsp;|&nbsp;
-					<a href="">비밀번호 찾기</a>&nbsp;|&nbsp;
-					<a href="/signUp">회원가입</a>
+					<div style="border-top: 1px solid rgba(47,72,88,0.5); margin-left:5%; margin-right:5%; padding-top:5%; margin-top:-10px;">
+						<!--  <a href="">아이디 찾기</a>&nbsp;|&nbsp;
+						<a href="">비밀번호 찾기</a>&nbsp;|&nbsp; -->
+						<a style="color:#fff;" href="/signUp">회원가입</a>
+					</div>
 				</div>
 			</c:if>
 			<c:if test="${logId!=null }">
