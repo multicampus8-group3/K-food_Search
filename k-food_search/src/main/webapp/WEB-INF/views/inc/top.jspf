@@ -298,7 +298,7 @@
 					<a href="/member/mypage">마이페이지</a>&nbsp;|&nbsp;
 					<a href="/logout">로그아웃</a>
 				</div>
-				<hr style="width:90%; margin-top:-50px; color:#fff;background-color:#fff; border:#fff;"/>
+				<hr style="width:90%; margin-top:-50px; color:#fff;background-color:#fff; border:#fff; height:1px;"/>
 				<div id="favor_div">
 					<b style="margin-left:-170px; color:white;">즐겨찾기</b>
 					<div id="favorList">
