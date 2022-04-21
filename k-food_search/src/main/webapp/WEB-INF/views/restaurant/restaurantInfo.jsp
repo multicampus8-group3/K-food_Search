@@ -596,12 +596,14 @@ $(document).ready(function() {
 				<div class="dateSelect">
 					<span>날짜 선택</span><br/>
 					<fmt:formatDate value="<%=new java.util.Date()%>" var="today" pattern="yyyy-MM-dd"/>
-					<input type="date" id="reservDate" min="${today}">
+					<input type="date" id="reservDate" min="${today}" name="reservdate">
+					<input type="hidden" value="apply" name="status">
+					<input type="hidden" value="${vo.resno}" name="resno">
 				</div>
 				
 				<div class="timeSelect">
 					<span>시간 선택</span><br/>
-					<input id="reservTime" class="timepicker">
+					<input id="reservTime" class="timepicker" name="reservtime">
 				</div>
 				
 				<div class="numberSelect">
