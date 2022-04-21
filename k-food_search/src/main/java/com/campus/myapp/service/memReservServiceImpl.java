@@ -52,6 +52,7 @@ public class memReservServiceImpl implements memReservService {
 	@Override
 	public int memRservInsert(memReservVO vo) {
 		System.out.println("실행");
+		System.out.println(vo.getReservdate());
 		return dao.memRservInsert(vo);
 	}
 }
