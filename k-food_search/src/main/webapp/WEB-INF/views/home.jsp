@@ -361,7 +361,7 @@ img[usemap] {
 			<ul id="bm_list" >
 				<c:forEach var="tr" items="${bmgrade}"> <!-- tr: top_res -->
 						<li class="bm_box">
-							<img src="/resImg/${tr.resimg }" alt="" >
+							<img src="/resImg/${tr.resimg}" alt="" >
 							<a href="/restaurantInfo?resno=${tr.resno}"><strong style="font-size:16px;">${tr.resname}</strong><br/></a>
 							${tr.resnation}, ${tr.resstate} <br/>
 							<strong>${tr.resgrade}</strong> <br/>

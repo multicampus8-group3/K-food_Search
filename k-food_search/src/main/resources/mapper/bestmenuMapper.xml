@@ -7,7 +7,7 @@
 	<select id="bmSelect" resultType="BestMenuVO">
 		<!-- 식당 테이블에서 평점이 4.0인 식당의 식당 이미지, 이름, 국가, 지역, 평점 오름차순 출력 (4개 제한) -->
 		
-		select resimg, resname, resnation, resstate, resgrade from restaurant_table where resgrade>= 4.0 order by rand() limit 4;
+		select resimg, resname, resnation, resstate, resgrade, resno from restaurant_table where resgrade>= 4.0 order by rand() limit 4;
 		<!--  select resimg, resname, resnation, resstate, resgrade, resno from restaurant_table where resgrade>= 4.0 order by  resgrade desc limit 4;-->
 		
 		<!-- 이거는 랜덤이어서 오름차순 정렬 no! select resimg, resname, resnation, resstate, resgrade from restaurant_table where resgrade>= 4.0 order by rand() limit 4; -->

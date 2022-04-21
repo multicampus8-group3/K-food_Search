@@ -404,7 +404,7 @@ $(document).ready(function() {
 	<div id="filterBox">
 	    <h2>Filters</h2>
 		<div id="nationFilter">
-			<h3>#resnation</h3>
+			<h3>국가</h3>
 			<form action="" id="favornation">
 				<c:forEach items="${countrylist}" var="item">
         			<input type='radio' name="nation" value="${item.nation}"><label>${item.nation}</label><br>
@@ -412,13 +412,13 @@ $(document).ready(function() {
 			</form>
 		</div>
 		<div id="stateFilter">
-			<h3>#resstate</h3>
+			<h3>지역</h3>
 			<form action="" id="favorstate">
 				
 			</form>
 		</div>
 		<div id="typeFilter">
-			<h3>#restype</h3>
+			<h3>종류</h3>
 			<form action="">
 				<ul>
 					<li><input type="checkbox" name="restype" id="restype1" value="떡볶이"><label>떡볶이</label></li>
