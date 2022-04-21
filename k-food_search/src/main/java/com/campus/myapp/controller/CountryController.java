@@ -28,6 +28,7 @@ public class CountryController {
 	@GetMapping("/country/stateList")
 	@ResponseBody
 	public Map<String,Object> stateList2(String nation){
+		System.out.println("aaaaa");
 		List<countryVO> stList=service.stateList(nation);
 		List<RestaurantVO> restList=service.restListByNation(nation);
 		Map<String,Object>map=new HashMap<String,Object>();
@@ -36,16 +37,22 @@ public class CountryController {
 		return map;
 	}
 	@GetMapping("/stateList")
-	
 	@ResponseBody
 	public List<countryVO> stateList1(String nation){
+		System.out.println("bbbbb");
 		return service.stateList(nation);
 	}
 	
 	@GetMapping("/country/restList")
 	@ResponseBody
-	public List<RestaurantVO> restList(String nation, String state){
-		System.out.println(nation+"/"+state);
-		return service.restList(nation, state);
+	public Map<String,Object>  restList(String nation, String state){
+		System.out.println(nation);
+		System.out.println(state);
+		List<countryVO> stList=service.stateList(nation);
+		List<RestaurantVO> restList=service.restList(nation, state);
+		Map<String,Object>map=new HashMap<String,Object>();
+		map.put("stateList", stList);
+		map.put("restList", restList);
+		return map;
 	}
 }

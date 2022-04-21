@@ -61,7 +61,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List<RestaurantVO> restaurantList(PagingVO vo) {
 		return dao.restaurantList(vo);
 	}
-
 	@Override
 	public int totalRecord(ResPagingVO pVO) {
 		return dao.totalRecord(pVO);
