@@ -162,7 +162,7 @@ function restaurantListAll(respageNum) {
 			
 			$result.each(function(idx, vo){
 				tag += "<li>" + vo.resno + "</li>";
-				tag += "<li>" + vo.resname + "</li>";
+				tag += "<li>" + '<a href="/restaurantInfo?resno='+vo.resno+'">' + vo.resname + "</a></li>";
 				tag += "<li>" + vo.resadress + "</li>";
 				tag += "<li>" + parseFloat(vo.resgrade).toFixed(1) + "</li>";
 				tag += "<li>" + vo.userid + "</li>";
@@ -210,7 +210,7 @@ function reviewListAll(reviewpageNum) {
 			$result.each(function(idx, vo){
 				tag += "<li>" + vo.no + "</li>";
 				tag += "<li>" + vo.userid + "</li>";
-				tag += "<li>" + vo.resname + "</li>";
+				tag += "<li>" + '<a href="/restaurantInfo?resno='+vo.resno+'">' + vo.resname + "</a></li>";
 				tag += "<li>" + parseFloat(vo.grade).toFixed(1) + "</li>";
 				tag += "<li>" + vo.content + "</li>";
 				tag += "<li>" + vo.writedate + "</li>";
@@ -272,8 +272,6 @@ $(function(){
 			url: url,
 			type: "get",
 			success: function(result) {
-				console.log("실행")
-				console.log(result)
 				var $result = $(result);
 				var tag = "<ul>";
 				tag += "<li>아이디</li><li>이름</li><li>연락처</li><li>상태</li>";
@@ -413,9 +411,9 @@ $(function(){
 	$(document).on('submit', '#adList form', function(){
 		event.preventDefault();
 		
-		if($("#status").val()==''){
+		var target = $(event.target).children().eq(1).val();
+		if(target == ''){
 			alert("상태를 선택해주세요.");
-			$("#status").focus();
 			return false;
 		}
 		
@@ -452,22 +450,27 @@ function adListAll(adpageNum) {
 				tag += "<li>파일</li><li>시작</li><li>종료</li><li>작성일</li><li>상태</li>";
 				$result.each(function(idx, vo){
 					tag += "<li>" + vo.no + "</li>";
-					tag += "<li>" + vo.resname + "</li>";
+					tag += '<li><a href="/restaurantInfo?resno='+vo.resno+'">' + vo.resname + '</a></li>';
 					tag += "<li>" + vo.userid + "</li>";	
 					tag += "<li>" + vo.tel + "</li>";
 					tag += "<li>" + vo.bannerimg + "</li>";
 					tag += "<li>" + vo.startdate + "</li>";
 					tag += "<li>" + vo.enddate + "</li>";
 					tag += "<li>" + vo.writedate + "</li>";
-					tag += "<li>"+ vo.status + "<br/><form method='post'>";
+					
+					if(vo.status == "reject"){
+						tag += "<li>거절<br/>";
+					}else if(vo.status == "start"){
+						tag += "<li>승인<br/>";
+					}else{
+						tag += "<li>보류<br/>";
+					}
+					tag += "<form method='post'>";
 					tag += "<input type='hidden' name='no' value='" + vo.no + "'/>";
 					tag += "<select id='status' name='status'>";
 					tag += "<option value=''>선택</option>";
-					tag += "<option value='apply'>신청</option>";
 					tag += "<option value='reject'>거절</option>";
-					tag += "<option value='ok'>승인</option>";
-					tag += "<option value='start'>게재중</option>";
-					tag += "<option value='end'>만료</option>";
+					tag += "<option value='start'>승인</option>";
 					tag += "</select><input type='submit' value='확인'/></form></li>"
 				});
 				

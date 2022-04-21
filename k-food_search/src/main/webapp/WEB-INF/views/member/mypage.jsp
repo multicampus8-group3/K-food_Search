@@ -165,7 +165,7 @@
 						var open = parseInt(vo.reshour.split(':')[0]*60) + parseInt(vo.reshour.split(':')[1]);
 						var close = parseInt(vo.reshourend.split(':')[0]*60) + parseInt(vo.reshourend.split(':')[1]);
 					
-						tag += '<li><a href="/restaurantInfo?resno='+vo.resno+'"><div><span class="heart">♥</span></div>';
+						tag += '<li><a href="/restaurantInfo?resno='+vo.resno+'"><div><span class="heart"></span></div>';
 						tag += '<div><span><b>'+vo.resname+'</b><br/></span>';
 						tag += '<span>★'+parseFloat(vo.resgrade).toFixed(1)+'</span><br/>';
 						tag += '<span><b>'+vo.restype + '</b>&nbsp;·&nbsp;' + vo.resadress+'<br/></span><br/>';
@@ -188,23 +188,8 @@
 				}
 			});
 		}
-		//즐겨찾기 취소
-		$(document).on("click", ".heart", function(){
-			console.log("no= "+$(this).attr('value'));
-			var params = "no= "+$(this).attr('value');
-			var url = "/memFavor/memFavorDelete";
-			$.ajax({
-				url: url,
-				data: params,
-				type: "get",
-				success: function(result){
-					memberFavor();				
-				},
-				error: function(e){
-					console.log(e.responseText);
-				}
-			});
-		});
+		
+		
 		memberFavor();	
 	});
 
@@ -226,7 +211,7 @@
 							tag += '<ul class="memok">';
 							tag += '<li>예약이 <b>승인</b>되었습니다.</li>';
 							tag += '<li>&nbsp;만약 예약을 취소하시려면 아래 문의 이메일로 연락주시길바랍니다.</li>';
-							tag += '<li class="resname"><b>'+vo.resname+'</b></li>';
+							tag += '<li class="resname"><a href="/restaurantInfo?resno='+vo.resno+'"><b>'+vo.resname+'</b></a></li>';
 							tag += '<li><hr/></li>';
 							tag += '<li>일정: <span>'+vo.reservdate+'&nbsp'+vo.reservtime+'</span></li>';
 							tag += '<li>인원: <span>'+vo.reservp+'명</span></li>';
@@ -256,7 +241,7 @@
 								tag += '<li>예약을 <b>취소</b>하셨습니다.</li>';
 								tag += '<li>&nbsp;예약 취소가 완료되었습니다.</li>';
 							};
-							tag += '<li class="resname"><b>'+vo.resname+'</b></li>';
+							tag += '<li class="resname"><a href="/restaurantInfo?resno='+vo.resno+'"><b>'+vo.resname+'</b></a></li>';
 							tag += '<li><hr/></li>';
 							tag += '<li>일정: <span>'+vo.reservdate+'&nbsp'+vo.reservtime+'</span></li>';
 							tag += '<li>인원: <span>'+vo.reservp+'명</span></li>';
