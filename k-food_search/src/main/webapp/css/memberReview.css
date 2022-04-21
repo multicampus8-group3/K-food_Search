@@ -8,6 +8,7 @@
 	border: 1px solid rgba(62, 97, 103, 0.3);
 	border-radius: 5px;
 	padding: 10px;
+	background-color: rgba(205, 188, 171, 0.1);
 }
 .memberRev:hover{
 	box-shadow: 1px 1px 10px rgba(42, 72, 88, 0.3);
@@ -24,6 +25,9 @@
 	padding-right: 15px;
 	border-bottom: 1px solid rgba(62, 97, 103, 0.3);
 	border-right: none;
+}
+#memberReviewList:hover{
+	background-color: rgba(205, 188, 171, 0.3);
 }
 #memberReviewList img {
 	float: left;

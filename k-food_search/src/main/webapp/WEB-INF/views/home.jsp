@@ -382,12 +382,13 @@ img[usemap] {
 				<c:forEach var="ma" items="${mainadbanner}"> <!-- ma: main_ad -->
 					<li class="ad_box">
 						<a href="/restaurantInfo?resno=${ma.resno}"><img src="/adImg/${ma.bannerimg }"></a>
-						<div id="ns" style="color:gray">
+						<div id="ns" style="color:gray; padding:2%;margin-bottom:-10px;">
 							${ma.resnation}, ${ma.resstate }
-						</div><br/>
-			    		<h1>${ma.resname }</h1><br/>
-			    		<div style="color:gray">${ma.resadress} </div><br/>
-			    		<div id="content">${ma.rescontent}</div> <br/>
+						</div>
+			    		<a href="/restaurantInfo?resno=${ma.resno}"><b style="font-size:48px; margin-bottom:5px;">${ma.resname }</b></a><br/><br/>
+			    		<div style="color:gray">${ma.resadress}</div><br/>
+			    		<div style="width:500px; float:right; margin-right:80px;" id="content">${ma.rescontent}</div>
+			    		
 					</li>
 				</c:forEach>		
 			</ul>
