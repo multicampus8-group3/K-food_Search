@@ -30,12 +30,11 @@
 	</select>
 	
 	<select id="restList" resultType="com.campus.myapp.vo.RestaurantVO">
-		select *
+		select r.resstate, r.resno, r.resname, r.resgrade, r.resadress, r.rescontent, c.nation, c.state
 		from restaurant_table r join country c
 		on r.resnation = c.nation and 
 		r.resstate=c.state 
-		where
-		r.resnation=#{param1} and r.resstate=#{param2}
+		where r.resnation=#{param1} and r.resstate=#{param2}
 	</select>
 	
 </mapper>
