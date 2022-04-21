@@ -52,7 +52,7 @@ public class ReviewServiceImpl implements ReviewService {
 		RestaurantVO rvo = new RestaurantVO();
 		rvo.setResno(resno);
 		rvo.setResgrade(resgrade);
-		
+		System.out.println(rvo.getResgrade());
 		dao.updateRating(rvo);
 	}
 	

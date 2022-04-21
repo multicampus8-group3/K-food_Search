@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.campus.myapp.dao.adminPageNationDAO;
 import com.campus.myapp.service.FaqService;
 import com.campus.myapp.service.RestaurantService;
+import com.campus.myapp.service.ReviewService;
 import com.campus.myapp.service.countryService;
 import com.campus.myapp.service.memFavorService;
 import com.campus.myapp.vo.FaqAnswerVO;
@@ -44,8 +45,10 @@ public class RestaurantController {
 	memFavorService memFavorService;
 	@Inject
 	adminPageNationDAO apnService;
-  @Inject
+	@Inject
 	FaqService faqService;
+	@Inject
+	ReviewService revservice;
 	
 	// 관리자페이지에서 가게목록 보기
 	@GetMapping("/restaurant/resListToAdmin")
@@ -253,6 +256,7 @@ public class RestaurantController {
 	//식당정보 페이지
 	@GetMapping("restaurantInfo")
 	public ModelAndView restaurantInfo(int resno, HttpSession session) {
+		revservice.setRating(resno);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", service.resSelect(resno));
 		String userid = (String)session.getAttribute("logId");

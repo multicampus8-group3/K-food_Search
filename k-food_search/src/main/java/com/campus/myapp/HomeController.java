@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,6 +16,7 @@ import com.campus.myapp.vo.countryVO;
 
 import com.campus.myapp.service.BestMenuService;
 import com.campus.myapp.service.RestaurantService;
+import com.campus.myapp.service.ReviewService;
 import com.campus.myapp.service.mainAdService;
 
 
@@ -29,7 +31,9 @@ public class HomeController {
 	mainAdService mainadservice;
 	@Inject
 	RestaurantService resservice;
-
+	@Inject
+	ReviewService revservice;
+	
 	@RequestMapping("/")
 	public ModelAndView home() {
 	   ModelAndView mav=new ModelAndView();
@@ -44,11 +48,23 @@ public class HomeController {
 	public String restaurant() {
 		return "restaurant/restaurant"; 
 	}
+	/*
 	@RequestMapping("/restaurantInfo")
 	public String restaurantInfo() {
+		
 		return "restaurant/restaurantInfo"; 
 	}
-
+	
+	
+	@RequestMapping("/restaurantInfo")
+	public ModelAndView restaurantInfo(Integer resno) {
+		ModelAndView mav = new ModelAndView();
+		revservice.setRating(resno);
+		System.out.println("실행!!");
+		mav.setViewName("restaurant/restaurantInfo");
+		return mav; 
+	}*/
+	
 	
 	//디자인테스트 
 	// 식당 목록 게시판 디자인 테스트
