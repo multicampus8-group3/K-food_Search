@@ -18,7 +18,7 @@
 		background-position:500px 100px;
 		margin:0 auto;
 	}
-	.resSignUpDiv input{
+	.resSignUpDiv input, .resSignUpDiv select{
 		background-color:inherit;
 		border:none;
 		border-bottom:1px solid black;

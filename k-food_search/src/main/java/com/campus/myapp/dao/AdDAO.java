@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.campus.myapp.vo.AdVO;
 import com.campus.myapp.vo.PagingVO;
+import com.campus.myapp.vo.RestaurantVO;
 
 @Mapper
 @Repository
@@ -19,4 +20,5 @@ public interface AdDAO {
 	// 광고 db 입력
 	public int restaurantAdInsert(AdVO vo);
 	public List<AdVO> restaurantAdListView(String userid);
+	public List<RestaurantVO> resnoList(String userid);
 }

@@ -149,6 +149,7 @@
 	margin-top: 70px;
 	margin-left:35%;
 }
+
 #pagingbox ul{
 	margin-left:35%;
 	width:50%;
@@ -168,20 +169,16 @@
 </style>
 <script>
 $(document).ready(function() {
-	console.log("실행");
-	console.log("${nation}");
-
+	//지역나오게 하는 ajax
 	$("#favornation").click(function(){
 			var url = "/country/stateList"
 			var params = $("input:radio[name='nation']:checked").val();
-			console.log(params);
 			$.ajax({
 			url: url,
 			data:{
 				nation:params,
 			},
 			success: function(result) {
-				alert(JSON.stringify(result))
 				var $result = $(result.stateList);
 				var $result2 = $(result.restList);
 				var tag2 = "";
@@ -190,7 +187,6 @@ $(document).ready(function() {
 					tag2 += "<input type='radio' class='state' name='state' onclick='restInfo(\""+vo.state+"\")' value="+vo.state+"><label>"+vo.state+"</label><br>";
 				});
 				$result2.each(function(idx, vo){
-				
 					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">'; 
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
@@ -211,6 +207,7 @@ $(document).ready(function() {
 				});
 				$("#favorstate").html(tag2);
 				$("#section").html(tag);
+				$('#pagingbox').css('display','none');
 			},
 			error: function(e) {
 				console.log(e.responseText);
@@ -260,11 +257,8 @@ $(document).ready(function() {
 });
 
 	function restInfo(state){
-		alert('state'+state)
 			var url = "/country/restList"
-			
 			var params1 = $("input:radio[name='nation']:checked").val();
-			
 			$.ajax({
 			url: url,
 			data:{
@@ -272,17 +266,14 @@ $(document).ready(function() {
 				state:state
 			},
 			success: function(result) {
-				console.log("anjwl"+result)
-				alert(JSON.stringify(result))
-				var $result = $(result);
-				var tag2 = "";
+				
+				var $result = $(result.restList);
 				var tag="";//레스토랑 정보를 담을 html태그가 들어가야
 				$result.each(function(idx, vo){
-					tag2 += "<input type='radio' name='state' value="+vo.resstate+"><label>"+vo.resstate+"</label><br>";	
 					tag += '<a href="/restaurantInfo?resno='+vo.resno+'">';
 					tag += '<div class="resCard">';
 					tag += '<div class="img_box">';
-					tag += 		'<img src="/img/noImg.jpg"/>';
+					tag += 		'<img src="/resImg/'+vo.resimg+'"/>';
 					tag += 	'</div>';
 					tag += 	'<div class="contents">';
 					tag += 		'<div class="info">';
@@ -296,8 +287,8 @@ $(document).ready(function() {
 					tag += '</div>';
 					tag += '</a>';
 				});								
-				$("#favorstate").html(tag2);
 				$("#section").html(tag);
+				$('#pagingbox').css('display','none');
 			},
 			error: function(e) {
 				console.log(e.responseText);
@@ -308,37 +299,59 @@ $(document).ready(function() {
 	<!-- 양지석 수정 -->
 
 	$(function(){
-		var chk=[]
-		var cnt=0;
+		var array=[]
 		$('input:checkbox[name="restype"]').click(function(){
 			
-			if($(this).is(':checked')){
-				chk.push($(this).val())
-					//alert(chk)
+			var targetboolean = $(event.target).prop('checked')
+			if(targetboolean){
+				array.push($(event.target).val());				
 			}else{
-					
-				for(var j=0;j<chk.length;j++){
-					console.log(chk[j]+">>>"+$(this).val())
-					if(chk[j]==$(this).val()){
-						chk.splice(j,1);
-						break;
+				for(var i=0; i<array.length; i++){
+					if(array[i]==$(event.target).val()){
+						array.splice(i,i+1);
 					}
 				}
 			}
+			
 			//alert(chk)
 			var nation=$('input:radio[name="nation"]:checked').val()
 			var state=$('input:radio[name="state"]:checked').val()
-			$.ajax({
-				type:'post',
-				url :'/country/restype',
-				data:{
-					nation:nation,
-					state:state,
-					restype:chk
-				}, success : function (result){
-					alert(JSON.stringify(result))
-				}
-			})
+			if(state==null){
+				alert("state를 입력하세요!")
+			}else{
+				$.ajax({
+					type:'get',
+					url :'/country/restype2',
+					data:{
+						'resnation':nation,
+						'resstate':state,
+						'restypeArr':array
+					}, success : function (result){
+						var $result = $(result);
+						var tag="";//레스토랑 정보를 담을 html태그가 들어가야
+						$result.each(function(idx, vo){
+							tag += '<a href="/restaurantInfo?resno='+vo.resno+'">';
+							tag += '<div class="resCard">';
+							tag += '<div class="img_box">';
+							tag += 		'<img src="/resImg/'+vo.resimg+'"/>';
+							tag += 	'</div>';
+							tag += 	'<div class="contents">';
+							tag += 		'<div class="info">';
+							tag += 			'<span class="resname">'+vo.resname+'</span><br/>'
+							tag += 			'<span class="resgrade">★'+parseFloat(vo.resgrade).toFixed(1)+'</span><span class="restype">'+vo.restype+'</span><br/>';
+							tag += 			'<span class="adr">'+vo.resadress+'</span>'
+							tag += 			'<div class="intro">'+vo.rescontent+'</div>';
+							tag += 		'</div>';
+							tag += 		'<div class="seeMore">더보기</div>';
+							tag += 	'</div>';
+							tag += '</div>';
+							tag += '</a>';
+						});								
+						$("#section").html(tag);
+						$('#pagingbox').css('display','none');
+					}
+				})			
+			}
 		})
 	});
 </script>

@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="restListByNation" resultType="com.campus.myapp.vo.RestaurantVO">
-		select distinct(resname), resstate, resnation,rescontent,resadress,restype,resgrade
+		select distinct(resname),resno,resimg, resstate, resnation,rescontent,resadress,restype,resgrade
 		from restaurant_table r join country c
 		on r.resnation = c.nation and r.resnation=#{param1}
 	</select>
@@ -30,7 +30,7 @@
 	</select>
 	
 	<select id="restList" resultType="com.campus.myapp.vo.RestaurantVO">
-		select r.resstate, r.resno, r.resname, r.resgrade, r.resadress, r.rescontent, c.nation, c.state
+		select r.restype, r.resimg, r.resstate, r.resno, r.resname, r.resgrade, r.resadress, r.rescontent, c.nation, c.state
 		from restaurant_table r join country c
 		on r.resnation = c.nation and 
 		r.resstate=c.state 

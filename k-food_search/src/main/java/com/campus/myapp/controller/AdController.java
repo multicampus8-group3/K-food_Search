@@ -24,6 +24,7 @@ import com.campus.myapp.dao.adminPageNationDAO;
 import com.campus.myapp.service.AdService;
 import com.campus.myapp.vo.AdVO;
 import com.campus.myapp.vo.PagingVO;
+import com.campus.myapp.vo.RestaurantVO;
 
 @RestController
 public class AdController {
@@ -55,8 +56,12 @@ public class AdController {
 		return mav;
 	}
 	@GetMapping("/myrestaurant/restaurantAdApplicationWrite")
-	public ModelAndView restaurantAdApplicationWrite() {
+	public ModelAndView restaurantAdApplicationWrite(HttpSession session) {
+		String userid = (String)session.getAttribute("logId");
 		ModelAndView mav = new ModelAndView();
+		List<RestaurantVO> lst = service.resnoList(userid);
+		System.out.println(lst.get(0).getResno());
+		mav.addObject("lst",lst);
 		mav.setViewName("/myrestaurant/restaurantAdApplicationWrite");
 		return mav;
 	}

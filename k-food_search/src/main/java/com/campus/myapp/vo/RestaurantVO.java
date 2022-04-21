@@ -19,6 +19,19 @@ public class RestaurantVO {
 	private String searchKey;
 	private String searchWord;
 	
+	/////////////////////////////////
+	private String [] restypeArr;
+	
+	public String[] getRestypeArr() {
+		return restypeArr;
+	}
+	public void setRestypeArr(String[] restypeArr) {
+		this.restypeArr = restypeArr;
+	}
+	
+	///////////////////////////
+	
+	
 	public Integer getResno() {
 		return resno;
 	}

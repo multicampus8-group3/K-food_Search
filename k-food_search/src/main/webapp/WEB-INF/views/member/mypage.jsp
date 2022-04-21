@@ -165,7 +165,7 @@
 						var open = parseInt(vo.reshour.split(':')[0]*60) + parseInt(vo.reshour.split(':')[1]);
 						var close = parseInt(vo.reshourend.split(':')[0]*60) + parseInt(vo.reshourend.split(':')[1]);
 					
-						tag += '<li><a href="/restaurantInfo?resno='+vo.resno+'"><div><span class="heart">♥</span></div>';
+						tag += '<li><a href="/restaurantInfo?resno='+vo.resno+'"><div><span class="heart"></span></div>';
 						tag += '<div><span><b>'+vo.resname+'</b><br/></span>';
 						tag += '<span>★'+parseFloat(vo.resgrade).toFixed(1)+'</span><br/>';
 						tag += '<span><b>'+vo.restype + '</b>&nbsp;·&nbsp;' + vo.resadress+'<br/></span><br/>';
@@ -188,23 +188,8 @@
 				}
 			});
 		}
-		//즐겨찾기 취소
-		$(document).on("click", ".heart", function(){
-			console.log("no= "+$(this).attr('value'));
-			var params = "no= "+$(this).attr('value');
-			var url = "/memFavor/memFavorDelete";
-			$.ajax({
-				url: url,
-				data: params,
-				type: "get",
-				success: function(result){
-					memberFavor();				
-				},
-				error: function(e){
-					console.log(e.responseText);
-				}
-			});
-		});
+		
+		
 		memberFavor();	
 	});
 

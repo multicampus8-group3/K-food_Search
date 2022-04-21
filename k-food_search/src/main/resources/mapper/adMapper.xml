@@ -29,4 +29,8 @@
 		select res.resname, date_format(ad.writedate,'%Y-%m-%d') writedate, date_format(ad.startdate,'%Y-%m-%d') startdate, date_format(ad.enddate,'%Y-%m-%d') enddate, ad.status, ad.bannerimg 
 		from ad_table ad join restaurant_table res on ad.resno=res.resno where ad.userid=#{param1};
 	</select>
+	
+	<select id='resnoList' resultType="RestaurantVO">
+		select resno from restaurant_table where userid=#{param1}
+	</select>
 </mapper>

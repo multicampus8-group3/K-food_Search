@@ -70,4 +70,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List<RestaurantVO> resList(ResPagingVO pVO) {
 		return dao.resList(pVO);
 	}
+
+	@Override
+	public List<RestaurantVO> testreturn(RestaurantVO vo, String[] restypeArr) {
+		// TODO Auto-generated method stub
+		return dao.testreturn(vo, restypeArr);
+	}
+
+
 }
