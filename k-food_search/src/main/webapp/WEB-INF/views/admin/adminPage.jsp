@@ -304,9 +304,9 @@ $(function(){
 	$(document).on('submit', '#ownershipList form', function(){
 		event.preventDefault();
 		
-		if($("#usertype").val()==''){
+		var target = $(event.target).children().eq(1).val();
+		if(target == ''){
 			alert("상태를 선택해주세요.");
-			$("#usertype").focus();
 			return false;
 		}
 		

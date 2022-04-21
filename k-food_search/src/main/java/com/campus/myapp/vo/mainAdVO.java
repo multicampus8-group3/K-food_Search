@@ -51,5 +51,6 @@ public class mainAdVO {
 	}
 	public void setResno(int resno) {
 		this.resno = resno;
-	}	
+	}
+	
 }

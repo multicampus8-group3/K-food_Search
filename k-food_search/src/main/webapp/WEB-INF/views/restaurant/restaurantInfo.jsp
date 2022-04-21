@@ -443,7 +443,7 @@ $(document).ready(function() {
   position: fixed;
   top: 50% !important;
   left: 50% !important;
-  transform: translate(-135%, -32%);
+  transform: translate(-50%, 8%);
 }
 .reservName, .reservMent{
 	border-bottom: 1px solid rgba(62, 97, 103, 0.3);

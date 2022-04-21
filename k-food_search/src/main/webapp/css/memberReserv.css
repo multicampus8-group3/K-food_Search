@@ -8,6 +8,7 @@
 	border: 1px solid rgba(62, 97, 103, 0.3);
 	border-radius: 5px;
 	padding: 10px;
+	background-color: rgba(205, 188, 171, 0.1);
 }
 .memberRes:hover{
 	box-shadow: 1px 1px 10px rgba(42, 72, 88, 0.3);
@@ -33,7 +34,7 @@
 	float: left;
 	width: 250px;
 	padding: 10px;
-	background-color: rgba(125, 144, 159, 0.2);
+	background-color: rgba(125, 144, 159, 0.1);
 	border: 1px solid rgba(125, 144, 159, 0.7);
 	border-radius: 8px;
 }
