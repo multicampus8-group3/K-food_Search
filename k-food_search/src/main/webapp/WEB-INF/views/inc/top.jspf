@@ -62,9 +62,6 @@
 					$result.each(function(idx, vo){
 						var open = parseInt(vo.reshour.split(':')[0]*60) + parseInt(vo.reshour.split(':')[1]);
 						var close = parseInt(vo.reshourend.split(':')[0]*60) + parseInt(vo.reshourend.split(':')[1]);
-						console.log(open);
-						console.log(close);
-						console.log(realnow);
 						
 						if(realnow > open && realnow < close) {
 							tag += '<li><span class="on">●</span></li>';
