@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.campus.myapp.vo.AdVO;
 import com.campus.myapp.vo.PagingVO;
+import com.campus.myapp.vo.RestaurantVO;
 
 public interface AdService {
 	// 관리자페이지에서 광고신청목록 보기
@@ -12,4 +13,5 @@ public interface AdService {
 	public int adStatusChange(AdVO vo);
 	public int restaurantAdInsert(AdVO vo);
 	public List<AdVO> restaurantAdListView(String userid);
+	public List<RestaurantVO> resnoList(String userid);
 }

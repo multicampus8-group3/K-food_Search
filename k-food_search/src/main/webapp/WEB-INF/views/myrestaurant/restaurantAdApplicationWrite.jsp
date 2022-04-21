@@ -7,7 +7,14 @@
 	<hr style='margin-bottom:40px;'/> 
 	<form method='post' action='/myrestaurant/restaurantAdApplicationWriteOk' enctype="multipart/form-data" id='adFrm'>
 		<span>매장 등록 번호</span><br/>
-		<input type='text' name ='resno' placeholder='매장 등록 번호를 입력하세요.' id='resno'><br/>
+		<select name='resno' id='resno'>
+			<option value=''>매장 등록 번호</option>
+			<c:forEach var="item" items="${lst }">
+				<option value='${item.resno }'>${item.resno }</option>
+			</c:forEach>
+		</select>
+		<br/>
+		<br/>
 		<span class='text'>*등록 번호는 내 업체 정보에서 확인하실 수 있습니다.</span><br/>
 		<span>배너 광고 이미지</span><br/>
 		<input type='file' name ='bennerimg1' id='bennerimg'  accept=".gif, .jpg, .png"><br/>

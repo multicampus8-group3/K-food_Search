@@ -64,8 +64,9 @@
 }
 #c{
 	float: right;
+	padding-left: 0px;
 	/* width: 83%; */
-	width: 78%;
+	width: 73%;
 	height: 95px;
 	line-height: 30px;
 	text-overflow: ellipsis;

@@ -5,7 +5,7 @@
 <mapper namespace="com.campus.myapp.dao.AdDAO">
 	
 	<select id="adList" resultType="com.campus.myapp.vo.AdVO">
-		select ad.no no, res.resname resname, ad.userid userid, mem.tel tel, 
+		select ad.no no, res.resname resname, ad.userid userid, mem.tel tel, res.resno resno,
 		ad.bannerimg bannerimg, date_format(ad.startdate,'%Y-%m-%d') startdate, 
 		date_format(ad.enddate,'%Y-%m-%d') enddate, ad.writedate writedate, ad.status status
 		from ad_table as ad
@@ -28,5 +28,9 @@
 	<select id="restaurantAdListView" resultType="AdVO">
 		select res.resname, date_format(ad.writedate,'%Y-%m-%d') writedate, date_format(ad.startdate,'%Y-%m-%d') startdate, date_format(ad.enddate,'%Y-%m-%d') enddate, ad.status, ad.bannerimg 
 		from ad_table ad join restaurant_table res on ad.resno=res.resno where ad.userid=#{param1};
+	</select>
+	
+	<select id='resnoList' resultType="RestaurantVO">
+		select resno from restaurant_table where userid=#{param1}
 	</select>
 </mapper>

@@ -81,7 +81,7 @@ function faqDel(){
 			<span>업종 분류</span><br/>
 			<select name='restype' id='restype'>
 				<option value=''>타입선택</option>
-				<option>떡복이</option>
+				<option>떡볶이</option>
 				<option>전</option>
 				<option>백반</option>
 				<option>치킨</option>

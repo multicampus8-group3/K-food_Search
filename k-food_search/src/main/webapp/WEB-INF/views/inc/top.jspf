@@ -68,7 +68,7 @@
 						}else{
 							tag += '<li><span class="off">●</span></li>';
 						}
-						tag += '<li><a href="#">' + vo.resname + '</a></li>';
+						tag += '<li><a href="/restaurantInfo?resno='+vo.resno+'">' + vo.resname + '</a></li>';
 					});
 					tag += '</ul>';
 					
@@ -197,6 +197,12 @@
 		height: 150px;
 	}
 	
+	#favor_div{
+		border-top: 1px solid #fff;
+		margin: 5%;
+		padding-top: 5%;
+		margin-top: -20px;
+	}
 	#favorList{
 		margin: 10px auto;
 		width: 85%;
@@ -236,6 +242,7 @@
 	#favorList ul>li>span.off{
 		color: #FF0000;
 	}
+	
 	@font-face{
  		src:url("/font/Binggrae-Bold.ttf");
  		font-family : "Binggrae";
@@ -263,8 +270,8 @@
 			<img class='menu_img' src="/img/menu_icon2.png"/><a href='/'><img class='logo_img' src="/img/logojustname2.png"/></a><br/>
 			<div id='menu_div'>
 				<a class='menu_button' href='/'><img style="height:25px;" src="/img/homebtn.png"/>&nbsp;HOME</a><br/>
-				<a class='menu_button' href='/restaurant'><img style="height:25px;" src="/img/searchbtn.png"/>&nbsp;SEARCH</a>
-				<a class='menu_button' style="font-size: 14px; line-height:14px; height: 16px;" href='/restaurantDesignTest'>식당목록_디자인_샘플</a>
+				<a class='menu_button' href='/restaurantDesignTest'><img style="height:25px;" src="/img/searchbtn.png"/>&nbsp;SEARCH</a>
+				
 			</div>
 			<c:if test="${logId==null }">
 				<div id='login_div'>
@@ -298,7 +305,6 @@
 					<a href="/member/mypage">마이페이지</a>&nbsp;|&nbsp;
 					<a href="/logout">로그아웃</a>
 				</div>
-				<hr style="width:90%; margin-top:-50px; color:#fff;background-color:#fff; border:#fff;"/>
 				<div id="favor_div">
 					<b style="margin-left:-170px; color:white;">즐겨찾기</b>
 					<div id="favorList">

@@ -37,6 +37,7 @@ public class HomeController {
 	@RequestMapping("/")
 	public ModelAndView home() {
 	   ModelAndView mav=new ModelAndView();
+	   
 	   mav.addObject("bmgrade",bmservice.bmSelect());
 	   mav.addObject("mainadbanner",mainadservice.mainAdSelect());
 	   mav.setViewName("home");
