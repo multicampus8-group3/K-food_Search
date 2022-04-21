@@ -226,7 +226,7 @@
 							tag += '<ul class="memok">';
 							tag += '<li>예약이 <b>승인</b>되었습니다.</li>';
 							tag += '<li>&nbsp;만약 예약을 취소하시려면 아래 문의 이메일로 연락주시길바랍니다.</li>';
-							tag += '<li class="resname"><b>'+vo.resname+'</b></li>';
+							tag += '<li class="resname"><a href="/restaurantInfo?resno='+vo.resno+'"><b>'+vo.resname+'</b></a></li>';
 							tag += '<li><hr/></li>';
 							tag += '<li>일정: <span>'+vo.reservdate+'&nbsp'+vo.reservtime+'</span></li>';
 							tag += '<li>인원: <span>'+vo.reservp+'명</span></li>';
@@ -256,7 +256,7 @@
 								tag += '<li>예약을 <b>취소</b>하셨습니다.</li>';
 								tag += '<li>&nbsp;예약 취소가 완료되었습니다.</li>';
 							};
-							tag += '<li class="resname"><b>'+vo.resname+'</b></li>';
+							tag += '<li class="resname"><a href="/restaurantInfo?resno='+vo.resno+'"><b>'+vo.resname+'</b></a></li>';
 							tag += '<li><hr/></li>';
 							tag += '<li>일정: <span>'+vo.reservdate+'&nbsp'+vo.reservtime+'</span></li>';
 							tag += '<li>인원: <span>'+vo.reservp+'명</span></li>';

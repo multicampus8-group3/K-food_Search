@@ -5,7 +5,7 @@
 <mapper namespace="com.campus.myapp.dao.AdDAO">
 	
 	<select id="adList" resultType="com.campus.myapp.vo.AdVO">
-		select ad.no no, res.resname resname, ad.userid userid, mem.tel tel, 
+		select ad.no no, res.resname resname, ad.userid userid, mem.tel tel, res.resno resno,
 		ad.bannerimg bannerimg, date_format(ad.startdate,'%Y-%m-%d') startdate, 
 		date_format(ad.enddate,'%Y-%m-%d') enddate, ad.writedate writedate, ad.status status
 		from ad_table as ad
