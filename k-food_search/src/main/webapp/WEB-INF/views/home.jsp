@@ -27,7 +27,6 @@
 			$('.map').maphilight({strokeColor: 'FFAA00', strokeWidth: 3, fill: true, fillColor: 'FFAA00',fillOpacity: 0.7, fade: false});
 		});
 	</script>
-	<script type="text/javascript" src="/js/bm_jy.js"></script>
 	<script type="text/javascript" src="/js/jquery.rwdImageMaps.js"></script>
 	<script>
 		$(function(){
@@ -114,18 +113,18 @@ img[usemap] {
 </head>
 <body>
 	<div style="width:1200px; height:50px; margin:0 auto; margin-bottom:10px; margin-top:-10px;">
-		<span class='smallMenu' style=" float:right;">Select Map</span>
+		<span class='smallMenu'>Select Map</span>
 	</div>
-<div id="jido_Box_before">
-	<div id="jido_Box">
-		<div class="jido_world jido1" style=''>
-			<%@ include file="home_world.jsp" %>
-		</div>
-		<div class="jido_world jido2" style=''>
-			<%@ include file="home_world.jsp" %>
+	<div id="jido_Box_before">
+		<div id="jido_Box">
+			<div class="jido_world jido1" style=''>
+				<%@ include file="home_world.jsp" %>
+			</div>
+			<div class="jido_world jido2" style=''>
+				<%@ include file="home_world.jsp" %>
+			</div>
 		</div>
 	</div>
-</div>
 <div class="container"> <!-- 컨테이너 -->
 
 	<div id="mainContents"> <!-- 전체페이지(컨텐츠) -->

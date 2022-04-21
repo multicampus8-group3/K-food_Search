@@ -16,13 +16,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1/kfood?characterEncoding=utf-8
     username: root
-<<<<<<< HEAD
     password: root1234
  
-=======
-    password: 1234   
-    
->>>>>>> branch 'main' of https://github.com/multicampus8-group3/K-food_Search.git
   servlet:
     multipart:
       max-file-size: 10MB
