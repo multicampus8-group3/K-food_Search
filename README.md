@@ -31,7 +31,8 @@
 
 
 ## ERD
-![image](https://user-images.githubusercontent.com/76678030/161696171-4b5e7ef6-b296-4301-a80c-e875bc192f92.png)
+![image](https://user-images.githubusercontent.com/76678030/164379771-b575442f-e0d3-4d48-996e-21c422e3c17d.png)
+
 
 ## Usage
 
