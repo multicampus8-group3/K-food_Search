@@ -51,4 +51,10 @@ public class CountryController {
 		map.put("restList", restList);
 		return map;
 	}
+	@GetMapping("/country/restype2")
+	@ResponseBody
+	public List<RestaurantVO> babo (RestaurantVO vo) {
+		List<RestaurantVO> lst = res_service.testreturn(vo, vo.getRestypeArr());
+		return lst;
+	}
 }

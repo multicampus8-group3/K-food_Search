@@ -79,4 +79,16 @@
 			where resnation like '%${nation}%'
 		</if>
 	</select>
+	
+	<select id='testreturn' resultType='RestaurantVO'>
+		select resno,resname, resadress, resgrade, rescontent, resnation, resstate, restype, resimg, website
+		from restaurant_table where resnation=#{param1.resnation} and resstate=#{param1.resstate} 
+		<if test='param2!=null'>
+			and restype in 
+		<foreach item='restypeArr' index="index" collection="param2"
+  				open="(" separator="," close=")">
+  					#{restypeArr}
+  		</foreach>
+		</if>
+	</select>
 </mapper>
