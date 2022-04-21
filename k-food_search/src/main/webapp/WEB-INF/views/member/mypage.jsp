@@ -170,7 +170,7 @@
 						tag += '<span>★'+parseFloat(vo.resgrade).toFixed(1)+'</span><br/>';
 						tag += '<span><b>'+vo.restype + '</b>&nbsp;·&nbsp;' + vo.resadress+'<br/></span><br/>';
 						
-						if(realnow > open || realnow < close) {
+						if(realnow > open && realnow < close) {
 							tag += '<span class="favon">영업 중</span></div>';
 						}else{
 							tag += '<span class="favoff">영업 종료</span></div>';
